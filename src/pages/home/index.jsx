@@ -4,6 +4,8 @@ import LegacySection from "../../components/home/LegacySection";
 import OurPromise from "../../components/home/OurPromise";
 import PlanYourLegacy from "../../components/home/PlanYourLegacy";
 import BlogsAndArticleSection from "../../components/home/BlogsAndArticleSection";
+import WhoweAreNew from "../../components/home/WhoweAreNew";
+import TrueLegacyInstructions from "../../components/home/TrueLegacyInstructions";
 
 const HomePage = () => {
   return (
@@ -11,11 +13,11 @@ const HomePage = () => {
       {/* Sections composed similar to old app, ready for redesign */}
     
       <HeaderHome />
-      <HomeOurServices />
-      <LegacySection />
-      <OurPromise />
+      
       <PlanYourLegacy />
-      <BlogsAndArticleSection />
+      <WhoweAreNew />
+      <TrueLegacyInstructions />
+     
     </main>
   );
 };

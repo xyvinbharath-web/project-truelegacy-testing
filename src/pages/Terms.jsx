@@ -1,8 +1,8 @@
 const TermsOfService = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <h1 className="text-3xl font-semibold">Terms of Service (ready for new design)</h1>
-    </div>
+    <main className="min-h-screen flex items-center justify-center">
+      <h1 className="text-3xl font-semibold">Terms of Service (to be redesigned)</h1>
+    </main>
   );
 };
 

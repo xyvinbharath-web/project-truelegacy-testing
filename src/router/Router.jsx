@@ -2,8 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "../layout/RootLayout";
 import Layout from "../layout/Layout";
 
-import Home from "../pages/home";
-import Services from "../pages/services";
+import Home from "../pages/home/index.jsx";
+import Services from "../pages/services/index.jsx";
 import WhyChooseUs from "../pages/why-choose-us";
 import Contact from "../pages/contact";
 import Resources from "../pages/resources";
@@ -15,7 +15,7 @@ import FamilyMembers from "../pages/succession/FamilyView";
 import SignIn from "../pages/succession/SignIn";
 import ProtectedRoute from "./ProtectRouter";
 import TermsOfService from "../pages/Terms";
-import Privacy from "../pages/privacy";
+import Privacy from "../pages/privacy/PrivacyPolicy.jsx";
 
 const Router = createBrowserRouter([
   {
