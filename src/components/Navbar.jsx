@@ -5,6 +5,8 @@ import MobileLogo from "../assets/logomobile.webp";
 import MenuBg from "../assets/Menubackround.webp";
 import MenuIcon from "../assets/Frame 2147224799.webp";
 import CloseIcon from "../assets/cancel-01.webp";
+import StyledButton from "../ui/StyledButton";
+import ArrowDownIcon from "../assets/icon/arrow-down-01-sharp.webp";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -37,12 +39,12 @@ const Navbar = () => {
         </div>
 
         {/* Center: nav links */}
-        <nav className="hidden md:flex flex-1 items-center justify-center gap-8 lg:gap-10 text-[14px] font-[Urania]">
+        <nav className="hidden md:flex flex-1 items-center justify-center gap-8 lg:gap-10 text-[16px] font-[Urania]">
           <NavLink to="/" className="relative">
             {({ isActive }) => (
               <span className="relative inline-flex items-center justify-center">
                 <span
-                  className={`text-[14px] font-semibold ${
+                  className={`text-[16px] font-semibold ${
                     isActive ? "text-slate-900" : "text-slate-400"
                   }`}
                 >
@@ -61,7 +63,7 @@ const Navbar = () => {
               onClick={() => setIsServicesOpen((prev) => !prev)}
             >
               <span
-                className={`text-[14px] ${
+                className={`text-[16px] ${
                   isServicesOpen || isServicesRoute
                     ? "text-slate-900"
                     : "text-slate-400"
@@ -69,14 +71,18 @@ const Navbar = () => {
               >
                 Services
               </span>
-              <span
-                className={`text-[10px] ${
-                  isServicesOpen || isServicesRoute
-                    ? "text-slate-900"
-                    : "text-slate-400"
-                }`}
-              >
-                {isServicesOpen ? "▲" : "▼"}
+              <span className="inline-flex items-center justify-center ml-1">
+                <img
+                  src={ArrowDownIcon}
+                  alt="Toggle services menu"
+                  className={`h-3 w-3 transition-transform duration-200 ${
+                    isServicesOpen ? "rotate-180" : "rotate-0"
+                  } ${
+                    isServicesOpen || isServicesRoute
+                      ? "filter-none"
+                      : "opacity-60"
+                  }`}
+                />
               </span>
               {(isServicesOpen || isServicesRoute) && (
                 <span className="absolute left-1/2 top-full mt-[4px] h-2 w-2 -translate-x-1/2 rounded-full bg-emerald-800" />
@@ -84,10 +90,37 @@ const Navbar = () => {
             </button>
 
             {isServicesOpen && (
-              <div className="absolute top-full left-0 bg-white shadow-md p-4 w-48">
-                <div>Will</div>
-                <div>Trust</div>
-                <div>Family Office</div>
+              <div className="absolute top-full left-0 bg-white shadow-md p-4 w-48 space-y-2 text-[14px] text-slate-800">
+                <button
+                  type="button"
+                  className="block w-full text-left hover:text-emerald-800"
+                  onClick={() => {
+                    setIsServicesOpen(false);
+                    navigate("/services", { state: { activeTab: "will" } });
+                  }}
+                >
+                  Will
+                </button>
+                <button
+                  type="button"
+                  className="block w-full text-left hover:text-emerald-800"
+                  onClick={() => {
+                    setIsServicesOpen(false);
+                    navigate("/services", { state: { activeTab: "trust" } });
+                  }}
+                >
+                  Trust
+                </button>
+                <button
+                  type="button"
+                  className="block w-full text-left hover:text-emerald-800"
+                  onClick={() => {
+                    setIsServicesOpen(false);
+                    navigate("/services");
+                  }}
+                >
+                  Family Office
+                </button>
               </div>
             )}
           </div>
@@ -96,7 +129,7 @@ const Navbar = () => {
             {({ isActive }) => (
               <span className="relative inline-flex items-center justify-center">
                 <span
-                  className={`text-[14px] ${
+                  className={`text-[16px] ${
                     isActive ? "text-slate-900" : "text-slate-400"
                   }`}
                 >
@@ -113,7 +146,7 @@ const Navbar = () => {
             {({ isActive }) => (
               <span className="relative inline-flex items-center justify-center">
                 <span
-                  className={`text-[14px] ${
+                  className={`text-[16px] ${
                     isActive ? "text-slate-900" : "text-slate-400"
                   }`}
                 >
@@ -130,7 +163,7 @@ const Navbar = () => {
             {({ isActive }) => (
               <span className="relative inline-flex items-center justify-center">
                 <span
-                  className={`text-[14px] ${
+                  className={`text-[16px] ${
                     isActive ? "text-slate-900" : "text-slate-400"
                   }`}
                 >
@@ -147,12 +180,15 @@ const Navbar = () => {
         {/* Right: actions (desktop login pill, mobile menu icon) */}
         <div className="flex-none flex items-center justify-end gap-3">
           {/* Desktop / tablet: login pill */}
-          <button
-            className="hidden md:inline-flex items-center justify-center h-11 px-6 rounded-full bg-[#132F2C] text-white text-[13px] font-[Urania]"
-            onClick={() => navigate("/signin")}
-          >
-            Login Account
-          </button>
+          <div className="hidden md:inline-flex">
+            <StyledButton
+              name="Login Account"
+              onClick={() => navigate("/signin")}
+              variant="primary"
+              minWidth="auto"
+              className="items-center justify-center h-11 px-6 rounded-full !bg-[#132F2C] !text-white text-[13px] font-[Urania]"
+            />
+          </div>
 
           {/* Mobile: menu icon image toggling overlay */}
           <button
@@ -224,15 +260,51 @@ const Navbar = () => {
                   >
                     Services
                   </span>
-                  <span className="text-[#F4D57E] text-xs">
-                    {isServicesOpen ? "▲" : "▼"}
+                  <span className="inline-flex items-center justify-center">
+                    <img
+                      src={ArrowDownIcon}
+                      alt="Toggle services menu"
+                      className={`h-3 w-3 transition-transform duration-200 ${
+                        isServicesOpen ? "rotate-180" : "rotate-0"
+                      }`}
+                    />
                   </span>
                 </button>
                 {isServicesOpen && (
-                  <div className="ml-4 space-y-1 text-[14px] text-[#FFFFFF]">
-                    <div>Will</div>
-                    <div>Trust</div>
-                    <div>Family Office</div>
+                  <div className="ml-4 space-y-2 text-[14px] text-[#FFFFFF]">
+                    <button
+                      type="button"
+                      className="block text-left w-full hover:text-[#F4D57E]"
+                      onClick={() => {
+                        setIsServicesOpen(false);
+                        setIsMenuOpen(false);
+                        navigate("/services", { state: { activeTab: "will" } });
+                      }}
+                    >
+                      Will
+                    </button>
+                    <button
+                      type="button"
+                      className="block text-left w-full hover:text-[#F4D57E]"
+                      onClick={() => {
+                        setIsServicesOpen(false);
+                        setIsMenuOpen(false);
+                        navigate("/services", { state: { activeTab: "trust" } });
+                      }}
+                    >
+                      Trust
+                    </button>
+                    <button
+                      type="button"
+                      className="block text-left w-full hover:text-[#F4D57E]"
+                      onClick={() => {
+                        setIsServicesOpen(false);
+                        setIsMenuOpen(false);
+                        navigate("/services");
+                      }}
+                    >
+                      Family Office
+                    </button>
                   </div>
                 )}
               </div>

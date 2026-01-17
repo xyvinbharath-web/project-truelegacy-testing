@@ -3,6 +3,7 @@ import { useSuccession } from "../../context/SuccessionContext";
 import planYourLegacyImage from "../../assets/img/home/Frame planyourlagacy.webp";
 import planYourLegacyMobile from "../../assets/img/home/Framemobileplanyourlagacy.webp";
 import tickIcon from "../../assets/icon/tickelements.webp";
+import StyledButton from "../../ui/StyledButton";
 
 const PlanYourLegacy = () => {
   const { successionData } = useSuccession();
@@ -41,13 +42,13 @@ const PlanYourLegacy = () => {
 
           {/* Mobile CTA button under image */}
           <div className="mt-6 md:hidden flex justify-center w-full">
-            <button
-              type="button"
+            <StyledButton
+              name="Find Your Legal Heirs"
               onClick={handleStartPlan}
-              className="inline-flex items-center justify-center rounded-full bg-[#132F2C] px-8 py-3 font-[Urania] text-[18px] font-bold text-white shadow-[0_10px_25px_rgba(10,47,36,0.35)] hover:bg-[#0D241E] transition-colors duration-200"
-            >
-              Find Your Legal Heirs
-            </button>
+              variant="primary"
+              minWidth="auto"
+              className="inline-flex items-center justify-center rounded-full !bg-[#132F2C] px-8 py-3 font-[Urania] text-[18px] font-bold !text-white shadow-[0_10px_25px_rgba(10,47,36,0.35)] hover:!bg-[#0D241E] transition-colors duration-200"
+            />
           </div>
 
           {/* Desktop / tablet image */}
@@ -86,13 +87,13 @@ const PlanYourLegacy = () => {
           </div>
 
           <div className="mt-10">
-            <button
-              type="button"
+            <StyledButton
+              name="Find Your Legal Heirs"
               onClick={handleStartPlan}
-              className="inline-flex items-center justify-center rounded-full bg-[#132F2C] px-8 py-3 font-[Urania] text-[18px] font-bold text-white shadow-[0_10px_25px_rgba(10,47,36,0.35)] hover:bg-[#0D241E] transition-colors duration-200"
-            >
-              Find Your Legal Heirs
-            </button>
+              variant="primary"
+              minWidth="auto"
+              className="inline-flex items-center justify-center rounded-full !bg-[#132F2C] px-8 py-3 font-[Urania] text-[18px] font-bold !text-white shadow-[0_10px_25px_rgba(10,47,36,0.35)] hover:!bg-[#0D241E] transition-colors duration-200"
+            />
           </div>
         </div>
       </div>

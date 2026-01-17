@@ -3,8 +3,8 @@ import cardImageWill from "../../assets/img/home/Framewhoarewe1.webp";
 import cardImageTrust from "../../assets/img/home/Framewhoarewe2.webp";
 import cardImageFamily from "../../assets/img/home/Framewhoarewe3.webp";
 import questionIcon from "../../assets/icon/Vectorlogo6904.webp";
-import whoWeBgFrame from "../../assets/img/Frame 2147224774.webp";
 import quoteDotsBg from "../../assets/img/home/Group 3.webp";
+import StyledButton from "../../ui/StyledButton";
 
 const cards = [
   {
@@ -38,15 +38,7 @@ const WhoweAreNew = () => {
   };
 
   return (
-    <section
-      className="w-full bg-[#F6FFFF] pt-16 md:pt-20 lg:pt-24 pb-40 md:pb-56 lg:pb-64"
-      style={{
-        backgroundImage: `url(${whoWeBgFrame})`,
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "15% 20%",
-        backgroundSize: "auto 75%",
-      }}
-    >
+    <section className="w-full bg-[#F6FFFF] pt-16 md:pt-20 lg:pt-24 pb-40 md:pb-56 lg:pb-64">
       {/* Container */}
       <div className="max-w-[1300px] mx-auto px-6 lg:px-8">
         {/* Top section */}
@@ -91,7 +83,7 @@ const WhoweAreNew = () => {
               style={{
                 maxWidth: "427px",
                 width: "100%",
-                height: "476px",
+                height: "466px",
                 borderRadius: "6px",
               }}
             >
@@ -115,7 +107,7 @@ const WhoweAreNew = () => {
               </div>
 
               {/* Content */}
-              <div className="px-6 pb-8 text-center flex flex-col items-center">
+              <div className="mt-5 px-6 pb-8 text-center flex flex-col items-center">
                 <h3 className="font-[Urania] font-bold text-[22px] lg:text-[24px] text-[#132F2C] mb-2">
                   {card.title}
                 </h3>
@@ -124,19 +116,15 @@ const WhoweAreNew = () => {
                   {card.description}
                 </p>
 
-                <button
-                  type="button"
-                  disabled={!card.tab}
+                <StyledButton
+                  name={card.btn}
                   onClick={() => handleCardClick(card.tab)}
-                  className={`rounded-full px-6 py-2.5 font-[Urania] text-[14px] font-bold transition
-                    ${
-                      card.tab
-                        ? "bg-[#132F2C] text-white hover:bg-[#0D241E]"
-                        : "bg-[#132F2C] text-white cursor-not-allowed"
-                    }`}
-                >
-                  {card.btn}
-                </button>
+                  disabled={!card.tab}
+                  variant="primary"
+                  minWidth="237px"
+                  className={`rounded-[66px] px-8 py-3.5 font-[Urania] text-[14px] font-bold whitespace-nowrap !bg-[#132F2C] !text-white !opacity-100 transition
+                    ${card.tab ? "hover:!bg-[#0D241E]" : "cursor-not-allowed"}`}
+                />
               </div>
             </div>
           ))}

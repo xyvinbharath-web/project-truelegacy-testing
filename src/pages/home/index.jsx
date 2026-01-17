@@ -6,6 +6,8 @@ import PlanYourLegacy from "../../components/home/PlanYourLegacy";
 import BlogsAndArticleSection from "../../components/home/BlogsAndArticleSection";
 import WhoweAreNew from "../../components/home/WhoweAreNew";
 import TrueLegacyInstructions from "../../components/home/TrueLegacyInstructions";
+import QuoteComponent from "../../components/home/QuoteComponent";
+import FAQ from "../../components/FAQ";
 
 const HomePage = () => {
   return (
@@ -17,7 +19,8 @@ const HomePage = () => {
       <PlanYourLegacy />
       <WhoweAreNew />
       <TrueLegacyInstructions />
-     
+      <QuoteComponent />
+      <FAQ />
     </main>
   );
 };
