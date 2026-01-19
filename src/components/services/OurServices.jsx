@@ -9,6 +9,7 @@ import trustframe2 from "../../assets/img/service/trustframe2.webp";
 import trustframe3 from "../../assets/img/service/trustframe3.webp";
 import trustframe4 from "../../assets/img/service/trustframe4.webp";
 import trustframe5 from "../../assets/img/service/trustframe5.webp";
+import ServiceModal from "./ServiceModal";
 
 const willServices = [
   {
@@ -106,14 +107,36 @@ const trustServices = [
   },
 ];
 
+// Form fields configuration for different service types
+const formFields = {
+  default: [
+    { name: "name", label: "Full Name", type: "text", required: true, placeholder: "Enter your full name" },
+    { name: "email", label: "Email Address", type: "email", required: true, placeholder: "Enter your email address" },
+    { name: "phone", label: "Phone Number", type: "tel", required: true, placeholder: "Enter your phone number" },
+    { name: "message", label: "Additional Details", type: "textarea", required: false, placeholder: "Tell us more about your requirements...", rows: 3 }
+  ]
+};
+
 const OurServices = ({ initialTab = "will" }) => {
   const [activeTab, setActiveTab] = useState(initialTab);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
 
   useEffect(() => {
     setActiveTab(initialTab);
   }, [initialTab]);
 
   const services = activeTab === "trust" ? trustServices : willServices;
+
+  const openModal = (service) => {
+    setSelectedService(service);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setSelectedService(null);
+  };
 
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-10 bg-[#E5F3EF]">
@@ -185,7 +208,10 @@ const OurServices = ({ initialTab = "will" }) => {
                   </div>
 
                   <div className="mt-5 flex justify-center">
-                    <button className="rounded-[66px] bg-[#F4D57E] w-[280px] h-[52px] font-[Urania] text-[18px] font-bold text-[#132F2C] hover:bg-[#F7E18F] transition">
+                    <button 
+                      onClick={() => openModal(service)}
+                      className="rounded-[66px] bg-[#F4D57E] w-[280px] h-[52px] font-[Urania] text-[18px] font-bold text-[#132F2C] hover:bg-[#F7E18F] transition"
+                    >
                       {service.cta}
                     </button>
                   </div>
@@ -196,6 +222,14 @@ const OurServices = ({ initialTab = "will" }) => {
           ))}
         </div>
       </div>
+      
+      {/* Service Modal */}
+      <ServiceModal
+        isOpen={modalOpen}
+        onClose={closeModal}
+        serviceTitle={selectedService?.title || ""}
+        fields={formFields.default}
+      />
     </section>
   );
 };
