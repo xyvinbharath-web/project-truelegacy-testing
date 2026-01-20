@@ -5,6 +5,7 @@ import MobileFooterFrame from "../assets/mobilefooterFrame .webp";
 import LinkedinLogo from "../assets/linkedinlogo.webp";
 import InstagramLogo from "../assets/instagramlogo.webp";
 import FacebookLogo from "../assets/facebooklogo.webp";
+import RequestDialog from "./home/RequestDialog";
 
 const Footer = ({ hideCta = false }) => {
   const [isScheduleOpen, setIsScheduleOpen] = useState(false);
@@ -290,44 +291,20 @@ const Footer = ({ hideCta = false }) => {
         </div>
       </div>
 
-      {/* Simple popups for buttons */}
-      {isScheduleOpen && (
-        <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-4">
-          <div className="w-full max-w-md rounded-xl bg-white p-6 text-[#132F2C]">
-            <h3 className="text-lg font-semibold mb-3">
-              Schedule your expert session today
-            </h3>
-            <p className="text-sm mb-4 text-slate-600">
-              This is a placeholder popup. We will wire it to the
-              actual scheduling form from the old site logic.
-            </p>
-            <button
-              className="mt-2 inline-flex rounded-full bg-[#132F2C] px-5 py-2 text-sm text-white"
-              onClick={() => setIsScheduleOpen(false)}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+      {/* Request Dialogs */}
+      <RequestDialog
+        open={isScheduleOpen}
+        title="Schedule a Callback"
+        isSchedule={true}
+        onClose={() => setIsScheduleOpen(false)}
+      />
 
-      {isCallbackOpen && (
-        <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-4">
-          <div className="w-full max-w-md rounded-xl bg-white p-6 text-[#132F2C]">
-            <h3 className="text-lg font-semibold mb-3">Request a Call Back</h3>
-            <p className="text-sm mb-4 text-slate-600">
-              This is a placeholder popup. We will wire it to the
-              actual callback form from the old site logic.
-            </p>
-            <button
-              className="mt-2 inline-flex rounded-full bg-[#132F2C] px-5 py-2 text-sm text-white"
-              onClick={() => setIsCallbackOpen(false)}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+      <RequestDialog
+        open={isCallbackOpen}
+        title="Call Back Request"
+        isSchedule={false}
+        onClose={() => setIsCallbackOpen(false)}
+      />
     </footer>
   );
 };
