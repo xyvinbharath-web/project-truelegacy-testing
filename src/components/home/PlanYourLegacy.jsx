@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSuccession } from "../../context/SuccessionContext";
 import planYourLegacyImage from "../../assets/img/home/Frame planyourlagacy.webp";
@@ -9,6 +10,8 @@ const PlanYourLegacy = () => {
   const { successionData } = useSuccession();
   const token = successionData?.temporary_user?.token;
   const navigate = useNavigate();
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleStartPlan = () => {
     if (token) {
@@ -24,24 +27,49 @@ const PlanYourLegacy = () => {
     "In under one-minute",
   ];
 
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="w-full bg-white py-16 md:py-20 lg:py-24">
+    <section
+      ref={sectionRef}
+      className={`w-full bg-white py-16 md:py-20 lg:py-24 plan-section ${
+        isVisible ? "plan-section-visible" : ""
+      }`}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-2 items-center">
         {/* Left: Family tree image */}
-        <div className="flex flex-col items-center lg:items-start justify-center">
+        <div className="flex flex-col items-center lg:items-start justify-center plan-left">
           {/* Mobile image */}
-          <div className="w-full max-w-[343px] md:hidden">
+          <div className="w-full max-w-[343px] md:hidden plan-image">
             <div className="w-full bg-white rounded-[6px] overflow-hidden">
               <img
                 src={planYourLegacyMobile}
                 alt="Family tree preview mobile"
+                loading="lazy"
+                decoding="async"
                 className="w-[343px] h-[430px] object-cover"
               />
             </div>
           </div>
 
           {/* Mobile CTA button under image */}
-          <div className="mt-6 md:hidden flex justify-center w-full">
+          <div className="mt-6 md:hidden flex justify-center w-full plan-cta">
             <StyledButton
               name="Find Your Legal Heirs"
               onClick={handleStartPlan}
@@ -52,11 +80,13 @@ const PlanYourLegacy = () => {
           </div>
 
           {/* Desktop / tablet image */}
-          <div className="hidden md:block w-full max-w-[690px]">
-            <div className="w-full bg-white rounded-[6px] overflow-hidden">
+          <div className="hidden md:block w-full max-w-[690px] plan-image">
+            <div className="w-full bg-white rounded-[6px] overflow-hidden shadow-[0_18px_40px_rgba(5,41,26,0.10)]">
               <img
                 src={planYourLegacyImage}
                 alt="Family tree preview"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-[568px] object-cover"
               />
             </div>
@@ -64,15 +94,15 @@ const PlanYourLegacy = () => {
         </div>
 
         {/* Right: Text + bullets + CTA (desktop/tablet only) */}
-        <div className="hidden md:block text-left">
-          <h1 className="font-[Urania] font-bold text-[42px] leading-[49px] text-[#132F2C]">
+        <div className="hidden md:block text-left plan-right">
+          <h1 className="font-[Urania] font-bold text-[42px] leading-[49px] text-[#132F2C] plan-heading">
             No Succession Plan? Discover your legal <br />heirs in seconds.
           </h1>
 
           <div className="mt-8 space-y-3">
-            {features.map((text) => (
-              <div key={text} className="max-w-md">
-                <div className="flex items-center gap-3 w-full rounded-full border border-[#D7E7DF] bg-white px-5 py-3 shadow-[0_4px_10px_rgba(5,41,26,0.06)]">
+            {features.map((text, idx) => (
+              <div key={text} className="max-w-md feature-pill" style={{ transitionDelay: `${160 + idx * 80}ms` }}>
+                <div className="flex items-center gap-3 w-full rounded-full border border-[#D7E7DF] bg-white px-5 py-3 shadow-[0_4px_10px_rgba(5,41,26,0.06)] hover:shadow-[0_10px_24px_rgba(5,41,26,0.14)] hover:-translate-y-0.5 transition-all duration-300">
                   <img
                     src={tickIcon}
                     alt="tick icon"
@@ -86,7 +116,7 @@ const PlanYourLegacy = () => {
             ))}
           </div>
 
-          <div className="mt-10">
+          <div className="mt-10 plan-cta">
             <StyledButton
               name="Find Your Legal Heirs"
               onClick={handleStartPlan}

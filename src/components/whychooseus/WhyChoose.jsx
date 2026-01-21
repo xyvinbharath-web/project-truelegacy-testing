@@ -92,6 +92,8 @@ const WhyChoose = () => {
               <img
                 src={card.image}
                 alt={card.title}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-32 sm:h-48 object-cover rounded-lg mb-4 sm:mb-6"
               />
               <h3 className="text-[24px] mb-4 sm:mb-6 text-[#F4D57E] font-bold font-[Urania] leading-[24px] max-w-[200px] sm:max-w-[280px]">

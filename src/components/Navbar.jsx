@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import Logo from "../assets/truelagacylogo.webp";
 import MobileLogo from "../assets/logomobile.webp";
@@ -11,7 +12,9 @@ import ArrowDownIcon from "../assets/icon/arrow-down-01-sharp.webp";
 const Navbar = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false); // desktop services dropdown
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false); // mobile services dropdown
+
   const location = useLocation();
   const isServicesRoute = location.pathname.startsWith("/services");
 
@@ -25,13 +28,14 @@ const Navbar = () => {
       "
     >
       <div
-        className="
+        className={`
           w-full
           h-[80px]
           flex items-center
           justify-between md:justify-start
           px-4 sm:px-6 lg:px-10
-        "
+          ${isMenuOpen ? "hidden md:flex" : ""}
+        `}
       >
         {/* Left: logo */}
         <div className="flex-none flex items-center">
@@ -39,7 +43,8 @@ const Navbar = () => {
         </div>
 
         {/* Center: nav links */}
-        <nav className="hidden md:flex flex-1 items-center justify-center gap-8 lg:gap-10 text-[16px] font-[Urania]">
+        <nav className="hidden md:flex flex-1 items-center justify-center gap-8 lg:gap-10 text-[16px] font-[Urania] tl-nav">
+
           <NavLink to="/" className="relative">
             {({ isActive }) => (
               <span className="relative inline-flex items-center justify-center">
@@ -57,9 +62,13 @@ const Navbar = () => {
             )}
           </NavLink>
 
-          <div className="relative">
+          <div
+            className="relative"
+            onMouseEnter={() => setIsServicesOpen(true)}
+            onMouseLeave={() => setIsServicesOpen(false)}
+          >
             <button
-              className="relative inline-flex items-center justify-center gap-1"
+              className="relative inline-flex items-center justify-center gap-1 cursor-pointer"
               onClick={() => setIsServicesOpen((prev) => !prev)}
             >
               <span
@@ -89,8 +98,8 @@ const Navbar = () => {
               )}
             </button>
 
-            {isServicesOpen && (
-              <div className="absolute top-full left-0 bg-white shadow-md p-4 w-48 space-y-2 text-[14px] text-slate-800">
+            {(isServicesOpen || isServicesRoute) && (
+              <div className="absolute top-full left-0 bg-white shadow-md p-4 w-48 space-y-2 text-[14px] text-slate-800 services-dropdown-smooth">
                 <button
                   type="button"
                   className="block w-full text-left hover:text-emerald-800"
@@ -206,13 +215,13 @@ const Navbar = () => {
 
       {/* Mobile full-screen menu overlay */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-30 bg-[#132F2C] text-white md:hidden">
+        <div className="relative inset-0 z-50 bg-[#132F2C] text-white md:hidden animate-fade-in-fast min-h-screen">
           <div
             className="relative flex h-full w-full flex-col"
             style={{
               backgroundImage: `url(${MenuBg})`,
-              backgroundSize: "cover",
-              backgroundPosition: "top",
+              backgroundSize: "100% 100%",
+              backgroundPosition: "center",
             }}
           >
             {/* Top bar inside menu */}
@@ -229,9 +238,9 @@ const Navbar = () => {
                 />
               </button>
             </div>
-
             {/* Nav links column */}
-            <div className="mt-20 flex-1 px-6 space-y-8 text-[15px] font-[Urania]">
+            <div className="mt-20 flex-1 px-6 space-y-8 text-[15px] font-[Urania] animate-fade-up menu-slide-in">
+
               {/* Home */}
               <NavLink
                 to="/"
@@ -248,12 +257,12 @@ const Navbar = () => {
               {/* Services with mobile dropdown */}
               <div className="space-y-2">
                 <button
-                  className="flex items-center gap-2 text-left w-full"
-                  onClick={() => setIsServicesOpen((prev) => !prev)}
+                  className="flex items-center gap-2 text-left w-full cursor-pointer"
+                  onClick={() => setIsMobileServicesOpen((prev) => !prev)}
                 >
                   <span
                     className={
-                      isServicesOpen || isServicesRoute
+                      isMobileServicesOpen || isServicesRoute
                         ? "text-[#F4D57E]"
                         : "text-[#FFFFFF]"
                     }
@@ -265,19 +274,18 @@ const Navbar = () => {
                       src={ArrowDownIcon}
                       alt="Toggle services menu"
                       className={`h-3 w-3 transition-transform duration-200 ${
-                        isServicesOpen ? "rotate-180" : "rotate-0"
+                        isMobileServicesOpen ? "rotate-180" : "rotate-0"
                       }`}
                     />
                   </span>
                 </button>
-                {isServicesOpen && (
-                  <div className="ml-4 space-y-2 text-[14px] text-[#FFFFFF]">
+                {isMobileServicesOpen && (
+                  <div className="ml-4 space-y-2 text-[14px] text-[#FFFFFF] services-dropdown-smooth">
                     <button
                       type="button"
                       className="block text-left w-full hover:text-[#F4D57E]"
                       onClick={() => {
-                        setIsServicesOpen(false);
-                        setIsMenuOpen(false);
+                        setIsMobileServicesOpen(false);
                         navigate("/services", { state: { activeTab: "will" } });
                       }}
                     >
@@ -287,8 +295,7 @@ const Navbar = () => {
                       type="button"
                       className="block text-left w-full hover:text-[#F4D57E]"
                       onClick={() => {
-                        setIsServicesOpen(false);
-                        setIsMenuOpen(false);
+                        setIsMobileServicesOpen(false);
                         navigate("/services", { state: { activeTab: "trust" } });
                       }}
                     >
@@ -298,8 +305,7 @@ const Navbar = () => {
                       type="button"
                       className="block text-left w-full hover:text-[#F4D57E]"
                       onClick={() => {
-                        setIsServicesOpen(false);
-                        setIsMenuOpen(false);
+                        setIsMobileServicesOpen(false);
                         navigate("/services");
                       }}
                     >

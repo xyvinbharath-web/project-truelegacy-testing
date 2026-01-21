@@ -12,13 +12,13 @@ const Footer = ({ hideCta = false }) => {
   const [isCallbackOpen, setIsCallbackOpen] = useState(false);
 
   return (
-    <footer className="mt-12 bg-[#0F2724] text-white">
+    <footer className="mt-12 bg-[#0F2724] text-white animate-fade-up">
       {!hideCta && (
         <>
           {/* Overlapping yellow CTA block - mobile */}
           <div className="relative w-full mx-auto px-0 sm:px-8 md:hidden">
             <div
-              className="relative -top-10 sm:-top-12 bg-[#F4D57E] rounded-b-[16px] overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.3)] min-h-[390px]"
+              className="relative -top-10 sm:-top-12 bg-[#F4D57E] rounded-b-[16px] overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.3)] min-h-[390px] animate-fade-in"
               style={{
                 backgroundImage: `url(${MobileFooterFrame})`,
                 backgroundSize: "67% auto",
@@ -28,18 +28,18 @@ const Footer = ({ hideCta = false }) => {
             >
               <div className="px-6 py-8 flex flex-col justify-center h-full">
                 <div className="max-w-[62%]">
-                  <h2 className="text-[22px] leading-snug font-semibold text-[#132F2C]">
+                  <h2 className="text-[22px] leading-snug font-semibold text-[#132F2C] animate-fade-in" style={{ animationDelay: '80ms' }}>
                     Still wondering how to
                     <br />
                     pass down your legacy?
                   </h2>
-                  <p className="mt-4 text-[13px] text-[#132F2C]">
+                  <p className="mt-4 text-[13px] text-[#132F2C] animate-fade-in" style={{ animationDelay: '140ms' }}>
                     Let our Experts Make it Simple for You. Succession
                     planning is not just about documents — it's about
                     securing your family's peace!
                   </p>
                 </div>
-                <div className="mt-9 flex flex-col items-center gap-4 w-full">
+                <div className="mt-9 flex flex-col items-center gap-4 w-full animate-fade-in" style={{ animationDelay: '200ms' }}>
                   <button
                     className="inline-flex w-[88%] max-w-[360px] items-center justify-center rounded-full bg-[#132F2C] px-6 py-3 text-[13px] font-[Urania] font-medium text-white whitespace-nowrap"
                     onClick={() => setIsScheduleOpen(true)}
@@ -54,13 +54,14 @@ const Footer = ({ hideCta = false }) => {
                   </button>
                 </div>
               </div>
+              <div className="shine-slow" />
             </div>
           </div>
 
           {/* Overlapping yellow CTA block - desktop */}
           <div className="relative max-w-[1920px] mx-auto px-4 sm:px-8 hidden md:block">
             <div
-              className="relative -top-10 sm:-top-12 md:-top-30 lg:-top-38 xl:-top-52 md:h-[380px] lg:h-[413px] bg-[#F4D57E] rounded-[16px] overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.3)]"
+              className="relative -top-10 sm:-top-12 md:-top-30 lg:-top-38 xl:-top-52 md:h-[380px] lg:h-[413px] bg-[#F4D57E] rounded?[16px] overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.3)] animate-fade-in"
               style={{
                 backgroundImage: `url(${FooterFrame})`,
                 backgroundRepeat: "no-repeat",
@@ -71,17 +72,17 @@ const Footer = ({ hideCta = false }) => {
               <div className="grid h-full grid-cols-1 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1.6fr)] gap-6 md:gap-0 items-center">
                 {/* Left: text + buttons */}
                 <div className="px-10 lg:px-16 xl:px-24 py-4 lg:py-4 flex flex-col justify-center">
-                  <h2 className="text-[22px] sm:text-[26px] lg:text-[30px] leading-snug font-semibold text-[#132F2C]">
+                  <h2 className="text-[22px] sm:text-[26px] lg:text-[30px] leading-snug font-semibold text-[#132F2C] animate-fade-in" style={{ animationDelay: '80ms' }}>
                     Still wondering how to
                     <br />
                     pass down your legacy?
                   </h2>
-                  <p className="mt-4 text-[13px] sm:text-[14px] text-[#132F2C] max-w-md">
+                  <p className="mt-4 text-[13px] sm:text-[14px] text-[#132F2C] max-w-md animate-fade-in" style={{ animationDelay: '140ms' }}>
                     Let our Experts Make it Simple for You. Succession
                     planning is not just about documents — it's about
                     securing your family's peace!
                   </p>
-                  <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
+                  <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-in" style={{ animationDelay: '200ms' }}>
                     <button
                       className="inline-flex w-full sm:w-auto sm:min-w-[270px] items-center justify-center rounded-full bg-[#132F2C] px-6 sm:px-10 py-3 text-[13px] sm:text-[14px] font-[Urania] text-white whitespace-nowrap"
                       onClick={() => setIsScheduleOpen(true)}
@@ -97,6 +98,7 @@ const Footer = ({ hideCta = false }) => {
                   </div>
                 </div>
               </div>
+              <div className="shine-slow" />
             </div>
           </div>
         </>

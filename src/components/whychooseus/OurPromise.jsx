@@ -86,6 +86,8 @@ const OurPromise = () => {
             <img
               src={FrameourPromise}
               alt="Our Promise"
+              loading="lazy"
+              decoding="async"
               className="w-[302px] h-[299px] rounded-lg mt-8 lg:mt-0 object-cover"
             />
           </div>

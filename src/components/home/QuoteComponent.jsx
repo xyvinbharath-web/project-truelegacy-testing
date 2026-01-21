@@ -45,6 +45,8 @@ const QuoteComponent = () => {
             src={legacyBackground}
             alt=""
             aria-hidden="true"
+            loading="lazy"
+            decoding="async"
             className="hidden md:block absolute z-10 left-[-230px] bottom-[-1px] w-[360px] pointer-events-none"
           />
 
@@ -53,6 +55,8 @@ const QuoteComponent = () => {
             src={legacyBackground}
             alt=""
             aria-hidden="true"
+            loading="lazy"
+            decoding="async"
             className="
               md:hidden
               absolute
@@ -69,6 +73,8 @@ const QuoteComponent = () => {
             <img
               src={secureYourLegacyImage}
               alt="Secure your legacy"
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover"
             />
           </div>

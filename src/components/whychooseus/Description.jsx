@@ -9,6 +9,8 @@ const Description = () => {
         src={legacyBg}
         alt=""
         aria-hidden
+        loading="lazy"
+        decoding="async"
         className="absolute opacity-100 pointer-events-none lg:hidden"
         style={{
           width: '150px',
@@ -24,6 +26,8 @@ const Description = () => {
         src={legacyBg}
         alt=""
         aria-hidden
+        loading="lazy"
+        decoding="async"
         className="absolute opacity-100 pointer-events-none hidden lg:block"
         style={{
           width: '440.1653747558594px',
@@ -54,6 +58,8 @@ const Description = () => {
               src={legacyBg}
               alt=""
               aria-hidden
+              loading="lazy"
+              decoding="async"
               className="hidden lg:block absolute -right-16 -bottom-16 w-[420px] opacity-70 pointer-events-none"
             />
 
@@ -62,6 +68,8 @@ const Description = () => {
               <img
                 src={Framedescription}
                 alt="Client consultation"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
             </div>

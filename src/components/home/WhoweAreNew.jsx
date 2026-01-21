@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import cardImageWill from "../../assets/img/home/Framewhoarewe1.webp";
 import cardImageTrust from "../../assets/img/home/Framewhoarewe2.webp";
@@ -32,19 +33,45 @@ const cards = [
 
 const WhoweAreNew = () => {
   const navigate = useNavigate();
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(el);
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleCardClick = (tab) => {
     if (tab) navigate(`/services?tab=${tab}`);
   };
 
   return (
-    <section className="w-full bg-[#F6FFFF] pt-16 md:pt-20 lg:pt-24 pb-40 md:pb-56 lg:pb-64">
+    <section
+      ref={sectionRef}
+      className={`w-full bg-[#F6FFFF] pt-16 md:pt-20 lg:pt-24 pb-40 md:pb-56 lg:pb-64 who-section ${
+        isVisible ? "who-section-visible" : ""
+      }`}
+    >
       {/* Container */}
       <div className="max-w-[1300px] mx-auto px-6 lg:px-8">
         {/* Top section */}
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-12 items-start">
           {/* Left content */}
-          <div>
+          <div className="who-heading-block">
             <h2 className="font-[Urania] font-bold text-[32px] sm:text-[38px] lg:text-[42px] leading-[49px] text-[#132F2C] mb-4">
               Who are We?
             </h2>
@@ -59,7 +86,7 @@ const WhoweAreNew = () => {
 
           {/* Right quote with dots background */}
           <div
-            className="relative max-w-[480px] lg:ml-auto mt-4 lg:mt-10 pb-6"
+            className="relative max-w-[480px] lg:ml-auto mt-4 lg:mt-10 pb-6 who-quote-block"
             style={{
               backgroundImage: `url(${quoteDotsBg})`,
               backgroundRepeat: "no-repeat",
@@ -75,11 +102,11 @@ const WhoweAreNew = () => {
         </div>
 
         {/* Cards */}
-        <div className="grid gap-x-10 gap-y-12 md:grid-cols-2 xl:grid-cols-3 justify-items-center mt-12 md:mt-16">
+        <div className="grid gap-x-10 gap-y-12 md:grid-cols-2 xl:grid-cols-3 justify-items-center mt-12 md:mt-16 who-cards-grid">
           {cards.map((card) => (
             <div
               key={card.title}
-              className="bg-white shadow-[0_10px_30px_rgba(5,41,26,0.08)] overflow-hidden"
+              className="who-card bg-white shadow-[0_10px_30px_rgba(5,41,26,0.08)] overflow-hidden"
               style={{
                 maxWidth: "427px",
                 width: "100%",
@@ -90,7 +117,7 @@ const WhoweAreNew = () => {
               {/* Image */}
               <div className="pt-[30px] px-[30px] flex justify-center">
                 <div
-                  className="overflow-hidden bg-[#05281F]"
+                  className="overflow-hidden bg-[#05281F] who-card-image"
                   style={{
                     width: "367px",
                     height: "220px",
@@ -102,12 +129,13 @@ const WhoweAreNew = () => {
                     alt={card.title}
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                     loading="lazy"
+                    decoding="async"
                   />
                 </div>
               </div>
 
               {/* Content */}
-              <div className="mt-5 px-6 pb-8 text-center flex flex-col items-center">
+              <div className="mt-5 px-6 pb-8 text-center flex flex-col items-center who-card-body">
                 <h3 className="font-[Urania] font-bold text-[22px] lg:text-[24px] text-[#132F2C] mb-2">
                   {card.title}
                 </h3>

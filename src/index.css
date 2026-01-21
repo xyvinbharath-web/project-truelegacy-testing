@@ -6,3 +6,353 @@
   font-weight: 400;
   font-style: normal;
 }
+
+/* Animation utilities */
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Subtle shine accent for CTA blocks */
+.shine-slow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.18) 20%,
+    transparent 40%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shineMove 3.5s ease-in-out infinite;
+  opacity: 0.35;
+}
+
+@keyframes shineMove {
+  0% { background-position: -80% 0; }
+  60% { background-position: 140% 0; }
+  100% { background-position: 140% 0; }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-down {
+  animation: fadeDown 1000ms cubic-bezier(0.2, 0.6, 0.2, 1) both;
+}
+
+.animate-fade-up {
+  animation: fadeUp 1000ms cubic-bezier(0.2, 0.6, 0.2, 1) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 800ms ease-out both;
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}
+
+/* Carousel stacked text reveals */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-line {
+  animation: slideUpFade 500ms cubic-bezier(0.2, 0.6, 0.2, 1) both;
+  will-change: transform, opacity;
+}
+
+.carousel-text {
+  will-change: opacity, transform;
+}
+
+/* Alternate left-to-right reveal for highlight lines */
+@keyframes slideLeftFade {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.reveal-left-line {
+  animation: slideLeftFade 520ms cubic-bezier(0.2, 0.6, 0.2, 1) both;
+}
+
+/* Mobile menu content slide-in from left */
+@keyframes menuSlideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.menu-slide-in {
+  animation: menuSlideInLeft 600ms cubic-bezier(0.2, 0.6, 0.2, 1) both;
+}
+
+.who-section {
+  position: relative;
+}
+
+/* Who We Are scroll reveal */
+.who-heading-block,
+.who-quote-block,
+.who-cards-grid .who-card {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 800ms cubic-bezier(0.2, 0.6, 0.2, 1),
+    transform 800ms cubic-bezier(0.2, 0.6, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.who-section-visible .who-heading-block {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.who-section-visible .who-quote-block {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 120ms;
+}
+
+.who-section-visible .who-cards-grid .who-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.who-section-visible .who-cards-grid .who-card:nth-child(2) {
+  transition-delay: 120ms;
+}
+
+.who-section-visible .who-cards-grid .who-card:nth-child(3) {
+  transition-delay: 220ms;
+}
+
+.who-card {
+  position: relative;
+  transition: transform 500ms cubic-bezier(0.2, 0.6, 0.2, 1),
+    box-shadow 500ms cubic-bezier(0.2, 0.6, 0.2, 1),
+    background-color 500ms ease-out;
+}
+
+.who-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  border: 1px solid rgba(6, 95, 70, 0.0);
+  pointer-events: none;
+  transition: border-color 500ms ease-out, transform 500ms ease-out,
+    opacity 500ms ease-out;
+  opacity: 0;
+}
+
+.who-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(5, 41, 26, 0.16);
+}
+
+.who-card:hover::before {
+  border-color: rgba(6, 95, 70, 0.8);
+  opacity: 1;
+  transform: scale(1.01);
+}
+
+.who-card-image img {
+  transition: transform 600ms cubic-bezier(0.2, 0.6, 0.2, 1),
+    filter 600ms ease-out;
+}
+
+.who-card:hover .who-card-image img {
+  transform: scale(1.08);
+  filter: brightness(1.04) saturate(1.05);
+}
+
+.who-card-body {
+  transition: transform 500ms cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.who-card:hover .who-card-body {
+  transform: translateY(4px);
+}
+
+/* Desktop services dropdown slow fade */
+.services-dropdown {
+  animation: fadeDown 450ms cubic-bezier(0.2, 0.6, 0.2, 1) both;
+}
+
+.services-dropdown-smooth {
+  animation: fadeDown 800ms cubic-bezier(0.2, 0.6, 0.2, 1) both;
+}
+
+/* Navbar link underline sweep and focus ring */
+.tl-nav a > span.relative::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 0;
+  background: #065f46; /* emerald-800 */
+  transition: width 300ms ease;
+}
+.tl-nav a:hover > span.relative::after {
+  width: 100%;
+}
+.tl-nav a:focus-visible > span.relative {
+  outline: 2px solid #065f46;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Services toggle underline via first child span */
+.services-toggle > span:first-child {
+  position: relative;
+}
+.services-toggle > span:first-child::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 0;
+  background: #065f46;
+  transition: width 300ms ease;
+}
+.services-toggle:hover > span:first-child::after {
+  width: 100%;
+}
+
+/* Fast fade utilities for mobile menu */
+.animate-fade-down-fast {
+  animation: fadeDown 400ms ease-out both;
+}
+.animate-fade-in-fast {
+  animation: fadeIn 400ms ease-out both;
+}
+
+/* PlanYourLegacy section animations */
+.plan-section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+}
+
+.plan-section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.plan-left,
+.plan-right {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 520ms cubic-bezier(0.2, 0.6, 0.2, 1),
+    transform 520ms cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.plan-section-visible .plan-left {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.plan-section-visible .plan-right {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 120ms;
+}
+
+.plan-image {
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+  transition: opacity 520ms ease-out, transform 520ms ease-out,
+    box-shadow 520ms ease-out;
+}
+
+.plan-section-visible .plan-image {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@media (min-width: 768px) {
+  .plan-section-visible .plan-image:hover {
+    transform: translateY(-4px) scale(1.005);
+    box-shadow: 0 22px 48px rgba(5, 41, 26, 0.18);
+  }
+}
+
+.plan-heading {
+  opacity: 0;
+  transform: translateX(12px);
+  transition: opacity 520ms ease-out, transform 520ms ease-out;
+}
+
+.plan-section-visible .plan-heading {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.feature-pill {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+}
+
+.plan-section-visible .feature-pill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.plan-cta {
+  opacity: 0;
+  transform: translateY(8px) scale(0.98);
+  transition: opacity 520ms ease-out, transform 520ms ease-out;
+}
+
+.plan-section-visible .plan-cta {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}

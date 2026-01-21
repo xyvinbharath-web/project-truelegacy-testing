@@ -195,6 +195,8 @@ const ResourcesSection = () => {
                     <img
                       src={topic.image}
                       alt={topic.title}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover"
                     />
                   </div>

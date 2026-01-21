@@ -212,6 +212,8 @@ const ContactSection = () => {
               <img
                 src={ContactImage}
                 alt="Contact illustration"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[#132F2C]/20" />

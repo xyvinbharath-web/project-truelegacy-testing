@@ -13,9 +13,9 @@ const Header = ({ title, subtitle }) => {
         }}
       >
         {/* subtle dark tint so text stays readable but image is clearly visible */}
-        <div className="absolute inset-0 bg-[#132F2C]/45" />
+        <div className="absolute inset-0 bg-[#132F2C]/45 animate-fade-in" />
 
-        <div className="relative h-full max-w-[1300px] mx-auto px-4 md:px-10 flex flex-col justify-end pb-10 md:pb-14 lg:pb-16">
+        <div className="relative h-full max-w-[1300px] mx-auto px-4 md:px-10 flex flex-col justify-end pb-10 md:pb-14 lg:pb-16 animate-fade-up">
           {/* Title + yellow accent icon */}
           <div className="inline-flex items-center gap-3 mb-2">
             <h1
@@ -28,13 +28,13 @@ const Header = ({ title, subtitle }) => {
             <img
               src={ServicesAccent}
               alt="Services accent icon"
-              className="w-[18px] h-[19px] sm:w-[21px] sm:h-[22px] lg:w-[24px] lg:h-[25px] xl:w-[27px] xl:h-[28px]"
+              className="w-[18px] h-[19px] sm:w-[21px] sm:h-[22px] lg:w-[24px] lg:h-[25px] xl:w-[27px] xl:h-[28px] animate-fade-in"
             />
           </div>
 
           <p className="font-[Urania] text-white/90 max-w-[540px]
                          text-[14px] sm:text-[16px] lg:text-[18px] xl:text-[20px]
-                         leading-[20px] sm:leading-[24px] lg:leading-[26px] xl:leading-[29px]">
+                         leading-[20px] sm:leading-[24px] lg:leading-[26px] xl:leading-[29px] animate-fade-in" style={{ animationDelay: '120ms' }}>
             {subtitle}
           </p>
         </div>

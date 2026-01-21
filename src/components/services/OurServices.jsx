@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import willframe1 from "../../assets/img/service/willframe1.webp";
 import willframe2 from "../../assets/img/service/willframe2.webp";
 import willframe3 from "../../assets/img/service/willframe3.webp";
@@ -9,7 +9,7 @@ import trustframe2 from "../../assets/img/service/trustframe2.webp";
 import trustframe3 from "../../assets/img/service/trustframe3.webp";
 import trustframe4 from "../../assets/img/service/trustframe4.webp";
 import trustframe5 from "../../assets/img/service/trustframe5.webp";
-import ServiceModal from "./ServiceModal";
+const ServiceModal = lazy(() => import("./ServiceModal"));
 
 const willServices = [
   {
@@ -126,6 +126,20 @@ const OurServices = ({ initialTab = "will" }) => {
     setActiveTab(initialTab);
   }, [initialTab]);
 
+  // Idle-time prefetch of the ServiceModal chunk so the first open is instant
+  useEffect(() => {
+    const prefetch = () => {
+      import("./ServiceModal");
+    };
+    if ("requestIdleCallback" in window) {
+      const id = window.requestIdleCallback(prefetch, { timeout: 2000 });
+      return () => window.cancelIdleCallback && window.cancelIdleCallback(id);
+    } else {
+      const t = setTimeout(prefetch, 2000);
+      return () => clearTimeout(t);
+    }
+  }, []);
+
   const services = activeTab === "trust" ? trustServices : willServices;
 
   const openModal = (service) => {
@@ -223,13 +237,17 @@ const OurServices = ({ initialTab = "will" }) => {
         </div>
       </div>
       
-      {/* Service Modal */}
-      <ServiceModal
-        isOpen={modalOpen}
-        onClose={closeModal}
-        serviceTitle={selectedService?.title || ""}
-        fields={formFields.default}
-      />
+      {/* Service Modal (lazy, only when open) */}
+      <Suspense fallback={null}>
+        {modalOpen && (
+          <ServiceModal
+            isOpen={modalOpen}
+            onClose={closeModal}
+            serviceTitle={selectedService?.title || ""}
+            fields={formFields.default}
+          />
+        )}
+      </Suspense>
     </section>
   );
 };

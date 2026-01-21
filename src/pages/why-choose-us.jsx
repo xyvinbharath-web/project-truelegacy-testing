@@ -1,10 +1,25 @@
 import Header from "../components/Header";
 import Navbar from "../components/Navbar";
-import Description from "../components/whychooseus/Description";
-import WhyChoose from "../components/whychooseus/WhyChoose";
-import OurPromise from "../components/whychooseus/OurPromise";
+import { lazy, Suspense, useEffect } from "react";
+const Description = lazy(() => import("../components/whychooseus/Description"));
+const WhyChoose = lazy(() => import("../components/whychooseus/WhyChoose"));
+const OurPromise = lazy(() => import("../components/whychooseus/OurPromise"));
 
 const WhyChooseUs = () => {
+  useEffect(() => {
+    const prefetch = () => {
+      import("../components/whychooseus/Description");
+      import("../components/whychooseus/WhyChoose");
+      import("../components/whychooseus/OurPromise");
+    };
+    if ("requestIdleCallback" in window) {
+      const id = window.requestIdleCallback(prefetch, { timeout: 2000 });
+      return () => window.cancelIdleCallback && window.cancelIdleCallback(id);
+    } else {
+      const t = setTimeout(prefetch, 2000);
+      return () => clearTimeout(t);
+    }
+  }, []);
   return (
     <div
       className="relative"
@@ -26,9 +41,15 @@ const WhyChooseUs = () => {
       />
       
       <main className="flex-grow bg-white text-black">
-        <Description />
-        <WhyChoose />
-        <OurPromise />
+        <Suspense fallback={null}>
+          <Description />
+        </Suspense>
+        <Suspense fallback={null}>
+          <WhyChoose />
+        </Suspense>
+        <Suspense fallback={null}>
+          <OurPromise />
+        </Suspense>
       </main>
       
       

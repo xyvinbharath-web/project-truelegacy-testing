@@ -1,8 +1,21 @@
 import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
-import AllResources from "../../components/resources/AllResources";
+import { lazy, Suspense, useEffect } from "react";
+const AllResources = lazy(() => import("../../components/resources/AllResources"));
 
 const Resources = () => {
+  useEffect(() => {
+    const prefetch = () => {
+      import("../../components/resources/AllResources");
+    };
+    if ("requestIdleCallback" in window) {
+      const id = window.requestIdleCallback(prefetch, { timeout: 2000 });
+      return () => window.cancelIdleCallback && window.cancelIdleCallback(id);
+    } else {
+      const t = setTimeout(prefetch, 2000);
+      return () => clearTimeout(t);
+    }
+  }, []);
   return (
     <div
       className="relative"
@@ -24,7 +37,9 @@ const Resources = () => {
       />
 
       <main className="flex-grow bg-white text-black">
-        <AllResources />
+        <Suspense fallback={null}>
+          <AllResources />
+        </Suspense>
       </main>
     </div>
   );

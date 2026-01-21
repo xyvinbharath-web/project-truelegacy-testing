@@ -46,11 +46,11 @@ const StyledButton = ({
     <button
       onClick={disabled ? undefined : onClick}
       disabled={disabled}
-      className={`relative overflow-hidden w-auto text-base px-5 py-3 flex items-center justify-center gap-2 transition-colors duration-500 ${
+      className={`relative overflow-hidden w-auto text-base px-5 py-3 flex items-center justify-center gap-2 transition-colors duration-500 transition-transform ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#F4D57E] ${
         variants[variant].base
       } ${
         !disabled
-          ? `${variants[variant].hover} before:absolute before:inset-0 before:w-0 before:transition-all before:duration-500 before:ease-out hover:before:w-full before:z-0`
+          ? `${variants[variant].hover} before:absolute before:inset-0 before:w-0 before:transition-all before:duration-500 before:ease-out hover:before:w-full before:z-0 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(0,0,0,0.12)] active:translate-y-0 active:scale-[0.99]`
           : ""
       } ${
         disabled ? "cursor-not-allowed opacity-70" : "cursor-pointer"

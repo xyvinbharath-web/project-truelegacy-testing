@@ -1,26 +1,53 @@
+import { lazy, Suspense, useEffect } from "react";
 import HeaderHome from "../../components/home/HeaderHome";
 import HomeOurServices from "../../components/home/HomeOurServices";
 import LegacySection from "../../components/home/LegacySection";
-import OurPromise from "../../components/whychooseus/OurPromise";
-import PlanYourLegacy from "../../components/home/PlanYourLegacy";
-import BlogsAndArticleSection from "../../components/home/BlogsAndArticleSection";
-import WhoweAreNew from "../../components/home/WhoweAreNew";
-import TrueLegacyInstructions from "../../components/home/TrueLegacyInstructions";
-import QuoteComponent from "../../components/home/QuoteComponent";
-import FAQ from "../../components/FAQ";
+const OurPromise = lazy(() => import("../../components/whychooseus/OurPromise"));
+const PlanYourLegacy = lazy(() => import("../../components/home/PlanYourLegacy"));
+const BlogsAndArticleSection = lazy(() => import("../../components/home/BlogsAndArticleSection"));
+const WhoweAreNew = lazy(() => import("../../components/home/WhoweAreNew"));
+const TrueLegacyInstructions = lazy(() => import("../../components/home/TrueLegacyInstructions"));
+const QuoteComponent = lazy(() => import("../../components/home/QuoteComponent"));
+const FAQ = lazy(() => import("../../components/FAQ"));
 
 const HomePage = () => {
+  useEffect(() => {
+    const prefetch = () => {
+      import("../../components/home/PlanYourLegacy");
+      import("../../components/home/WhoweAreNew");
+      import("../../components/home/TrueLegacyInstructions");
+      import("../../components/home/QuoteComponent");
+      import("../../components/FAQ");
+    };
+
+    if ("requestIdleCallback" in window) {
+      const id = window.requestIdleCallback(prefetch, { timeout: 2000 });
+      return () => window.cancelIdleCallback && window.cancelIdleCallback(id);
+    } else {
+      const t = setTimeout(prefetch, 2000);
+      return () => clearTimeout(t);
+    }
+  }, []);
   return (
     <main className="min-h-screen">
       {/* Sections composed similar to old app, ready for redesign */}
     
       <HeaderHome />
-      
-      <PlanYourLegacy />
-      <WhoweAreNew />
-      <TrueLegacyInstructions />
-      <QuoteComponent />
-      <FAQ />
+      <Suspense fallback={null}>
+        <PlanYourLegacy />
+      </Suspense>
+      <Suspense fallback={null}>
+        <WhoweAreNew />
+      </Suspense>
+      <Suspense fallback={null}>
+        <TrueLegacyInstructions />
+      </Suspense>
+      <Suspense fallback={null}>
+        <QuoteComponent />
+      </Suspense>
+      <Suspense fallback={null}>
+        <FAQ />
+      </Suspense>
     </main>
   );
 };
