@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import BannerImage from "../../assets/img/home/Banner 1.webp";
 import heroBg from "../../assets/img/Group 1.webp";
 import heroBgAlt from "../../assets/img/Frame 2147224797.webp";
 import legacyBackground from "../../assets/img/home/Frame legacybackground.webp";
@@ -9,7 +10,7 @@ import arrowRight from "../../assets/icon/circle-arrow-right-sharp.webp";
 const slides = [
   {
     id: 1,
-    background: heroBg,
+    background: BannerImage,
     eyebrow: "Succession Planning",
     questionPrefix: "Are you comfortable\nwith the law deciding ",
     questionHighlight: "your family's\nfuture for you?",
@@ -18,7 +19,7 @@ const slides = [
   },
   {
     id: 2,
-    background: heroBgAlt,
+    background: BannerImage,
     eyebrow: "Succession Planning",
     questionPrefix: "What would happen to your family's wealth ",
     questionHighlight: "if you weren't here tomorrow?",
@@ -27,7 +28,7 @@ const slides = [
   },
   {
     id: 3,
-    background: heroBg,
+    background: BannerImage,
     eyebrow: "Succession Planning",
     questionPrefix: "Do your loved ones know exactly ",
     questionHighlight: "how you want your legacy to be shared?",
@@ -36,7 +37,7 @@ const slides = [
   },
   {
     id: 4,
-    background: heroBgAlt,
+    background: BannerImage,
     eyebrow: "Succession Planning",
     questionPrefix: "Are you ready to turn your intentions ",
     questionHighlight: "into a clear, written plan for your family?",
@@ -49,59 +50,56 @@ const slides = [
 const renderQuestionWithIcon = (text) => {
   if (!text.includes("?")) return text;
 
-  const index = text.lastIndexOf("?");
-  const before = text.slice(0, index);
-  const questionMark = text.slice(index);
+  const parts = text.split("?");
+  if (parts.length !== 2) return text;
 
   return (
     <>
-      {before}
-      <span className="inline-flex items-end gap-1 whitespace-nowrap">
-        {questionMark}
+      {parts[0]}
+      <span className="relative inline-block">
         <img
           src={questionIcon}
-          alt="question icon"
-          className="w-[14px] h-[14px] sm:w-[16px] sm:h-[16px] lg:w-[20px] lg:h-[21px] translate-y-[-2px]"
+          alt="Question Icon"
+          className="absolute -top-2 -right-4 w-[18px] h-[18px]"
         />
+        ?
       </span>
+      {parts[1]}
     </>
   );
 };
 
 const HeaderHome = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [prevIndex, setPrevIndex] = useState(0);
-  const [transitioning, setTransitioning] = useState(false);
-  const [paused, setPaused] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
   const currentSlide = slides[activeIndex];
 
-  // Smooth background crossfade when slide changes
-  useEffect(() => {
-    if (prevIndex === activeIndex) return;
-    setTransitioning(true);
-    const t = setTimeout(() => setTransitioning(false), 700);
-    return () => clearTimeout(t);
-  }, [activeIndex, prevIndex]);
+  const goNext = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setActiveIndex((prev) => (prev + 1) % slides.length);
+    setTimeout(() => setIsAnimating(false), 620);
+  };
 
   const goPrev = () => {
-    setPrevIndex((p) => activeIndex);
-    setActiveIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-  };
-  const goNext = () => {
-    setPrevIndex((p) => activeIndex);
-    setActiveIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setActiveIndex((prev) => (prev - 1 + slides.length) % slides.length);
+    setTimeout(() => setIsAnimating(false), 620);
   };
 
-  // Auto-rotate with pause on hover
+  const getPosition = (index) => {
+    const offset = (index - activeIndex + slides.length) % slides.length;
+    if (offset === 0) return "front";
+    if (offset === 1) return "middle";
+    return "back";
+  };
+
   useEffect(() => {
-    if (paused) return;
-    const id = setInterval(() => {
-      setPrevIndex((p) => activeIndex);
-      setActiveIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-    }, 6000);
-    return () => clearInterval(id);
-  }, [activeIndex, paused]);
-
+    setIsVisible(true);
+  }, []);
   const renderStackedLines = (text, extra = "", baseDelay = 0) => {
     const parts = String(text).split("\n");
     return (
@@ -139,29 +137,16 @@ const HeaderHome = () => {
   };
 
   return (
-    <section
-      className="relative w-full h-dvh lg:h-screen overflow-hidden"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      {/* Background crossfade layers */}
+    <section className="relative w-full h-dvh lg:h-screen overflow-hidden">
+      {/* Background image */}
       <div className="absolute inset-0">
-        {/* Previous layer */}
-        <div
-          className={`absolute inset-0 bg-bottom bg-cover transition-opacity duration-700 ${
-            transitioning ? "opacity-0" : "opacity-0"
-          }`}
-          style={{ backgroundImage: `url(${slides[prevIndex].background})` }}
-          aria-hidden="true"
-        />
-        {/* Current layer */}
-        <div
-          className={`absolute inset-0 bg-bottom bg-cover transition-opacity duration-700 ${
-            transitioning ? "opacity-100" : "opacity-100"
-          }`}
-          style={{ backgroundImage: `url(${currentSlide.background})` }}
+        <img
+          src={currentSlide.background}
+          alt="Succession Planning"
+          className="w-full h-full object-cover"
         />
       </div>
+      
       {/* Decorative background accent (subtle) */}
       <img
         src={legacyBackground}
@@ -169,8 +154,6 @@ const HeaderHome = () => {
         aria-hidden="true"
         className="absolute right-[-140px] bottom-[-80px] w-[460px] opacity-25 pointer-events-none hidden md:block"
       />
-      {/* Subtle dark overlay */}
-      <div className="absolute inset-0 bg-[#132F2C]/45" />
 
       {/* Content */}
       <div className="relative z-10 max-w-[1900px] mx-auto px-4 sm:px-8 lg:px-16 h-full flex items-end pb-20 md:pb-14 lg:pb-16">

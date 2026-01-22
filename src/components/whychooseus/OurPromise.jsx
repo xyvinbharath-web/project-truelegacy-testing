@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FrameourPromise from "../../assets/img/whychooseus/Frameour-promise.webp";
 import StyledButton from "../../ui/StyledButton";
 
 const OurPromise = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,6 +59,7 @@ const OurPromise = () => {
     <button
       className="flex items-center justify-center text-[18px] font-[Urania] text-white bg-[#132F2C] border border-[#132F2C] rounded-[66px] h-[51px] px-8"
       style={{ width: "310px" }}
+      onClick={() => navigate('/succession')}
     >
       Start Estate Planning Today
     </button>
@@ -79,7 +82,7 @@ const OurPromise = () => {
 
           {/* RIGHT IMAGE */}
           <div
-            className={`order-2 lg:order-2 transition-all duration-700 delay-200 flex justify-end ${
+            className={`order-2 lg:order-2 transition-all duration-700 delay-200 flex justify-end relative ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
@@ -88,7 +91,13 @@ const OurPromise = () => {
               alt="Our Promise"
               loading="lazy"
               decoding="async"
-              className="w-[302px] h-[299px] rounded-lg mt-8 lg:mt-0 object-cover"
+              className="rounded-lg mt-8 lg:mt-0 object-cover"
+              style={{
+                width: '620px',
+                height: '571px',
+                transform: 'rotate(0deg)',
+                opacity: 1,
+              }}
             />
           </div>
         </div>

@@ -98,7 +98,7 @@ const Navbar = () => {
               )}
             </button>
 
-            {(isServicesOpen || isServicesRoute) && (
+            {isServicesOpen && (
               <div className="absolute top-full left-0 bg-white shadow-md p-4 w-48 space-y-2 text-[14px] text-slate-800 services-dropdown-smooth">
                 <button
                   type="button"

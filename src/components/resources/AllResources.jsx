@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BlogMain from "../../assets/img/resource/Blog1 1.webp";
 import Blog2 from "../../assets/img/resource/blog2.webp";
@@ -48,6 +49,24 @@ const AllResources = () => {
   const featured = articles[0];
   const others = articles.slice(1);
   const navigate = useNavigate();
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  // Scroll-triggered entrance
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const handleArticleClick = (article) => {
     navigate(`/resources/${article.id}`, {
@@ -62,17 +81,22 @@ const AllResources = () => {
   };
 
   return (
-    <section className="bg-white px-4 md:px-16 py-12 md:py-16">
+    <section
+      ref={sectionRef}
+      className={`bg-white px-4 md:px-16 py-12 md:py-16 resources-section ${
+        isVisible ? "resources-section-visible" : ""
+      }`}
+    >
       <div className="max-w-[1300px] mx-auto">
         {/* Section heading */}
-        <h2 className="font-[Urania] font-bold text-[#132F2C] text-[32px] leading-[32px] md:text-[42px] md:leading-[49px] mb-6 md:mb-8">
+        <h2 className="font-[Urania] font-bold text-[#132F2C] text-[32px] leading-[32px] md:text-[42px] md:leading-[49px] mb-6 md:mb-8 resources-heading">
           Insights
         </h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 items-start">
           {/* Featured article - spans two columns on desktop */}
           <article
-            className="lg:col-span-2 cursor-pointer"
+            className="lg:col-span-2 cursor-pointer resources-featured"
             onClick={() => handleArticleClick(featured)}
           >
             <div className="w-full overflow-hidden rounded-md mb-5">
@@ -99,13 +123,13 @@ const AllResources = () => {
           </article>
 
           {/* Other articles */}
-          <div className="space-y-6">
+          <div className="space-y-6 resources-sidebar">
             {/* Mobile / tablet: stacked full-width cards */}
             <div className="block lg:hidden space-y-6">
               {others.map((item) => (
                 <article
                   key={item.id}
-                  className="w-full cursor-pointer"
+                  className="w-full cursor-pointer resources-article"
                   onClick={() => handleArticleClick(item)}
                 >
                   <div className="w-full overflow-hidden rounded-md mb-3">
@@ -140,7 +164,7 @@ const AllResources = () => {
               {others.map((item) => (
                 <article
                   key={item.id}
-                  className="flex gap-4 border-b border-[#E3E7E6] pb-4 last:border-b-0 last:pb-0 cursor-pointer"
+                  className="flex gap-4 border-b border-[#E3E7E6] pb-4 last:border-b-0 last:pb-0 cursor-pointer resources-article"
                   onClick={() => handleArticleClick(item)}
                 >
                   <div className="w-[130px] h-[90px] overflow-hidden rounded-md flex-shrink-0">

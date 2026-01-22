@@ -1,9 +1,33 @@
+import { useEffect, useRef, useState } from "react";
 import Framedescription from "../../assets/img/whychooseus/Framedescription.webp";
 import legacyBg from "../../assets/img/home/Frame legacybackground.webp";
 
 const Description = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  // Scroll-triggered entrance
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
   return (
-    <section className="w-full bg-[#F6FFFF] py-16 lg:py-27 relative overflow-hidden">
+    <section
+      ref={sectionRef}
+      className={`w-full bg-[#F6FFFF] py-16 lg:py-27 relative overflow-hidden description-section ${
+        isVisible ? "description-section-visible" : ""
+      }`}
+    >
       {/* Top background graphic */}
       <img
         src={legacyBg}
@@ -42,7 +66,7 @@ const Description = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-20">
 
           {/* LEFT TEXT */}
-          <div className="lg:col-span-7 max-w-[750px] -mt-8 lg:-mt-58">
+          <div className="lg:col-span-7 max-w-[750px] -mt-8 lg:-mt-58 description-text">
             <p className="font-[Urania] font-bold text-[24px] sm:text-[28px] lg:text-[42px] leading-[30px] sm:leading-[35px] lg:leading-[48px] text-[#132F2C]">
               We're not here to hand you a document and send you on your way.
               We're here to understand your story, your struggles, and your
@@ -51,7 +75,7 @@ const Description = () => {
           </div>
 
           {/* RIGHT IMAGE STACK */}
-          <div className="lg:col-span-5 relative flex justify-end lg:justify-end ml-auto lg:ml-0">
+          <div className="lg:col-span-5 relative flex justify-end lg:justify-end ml-auto lg:ml-0 description-image">
 
             {/* Thin line graphic */}
             <img

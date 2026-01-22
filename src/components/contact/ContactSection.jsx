@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createEnquiry } from "../../api/enquiryApi";
 import ContactImage from "../../assets/img/contac_form 1.webp";
 import MailIcon from "../../assets/icon/mail-edit-01.webp";
@@ -9,6 +9,24 @@ const ContactSection = () => {
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  // Scroll-triggered entrance
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,10 +64,15 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="pt-16 md:pt-20 pb-0 md:pb-20 bg-white">
+    <section
+      ref={sectionRef}
+      className={`pt-16 md:pt-20 pb-0 md:pb-20 bg-white contact-section ${
+        isVisible ? "contact-section-visible" : ""
+      }`}
+    >
       <div className="max-w-[1200px] mx-auto">
         {/* Top heading */}
-        <div className="text-center mb-10 md:mb-14">
+        <div className="text-center mb-10 md:mb-14 contact-heading">
           <h2 className="font-[Urania] text-[#132F2C] font-bold
                          text-[32px] md:text-[36px] leading-[32px] md:leading-[40px] mb-3">
             Let's Connect
@@ -63,9 +86,9 @@ const ContactSection = () => {
         </div>
 
         {/* Contact info row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16 mb-12 md:mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16 mb-12 md:mb-16 contact-info">
           {/* Email */}
-          <div className="flex flex-col items-center md:flex-row md:items-center gap-3 md:gap-4">
+          <div className="flex flex-col items-center md:flex-row md:items-center gap-3 md:gap-4 contact-item">
             <div className="w-[56px] h-[56px] rounded-full bg-[#F4D57E] flex-none flex items-center justify-center">
               <img src={MailIcon} alt="Email" className="w-[24px] h-[24px]" />
             </div>
@@ -80,7 +103,7 @@ const ContactSection = () => {
           </div>
 
           {/* Phone */}
-          <div className="flex flex-col items-center md:flex-row md:items-center gap-3 md:gap-4">
+          <div className="flex flex-col items-center md:flex-row md:items-center gap-3 md:gap-4 contact-item">
             <div className="w-[56px] h-[56px] rounded-full bg-[#F4D57E] flex-none flex items-center justify-center">
               <img src={PhoneIcon} alt="Phone" className="w-[24px] h-[24px]" />
             </div>
@@ -95,7 +118,7 @@ const ContactSection = () => {
           </div>
 
           {/* Address */}
-          <div className="flex flex-col items-center md:flex-row md:items-center gap-3 md:gap-4">
+          <div className="flex flex-col items-center md:flex-row md:items-center gap-3 md:gap-4 contact-item">
             <div className="w-[56px] h-[56px] rounded-full bg-[#F4D57E] flex-none flex items-center justify-center">
               <img src={LocationIcon} alt="Location" className="w-[24px] h-[24px]" />
             </div>
@@ -112,7 +135,7 @@ const ContactSection = () => {
         </div>
 
         {/* Main contact card */}
-        <div className="bg-white rounded-xl overflow-hidden shadow-sm">
+        <div className="bg-white rounded-xl overflow-hidden shadow-sm contact-form">
           <div className="grid grid-cols-1 md:grid-cols-[minmax(0,_1.1fr)_minmax(0,_0.9fr)]">
             {/* Form side */}
             <div className="bg-[#132F2C] text-white px-6 md:px-10 py-8 md:py-10">

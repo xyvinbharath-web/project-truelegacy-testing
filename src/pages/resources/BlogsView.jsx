@@ -1,20 +1,7 @@
 import Navbar from "../../components/Navbar";
-import { lazy, Suspense, useEffect } from "react";
-const ResourcesSection = lazy(() => import("../../components/resources/ResourcesSection"));
+import ResourcesSection from "../../components/resources/ResourcesSection";
 
 const BlogsView = () => {
-  useEffect(() => {
-    const prefetch = () => {
-      import("../../components/resources/ResourcesSection");
-    };
-    if ("requestIdleCallback" in window) {
-      const id = window.requestIdleCallback(prefetch, { timeout: 2000 });
-      return () => window.cancelIdleCallback && window.cancelIdleCallback(id);
-    } else {
-      const t = setTimeout(prefetch, 2000);
-      return () => clearTimeout(t);
-    }
-  }, []);
   return (
     <div
       className="relative"
@@ -31,9 +18,7 @@ const BlogsView = () => {
       <div className="h-[64px] md:h-[72px]" />
 
       <main className="flex-grow bg-white text-black">
-        <Suspense fallback={null}>
-          <ResourcesSection />
-        </Suspense>
+        <ResourcesSection />
       </main>
     </div>
   );

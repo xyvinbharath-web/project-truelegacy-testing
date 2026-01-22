@@ -36,22 +36,19 @@ const WhoweAreNew = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
+  // Scroll-triggered entrance (early trigger)
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
+        setIsVisible(entry.isIntersecting);
       },
-      { threshold: 0.3 }
+      { threshold: 0.05 }
     );
 
     observer.observe(el);
-
     return () => observer.disconnect();
   }, []);
 
@@ -72,11 +69,11 @@ const WhoweAreNew = () => {
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-12 items-start">
           {/* Left content */}
           <div className="who-heading-block">
-            <h2 className="font-[Urania] font-bold text-[32px] sm:text-[38px] lg:text-[42px] leading-[49px] text-[#132F2C] mb-4">
+            <h2 className="font-[Urania] font-bold text-[32px] sm:text-[38px] lg:text-[42px] leading-[49px] text-[#132F2C] mb-4 who-heading">
               Who are We?
             </h2>
 
-            <p className="font-[Urania] font-normal text-[16px] leading-[24px] text-[#132F2C] max-w-[520px]">
+            <p className="font-[Urania] font-normal text-[16px] leading-[24px] text-[#132F2C] max-w-[520px] who-text">
               We are a specialized estate planning and cross-border succession advisory firm.
               Our work focuses on enabling Indian and NRI families to achieve a clear,
               enforceable, and tax-efficient transfer of wealth through Wills, private trusts,
@@ -95,7 +92,7 @@ const WhoweAreNew = () => {
               backgroundSize: "120% 150%",
             }}
           >
-            <p className="font-[Urania] font-extralight italic text-[24px] sm:text-[28px] lg:text-[32px] leading-tight text-[#132F2C] text-left">
+            <p className="font-[Urania] font-extralight italic text-[24px] sm:text-[28px] lg:text-[32px] leading-tight text-[#132F2C] text-left who-quote-text">
               “Families deserve peace, clarity, and security when passing on what they have built.”
             </p>
           </div>
@@ -136,11 +133,11 @@ const WhoweAreNew = () => {
 
               {/* Content */}
               <div className="mt-5 px-6 pb-8 text-center flex flex-col items-center who-card-body">
-                <h3 className="font-[Urania] font-bold text-[22px] lg:text-[24px] text-[#132F2C] mb-2">
+                <h3 className="font-[Urania] font-bold text-[22px] lg:text-[24px] text-[#132F2C] mb-2 who-card-title">
                   {card.title}
                 </h3>
 
-                <p className="font-[Urania] text-[15px] leading-[22px] text-[#132F2C]/80 max-w-[260px] mb-5">
+                <p className="font-[Urania] text-[15px] leading-[22px] text-[#132F2C]/80 max-w-[260px] mb-5 who-card-desc">
                   {card.description}
                 </p>
 

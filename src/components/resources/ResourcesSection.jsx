@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import BlogMain from "../../assets/img/resource/Blog1 1.webp";
 import Blog2 from "../../assets/img/resource/blog2.webp";
@@ -88,20 +89,35 @@ const ResourcesSection = () => {
   const heroTitle = state.title || "Everything you need to know about wills";
   const heroImage = state.image || fallbackById[selectedId]?.image || BlogMain;
   const heroMeta = state.meta || "Blog • 3 min read";
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  // Simple on-load entrance animation
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   return (
-    <section className="bg-[#F6FFFF] py-10 md:py-16">
+    <section
+      ref={sectionRef}
+      className={`bg-[#F6FFFF] py-10 md:py-16 ${
+        isVisible ? "animate-fade-in" : ""
+      }`}
+    >
       <div className="max-w-[1200px] mx-auto px-4 md:px-10">
 
         {/* ================= HERO SECTION (RESPONSIVE OVERLAP) ================= */}
 <div className="relative mb-20 md:mb-24">
 
   {/* Image wrapper - mobile right-aligned, tablet wider */}
-  <div className="relative w-full max-w-[324px] h-[300px] sm:h-[380px] md:h-[380px]
+  <div className={`relative w-full max-w-[324px] h-[300px] sm:h-[380px] md:h-[380px]
                   ml-auto mr-[-26px]
                   md:max-w-[640px] md:mr-0
                   lg:max-w-none lg:w-[968px] lg:h-[540px] rounded-xl overflow-hidden
-                  lg:ml-auto lg:mr-[-180px]">
+                  lg:ml-auto lg:mr-[-180px] ${
+                    isVisible ? "animate-fade-in" : ""
+                  }`}
+                  style={{ animationDelay: '200ms' }}>
     <img
       src={heroImage}
       alt={heroTitle}
@@ -121,11 +137,14 @@ const ResourcesSection = () => {
 
   {/* Yellow card */}
   <div
-    className="bg-[#F4D57E] text-[#132F2C] rounded-[6px]
+    className={`bg-[#F4D57E] text-[#132F2C] rounded-[6px]
                w-[315px] max-w-[90%] px-6 py-4 ml-3 -mt-10 relative z-20
                md:w-[420px] md:ml-8 md:-mt-14
                lg:absolute lg:mt-0 lg:ml-0 lg:left-[-175px] lg:px-[69px] lg:py-[66px] lg:w-[640px]
-               lg:top-1/2 lg:-translate-y-1/2"
+               lg:top-1/2 lg:-translate-y-1/2 ${
+                 isVisible ? "animate-fade-in" : ""
+               }`}
+               style={{ animationDelay: '400ms' }}
   >
   {/* Meta */}
   <p
@@ -150,7 +169,10 @@ const ResourcesSection = () => {
 
 
         {/* ================= MAIN ARTICLE CONTENT ================= */}
-        <article className="max-w-[820px] mx-auto text-[#132F2C] font-[Urania]">
+        <article className={`max-w-[820px] mx-auto text-[#132F2C] font-[Urania] ${
+          isVisible ? "animate-fade-in" : ""
+        }`}
+        style={{ animationDelay: '600ms' }}>
           <p className="text-[24px] leading-[33px] font-medium mb-6">
             {mainContentData.intro1}
           </p>

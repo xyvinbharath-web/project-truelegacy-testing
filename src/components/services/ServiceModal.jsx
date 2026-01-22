@@ -38,15 +38,15 @@ const ServiceModal = ({ isOpen, onClose, serviceTitle, fields = [] }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-[70] flex items-center justify-center px-4">
+    <div className="fixed inset-0 z-[70] flex items-center justify-center px-4 service-modal-root">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/50 backdrop-blur-sm service-modal-backdrop"
         onClick={onClose}
       />
 
       {/* Modal */}
-      <div className="relative w-full max-w-[513px] bg-white rounded-[6px] shadow-[0_30px_80px_rgba(0,0,0,0.35)] overflow-hidden">
+      <div className="relative w-full max-w-[513px] bg-white rounded-[6px] shadow-[0_30px_80px_rgba(0,0,0,0.35)] overflow-hidden service-modal">
         
         {/* Header */}
         <div className="px-8 pt-8 pb-4">

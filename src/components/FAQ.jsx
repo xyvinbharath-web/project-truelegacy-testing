@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import faqFrameImage from "../assets/img/Framefaq.webp";
 import iconWrap from "../assets/icon/Icon wrap.webp";
 import iconMinus from "../assets/icon/Icon-.webp";
@@ -68,16 +68,45 @@ const faqs = {
 const FAQ = () => {
   const [activeTab, setActiveTab] = useState("will");
   const [openQuestion, setOpenQuestion] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const [tabKey, setTabKey] = useState("will");
+  const sectionRef = useRef(null);
+
+  // Scroll-triggered entrance
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Trigger tab animation
+  useEffect(() => {
+    setTabKey(activeTab);
+  }, [activeTab]);
 
   const currentFaqs = activeTab === "will" ? faqs.will : faqs.trust;
 
   return (
-    <section className="w-full bg-[#F6FFFF] py-16 md:py-20 lg:py-24">
+    <section
+      ref={sectionRef}
+      className={`w-full bg-[#F6FFFF] py-16 md:py-20 lg:py-24 faq-section ${
+        isVisible ? "faq-section-visible" : ""
+      }`}
+    >
       <div className="max-w-[1300px] mx-auto px-4 md:px-9">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 items-start relative">
           {/* LEFT BLOCK (desktop only) */}
           <div className="hidden lg:block w-[420px] relative">
-            <h1 className="font-[Urania] font-bold text-[42px] leading-[49px] text-[#132F2C] mb-0">
+            <h1 className="font-[Urania] font-bold text-[42px] leading-[49px] text-[#132F2C] mb-0 faq-heading">
               FAQ'S
             </h1>
 
@@ -86,16 +115,16 @@ const FAQ = () => {
               <img
                 src={faqFrameImage}
                 alt="FAQ visual"
-                className="w-full h-[550px] object-cover rounded-[10px]"
+                className="w-full h-[550px] object-cover rounded-[10px] transition-transform duration-500 ease-out hover:scale-105"
               />
             </div>
 
             {/* OVERLAY CARD (desktop) */}
-            <div className="absolute right-[190px] bottom-[32px] w-[280px] rounded-[10px] bg-white/75 backdrop-blur shadow-[0_20px_40px_rgba(10,47,36,0.18)] px-6 py-5">
-              <h3 className="font-[Urania] font-medium text-[24px] leading-[32px] text-[#132F2C] mb-3">
+            <div className="absolute right-[190px] bottom-[32px] w-[280px] rounded-[10px] bg-white/75 backdrop-blur shadow-[0_20px_40px_rgba(10,47,36,0.18)] px-6 py-5 faq-overlay">
+              <h3 className="font-[Urania] font-medium text-[24px] leading-[32px] text-[#132F2C] mb-3 faq-overlay-heading">
                 Still wondering about something?
               </h3>
-              <p className="font-[Urania] text-[16px] leading-[25px] text-[#132F2C]">
+              <p className="font-[Urania] text-[16px] leading-[25px] text-[#132F2C] faq-overlay-body">
                 We ensure your family's future is handled with clarity and care. Explore our
                 FAQs to understand the process better.
               </p>
@@ -105,15 +134,15 @@ const FAQ = () => {
           {/* RIGHT BLOCK */}
           <div className="flex-1 w-full lg:max-w-[700px] mt-6 lg:mt-0">
             {/* MOBILE HEADING */}
-            <h1 className="lg:hidden font-[Urania] font-bold text-[32px] leading-[36px] text-[#132F2C] mb-4">
+            <h1 className="lg:hidden font-[Urania] font-bold text-[32px] leading-[36px] text-[#132F2C] mb-4 faq-heading">
               FAQ'S
             </h1>
 
             {/* TABS */}
-            <div className="flex gap-8 border-b border-[#E1E6E4] mb-6">
+            <div className="flex gap-8 border-b border-[#E1E6E4] mb-6 faq-tabs">
               <button
                 onClick={() => setActiveTab("will")}
-                className={`pb-2 font-[Urania] text-[18px] md:text-[20px] font-bold border-b-2 ${
+                className={`pb-2 font-[Urania] text-[18px] md:text-[20px] font-bold border-b-2 transition-all duration-500 ease-out ${
                   activeTab === "will"
                     ? "border-[#F4D57E] text-[#F4D57E]"
                     : "border-transparent text-[#717171]"
@@ -124,7 +153,7 @@ const FAQ = () => {
 
               <button
                 onClick={() => setActiveTab("trust")}
-                className={`pb-2 font-[Urania] text-[18px] md:text-[20px] border-b-2 ${
+                className={`pb-2 font-[Urania] text-[18px] md:text-[20px] border-b-2 transition-all duration-1000 ease-out ${
                   activeTab === "trust"
                     ? "border-[#F4D57E] text-[#F4D57E] font-bold"
                     : "border-transparent text-[#717171]"
@@ -135,7 +164,10 @@ const FAQ = () => {
             </div>
 
             {/* FAQ LIST */}
-            <div className="space-y-2">
+            <div
+              key={tabKey}
+              className="space-y-2 faq-list faq-tab-enter"
+            >
               {currentFaqs.map((faq, index) => (
                 <FAQItem
                   key={index}
@@ -178,12 +210,12 @@ function FAQItem({ faq, index, openQuestion, setOpenQuestion }) {
   const isOpen = openQuestion === index;
 
   return (
-    <div className="border-b border-[#E1E6E4] bg-transparent">
+    <div className="border-b border-[#E1E6E4] bg-transparent faq-item">
       <button
         onClick={() => setOpenQuestion(isOpen ? null : index)}
         className="w-full px-3 lg:px-4 py-3 flex justify-between items-center text-left hover:bg-[#F5FAF7] transition-colors"
       >
-        <span className="font-[Urania] text-[#132F2C] text-[18px]">
+        <span className="font-[Urania] text-[#132F2C] text-[18px] faq-question-text">
           {faq.question}
         </span>
         <span className="ml-3 flex-shrink-0">
@@ -197,11 +229,13 @@ function FAQItem({ faq, index, openQuestion, setOpenQuestion }) {
         </span>
       </button>
 
-      {isOpen && (
-        <div className="px-3 lg:px-4 pb-4 text-[#4C6B63] text-[15px] leading-[22px]">
-          {faq.answer}
-        </div>
-      )}
+      <div
+        className={`px-3 lg:px-4 text-[#4C6B63] text-[15px] leading-[22px] faq-answer ${
+          isOpen ? "faq-answer-open" : "faq-answer-closed"
+        }`}
+      >
+        {faq.answer}
+      </div>
     </div>
   );
 }

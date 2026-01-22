@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import willframe1 from "../../assets/img/service/willframe1.webp";
 import willframe2 from "../../assets/img/service/willframe2.webp";
 import willframe3 from "../../assets/img/service/willframe3.webp";
@@ -121,10 +121,23 @@ const OurServices = ({ initialTab = "will" }) => {
   const [activeTab, setActiveTab] = useState(initialTab);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [tabKey, setTabKey] = useState(initialTab);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     setActiveTab(initialTab);
   }, [initialTab]);
+
+  // On-load entrance animation (no scroll)
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  // Trigger tab animation
+  useEffect(() => {
+    setTabKey(activeTab);
+  }, [activeTab]);
 
   // Idle-time prefetch of the ServiceModal chunk so the first open is instant
   useEffect(() => {
@@ -153,19 +166,24 @@ const OurServices = ({ initialTab = "will" }) => {
   };
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-10 bg-[#E5F3EF]">
+    <section
+      ref={sectionRef}
+      className={`py-16 px-4 sm:px-6 lg:px-10 bg-[#E5F3EF] services-section ${
+        isVisible ? "services-section-visible" : ""
+      }`}
+    >
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-[32px] sm:text-[36px] lg:text-[40px] font-[Urania] font-semibold text-[#132F2C] text-center mb-8">
+        <h2 className="text-[32px] sm:text-[36px] lg:text-[40px] font-[Urania] font-semibold text-[#132F2C] text-center mb-8 services-heading">
           Our Services
         </h2>
 
         {/* Tabs */}
-        <div className="flex justify-center mb-10">
-          <div className="inline-flex rounded-full bg-white p-1 shadow-[0_8px_24px_rgba(10,47,36,0.08)] border border-[#132F2C]/50">
+        <div className="flex justify-center mb-10 services-tabs-wrap">
+          <div className="inline-flex rounded-full bg-white p-1 shadow-[0_8px_24px_rgba(10,47,36,0.08)] border border-[#132F2C]/50 services-tabs">
             <button
-              className={`px-6 py-2 rounded-full font-[Urania] ${
+              className={`px-6 py-2 rounded-full font-[Urania] services-tab transition-all duration-500 ease-out ${
                 activeTab === "will"
-                  ? "bg-[#132F2C] text-white"
+                  ? "bg-[#132F2C] text-white services-tab-active"
                   : "text-[#4C6B63]"
               }`}
               onClick={() => setActiveTab("will")}
@@ -173,9 +191,9 @@ const OurServices = ({ initialTab = "will" }) => {
               Will and Inheritance
             </button>
             <button
-              className={`px-6 py-2 rounded-full font-[Urania] ${
+              className={`px-6 py-2 rounded-full font-[Urania] services-tab transition-all duration-500 ease-out ${
                 activeTab === "trust"
-                  ? "bg-[#132F2C] text-white"
+                  ? "bg-[#132F2C] text-white services-tab-active"
                   : "text-[#4C6B63]"
               }`}
               onClick={() => setActiveTab("trust")}
@@ -186,11 +204,14 @@ const OurServices = ({ initialTab = "will" }) => {
         </div>
 
         {/* Cards */}
-        <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 justify-items-center">
+        <div
+          key={tabKey}
+          className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 justify-items-center services-cards-grid services-tab-enter"
+        >
           {services.map((service) => (
             <div
               key={service.key}
-              className="relative w-full max-w-[344px] h-[429px] sm:max-w-[380px] sm:h-[460px] lg:max-w-[414px] lg:h-[528px] rounded-[6px] overflow-hidden shadow-[0_14px_40px_rgba(10,47,36,0.55)]"
+              className="relative w-full max-w-[344px] h-[429px] sm:max-w-[380px] sm:h-[460px] lg:max-w-[414px] lg:h-[528px] rounded-[6px] overflow-hidden shadow-[0_14px_40px_rgba(10,47,36,0.55)] service-card"
               style={{
                 backgroundImage: `url(${service.image})`,
                 backgroundSize: "cover",
@@ -202,21 +223,23 @@ const OurServices = ({ initialTab = "will" }) => {
 
               {/* Transparent inner card (outer mobile frame ~344x429, inner ~317x339) */}
               <div className="relative flex items-end h-full px-4 pb-4">
-                <div className="w-full max-w-[317px] min-h-[339px] mx-auto rounded-[6px]
+                <div
+                  className="w-full max-w-[317px] min-h-[339px] mx-auto rounded-[6px]
                   bg-white/10 backdrop-blur-md
                   border border-white/20
-                  px-5 pt-5 pb-5 text-white flex flex-col justify-between">
+                  px-5 pt-5 pb-5 text-white flex flex-col justify-between service-card-inner"
+                >
 
                   <div>
-                    <h3 className="font-[Urania] text-[24px] leading-[24px] font-bold mb-2">
+                    <h3 className="font-[Urania] text-[24px] leading-[24px] font-bold mb-2 service-card-title">
                       {service.title}
                     </h3>
 
-                    <p className="font-[Urania] text-[16px] leading-[20px] font-medium mb-3">
+                    <p className="font-[Urania] text-[16px] leading-[20px] font-medium mb-3 service-card-subtitle">
                       {service.subtitle}
                     </p>
 
-                    <p className="font-[Urania] text-[16px] leading-[22px]">
+                    <p className="font-[Urania] text-[16px] leading-[22px] service-card-body">
                       {service.description}
                     </p>
                   </div>
