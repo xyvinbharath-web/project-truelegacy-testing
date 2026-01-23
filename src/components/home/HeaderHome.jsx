@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import BannerImage from "../../assets/img/home/Banner 1.webp";
 import heroBg from "../../assets/img/Group 1.webp";
 import heroBgAlt from "../../assets/img/Frame 2147224797.webp";
@@ -77,6 +78,7 @@ const renderQuestionWithIcon = (text) => {
 };
 
 const HeaderHome = () => {
+  const location = useLocation();
   const [activeIndex, setActiveIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
@@ -123,10 +125,18 @@ const HeaderHome = () => {
   }, []);
 
   useEffect(() => {
+    if (location.pathname !== "/") return;
+    setActiveIndex(0);
+    setPrevIndex(0);
+    setTransitioning(false);
+    setIsAnimating(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
     if (paused) return;
     const id = setInterval(() => {
       goNext();
-    }, 6500);
+    }, 5000);
     return () => clearInterval(id);
   }, [paused, activeIndex, isAnimating]);
   const renderStackedLines = (text, extra = "", baseDelay = 0) => {
