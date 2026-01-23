@@ -898,6 +898,54 @@
   transition-delay: 380ms;
 }
 
+/* Common animated popup animations */
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-scale-up {
+  animation: scaleUp 300ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Slide up animation for mobile footer */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Fade in up animation for better mobile support */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 /* Contact section scroll reveal */
 .contact-section {
   position: relative;

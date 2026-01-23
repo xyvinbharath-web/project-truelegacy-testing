@@ -12,6 +12,9 @@ const FAQ = lazy(() => import("../../components/FAQ"));
 
 const HomePage = () => {
   useEffect(() => {
+    // Reset scroll to top on page load/refresh
+    window.scrollTo(0, 0);
+    
     const prefetch = () => {
       import("../../components/home/PlanYourLegacy");
       import("../../components/home/WhoweAreNew");

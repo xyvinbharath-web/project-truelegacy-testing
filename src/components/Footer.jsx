@@ -35,15 +35,24 @@ const Footer = ({ hideCta = false }) => {
     const node = footerRef.current;
     if (!node) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.25 }
-    );
+    // Add a small delay to prevent triggering on page load
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          // Only trigger when footer is actually scrolled into view and user has scrolled
+          const hasScrolled = window.scrollY > 100;
+          if (entry.isIntersecting && entry.intersectionRatio > 0.1 && hasScrolled) {
+            setIsVisible(true);
+          }
+        },
+        { threshold: 0.1 }
+      );
 
-    observer.observe(node);
-    return () => observer.disconnect();
+      observer.observe(node);
+      return () => observer.disconnect();
+    }, 500); // 500ms delay
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -68,12 +77,12 @@ const Footer = ({ hideCta = false }) => {
             >
               <div className="px-6 py-8 flex flex-col justify-center h-full">
                 <div className="max-w-[62%]">
-                  <h2 className="text-[22px] leading-snug font-semibold text-[#132F2C] footer-cta-heading">
+                  <h2 className="text-[22px] leading-snug font-semibold text-[#132F2C] footer-cta-heading animate-fade-in-up" style={{ animationDelay: "200ms" }}>
                     Still wondering how to
                     <br />
                     pass down your legacy?
                   </h2>
-                  <p className="mt-4 text-[13px] text-[#132F2C] footer-cta-body">
+                  <p className="mt-4 text-[13px] text-[#132F2C] footer-cta-body animate-fade-in-up" style={{ animationDelay: "400ms" }}>
                     Let our Experts Make it Simple for You. Succession
                     planning is not just about documents — it's about
                     securing your family's peace!
@@ -81,13 +90,15 @@ const Footer = ({ hideCta = false }) => {
                 </div>
                 <div className="mt-9 flex flex-col items-center gap-4 w-full footer-cta-buttons">
                   <button
-                    className="inline-flex w-[88%] max-w-[360px] items-center justify-center rounded-full bg-[#132F2C] px-6 py-3 text-[13px] font-[Urania] font-medium text-white whitespace-nowrap footer-cta-button"
+                    className="inline-flex w-[88%] max-w-[360px] items-center justify-center rounded-full bg-[#132F2C] px-6 py-3 text-[13px] font-[Urania] font-medium text-white whitespace-nowrap footer-cta-button animate-fade-in-up hover:scale-105 transition-transform"
+                    style={{ animationDelay: "600ms" }}
                     onClick={() => setIsScheduleOpen(true)}
                   >
                     Schedule your expert session today
                   </button>
                   <button
-                    className="inline-flex w-[88%] max-w-[360px] items-center justify-center rounded-full bg-[#132F2C] px-6 py-3 text-[13px] font-[Urania] font-medium text-white whitespace-nowrap"
+                    className="inline-flex w-[88%] max-w-[360px] items-center justify-center rounded-full bg-[#132F2C] px-6 py-3 text-[13px] font-[Urania] font-medium text-white whitespace-nowrap footer-cta-button animate-fade-in-up hover:scale-105 transition-transform"
+                    style={{ animationDelay: "800ms" }}
                     onClick={() => setIsCallbackOpen(true)}
                   >
                     Request a Call Back
@@ -152,31 +163,32 @@ const Footer = ({ hideCta = false }) => {
             {/* Top row: Phone/Email/Follow Us + Quick Links */}
             <div className="flex gap-8 pb-5 border-b border-[#193C38]">
               <div className="flex-1">
-                <div className="text-[12px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
+                <div className="text-[12px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "100ms" }}>
                   Phone
                 </div>
-                <div className="space-y-1 mb-4 text-[#F4D57E] footer-text-group animate-fade-in">
+                <div className="space-y-1 mb-4 text-[#F4D57E] footer-text-group animate-fade-in-up" style={{ animationDelay: "200ms" }}>
                   <div className="font-medium footer-text">+91 7592 912 300 (IN)</div>
                   <div className="font-medium footer-text">+971 58 929 148 (UAE)</div>
                 </div>
-                <div className="text-[12px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
+                <div className="text-[12px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "300ms" }}>
                   Email
                 </div>
-                <div className="text-[#F4D57E] text-[13px] mb-4 footer-text animate-fade-in">
+                <div className="text-[#F4D57E] text-[13px] mb-4 footer-text animate-fade-in-up" style={{ animationDelay: "400ms" }}>
                   info@truelegacy.in
                 </div>
-                <div className="text-[12px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
+                <div className="text-[12px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "500ms" }}>
                   Follow Us
                 </div>
-                <div className="flex items-center gap-3 footer-social animate-fade-in">
-                  {socials.map((social) => (
+                <div className="flex items-center gap-3 footer-social animate-fade-in-up" style={{ animationDelay: "600ms" }}>
+                  {socials.map((social, index) => (
                     <a
                       key={social.name}
                       href={social.url}
                       target="_blank"
                       rel="noreferrer"
                       aria-label={social.name}
-                      className="inline-flex"
+                      className="inline-flex hover:scale-110 transition-transform"
+                      style={{ animationDelay: `${600 + index * 100}ms` }}
                     >
                       <img src={social.icon} alt={social.name} className="h-5 w-5" />
                     </a>
@@ -185,50 +197,36 @@ const Footer = ({ hideCta = false }) => {
               </div>
 
               <div className="flex-1">
-                <div className="text-[12px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
+                <div className="text-[12px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "700ms" }}>
                   Quick Links
                 </div>
-                <div className="space-y-1 text-[#A1A1A1] footer-links animate-fade-in">
-                  <NavLink
-                    to="/"
-                    className="block hover:text-[#F4D57E] transition-colors"
-                  >
-                    Home
-                  </NavLink>
-                  <NavLink
-                    to="/why-choose-us"
-                    className="block hover:text-[#F4D57E] transition-colors"
-                  >
-                    Why Choose Us
-                  </NavLink>
-                  <NavLink
-                    to="/services"
-                    className="block hover:text-[#F4D57E] transition-colors"
-                  >
-                    Services
-                  </NavLink>
-                  <NavLink
-                    to="/resources"
-                    className="block hover:text-[#F4D57E] transition-colors"
-                  >
-                    Resources
-                  </NavLink>
-                  <NavLink
-                    to="/contact"
-                    className="block hover:text-[#F4D57E] transition-colors"
-                  >
-                    Contact
-                  </NavLink>
+                <div className="space-y-1 text-[#A1A1A1] footer-links">
+                  {[
+                    { to: "/", text: "Home" },
+                    { to: "/why-choose-us", text: "Why Choose Us" },
+                    { to: "/services", text: "Services" },
+                    { to: "/resources", text: "Resources" },
+                    { to: "/contact", text: "Contact" }
+                  ].map((link, index) => (
+                    <NavLink
+                      key={link.to}
+                      to={link.to}
+                      className="block hover:text-[#F4D57E] transition-colors animate-fade-in-up"
+                      style={{ animationDelay: `${800 + index * 100}ms` }}
+                    >
+                      {link.text}
+                    </NavLink>
+                  ))}
                 </div>
               </div>
             </div>
 
             {/* Address full width */}
             <div className="pt-5 pb-5 border-b border-[#193C38]">
-              <div className="text-[12px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
+              <div className="text-[12px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "1300ms" }}>
                 Address
               </div>
-              <p className="text-[13px] leading-relaxed text-[#A1A1A1] footer-text animate-fade-in">
+              <p className="text-[13px] leading-relaxed text-[#A1A1A1] footer-text animate-fade-in-up" style={{ animationDelay: "1400ms" }}>
                 Wazeal Fintech Private Limited,
                 <br />
                 2nd Floor, Imperial Annex, NH Bypass,
@@ -344,9 +342,13 @@ const Footer = ({ hideCta = false }) => {
           {/* Bottom row */}
           <div className="mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[12px] text-[#A3B4B0] footer-bottom">
             <div className="flex flex-wrap items-center gap-3">
-              <span>Privacy Policy</span>
+              <NavLink to="/privacy-policy" className="hover:text-[#F4D57E] transition-colors">
+                Privacy Policy
+              </NavLink>
               <span className="w-1 h-1 rounded-full bg-[#A3B4B0]" />
-              <span>Terms of Service</span>
+              <NavLink to="/terms-of-service" className="hover:text-[#F4D57E] transition-colors">
+                Terms of Service
+              </NavLink>
             </div>
             <div className="text-[11px] sm:text-[12px]">
               ©2025 TRUE LEGACY. ALL RIGHTS RESERVED

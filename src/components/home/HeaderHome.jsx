@@ -21,7 +21,7 @@ const slides = [
     id: 2,
     background: BannerImage,
     eyebrow: "Succession Planning",
-    questionPrefix: "What would happen to your family's wealth ",
+    questionPrefix: "What would happen \nto your family's wealth ",
     questionHighlight: "if you weren't here tomorrow?",
     description:
       "Without a clear plan, important decisions about your assets may be made by default legal rules.",
@@ -30,8 +30,8 @@ const slides = [
     id: 3,
     background: BannerImage,
     eyebrow: "Succession Planning",
-    questionPrefix: "Do your loved ones know exactly ",
-    questionHighlight: "how you want your legacy to be shared?",
+    questionPrefix: "Do your loved ones know \nexactlyhow you want your ",
+    questionHighlight: "legacy to be shared?",
     description:
       "Clear instructions today can help your family avoid confusion, conflict, and delays in the future.",
   },
@@ -39,8 +39,8 @@ const slides = [
     id: 4,
     background: BannerImage,
     eyebrow: "Succession Planning",
-    questionPrefix: "Are you ready to turn your intentions ",
-    questionHighlight: "into a clear, written plan for your family?",
+    questionPrefix: "Are you ready to turn\nyour intentions into a ",
+    questionHighlight: "clear, written plan for \nyour family?",
     description:
       "With the right guidance, you can protect what you've built and give your family lasting peace of mind.",
   },
@@ -53,6 +53,9 @@ const renderQuestionWithIcon = (text) => {
   const parts = text.split("?");
   if (parts.length !== 2) return text;
 
+  // Check if text has newlines (multi-line)
+  const isMultiLine = text.includes("\n");
+  
   return (
     <>
       {parts[0]}
@@ -60,7 +63,11 @@ const renderQuestionWithIcon = (text) => {
         <img
           src={questionIcon}
           alt="Question Icon"
-          className="absolute -top-2 -right-4 w-[18px] h-[18px]"
+          className={`absolute ${
+            isMultiLine 
+              ? "top-4 sm:top-6 md:top-12 -right-3 sm:-right-4 md:-right-5" 
+              : "top-2 sm:top-3 md:top-9 -right-3 sm:-right-3 md:-right-4"
+          } w-[14px] sm:w-[16px] md:w-[18px] h-[14px] sm:h-[16px] md:h-[18px]`}
         />
         ?
       </span>
@@ -71,23 +78,37 @@ const renderQuestionWithIcon = (text) => {
 
 const HeaderHome = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [prevIndex, setPrevIndex] = useState(0);
+  const [transitioning, setTransitioning] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [paused, setPaused] = useState(false);
 
   const currentSlide = slides[activeIndex];
+  const prevSlide = slides[prevIndex];
 
   const goNext = () => {
     if (isAnimating) return;
     setIsAnimating(true);
+    setPrevIndex((p) => activeIndex);
+    setTransitioning(true);
     setActiveIndex((prev) => (prev + 1) % slides.length);
-    setTimeout(() => setIsAnimating(false), 620);
+    setTimeout(() => {
+      setTransitioning(false);
+      setIsAnimating(false);
+    }, 700);
   };
 
   const goPrev = () => {
     if (isAnimating) return;
     setIsAnimating(true);
+    setPrevIndex((p) => activeIndex);
+    setTransitioning(true);
     setActiveIndex((prev) => (prev - 1 + slides.length) % slides.length);
-    setTimeout(() => setIsAnimating(false), 620);
+    setTimeout(() => {
+      setTransitioning(false);
+      setIsAnimating(false);
+    }, 700);
   };
 
   const getPosition = (index) => {
@@ -100,6 +121,14 @@ const HeaderHome = () => {
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => {
+      goNext();
+    }, 6500);
+    return () => clearInterval(id);
+  }, [paused, activeIndex, isAnimating]);
   const renderStackedLines = (text, extra = "", baseDelay = 0) => {
     const parts = String(text).split("\n");
     return (
@@ -137,13 +166,25 @@ const HeaderHome = () => {
   };
 
   return (
-    <section className="relative w-full h-dvh lg:h-screen overflow-hidden">
+    <section
+      className="relative w-full h-dvh lg:h-screen overflow-hidden"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
       {/* Background image */}
       <div className="absolute inset-0">
         <img
           src={currentSlide.background}
           alt="Succession Planning"
-          className="w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <img
+          src={prevSlide.background}
+          alt=""
+          aria-hidden="true"
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
+            transitioning ? "opacity-100" : "opacity-0"
+          }`}
         />
       </div>
       
@@ -162,8 +203,8 @@ const HeaderHome = () => {
           <div className="self-stretch border-l-[4px] border-[#F4D57E]" />
 
           {/* Text */}
-          <div className="text-left text-white max-w-3xl md:w-[680px] lg:w-[780px]">
-            <h1 key={currentSlide.id} className="font-[Urania] font-light text-[28px] sm:text-[32px] lg:text-[66px] leading-[34px] sm:leading-[40px] lg:leading-[74px] animate-fade-up">
+          <div className="text-left text-white max-w-3xl md:w-[680px] lg:w-[780px] w-full">
+            <h1 key={currentSlide.id} className="font-[Urania] font-light text-[24px] sm:text-[28px] md:text-[32px] lg:text-[66px] leading-[30px] sm:leading-[34px] md:leading-[40px] lg:leading-[74px] animate-fade-up break-words">
               {renderStackedLines(currentSlide.questionPrefix)}
               <span className="block font-bold text-[#F4D57E]">
                 {/* left-to-right stagger for highlight lines */}
@@ -171,7 +212,7 @@ const HeaderHome = () => {
                   {String(currentSlide.questionHighlight).split("\n").map((line, idx, arr) => (
                     <span
                       key={idx}
-                      className="block whitespace-pre reveal-left-line"
+                      className="block whitespace-pre break-words reveal-left-line"
                       style={{ animationDelay: `${120 + idx * 110}ms` }}
                     >
                       {idx === arr.length - 1 ? renderQuestionWithIcon(line) : line}

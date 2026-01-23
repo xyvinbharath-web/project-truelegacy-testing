@@ -17,7 +17,7 @@ const FamilyMembers = lazy(() => import("../pages/succession/FamilyView"));
 const SignIn = lazy(() => import("../pages/succession/SignIn"));
 import ProtectedRoute from "./ProtectRouter";
 const TermsOfService = lazy(() => import("../pages/Terms"));
-const Privacy = lazy(() => import("../pages/privacy/PrivacyPolicy.jsx"));
+const Privacy = lazy(() => import("../pages/privacy"));
 
 const Router = createBrowserRouter([
   {

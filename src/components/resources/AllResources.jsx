@@ -6,16 +6,8 @@ import Blog3 from "../../assets/img/resource/blog3.webp";
 import Blog4 from "../../assets/img/resource/blog4.webp";
 
 const articles = [
-  {
-    id: 1,
-    type: "Blog",
-    meta: "2 min read",
-    title: "Everything you need to know about wills",
-    desc:
-      "Explore guides, articles, and tools to understand succession laws and estate planning in India. This article helps simplify inheritance and personal laws.",
-    image: BlogMain,
-    featured: true,
-  },
+  
+       
   {
     id: 2,
     type: "Blog",
@@ -194,6 +186,276 @@ const AllResources = () => {
                   </div>
                 </article>
               ))}
+            </div>
+          </div>
+        </div>
+
+        {/* New Section - Additional Resources */}
+        <div className="mt-16 md:mt-20 hidden md:block">
+      
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {/* Resource Card 1 */}
+            <div className="block sm:hidden cursor-pointer hover:opacity-90 transition-opacity resources-article" onClick={() => handleArticleClick(articles[0])}>
+              <div className="w-full overflow-hidden rounded-md mb-5">
+                <img
+                  src={articles[0].image}
+                  alt="Resource"
+                  className="w-full h-[200px] sm:h-[260px] md:h-[280px] object-cover"
+                />
+              </div>
+              <div className="font-[Urania] text-[14px] leading-[14px] text-[#868989] font-normal mb-3">
+                <span>{articles[0].type}</span>
+                <span className="mx-2">•</span>
+                <span>{articles[0].meta}</span>
+              </div>
+              <h3 className="font-[Urania] text-[#132F2C] text-[18px] leading-[22px] md:text-[24px] md:leading-[24px] font-medium mb-3">
+                {articles[0].title}
+              </h3>
+              <p className="font-[Urania] text-[#132F2C] text-[14px] leading-[20px] md:text-[16px] md:leading-[24px] font-normal">
+                {articles[0].desc}
+              </p>
+            </div>
+
+            {/* Resource Card 1 - Desktop/Tablet */}
+            <div className="hidden sm:block cursor-pointer hover:opacity-90 transition-opacity resources-article" onClick={() => handleArticleClick(articles[0])}>
+              <div className="w-full overflow-hidden rounded-md mb-5">
+                <img
+                  src={articles[0].image}
+                  alt="Resource"
+                  className="w-full h-[220px] sm:h-[260px] md:h-[280px] object-cover"
+                />
+              </div>
+              <div className="font-[Urania] text-[14px] leading-[14px] text-[#868989] font-normal mb-3">
+                <span>{articles[0].type}</span>
+                <span className="mx-2">•</span>
+                <span>{articles[0].meta}</span>
+              </div>
+              <h3 className="font-[Urania] text-[#132F2C] text-[20px] leading-[20px] md:text-[24px] md:leading-[24px] font-medium mb-3">
+                {articles[0].title}
+              </h3>
+              <p className="font-[Urania] text-[#132F2C] text-[14px] leading-[20px] md:text-[16px] md:leading-[24px] font-normal">
+                {articles[0].desc}
+              </p>
+            </div>
+
+            {/* Resource Card 2 */}
+            <div className="block sm:hidden cursor-pointer hover:opacity-90 transition-opacity resources-article" onClick={() => handleArticleClick(articles[0])}>
+              <div className="w-full overflow-hidden rounded-md mb-5">
+                <img
+                  src={articles[0].image}
+                  alt="Resource"
+                  className="w-full h-[200px] sm:h-[260px] md:h-[280px] object-cover"
+                />
+              </div>
+              <div className="font-[Urania] text-[14px] leading-[14px] text-[#868989] font-normal mb-3">
+                <span>{articles[0].type}</span>
+                <span className="mx-2">•</span>
+                <span>{articles[0].meta}</span>
+              </div>
+              <h3 className="font-[Urania] text-[#132F2C] text-[18px] leading-[22px] md:text-[24px] md:leading-[24px] font-medium mb-3">
+                {articles[0].title}
+              </h3>
+              <p className="font-[Urania] text-[#132F2C] text-[14px] leading-[20px] md:text-[16px] md:leading-[24px] font-normal">
+                {articles[0].desc}
+              </p>
+            </div>
+
+            {/* Resource Card 2 - Desktop/Tablet */}
+            <div className="hidden sm:block cursor-pointer hover:opacity-90 transition-opacity resources-article" onClick={() => handleArticleClick(articles[0])}>
+              <div className="w-full overflow-hidden rounded-md mb-5">
+                <img
+                  src={articles[0].image}
+                  alt="Resource"
+                  className="w-full h-[220px] sm:h-[260px] md:h-[280px] object-cover"
+                />
+              </div>
+              <div className="font-[Urania] text-[14px] leading-[14px] text-[#868989] font-normal mb-3">
+                <span>{articles[0].type}</span>
+                <span className="mx-2">•</span>
+                <span>{articles[0].meta}</span>
+              </div>
+              <h3 className="font-[Urania] text-[#132F2C] text-[20px] leading-[20px] md:text-[24px] md:leading-[24px] font-medium mb-3">
+                {articles[0].title}
+              </h3>
+              <p className="font-[Urania] text-[#132F2C] text-[14px] leading-[20px] md:text-[16px] md:leading-[24px] font-normal">
+                {articles[0].desc}
+              </p>
+            </div>
+
+            {/* Resource Card 3 */}
+            <div className="block sm:hidden cursor-pointer hover:opacity-90 transition-opacity resources-article" onClick={() => handleArticleClick(articles[0])}>
+              <div className="w-full overflow-hidden rounded-md mb-5">
+                <img
+                  src={articles[0].image}
+                  alt="Resource"
+                  className="w-full h-[200px] sm:h-[260px] md:h-[280px] object-cover"
+                />
+              </div>
+              <div className="font-[Urania] text-[14px] leading-[14px] text-[#868989] font-normal mb-3">
+                <span>{articles[0].type}</span>
+                <span className="mx-2">•</span>
+                <span>{articles[0].meta}</span>
+              </div>
+              <h3 className="font-[Urania] text-[#132F2C] text-[18px] leading-[22px] md:text-[24px] md:leading-[24px] font-medium mb-3">
+                {articles[0].title}
+              </h3>
+              <p className="font-[Urania] text-[#132F2C] text-[14px] leading-[20px] md:text-[16px] md:leading-[24px] font-normal">
+                {articles[0].desc}
+              </p>
+            </div>
+
+            {/* Resource Card 3 - Desktop/Tablet */}
+            <div className="hidden sm:block cursor-pointer hover:opacity-90 transition-opacity resources-article" onClick={() => handleArticleClick(articles[0])}>
+              <div className="w-full overflow-hidden rounded-md mb-5">
+                <img
+                  src={articles[0].image}
+                  alt="Resource"
+                  className="w-full h-[220px] sm:h-[260px] md:h-[280px] object-cover"
+                />
+              </div>
+              <div className="font-[Urania] text-[14px] leading-[14px] text-[#868989] font-normal mb-3">
+                <span>{articles[0].type}</span>
+                <span className="mx-2">•</span>
+                <span>{articles[0].meta}</span>
+              </div>
+              <h3 className="font-[Urania] text-[#132F2C] text-[20px] leading-[20px] md:text-[24px] md:leading-[24px] font-medium mb-3">
+                {articles[0].title}
+              </h3>
+              <p className="font-[Urania] text-[#132F2C] text-[14px] leading-[20px] md:text-[16px] md:leading-[24px] font-normal">
+                {articles[0].desc}
+              </p>
+            </div>
+
+            {/* Resource Card 4 */}
+            <div className="block sm:hidden cursor-pointer hover:opacity-90 transition-opacity resources-article" onClick={() => handleArticleClick(articles[0])}>
+              <div className="w-full overflow-hidden rounded-md mb-5">
+                <img
+                  src={articles[0].image}
+                  alt="Resource"
+                  className="w-full h-[200px] sm:h-[260px] md:h-[280px] object-cover"
+                />
+              </div>
+              <div className="font-[Urania] text-[14px] leading-[14px] text-[#868989] font-normal mb-3">
+                <span>{articles[0].type}</span>
+                <span className="mx-2">•</span>
+                <span>{articles[0].meta}</span>
+              </div>
+              <h3 className="font-[Urania] text-[#132F2C] text-[18px] leading-[22px] md:text-[24px] md:leading-[24px] font-medium mb-3">
+                {articles[0].title}
+              </h3>
+              <p className="font-[Urania] text-[#132F2C] text-[14px] leading-[20px] md:text-[16px] md:leading-[24px] font-normal">
+                {articles[0].desc}
+              </p>
+            </div>
+
+            {/* Resource Card 4 - Desktop/Tablet */}
+            <div className="hidden sm:block cursor-pointer hover:opacity-90 transition-opacity resources-article" onClick={() => handleArticleClick(articles[0])}>
+              <div className="w-full overflow-hidden rounded-md mb-5">
+                <img
+                  src={articles[0].image}
+                  alt="Resource"
+                  className="w-full h-[220px] sm:h-[260px] md:h-[280px] object-cover"
+                />
+              </div>
+              <div className="font-[Urania] text-[14px] leading-[14px] text-[#868989] font-normal mb-3">
+                <span>{articles[0].type}</span>
+                <span className="mx-2">•</span>
+                <span>{articles[0].meta}</span>
+              </div>
+              <h3 className="font-[Urania] text-[#132F2C] text-[20px] leading-[20px] md:text-[24px] md:leading-[24px] font-medium mb-3">
+                {articles[0].title}
+              </h3>
+              <p className="font-[Urania] text-[#132F2C] text-[14px] leading-[20px] md:text-[16px] md:leading-[24px] font-normal">
+                {articles[0].desc}
+              </p>
+            </div>
+
+            {/* Resource Card 5 */}
+            <div className="block sm:hidden cursor-pointer hover:opacity-90 transition-opacity resources-article" onClick={() => handleArticleClick(articles[0])}>
+              <div className="w-full overflow-hidden rounded-md mb-5">
+                <img
+                  src={articles[0].image}
+                  alt="Resource"
+                  className="w-full h-[200px] sm:h-[260px] md:h-[280px] object-cover"
+                />
+              </div>
+              <div className="font-[Urania] text-[14px] leading-[14px] text-[#868989] font-normal mb-3">
+                <span>{articles[0].type}</span>
+                <span className="mx-2">•</span>
+                <span>{articles[0].meta}</span>
+              </div>
+              <h3 className="font-[Urania] text-[#132F2C] text-[18px] leading-[22px] md:text-[24px] md:leading-[24px] font-medium mb-3">
+                {articles[0].title}
+              </h3>
+              <p className="font-[Urania] text-[#132F2C] text-[14px] leading-[20px] md:text-[16px] md:leading-[24px] font-normal">
+                {articles[0].desc}
+              </p>
+            </div>
+
+            {/* Resource Card 5 - Desktop/Tablet */}
+            <div className="hidden sm:block cursor-pointer hover:opacity-90 transition-opacity resources-article" onClick={() => handleArticleClick(articles[0])}>
+              <div className="w-full overflow-hidden rounded-md mb-5">
+                <img
+                  src={articles[0].image}
+                  alt="Resource"
+                  className="w-full h-[220px] sm:h-[260px] md:h-[280px] object-cover"
+                />
+              </div>
+              <div className="font-[Urania] text-[14px] leading-[14px] text-[#868989] font-normal mb-3">
+                <span>{articles[0].type}</span>
+                <span className="mx-2">•</span>
+                <span>{articles[0].meta}</span>
+              </div>
+              <h3 className="font-[Urania] text-[#132F2C] text-[20px] leading-[20px] md:text-[24px] md:leading-[24px] font-medium mb-3">
+                {articles[0].title}
+              </h3>
+              <p className="font-[Urania] text-[#132F2C] text-[14px] leading-[20px] md:text-[16px] md:leading-[24px] font-normal">
+                {articles[0].desc}
+              </p>
+            </div>
+
+            {/* Resource Card 6 */}
+            <div className="block sm:hidden cursor-pointer hover:opacity-90 transition-opacity resources-article" onClick={() => handleArticleClick(articles[0])}>
+              <div className="w-full overflow-hidden rounded-md mb-5">
+                <img
+                  src={articles[0].image}
+                  alt="Resource"
+                  className="w-full h-[200px] sm:h-[260px] md:h-[280px] object-cover"
+                />
+              </div>
+              <div className="font-[Urania] text-[14px] leading-[14px] text-[#868989] font-normal mb-3">
+                <span>{articles[0].type}</span>
+                <span className="mx-2">•</span>
+                <span>{articles[0].meta}</span>
+              </div>
+              <h3 className="font-[Urania] text-[#132F2C] text-[18px] leading-[22px] md:text-[24px] md:leading-[24px] font-medium mb-3">
+                {articles[0].title}
+              </h3>
+              <p className="font-[Urania] text-[#132F2C] text-[14px] leading-[20px] md:text-[16px] md:leading-[24px] font-normal">
+                {articles[0].desc}
+              </p>
+            </div>
+
+            {/* Resource Card 6 - Desktop/Tablet */}
+            <div className="hidden sm:block cursor-pointer hover:opacity-90 transition-opacity resources-article" onClick={() => handleArticleClick(articles[0])}>
+              <div className="w-full overflow-hidden rounded-md mb-5">
+                <img
+                  src={articles[0].image}
+                  alt="Resource"
+                  className="w-full h-[220px] sm:h-[260px] md:h-[280px] object-cover"
+                />
+              </div>
+              <div className="font-[Urania] text-[14px] leading-[14px] text-[#868989] font-normal mb-3">
+                <span>{articles[0].type}</span>
+                <span className="mx-2">•</span>
+                <span>{articles[0].meta}</span>
+              </div>
+              <h3 className="font-[Urania] text-[#132F2C] text-[20px] leading-[20px] md:text-[24px] md:leading-[24px] font-medium mb-3">
+                {articles[0].title}
+              </h3>
+              <p className="font-[Urania] text-[#132F2C] text-[14px] leading-[20px] md:text-[16px] md:leading-[24px] font-normal">
+                {articles[0].desc}
+              </p>
             </div>
           </div>
         </div>

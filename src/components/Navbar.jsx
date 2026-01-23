@@ -43,15 +43,16 @@ const Navbar = () => {
         </div>
 
         {/* Center: nav links */}
-        <nav className="hidden md:flex flex-1 items-center justify-center gap-8 lg:gap-10 text-[16px] font-[Urania] tl-nav">
+        <nav className="hidden md:flex flex-1 items-center justify-center gap-4 lg:gap-8 xl:gap-10 text-[14px] md:text-[15px] lg:text-[16px] font-[Urania] tl-nav">
 
           <NavLink to="/" className="relative">
             {({ isActive }) => (
               <span className="relative inline-flex items-center justify-center">
                 <span
-                  className={`text-[16px] font-semibold ${
-                    isActive ? "text-slate-900" : "text-slate-400"
-                  }`}
+                  className={`
+                    text-[14px] md:text-[15px] lg:text-[16px] font-semibold
+                    ${isActive ? "text-slate-900" : "text-slate-400"}
+                  `}
                 >
                   Home
                 </span>
@@ -72,7 +73,7 @@ const Navbar = () => {
               onClick={() => setIsServicesOpen((prev) => !prev)}
             >
               <span
-                className={`text-[16px] ${
+                className={`text-[14px] md:text-[15px] lg:text-[16px] ${
                   isServicesOpen || isServicesRoute
                     ? "text-slate-900"
                     : "text-slate-400"
@@ -138,7 +139,7 @@ const Navbar = () => {
             {({ isActive }) => (
               <span className="relative inline-flex items-center justify-center">
                 <span
-                  className={`text-[16px] ${
+                  className={`text-[14px] md:text-[15px] lg:text-[16px] ${
                     isActive ? "text-slate-900" : "text-slate-400"
                   }`}
                 >
@@ -155,7 +156,7 @@ const Navbar = () => {
             {({ isActive }) => (
               <span className="relative inline-flex items-center justify-center">
                 <span
-                  className={`text-[16px] ${
+                  className={`text-[14px] md:text-[15px] lg:text-[16px] ${
                     isActive ? "text-slate-900" : "text-slate-400"
                   }`}
                 >
@@ -172,7 +173,7 @@ const Navbar = () => {
             {({ isActive }) => (
               <span className="relative inline-flex items-center justify-center">
                 <span
-                  className={`text-[16px] ${
+                  className={`text-[14px] md:text-[15px] lg:text-[16px] ${
                     isActive ? "text-slate-900" : "text-slate-400"
                   }`}
                 >
@@ -189,7 +190,18 @@ const Navbar = () => {
         {/* Right: actions (desktop login pill, mobile menu icon) */}
         <div className="flex-none flex items-center justify-end gap-3">
           {/* Desktop / tablet: login pill */}
-          <div className="hidden md:inline-flex">
+          <div className="hidden md:inline-flex lg:hidden">
+            <StyledButton
+              name="Login"
+              onClick={() => navigate("/signin")}
+              variant="primary"
+              minWidth="auto"
+              className="items-center justify-center h-10 px-4 rounded-full !bg-[#132F2C] !text-white text-[12px] font-[Urania]"
+            />
+          </div>
+
+          {/* Desktop: login pill */}
+          <div className="hidden lg:inline-flex">
             <StyledButton
               name="Login Account"
               onClick={() => navigate("/signin")}

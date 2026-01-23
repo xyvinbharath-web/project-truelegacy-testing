@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FrameourPromise from "../../assets/img/whychooseus/Frameour-promise.webp";
+import MobileFrameImage from "../../assets/img/whychooseus/Frame 2147224819.webp";
 import StyledButton from "../../ui/StyledButton";
 
 const OurPromise = () => {
@@ -29,23 +30,23 @@ const OurPromise = () => {
       className="bg-[#F6FFFF] text-black px-4 md:px-16 py-10 md:py-16"
     >
       <div className="max-w-[1440px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* LEFT TEXT CONTENT */}
           <div
             className={`order-1 lg:order-1 transition-all duration-700 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-  <h2 className="font-[Urania] font-semibold text-[42px] lg:text-[42px] text-[#132F2C] mb-5">
+  <h2 className="font-[Urania] font-semibold text-[32px] md:text-[36px] lg:text-[42px] text-[#132F2C] mb-5">
     Our Promise
   </h2>
 
-  <p className="font-[Urania] font-medium text-[22px] lg:text-[32px] leading-snug text-[#132F2C] mb-6 max-w-[520px]">
+  <p className="font-[Urania] font-medium text-[18px] md:text-[20px] lg:text-[22px] leading-snug text-[#132F2C] mb-6 max-w-[520px]">
     No matter your situation, you are not alone.
     We're here to guide you every step of the way.
   </p>
 
-  <p className="font-[Urania] text-[16px] leading-[26px] text-[#2F4F4A] mb-8 max-w-[520px]">
+  <p className="font-[Urania] text-[14px] md:text-[15px] lg:text-[16px] leading-[22px] md:leading-[24px] lg:leading-[26px] text-[#2F4F4A] mb-8 max-w-[520px]">
     We help families, NRIs, and individuals plan their inheritance the right
     way. Many of you have worked hard your entire lives and leave behind your
     wealth in confusion because there is no clear Will or plan. We're a team of
@@ -57,8 +58,8 @@ const OurPromise = () => {
   {/* CTA */}
   <div className="mb-10">
     <button
-      className="flex items-center justify-center text-[18px] font-[Urania] text-white bg-[#132F2C] border border-[#132F2C] rounded-[66px] h-[51px] px-8"
-      style={{ width: "310px" }}
+      className="flex items-center justify-center text-[14px] md:text-[16px] lg:text-[18px] font-[Urania] text-white bg-[#132F2C] border border-[#132F2C] rounded-[66px] h-[44px] md:h-[48px] lg:h-[51px] px-6 md:px-8"
+      style={{ width: "clamp(250px, 70vw, 310px)" }}
       onClick={() => navigate('/succession')}
     >
       Start Estate Planning Today
@@ -73,7 +74,7 @@ const OurPromise = () => {
     <div className="absolute left-0 top-0 bottom-0 w-1/3 bg-[#F4D57E] rounded-full" />
   </div>
 
-  <p className="font-[Urania] text-[22px] lg:text-[32px] leading-snug text-[#132F2C] max-w-[520px]">
+  <p className="font-[Urania] text-[16px] md:text-[18px] lg:text-[22px] leading-snug text-[#132F2C] max-w-[520px]">
     Succession Solutions for all. Tailored for Families, NRIs & Businesses.
   </p>
   
@@ -82,19 +83,38 @@ const OurPromise = () => {
 
           {/* RIGHT IMAGE */}
           <div
-            className={`order-2 lg:order-2 transition-all duration-700 delay-200 flex justify-end relative ${
+            className={`order-2 lg:order-2 transition-all duration-700 delay-200 flex justify-center lg:justify-end relative ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
+            {/* Mobile/Tablet Image */}
+            <img
+              src={MobileFrameImage}
+              alt="Our Promise Mobile"
+              loading="lazy"
+              decoding="async"
+              className="lg:hidden rounded-lg object-contain"
+              style={{
+                width: 'clamp(200px, 60vw, 280px)',
+                height: 'auto',
+                maxHeight: '280px',
+                transform: 'rotate(0deg)',
+                opacity: 1,
+                zIndex: 10,
+              }}
+            />
+            
+            {/* Desktop Image */}
             <img
               src={FrameourPromise}
               alt="Our Promise"
               loading="lazy"
               decoding="async"
-              className="rounded-lg mt-8 lg:mt-0 object-cover"
+              className="hidden lg:block rounded-lg object-contain"
               style={{
-                width: '620px',
-                height: '571px',
+                width: 'clamp(350px, 50vw, 550px)',
+                height: 'auto',
+                maxHeight: '500px',
                 transform: 'rotate(0deg)',
                 opacity: 1,
               }}

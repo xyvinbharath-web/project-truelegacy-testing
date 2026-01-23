@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { createEnquiry } from "../../api/enquiryApi";
+import AnimatedPopup from "../../ui/AnimatedPopup";
 
 const RequestDialog = ({
   open,
@@ -7,13 +8,6 @@ const RequestDialog = ({
   isSchedule = false,
   onClose,
 }) => {
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e) => e.key === "Escape" && onClose?.();
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [open, onClose]);
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -21,26 +15,18 @@ const RequestDialog = ({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
-      <div className="w-full max-w-md rounded-xl bg-white p-6 text-[#132F2C] shadow-xl">
-        {/* Header */}
-        <div className="flex items-start justify-between mb-4">
-          <div>
-            <h3 className="font-[Urania] text-[20px] md:text-[22px] font-semibold">
-              {title}
-            </h3>
-            <p className="mt-1 text-[13px] text-[#5A7371]">
-              Fill out the form below and we'll get back to you as soon as possible.
-            </p>
-          </div>
-          <button
-            onClick={onClose}
-            aria-label="Close"
-            className="text-[#5A7371] hover:text-[#132F2C] text-xl leading-none"
-          >
-            ×
-          </button>
+    <AnimatedPopup open={open} onClose={onClose} size="md">
+      {/* Header */}
+      <div className="flex items-start justify-between mb-4">
+        <div>
+          <h3 className="font-[Urania] text-[20px] md:text-[22px] font-semibold">
+            {title}
+          </h3>
+          <p className="mt-1 text-[13px] text-[#5A7371]">
+            Fill out the form below and we'll get back to you as soon as possible.
+          </p>
         </div>
+      </div>
 
         {/* Form */}
         <form
@@ -199,8 +185,7 @@ const RequestDialog = ({
             </button>
           </div>
         </form>
-      </div>
-    </div>
+    </AnimatedPopup>
   );
 };
 

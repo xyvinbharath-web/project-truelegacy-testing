@@ -1,5 +1,5 @@
 const SmoothCursor = () => {
-  return null; // Placeholder; custom cursor will be implemented later
+  return null; 
 };
 
 export default SmoothCursor;

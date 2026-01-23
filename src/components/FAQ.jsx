@@ -67,7 +67,7 @@ const faqs = {
 
 const FAQ = () => {
   const [activeTab, setActiveTab] = useState("will");
-  const [openQuestion, setOpenQuestion] = useState(0);
+  const [openQuestion, setOpenQuestion] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
   const [tabKey, setTabKey] = useState("will");
   const sectionRef = useRef(null);
