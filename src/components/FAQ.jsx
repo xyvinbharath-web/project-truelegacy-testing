@@ -1,5 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import faqFrameImage from "../assets/img/Framefaq.webp";
+import serviceImage from "../assets/img/Service.webp";
+import faqFrameMobile from "../assets/img/Framefaq.jpg";
+import faqOverlayMobile from "../assets/img/Group 5.png";
 import iconWrap from "../assets/icon/Icon wrap.webp";
 import iconMinus from "../assets/icon/Icon-.webp";
 
@@ -98,36 +101,34 @@ const FAQ = () => {
   return (
     <section
       ref={sectionRef}
-      className={`w-full bg-[#F6FFFF] py-16 md:py-20 lg:py-24 faq-section ${
+      className={`w-full bg-[#F6FFFF] py-16 md:py-20 lg:py-24 overflow-x-hidden faq-section ${
         isVisible ? "faq-section-visible" : ""
       }`}
     >
-      <div className="max-w-[1300px] mx-auto px-4 md:px-9">
+      <div className="max-w-[1450px] mx-auto px-4 md:px-9">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 items-start relative">
           {/* LEFT BLOCK (desktop only) */}
-          <div className="hidden lg:block w-[420px] relative">
-            <h1 className="font-[Urania] font-bold text-[42px] leading-[49px] text-[#132F2C] mb-0 faq-heading">
+          <div className="hidden lg:block w-[590px] relative">
+            <h1 className="font-[Urania] font-bold text-[32px] lg:text-[42px] leading-[36px] lg:leading-[49px] text-[#132F2C] mb-0 faq-heading">
               FAQ'S
             </h1>
 
             {/* IMAGE */}
-            <div className="relative overflow-hidden -mt-4">
+            <div className="relative overflow-hidden -mt-10 -ml-8">
               <img
                 src={faqFrameImage}
                 alt="FAQ visual"
-                className="w-full h-[550px] object-cover rounded-[10px] transition-transform duration-500 ease-out hover:scale-105"
+                className="w-full h-[600px] object-cover rounded-[10px] transition-transform duration-500 ease-out hover:scale-105"
               />
             </div>
 
             {/* OVERLAY CARD (desktop) */}
-            <div className="absolute right-[190px] bottom-[32px] w-[280px] rounded-[10px] bg-white/75 backdrop-blur shadow-[0_20px_40px_rgba(10,47,36,0.18)] px-6 py-5 faq-overlay">
-              <h3 className="font-[Urania] font-medium text-[24px] leading-[32px] text-[#132F2C] mb-3 faq-overlay-heading">
-                Still wondering about something?
-              </h3>
-              <p className="font-[Urania] text-[16px] leading-[25px] text-[#132F2C] faq-overlay-body">
-                We ensure your family's future is handled with clarity and care. Explore our
-                FAQs to understand the process better.
-              </p>
+            <div className="absolute right-[310px] bottom-[10px] w-[313px] h-[268px] rounded-[10px] overflow-hidden shadow-[0_20px_40px_rgba(10,47,36,0.18)] faq-overlay">
+              <img
+                src={serviceImage}
+                alt="Service"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
 
@@ -142,7 +143,7 @@ const FAQ = () => {
             <div className="flex gap-8 border-b border-[#E1E6E4] mb-6 faq-tabs">
               <button
                 onClick={() => setActiveTab("will")}
-                className={`pb-2 font-[Urania] text-[18px] md:text-[20px] font-bold border-b-2 transition-all duration-500 ease-out ${
+                className={`pb-2 font-[Urania] text-[18px] md:text-[24px] font-bold border-b-2 transition-all duration-500 ease-out ${
                   activeTab === "will"
                     ? "border-[#F4D57E] text-[#F4D57E]"
                     : "border-transparent text-[#717171]"
@@ -153,7 +154,7 @@ const FAQ = () => {
 
               <button
                 onClick={() => setActiveTab("trust")}
-                className={`pb-2 font-[Urania] text-[18px] md:text-[20px] border-b-2 transition-all duration-1000 ease-out ${
+                className={`pb-2 font-[Urania] text-[18px] md:text-[24px] border-b-2 transition-all duration-1000 ease-out ${
                   activeTab === "trust"
                     ? "border-[#F4D57E] text-[#F4D57E] font-bold"
                     : "border-transparent text-[#717171]"
@@ -180,23 +181,21 @@ const FAQ = () => {
             </div>
 
             {/* MOBILE IMAGE + OVERLAY CARD (bottom) */}
-            <div className="mt-10 lg:hidden relative max-w-[400px] mx-auto">
+            <div className="mt-10 lg:hidden relative -mx-20 -ml-6">
               <div className="overflow-hidden rounded-[10px]">
                 <img
-                  src={faqFrameImage}
+                  src={faqFrameMobile}
                   alt="FAQ visual"
-                  className="w-full h-[260px] object-cover"
+                  className="w-[388px] h-[260px] object-cover"
                 />
               </div>
 
-              <div className="absolute left-1/3 -translate-x-1/2 bottom-[-140px] w-[250px] rounded-[10px] bg-white/80 backdrop-blur shadow-[0_20px_40px_rgba(10,47,36,0.18)] px-5 py-4">
-                <h3 className="font-[Urania] font-medium text-[24px] leading-[28px] text-[#132F2C] mb-2">
-                  Still wondering about something?
-                </h3>
-                <p className="font-[Urania] text-[16px] leading-[25px] text-[#132F2C]">
-                  We ensure your family's future is handled with clarity and care. Explore our
-                  FAQs to understand the process better.
-                </p>
+              <div className="relative z-10 mt-[-110px] w-[310px] h-[220px] rounded-[10px] overflow-hidden shadow-[0_20px_40px_rgba(10,47,36,0.18)] ml-1">
+                <img
+                  src={serviceImage}
+                  alt="Service"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>

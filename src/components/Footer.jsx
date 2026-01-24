@@ -211,7 +211,7 @@ const Footer = ({ hideCta = false }) => {
                     <NavLink
                       key={link.to}
                       to={link.to}
-                      className="block hover:text-[#F4D57E] transition-colors animate-fade-in-up"
+                      className="block text-[16px] hover:text-[#F4D57E] transition-colors animate-fade-in-up"
                       style={{ animationDelay: `${800 + index * 100}ms` }}
                     >
                       {link.text}
@@ -223,7 +223,7 @@ const Footer = ({ hideCta = false }) => {
 
             {/* Address full width */}
             <div className="pt-5 pb-5 border-b border-[#193C38]">
-              <div className="text-[12px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "1300ms" }}>
+              <div className="text-[18px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "1300ms" }}>
                 Address
               </div>
               <p className="text-[13px] leading-relaxed text-[#A1A1A1] footer-text animate-fade-in-up" style={{ animationDelay: "1400ms" }}>

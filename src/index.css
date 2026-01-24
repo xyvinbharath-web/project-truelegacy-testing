@@ -284,13 +284,13 @@
   max-width: 360px;
   margin-left: auto;
   margin-right: auto;
-  height: 210px;
-  min-height: 210px;
+  height: 280px; /* Increased from 210px to show stacked cards */
+  min-height: 280px;
 }
 
 .instruction-stack-desktop {
   position: relative;
-  min-height: 210px;
+  min-height: 300px; /* Increased height for larger card stack */
 }
 
  .instruction-layer-mobile,
@@ -304,8 +304,7 @@
     opacity 620ms cubic-bezier(0.22, 1, 0.36, 1),
     filter 620ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform, opacity;
-   will-change: transform, opacity;
- }
+}
 
 .instruction-card-front {
   transform: translateY(0px) scale(1);
@@ -315,30 +314,75 @@
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
 }
 
- .instruction-card-middle {
-   transform: translateY(-10px) scale(0.97);
-   opacity: 0.8;
-   filter: blur(0.3px);
-   z-index: 2;
-   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
- }
+.instruction-card-middle {
+  transform: translateY(-10px) scale(0.97);
+  opacity: 0.8;
+  filter: blur(0.3px);
+  z-index: 2;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+}
 
- .instruction-card-back {
-   transform: translateY(-18px) scale(0.94);
-   opacity: 0.4;
-   filter: blur(1px);
-   z-index: 1;
-   pointer-events: none;
- }
+.instruction-card-back {
+  transform: translateY(-18px) scale(0.94);
+  opacity: 0.4;
+  filter: blur(1px);
+  z-index: 1;
+  pointer-events: none;
+}
 
 @media (max-width: 767px) {
+  .instruction-layer-mobile {
+    width: 350px; /* Decreased from 350px */
+    height: 114px; /* Decreased from 114px */
+  }
+
   .instruction-card-middle {
-    transform: translateY(-6px) scale(0.985);
+    transform: translateY(-14px) scale(0.985) rotateY(0deg) scaleX(0.90); /* Added scaleX to reduce width */
+    opacity: 1; /* Removed transparency - now solid white */
+    filter: blur(0.3px); /* Reduced blur */
+    background: #ffffff; /* Ensure solid white background */
   }
 
   .instruction-card-back {
-    transform: translateY(-10px) scale(0.97);
-    opacity: 0.35;
+    transform: translateY(-26px) scale(0.97) rotateY(0deg) scaleX(0.8); /* Added scaleX to reduce width more */
+    opacity: 1; /* Removed transparency - now solid white */
+    filter: blur(0.5px); /* Reduced blur */
+    background: #ffffff; /* Ensure solid white background */
+  }
+
+  /* Mobile flip animations - Card rotation effect */
+  .flip-in-next {
+    animation: cardRotateNext 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .flip-in-prev {
+    animation: cardRotatePrev 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes cardRotateNext {
+    0% {
+      transform: translateY(-14px) scale(0.985) rotateY(0deg) scaleX(0.90); /* Start from middle position */
+      opacity: 1;
+      filter: blur(0.3px);
+    }
+    100% {
+      transform: translateY(0px) scale(1) rotateY(0deg) scaleX(1); /* End at front position */
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+
+  @keyframes cardRotatePrev {
+    0% {
+      transform: translateY(-26px) scale(0.97) rotateY(0deg) scaleX(0.8); /* Start from back position */
+      opacity: 1;
+      filter: blur(0.5px);
+    }
+    100% {
+      transform: translateY(0px) scale(1) rotateY(0deg) scaleX(1); /* End at front position */
+      opacity: 1;
+      filter: blur(0);
+    }
   }
 }
 
@@ -355,6 +399,70 @@
     height: 210px;
     margin-left: auto;
     margin-right: 0;
+    border-radius: 12px;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity;
+  }
+
+  .instruction-card-front {
+    transform: translateY(0px) scale(1) rotateY(0deg);
+    opacity: 1;
+    filter: blur(0);
+    z-index: 3;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  }
+
+  .instruction-card-middle {
+    transform: translateY(-15px) scale(1.06) rotateY(0deg) scaleX(0.90); /* Increased scale to 1.02 for more height */
+    opacity: 1; /* Increased from 0.7 to make it more solid white */
+    filter: blur(0.3px); /* Reduced blur */
+    z-index: 2;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    background: #ffffff; /* Ensure solid white background */
+  }
+
+  .instruction-card-back {
+    transform: translateY(-30px) scale(1.10) rotateY(0deg) scaleX(0.8); /* Increased scale to 1.02 for more height */
+    opacity: 1; /* Increased from 0.4 to make it more solid white */
+    filter: blur(0.5px); /* Reduced blur */
+    z-index: 1;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    background: #ffffff; /* Ensure solid white background */
+  }
+
+  /* Desktop flip animations - Card rotation effect */
+  .flip-in-next {
+    animation: cardRotateNextDesktop 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .flip-in-prev {
+    animation: cardRotatePrevDesktop 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes cardRotateNextDesktop {
+    0% {
+      transform: translateY(-15px) scale(1.02) rotateY(0deg); /* Updated to match new scale */
+      opacity: 0.7;
+      filter: blur(0.5px);
+    }
+    100% {
+      transform: translateY(0px) scale(1) rotateY(0deg); /* End at front position */
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+
+  @keyframes cardRotatePrevDesktop {
+    0% {
+      transform: translateY(-30px) scale(1.02) rotateY(0deg); /* Updated to match new scale */
+      opacity: 0.4;
+      filter: blur(1.5px);
+    }
+    100% {
+      transform: translateY(0px) scale(1) rotateY(0deg); /* End at front position */
+      opacity: 1;
+      filter: blur(0);
+    }
   }
 }
 

@@ -46,7 +46,7 @@ const PlanYourLegacy = () => {
   return (
     <section
       ref={sectionRef}
-      className={`w-full bg-white py-16 md:py-20 lg:py-24 plan-section ${
+      className={`w-full bg-white pb-16 md:pb-20 lg:pb-24 pt-8 md:pt-12 plan-section ${
         isVisible ? "plan-section-visible" : ""
       }`}
     >
@@ -58,7 +58,7 @@ const PlanYourLegacy = () => {
           className="hidden md:block absolute top-0 right-0 w-[240px] pointer-events-none select-none"
         />
 
-        <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-[690px_1fr] items-center">
+        <div className="relative z-10 max-w-[1600px] mx-auto px-2 sm:px-4 lg:px-6 grid gap-8 lg:grid-cols-[690px_1fr] items-center">
         {/* Left: Family tree image */}
         <div className="flex flex-col items-center lg:items-start justify-center plan-left">
           {/* Mobile image */}
@@ -81,7 +81,8 @@ const PlanYourLegacy = () => {
               onClick={handleStartPlan}
               variant="primary"
               minWidth="auto"
-              className="inline-flex items-center justify-center rounded-full !bg-[#132F2C] px-8 py-3 font-[Urania] text-[18px] font-bold !text-white shadow-[0_10px_25px_rgba(10,47,36,0.35)] hover:!bg-[#0D241E] transition-colors duration-200"
+              className="!w-[343px] h-[50px] rounded-[66px] font-[Urania] text-[18px] font-bold !bg-[#132F2C] !text-white shadow-[0_10px_25px_rgba(10,47,36,0.35)] hover:!bg-[#05281F] transition-colors duration-200"
+              style={{fontFamily: 'Urania', fontWeight: '700', fontStyle: 'normal', fontSize: '18px', lineHeight: '100%', letterSpacing: '0%', padding: '15px 32px', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center'}}
             />
           </div>
 
@@ -100,9 +101,9 @@ const PlanYourLegacy = () => {
         </div>
 
         {/* Right: Text + bullets + CTA (desktop/tablet only) */}
-        <div className="hidden md:block text-left plan-right relative">
-            <h1 className="font-[Urania] font-bold text-[42px] leading-[49px] text-[#132F2C] plan-heading">
-              No Succession Plan? Discover your legal <br />heirs in seconds.
+        <div className="hidden md:block text-left plan-right relative ml-13">
+            <h1 className="font-[Urania] font-bold text-[42px] leading-[49px] text-[#132F2C] plan-heading max-w-[440px]">
+              No Succession Plan? Discover your legal heirs in seconds.
             </h1>
 
             <div className="mt-8 space-y-3">

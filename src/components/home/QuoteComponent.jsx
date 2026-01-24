@@ -31,21 +31,21 @@ const QuoteComponent = () => {
   return (
     <section
       ref={sectionRef}
-      className={`w-full bg-[#FFFFFF] py-16 md:py-20 lg:py-24 relative quote-section ${
+      className={`w-full bg-[#FFFFFF] py-16 md:py-20 lg:py-24 relative overflow-x-hidden quote-section ${
         isVisible ? "quote-section-visible" : ""
       }`}
     >
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-10 lg:gap-12 lg:grid-cols-2 items-center">
+      <div className="relative max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 grid gap-1 lg:gap-6 lg:grid-cols-2 md:grid-cols-1 text-center items-center">
 
         {/* LEFT CONTENT — unchanged */}
-        <div className="text-left relative z-20 quote-left">
-          <h1 className="font-[Urania] font-bold text-[42px] leading-[49px] text-[#132F2C] quote-heading">
+        <div className="text-left relative z-20 quote-left text-center mx-auto md:text-center md:mx-auto">
+          <h1 className="font-[Urania] font-bold text-[32px] md:text-[42px] leading-[36px] md:leading-[49px] text-[#132F2C] quote-heading">
             Want to Secure
             <br />
             your Legacy?
           </h1>
 
-          <p className="mt-6 max-w-xl font-[Urania] text-[18px] leading-[26px] text-[#132F2C] quote-body">
+          <p className="mt-6 max-w-[350px] md:max-w-xl font-[Urania] text-[16px] md:text-[18px] leading-[26px] text-[#132F2C] quote-body">
             "Tomorrow is promised to none. Planning is a gift you can give today. With True Legacy,
             estate and wealth planning becomes more than a financial act; it becomes an act of
             love. The greatest inheritance you can give is peace of mind."
@@ -64,7 +64,7 @@ const QuoteComponent = () => {
         </div>
 
         {/* RIGHT IMAGE BLOCK */}
-        <div className="relative mt-8 md:mt-0 flex justify-end quote-right">
+        <div className="relative mt-8 md:mt-0 flex justify-center md:justify-center ml-0 md:ml-20 lg:ml-22 quote-right">
           {/* 🔸 DESKTOP decorative background — unchanged */}
           <img
             src={legacyBackground}
@@ -72,7 +72,7 @@ const QuoteComponent = () => {
             aria-hidden="true"
             loading="lazy"
             decoding="async"
-            className="hidden md:block absolute z-10 left-[-230px] bottom-[-1px] w-[360px] pointer-events-none"
+            className="hidden md:block absolute z-10 left-[-350px] bottom-[-1px] w-[420px] pointer-events-none"
           />
 
           {/* 🔸 MOBILE decorative background */}
@@ -94,7 +94,7 @@ const QuoteComponent = () => {
           />
 
           {/* 🔹 Image */}
-          <div className="relative z-20 w-[285px] h-[284px] md:w-[430px] md:h-[430px] overflow-hidden">
+          <div className="relative z-20 w-[285px] h-[284px] md:w-[499px] md:h-[496px] overflow-hidden">
             <img
               src={secureYourLegacyImage}
               alt="Secure your legacy"

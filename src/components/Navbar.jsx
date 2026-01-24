@@ -8,6 +8,7 @@ import MenuIcon from "../assets/Frame 2147224799.webp";
 import CloseIcon from "../assets/cancel-01.webp";
 import StyledButton from "../ui/StyledButton";
 import ArrowDownIcon from "../assets/icon/arrow-down-01-sharp.webp";
+import FaviconIcon from "../assets/icon/favicon.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -207,7 +208,23 @@ const Navbar = () => {
               onClick={() => navigate("/signin")}
               variant="primary"
               minWidth="auto"
-              className="items-center justify-center h-11 px-6 rounded-full !bg-[#132F2C] !text-white text-[13px] font-[Urania]"
+              className="items-center justify-center rounded-full !bg-[#132F2C] !text-white"
+              style={{
+                width: '171px',
+                height: '52px',
+                borderRadius: '66px',
+                paddingTop: '14px',
+                paddingRight: '32px',
+                paddingBottom: '14px',
+                paddingLeft: '32px',
+                gap: '10px',
+                fontFamily: 'Urania',
+                fontWeight: '700',
+                fontStyle: 'normal',
+                fontSize: '16px',
+                lineHeight: '100%',
+                letterSpacing: '0%'
+              }}
             />
           </div>
 
@@ -237,7 +254,7 @@ const Navbar = () => {
             }}
           >
             {/* Top bar inside menu */}
-            <div className="flex items-center justify-between px-6 pt-16 pb-4">
+            <div className="flex items-center justify-between px-5 pt-11 pb-4">
               <img src={MobileLogo} alt="Truelegacy" className="h-7" />
               <button
                 className="inline-flex items-center justify-center"
@@ -251,7 +268,7 @@ const Navbar = () => {
               </button>
             </div>
             {/* Nav links column */}
-            <div className="mt-20 flex-1 px-6 space-y-8 text-[15px] font-[Urania] animate-fade-up menu-slide-in">
+            <div className="mt-15 flex-1 px-4 space-y-6 text-[21px] font-[Urania] animate-fade-up menu-slide-in">
 
               {/* Home */}
               <NavLink
@@ -260,7 +277,7 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 {({ isActive }) => (
-                  <span className={isActive ? "text-[#F4D57E]" : "text-[#FFFFFF]"}>
+                  <span className={isActive ? "text-[#F4D57E]" : "text-[#899795]"}>
                     Home
                   </span>
                 )}
@@ -276,7 +293,7 @@ const Navbar = () => {
                     className={
                       isMobileServicesOpen || isServicesRoute
                         ? "text-[#F4D57E]"
-                        : "text-[#FFFFFF]"
+                        : "text-[#899795]"
                     }
                   >
                     Services
@@ -285,14 +302,15 @@ const Navbar = () => {
                     <img
                       src={ArrowDownIcon}
                       alt="Toggle services menu"
-                      className={`h-3 w-3 transition-transform duration-200 ${
+                      className={`h-4 w-4 transition-transform duration-200 ${
                         isMobileServicesOpen ? "rotate-180" : "rotate-0"
                       }`}
+                      style={{ filter: 'brightness(0) invert(1)' }}
                     />
                   </span>
                 </button>
                 {isMobileServicesOpen && (
-                  <div className="ml-4 space-y-2 text-[14px] text-[#FFFFFF] services-dropdown-smooth">
+                  <div className="ml-4 space-y-2 text-[21px] text-[#899795] services-dropdown-smooth">
                     <button
                       type="button"
                       className="block text-left w-full hover:text-[#F4D57E]"
@@ -334,7 +352,7 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 {({ isActive }) => (
-                  <span className={isActive ? "text-[#F4D57E]" : "text-[#FFFFFF]"}>
+                  <span className={isActive ? "text-[#F4D57E]" : "text-[#899795]"}>
                     Why Choose Us
                   </span>
                 )}
@@ -347,7 +365,7 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 {({ isActive }) => (
-                  <span className={isActive ? "text-[#F4D57E]" : "text-[#FFFFFF]"}>
+                  <span className={isActive ? "text-[#F4D57E]" : "text-[#899795]"}>
                     Resources
                   </span>
                 )}
@@ -360,7 +378,7 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 {({ isActive }) => (
-                  <span className={isActive ? "text-[#F4D57E]" : "text-[#FFFFFF]"}>
+                  <span className={isActive ? "text-[#F4D57E]" : "text-[#899795]"}>
                     Contact Us
                   </span>
                 )}
@@ -368,7 +386,23 @@ const Navbar = () => {
 
               {/* Login button */}
               <button
-                className="mt-6 inline-flex items-center justify-center rounded-full bg-[#F4D57E] px-8 py-3 text-[14px] font-[Urania] text-[#132F2C]"
+                className="mt-6 inline-flex items-center justify-center rounded-full bg-[#F4D57E] text-[#132F2C]"
+                style={{
+                  width: '171px',
+                  height: '52px',
+                  borderRadius: '66px',
+                  paddingTop: '14px',
+                  paddingRight: '32px',
+                  paddingBottom: '14px',
+                  paddingLeft: '32px',
+                  gap: '10px',
+                  fontFamily: 'Urania',
+                  fontWeight: '700',
+                  fontStyle: 'normal',
+                  fontSize: '16px',
+                  lineHeight: '100%',
+                  letterSpacing: '0%'
+                }}
                 onClick={() => {
                   setIsMenuOpen(false);
                   navigate("/signin");
@@ -377,9 +411,12 @@ const Navbar = () => {
                 Login Account
               </button>
 
-              <div className="mt-8 pt-4 border-t border-white/10 text-[12px] text-white/80">
-                <div className="mb-1">General Inquiries</div>
-                <div>info@truelegacy.in</div>
+              <div className="mt-8 pt-4 border-t border-white/10 text-[#FFFFFF]">
+                <div className="mb-1" style={{fontFamily: 'Urania', fontWeight: '400', fontStyle: 'normal', fontSize: '14px', lineHeight: '100%', letterSpacing: '0%', color: '#899795'}}>General Inquiries</div>
+                <div className="flex items-center justify-between" style={{fontFamily: 'Urania', fontWeight: '400', fontStyle: 'normal', fontSize: '18px', lineHeight: '100%', letterSpacing: '0%'}}>
+                  <span>info@truelegacy.in</span>
+                  <img src={FaviconIcon} alt="Email" className="w-8 h-8" />
+                </div>
               </div>
             </div>
           </div>

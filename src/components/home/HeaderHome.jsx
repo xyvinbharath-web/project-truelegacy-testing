@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import BannerImage from "../../assets/img/home/Banner 1.webp";
 import heroBg from "../../assets/img/Group 1.webp";
 import heroBgAlt from "../../assets/img/Frame 2147224797.webp";
-import legacyBackground from "../../assets/img/home/Frame legacybackground.webp";
+import legacyBackground from "../../assets/img/home/Frame 2147224800 (2).webp";
 import questionIcon from "../../assets/icon/Vectorlogo6904.webp";
 import arrowLeft from "../../assets/icon/circle-arrow-left-02-sharp.webp";
 import arrowRight from "../../assets/icon/circle-arrow-right-sharp.webp";
@@ -13,8 +13,10 @@ const slides = [
     id: 1,
     background: BannerImage,
     eyebrow: "Succession Planning",
-    questionPrefix: "Are you comfortable\nwith the law deciding ",
-    questionHighlight: "your family's\nfuture for you?",
+    questionPrefix: "Are you comfortable \nwith the law deciding ",
+    questionPrefixMobile: "Are you comfortable\nwith the law deciding ",
+    questionHighlight: "your family's future for you?",
+    questionHighlightMobile: "your family's\nfuture for you?",
     description:
       "If you leave it to the law, your family's future may unfold differently than you expect.",
   },
@@ -23,7 +25,9 @@ const slides = [
     background: BannerImage,
     eyebrow: "Succession Planning",
     questionPrefix: "What would happen \nto your family's wealth ",
+    questionPrefixMobile: "What would happen \nto your family's wealth ",
     questionHighlight: "if you weren't here tomorrow?",
+    questionHighlightMobile: "if you weren't \nhere tomorrow?",
     description:
       "Without a clear plan, important decisions about your assets may be made by default legal rules.",
   },
@@ -31,8 +35,10 @@ const slides = [
     id: 3,
     background: BannerImage,
     eyebrow: "Succession Planning",
-    questionPrefix: "Do your loved ones know \nexactlyhow you want your ",
+    questionPrefix: "Do your loved ones know \nexactly how you want your ",
+    questionPrefixMobile: "Do your loved ones know \nexactly how you want your ",
     questionHighlight: "legacy to be shared?",
+    questionHighlightMobile: "legacy to \nbe shared?",
     description:
       "Clear instructions today can help your family avoid confusion, conflict, and delays in the future.",
   },
@@ -40,8 +46,10 @@ const slides = [
     id: 4,
     background: BannerImage,
     eyebrow: "Succession Planning",
-    questionPrefix: "Are you ready to turn\nyour intentions into a ",
-    questionHighlight: "clear, written plan for \nyour family?",
+    questionPrefix: "Are you ready to turn \nyour intentions into a ",
+    questionPrefixMobile: "Are you ready to turn\nyour intentions into a ",
+    questionHighlight: "clear, written plan for your family?",
+    questionHighlightMobile: "clear, written plan \nfor your family?",
     description:
       "With the right guidance, you can protect what you've built and give your family lasting peace of mind.",
   },
@@ -66,9 +74,9 @@ const renderQuestionWithIcon = (text) => {
           alt="Question Icon"
           className={`absolute ${
             isMultiLine 
-              ? "top-4 sm:top-6 md:top-12 -right-3 sm:-right-4 md:-right-5" 
-              : "top-2 sm:top-3 md:top-9 -right-3 sm:-right-3 md:-right-4"
-          } w-[14px] sm:w-[16px] md:w-[18px] h-[14px] sm:h-[16px] md:h-[18px]`}
+              ? "top-6 sm:top-6 md:top-12 -right-5 sm:-right-6 md:-right-7" 
+              : "top-3 sm:top-3 md:top-9 -right-5 sm:-right-5 md:-right-6"
+          } w-[18px] sm:w-[20px] md:w-[22px] h-[18px] sm:h-[20px] md:h-[22px]`}
         />
         ?
       </span>
@@ -139,6 +147,11 @@ const HeaderHome = () => {
     }, 5000);
     return () => clearInterval(id);
   }, [paused, activeIndex, isAnimating]);
+  // Helper to get responsive text
+  const getResponsiveText = (mobileText, desktopText) => {
+    return window.innerWidth < 768 ? mobileText : desktopText;
+  };
+
   const renderStackedLines = (text, extra = "", baseDelay = 0) => {
     const parts = String(text).split("\n");
     return (
@@ -177,62 +190,103 @@ const HeaderHome = () => {
 
   return (
     <section
-      className="relative w-full h-dvh lg:h-screen overflow-hidden"
+      className="relative w-full h-[640px] lg:h-screen overflow-hidden md:h-screen mt-[-50px] sm:mt-[-50px] md:mt-0 lg:mt-0"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
       {/* Background image */}
       <div className="absolute inset-0">
+        {/* Mobile background image  */}
+        <img
+          src={legacyBackground}
+          alt="Succession Planning"
+          className="absolute inset-0 w-full h-full object-cover block md:hidden lg:hidden"
+          style={{ top: '0', objectPosition: 'center center', width: '100%', height: '100%' }}
+        />
+        {/* Tablet background image (cropped Banner) */}
+        <img
+          src={BannerImage}
+          alt="Succession Planning"
+          className="absolute inset-0 w-full h-full object-cover hidden md:block lg:hidden"
+          style={{ top: '0', objectPosition: 'center center', width: '100%', height: '80%' }}
+        />
+        {/* Desktop background image  */}
         <img
           src={currentSlide.background}
           alt="Succession Planning"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute left-0 right-0 w-full h-[561px] object-cover hidden lg:block"
+          style={{ top: '79px' }}
         />
         <img
           src={prevSlide.background}
           alt=""
           aria-hidden="true"
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
+          className={`absolute left-0 right-0 w-full h-[561px] object-cover transition-opacity duration-700 ease-in-out hidden lg:block ${
             transitioning ? "opacity-100" : "opacity-0"
           }`}
+          style={{ top: '79px' }}
         />
       </div>
       
-      {/* Decorative background accent (subtle) */}
-      <img
-        src={legacyBackground}
-        alt=""
-        aria-hidden="true"
-        className="absolute right-[-140px] bottom-[-80px] w-[460px] opacity-25 pointer-events-none hidden md:block"
-      />
-
       {/* Content */}
-      <div className="relative z-10 max-w-[1900px] mx-auto px-4 sm:px-8 lg:px-16 h-full flex items-end pb-20 md:pb-14 lg:pb-16">
-        <div className="flex items-stretch gap-6 sm:gap-8">
+      <div className="relative z-10 max-w-[1900px] mx-auto px-4 sm:px-8 lg:px-16 h-[561px] flex items-start pb-21 md:pb-14 lg:pb-16" style={{ paddingTop: '300px' }}>
+        <div className="flex items-stretch gap-3 sm:gap-8">
           {/* Left accent line */}
           <div className="self-stretch border-l-[4px] border-[#F4D57E]" />
 
           {/* Text */}
-          <div className="text-left text-white max-w-3xl md:w-[680px] lg:w-[780px] w-full">
-            <h1 key={currentSlide.id} className="font-[Urania] font-light text-[24px] sm:text-[28px] md:text-[32px] lg:text-[66px] leading-[30px] sm:leading-[34px] md:leading-[40px] lg:leading-[74px] animate-fade-up break-words">
-              {renderStackedLines(currentSlide.questionPrefix)}
-              <span className="block font-bold text-[#F4D57E]">
+          <div className="text-left text-white w-full">
+            <h1 key={currentSlide.id} className="font-[Urania] animate-fade-up break-words w-1/2">
+              <span className="block sm:hidden" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'normal', fontSize: '28px', lineHeight: '35px', letterSpacing: '0%'}}>
+                {renderStackedLines(currentSlide.questionPrefixMobile)}
+              </span>
+              <span className="hidden sm:block lg:hidden" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'normal', fontSize: '48px', lineHeight: '56px', letterSpacing: '0%'}}>
+                {renderStackedLines(currentSlide.questionPrefix)}
+              </span>
+              <span className="hidden lg:block" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'normal', fontSize: '66px', lineHeight: '74px', letterSpacing: '0%'}}>
+                {renderStackedLines(currentSlide.questionPrefix)}
+              </span>
+              <span className="block font-bold text-[#F4D57E] max-w-[180px] md:max-w-none" style={{fontFamily: 'Urania', fontWeight: '700', fontStyle: 'normal', fontSize: '36px', lineHeight: '42px', letterSpacing: '0%'}}>
                 {/* left-to-right stagger for highlight lines */}
                 <span className="block carousel-text">
-                  {String(currentSlide.questionHighlight).split("\n").map((line, idx, arr) => (
-                    <span
-                      key={idx}
-                      className="block whitespace-pre break-words reveal-left-line"
-                      style={{ animationDelay: `${120 + idx * 110}ms` }}
-                    >
-                      {idx === arr.length - 1 ? renderQuestionWithIcon(line) : line}
-                    </span>
-                  ))}
+                  <span className="block sm:hidden">
+                    {String(currentSlide.questionHighlightMobile).split("\n").map((line, idx, arr) => (
+                      <span
+                        key={idx}
+                        className="block whitespace-pre break-words reveal-left-line"
+                        style={{ animationDelay: `${120 + idx * 110}ms` }}
+                      >
+                        {idx === arr.length - 1 ? renderQuestionWithIcon(line) : line}
+                      </span>
+                    ))}
+                  </span>
+                  <span className="hidden sm:block lg:hidden" style={{fontFamily: 'Urania', fontWeight: '700', fontStyle: 'normal', fontSize: '48px', lineHeight: '56px', letterSpacing: '0%'}}>
+                    {String(currentSlide.questionHighlight).split("\n").map((line, idx, arr) => (
+                      <span
+                        key={idx}
+                        className="block whitespace-pre break-words reveal-left-line"
+                        style={{ animationDelay: `${120 + idx * 110}ms` }}
+                      >
+                        {idx === arr.length - 1 ? renderQuestionWithIcon(line) : line}
+                      </span>
+                    ))}
+                  </span>
+                  <span className="hidden lg:block" style={{fontFamily: 'Urania', fontWeight: '700', fontStyle: 'normal', fontSize: '66px', lineHeight: '74px', letterSpacing: '0%'}}>
+                    {String(currentSlide.questionHighlight).split("\n").map((line, idx, arr) => (
+                      <span
+                        key={idx}
+                        className="block whitespace-pre break-words reveal-left-line"
+                        style={{ animationDelay: `${120 + idx * 110}ms` }}
+                      >
+                        {idx === arr.length - 1 ? renderQuestionWithIcon(line) : line}
+                      </span>
+                    ))}
+                  </span>
                 </span>
               </span>
             </h1>
 
-            <p key={`desc-${currentSlide.id}`} className="mt-6 font-[Urania] text-[16px] md:text-[18px] leading-[1.4] max-w-[660px] animate-fade-in" style={{ animationDelay: "180ms" }}>
+            <p key={`desc-${currentSlide.id}`} className="mt-4 max-w-[250px] sm:max-w-[350px] md:max-w-[660px] lg:max-w-[800px] animate-fade-in" style={{ animationDelay: "180ms", fontFamily: 'Urania', fontWeight: '400', fontStyle: 'normal', fontSize: '18px', lineHeight: '100%', letterSpacing: '0%' }}>
               {currentSlide.description}
             </p>
           </div>
@@ -240,16 +294,16 @@ const HeaderHome = () => {
       </div>
 
       {/* Carousel controls */}
-      <div className="absolute z-20 left-14 sm:left-24 lg:left-32 bottom-4 sm:bottom-6 flex items-center gap-3">
+      <div className="absolute z-20 left-4 sm:left-24 lg:left-26 top-[585px] flex items-center gap-3 md:left-14">
         <button
-          className="h-8 w-8 hover:scale-105 transition-transform"
+          className="h-6 w-6 hover:scale-105 transition-transform"
           onClick={goPrev}
         >
           <img src={arrowLeft} alt="Previous" />
         </button>
 
         <button
-          className="h-8 w-8 hover:scale-105 transition-transform"
+          className="h-6 w-6 hover:scale-105 transition-transform"
           onClick={goNext}
         >
           <img src={arrowRight} alt="Next" />

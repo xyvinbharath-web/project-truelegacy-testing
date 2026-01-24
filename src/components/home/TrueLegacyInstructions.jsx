@@ -31,22 +31,33 @@ const slides = [
 const TrueLegacyInstructions = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [direction, setDirection] = useState("next"); // Track animation direction
+  const [isAutoScroll, setIsAutoScroll] = useState(true); // Track auto-scroll state
   const currentSlide = slides[activeIndex];
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
+  const autoScrollRef = useRef(null);
 
   const goNext = () => {
     if (isAnimating) return;
     setIsAnimating(true);
+    setDirection("next");
     setActiveIndex((prev) => (prev + 1) % slides.length);
-    setTimeout(() => setIsAnimating(false), 620);
+    setTimeout(() => setIsAnimating(false), 800);
+    // Pause auto-scroll when user interacts
+    setIsAutoScroll(false);
+    setTimeout(() => setIsAutoScroll(true), 5000); // Resume after 5 seconds
   };
 
   const goPrev = () => {
     if (isAnimating) return;
     setIsAnimating(true);
+    setDirection("prev");
     setActiveIndex((prev) => (prev - 1 + slides.length) % slides.length);
-    setTimeout(() => setIsAnimating(false), 620);
+    setTimeout(() => setIsAnimating(false), 800);
+    // Pause auto-scroll when user interacts
+    setIsAutoScroll(false);
+    setTimeout(() => setIsAutoScroll(true), 5000); // Resume after 5 seconds
   };
 
   const getPosition = (index) => {
@@ -72,18 +83,34 @@ const TrueLegacyInstructions = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Auto-scroll effect
+  useEffect(() => {
+    if (!isAutoScroll || !isVisible || isAnimating) return;
+
+    autoScrollRef.current = setInterval(() => {
+      goNext();
+    }, 3000); // Auto-scroll every 3 seconds
+
+    return () => {
+      if (autoScrollRef.current) {
+        clearInterval(autoScrollRef.current);
+      }
+    };
+  }, [isAutoScroll, isVisible, isAnimating]);
+
   return (
     <section
       ref={sectionRef}
-      className={`instruction-section ${isVisible ? "instruction-section-visible" : ""}`}
+      className={`instruction-section mt-8 ${isVisible ? "instruction-section-visible" : ""}`}
     >
       {/* Mobile layout */}
       <section
-        className="relative w-full min-h-[100vh] flex items-center md:hidden"
+        className="relative w-full h-[386px] flex items-center md:hidden"
         style={{
           backgroundImage: `url(${mobileInstructionBg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
+          perspective: "1200px", // Enable 3D perspective for flip animations
         }}
       >
         <div className="relative max-w-[375px] mx-auto w-full px-4 pt-1 pb-1">
@@ -93,7 +120,7 @@ const TrueLegacyInstructions = () => {
           </h2>
 
           {/* Card stack */}
-          <div className="relative mt-24 flex justify-center instruction-stack-mobile">
+          <div className="relative mt-20 flex justify-center instruction-stack-mobile">
             {slides.map((slide, index) => {
               const position = getPosition(index);
               const isFront = position === "front";
@@ -103,24 +130,30 @@ const TrueLegacyInstructions = () => {
                   key={slide.text}
                   className={`instruction-layer-mobile instruction-card-${position} ${
                     isFront ? "instruction-card" : ""
+                  } ${
+                    isFront && isAnimating ? (direction === "next" ? "flip-in-next" : "flip-in-prev") : ""
                   }`}
+                  style={{
+                    transformStyle: "preserve-3d",
+                    backfaceVisibility: "hidden",
+                  }}
                 >
-                  {isFront && (
-                    <>
-                      <div className="flex items-center h-full w-full instruction-slide">
-                        <div className="border-l-[5px] border-[#F4D57E] pl-7 ml-0">
-                          <p className="mt-0 font-[Urania] font-normal text-[18px] sm:text-[20px] lg:text-[32px] leading-[1.5] lg:leading-[45.5px] text-[#132F2C] max-w-[320px] sm:max-w-[360px] lg:max-w-[640px]">
-                            {slide.text}
-                          </p>
-                        </div>
-                      </div>
+                  {/* Show text on all cards, not just front */}
+                  <div className="flex items-center h-full instruction-slide">
+                    <div className="border-l-[5px] border-[#F4D57E] pl-7 ml-0">
+                      <p className="mt-0 font-[Urania] font-normal text-[18px] sm:text-[20px] lg:text-[32px] leading-[1.5] lg:leading-[45.5px] text-[#132F2C] max-w-[320px] sm:max-w-[360px] lg:max-w-[640px]">
+                        {slide.text}
+                      </p>
+                    </div>
+                  </div>
 
-                      <img
-                        src={cornerTriangle}
-                        alt=""
-                        className="absolute bottom-2 right-2 w-6 h-6"
-                      />
-                    </>
+                  {/* YELLOW CORNER - only on front card */}
+                  {isFront && (
+                    <img
+                      src={cornerTriangle}
+                      alt=""
+                      className="absolute bottom-2 right-2 w-6 h-6"
+                    />
                   )}
                 </div>
               );
@@ -128,7 +161,7 @@ const TrueLegacyInstructions = () => {
           </div>
 
           {/* arrows */}
-          <div className="mt-7 flex justify-center gap-3">
+          <div className="mt-[-150px] flex justify-center gap-3 relative z-10">
             <button onClick={goPrev} aria-label="Previous">
               <img src={leftArrowIcon} alt="Previous" className="w-7 h-7" />
             </button>
@@ -139,13 +172,15 @@ const TrueLegacyInstructions = () => {
         </div>
       </section>
 
-      {/* Desktop / tablet layout (unchanged) */}
+      {/* Desktop / tablet layout */}
       <section
-        className="relative w-full min-h-[520px] hidden md:flex items-center"
+        className="relative w-full min-h-[520px] hidden md:flex items-center justify-center"
         style={{
           backgroundImage: `url(${currentSlide.image})`,
-          backgroundSize: "cover",
+          backgroundSize: "100% auto", // Decreased from cover to 60% width
           backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          perspective: "1200px", // Enable 3D perspective for flip animations
         }}
       >
         <div className="relative max-w-[1300px] mx-auto w-full px-4 sm:px-6 lg:px-10 pt-10">
@@ -166,26 +201,31 @@ const TrueLegacyInstructions = () => {
                   key={slide.text}
                   className={`instruction-layer-desktop instruction-card-${position} ${
                     isFront ? "instruction-card" : ""
+                  } ${
+                    isFront && isAnimating ? (direction === "next" ? "flip-in-next" : "flip-in-prev") : ""
                   }`}
+                  style={{
+                    transformStyle: "preserve-3d",
+                    backfaceVisibility: "hidden",
+                  }}
                 >
-                  {isFront && (
-                    <>
-                      <div className="flex items-center h-full instruction-slide">
-                        {/* Left yellow line matching text height, aligned with card edge */}
-                        <div className="border-l-[5px] border-[#F4D57E] pl-7 -ml-2 sm:-ml-0">
-                          <p className="font-[Urania] font-normal text-[18px] sm:text-[20px] lg:text-[32px] leading-[1.5] lg:leading-[45.5px] text-[#132F2C] max-w-[640px]">
-                            {slide.text}
-                          </p>
-                        </div>
-                      </div>
+                  {/* Show text on all cards, not just front */}
+                  <div className="flex items-center h-full instruction-slide">
+                    {/* Left yellow line matching text height, aligned with card edge */}
+                    <div className="border-l-[5px] border-[#F4D57E] pl-7 -ml-2 sm:-ml-0">
+                      <p className="font-[Urania] font-normal text-[18px] sm:text-[20px] lg:text-[32px] leading-[1.5] lg:leading-[45.5px] text-[#132F2C] max-w-[640px]">
+                        {slide.text}
+                      </p>
+                    </div>
+                  </div>
 
-                      {/* YELLOW CORNER */}
-                      <img
-                        src={cornerTriangle}
-                        alt=""
-                        className="absolute bottom-2 right-2 w-10 h-10"
-                      />
-                    </>
+                  {/* YELLOW CORNER - only on front card */}
+                  {isFront && (
+                    <img
+                      src={cornerTriangle}
+                      alt=""
+                      className="absolute bottom-2 right-2 w-10 h-10"
+                    />
                   )}
                 </div>
               );
@@ -193,7 +233,7 @@ const TrueLegacyInstructions = () => {
           </div>
 
           {/* ARROWS UNDER CARD */}
-          <div className="flex justify-center md:justify-end mt-6 md:pr-[350px] gap-1">
+          <div className="flex justify-center md:justify-end mt-[-50px] md:pr-[370px] gap-1 relative z-10">
             <button onClick={goPrev} aria-label="Previous">
               <img src={leftArrowIcon} alt="Previous" className="w-7 h-7" />
             </button>
