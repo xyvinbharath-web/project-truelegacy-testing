@@ -169,35 +169,37 @@ const OurServices = ({ initialTab = "will" }) => {
   return (
     <section
       ref={sectionRef}
-      className={`py-16 px-4 sm:px-6 lg:px-10 bg-[#E5F3EF] services-section ${
+      className={`py-16 pb-8 px-4 sm:px-6 lg:px-10 bg-[#E5F3EF] services-section ${
         isVisible ? "services-section-visible" : ""
       }`}
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto -mt-4 md:mt-0">
         
 
         {/* Tabs */}
-        <div className="flex justify-center mb-15 services-tabs-wrap">
-          <div className="inline-flex rounded-full bg-white px-5 py-2 shadow-[0_8px_24px_rgba(10,47,36,0.08)] border border-[#132F2C]/500 services-tabs min-w-[400px] sm:min-w-[500px] lg:min-w-[600px]">
+        <div className="flex justify-center mb-8 md:mb-15 services-tabs-wrap">
+          <div className="inline-flex rounded-full bg-white px-3 py-1.5 shadow-[0_8px_24px_rgba(10,47,36,0.08)] border border-[#132F2C]/500 services-tabs min-w-[350px] md:min-w-[500px] lg:min-w-[600px]">
             <button
-              className={`flex-1 px-2 py-3 rounded-full text-[18px] font-[Urania] services-tab transition-all duration-500 ease-out ${
+              className={`flex-1 px-4 py-1.5 rounded-full text-[14px] md:text-[18px] font-[Urania] services-tab transition-all duration-500 ease-out md:flex-1 md:py-3 ${
                 activeTab === "will"
                   ? "bg-[#132F2C] text-white services-tab-active"
                   : "text-[#4C6B63]"
               }`}
               onClick={() => setActiveTab("will")}
             >
-              Will and Inheritance
+              <span className="md:inline block text-center">Will and</span>
+              <span className="md:inline block text-center"> Inheritance</span>
             </button>
             <button
-              className={`flex-2 px-1 py-4 rounded-full font-[Urania] text-[#132F2C] services-tab transition-all duration-500 ease-out ${
+              className={`flex-1 px-1 py-1.5 rounded-full font-[Urania] text-[14px] md:text-[18px] text-[#132F2C] services-tab transition-all duration-500 ease-out md:flex-2 md:py-4 ${
                 activeTab === "trust"
                   ? "bg-[#132F2C] text-white services-tab-active"
                   : "text-[#4C6B63]"
               }`}
               onClick={() => setActiveTab("trust")}
             >
-              Trust Formation & Management
+              <span className="md:inline block text-center">Trust Formation</span>
+              <span className="md:inline block text-center"> & Management</span>
             </button>
           </div>
         </div>
@@ -205,12 +207,12 @@ const OurServices = ({ initialTab = "will" }) => {
         {/* Cards */}
         <div
           key={tabKey}
-          className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3 justify-items-center services-cards-grid services-tab-enter"
+          className="grid gap-4 mt-1 mb-9 sm:gap-7 sm:grid-cols-2 lg:grid-cols-3 justify-items-center services-cards-grid services-tab-enter -mx-4 sm:mx-0 sm:mt-5 relative z-10"
         >
           {services.map((service) => (
             <div
               key={service.key}
-              className="relative w-full max-w-[344px] h-[429px] sm:max-w-[380px] sm:h-[460px] lg:max-w-[414px] lg:h-[528px] rounded-[6px] overflow-hidden service-card"
+              className="relative w-full max-w-[367px] h-[429px] sm:max-w-[380px] sm:h-[460px] lg:max-w-[414px] lg:h-[528px] rounded-[6px] overflow-hidden service-card"
               style={{
                 backgroundImage: `url(${service.image})`,
                 backgroundSize: "cover",
@@ -221,15 +223,17 @@ const OurServices = ({ initialTab = "will" }) => {
               {/* Transparent inner card */}
               <div className="relative flex items-end h-full px-4 pb-4 lg:px-0 lg:pb-0">
                 <div
-                  className="w-full max-w-[317px] min-h-[339px] mx-auto rounded-[6px]
+                  className="w-full max-w-[347px] min-h-[339px] mx-auto rounded-[6px]
                   border border-white/20
                   px-5 pt-5 pb-5 text-white flex flex-col justify-between service-card-inner
-                  lg:absolute lg:max-w-[374px] lg:min-h-[327px] lg:top-[181px] lg:left-[20px]"
+                  lg:absolute lg:max-w-[374px] lg:min-h-[327px] lg:top-[181px] lg:left-1/2 lg:-translate-x-1/2"
                   style={{
                     backgroundImage: `url(${CardBackground})`,
                     backgroundSize: "120% 130%",
                     backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat"
+                    backgroundRepeat: "no-repeat",
+                    backgroundColor: 'rgba(19, 47, 44, 0.71)',
+                    backdropFilter: 'blur(1px)'
                   }}
                 >
 
@@ -242,7 +246,7 @@ const OurServices = ({ initialTab = "will" }) => {
                       {service.subtitle}
                     </p>
 
-                    <p className="font-[Urania] text-[16px] leading-[22px] service-card-body">
+                    <p className="font-[Urania] text-[16px] leading-[22px] font-regular service-card-body">
                       {service.description}
                     </p>
                   </div>

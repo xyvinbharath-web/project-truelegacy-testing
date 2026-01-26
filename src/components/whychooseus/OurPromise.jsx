@@ -74,7 +74,7 @@ const OurPromise = () => {
     <div className="absolute left-0 top-0 bottom-0 w-1/3 bg-[#F4D57E] rounded-full" />
   </div>
 
-  <p className="font-[Urania] text-[16px] md:text-[18px] lg:text-[22px] leading-snug text-[#132F2C] max-w-[520px]">
+  <p className="font-[Urania] text-[32px] md:text-[18px] lg:text-[22px] leading-snug text-[#132F2C] max-w-[520px]">
     Succession Solutions for all. Tailored for Families, NRIs & Businesses.
   </p>
   

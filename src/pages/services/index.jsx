@@ -28,7 +28,7 @@ function Services() {
       />
       <main className="flex-grow bg-white text-black">
         <OurServices initialTab={initialTab} />
-        <div className="pb-12 md:pb-16 lg:pb-20">
+        <div className="pb-0 md:pb-0 lg:pb-0">
           <FAQComponent />
         </div>
       </main>

@@ -3,6 +3,7 @@ import faqFrameImage from "../assets/img/Framefaq.webp";
 import serviceImage from "../assets/img/Service.webp";
 import faqFrameMobile from "../assets/img/Framefaq.jpg";
 import faqOverlayMobile from "../assets/img/Group 5.png";
+import group6Image from "../assets/img/home/Group 6.png";
 import iconWrap from "../assets/icon/Icon wrap.webp";
 import iconMinus from "../assets/icon/Icon-.webp";
 
@@ -101,7 +102,7 @@ const FAQ = () => {
   return (
     <section
       ref={sectionRef}
-      className={`w-full bg-[#F6FFFF] py-16 md:py-20 lg:py-24 overflow-x-hidden faq-section ${
+      className={`w-full bg-[#F6FFFF] pt-0 pb-0 mb-[-80px] md:pt-16 md:pb-20 lg:pt-24 lg:pb-24 overflow-x-hidden faq-section ${
         isVisible ? "faq-section-visible" : ""
       }`}
     >
@@ -135,7 +136,7 @@ const FAQ = () => {
           {/* RIGHT BLOCK */}
           <div className="flex-1 w-full lg:max-w-[700px] mt-6 lg:mt-0">
             {/* MOBILE HEADING */}
-            <h1 className="lg:hidden font-[Urania] font-bold text-[32px] leading-[36px] text-[#132F2C] mb-4 faq-heading">
+            <h1 className="lg:hidden font-[Urania] font-bold text-[32px] leading-[36px] text-[#132F2C] mb-4 faq-heading" style={{fontFamily: 'Urania', fontWeight: '600 !important', fontStyle: 'Bold', WebkitTextStroke: '0.5px #132F2C', textStroke: '0.5px #132F2C'}}>
               FAQ'S
             </h1>
 
@@ -143,13 +144,13 @@ const FAQ = () => {
             <div className="flex gap-8 border-b border-[#E1E6E4] mb-6 faq-tabs">
               <button
                 onClick={() => setActiveTab("will")}
-                className={`pb-2 font-[Urania] text-[18px] md:text-[24px] font-bold border-b-2 transition-all duration-500 ease-out ${
+                className={`pb-2 font-[Urania] text-[18px] md:text-[24px] font-bold border-b-2 transition-all duration-500 ease-out flex items-center justify-center ${
                   activeTab === "will"
                     ? "border-[#F4D57E] text-[#F4D57E]"
                     : "border-transparent text-[#717171]"
                 }`}
               >
-                Will and Inheritance
+                <span className="text-left ml-10">Will and Inheritance</span>
               </button>
 
               <button
@@ -179,27 +180,17 @@ const FAQ = () => {
                 />
               ))}
             </div>
-
-            {/* MOBILE IMAGE + OVERLAY CARD (bottom) */}
-            <div className="mt-10 lg:hidden relative -mx-20 -ml-6">
-              <div className="overflow-hidden rounded-[10px]">
-                <img
-                  src={faqFrameMobile}
-                  alt="FAQ visual"
-                  className="w-[388px] h-[260px] object-cover"
-                />
-              </div>
-
-              <div className="relative z-10 mt-[-110px] w-[310px] h-[220px] rounded-[10px] overflow-hidden shadow-[0_20px_40px_rgba(10,47,36,0.18)] ml-1">
-                <img
-                  src={serviceImage}
-                  alt="Service"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
           </div>
         </div>
+      </div>
+
+      {/* MOBILE BOTTOM IMAGE */}
+      <div className="lg:hidden w-full">
+        <img
+          src={group6Image}
+          alt="FAQ visual"
+          className="w-full h-auto object-cover"
+        />
       </div>
     </section>
   );
@@ -214,7 +205,7 @@ function FAQItem({ faq, index, openQuestion, setOpenQuestion }) {
         onClick={() => setOpenQuestion(isOpen ? null : index)}
         className="w-full px-3 lg:px-4 py-3 flex justify-between items-center text-left hover:bg-[#F5FAF7] transition-colors"
       >
-        <span className="font-[Urania] text-[#132F2C] text-[18px] faq-question-text">
+        <span className={`font-[Urania] text-[#132F2C] text-[18px] faq-question-text font-medium ${isOpen ? 'text-[20px] md:text-[24px]' : ''}`} style={{fontFamily: 'Urania', fontWeight: '500', WebkitTextStroke: '0.3px #132F2C', textStroke: '0.3px #132F2C'}}>
           {faq.question}
         </span>
         <span className="ml-3 flex-shrink-0">

@@ -69,7 +69,7 @@ const WhoweAreNew = () => {
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 lg:gap-8 items-start">
           {/* Left content */}
           <div className="who-heading-block">
-            <h2 className="font-[Urania] font-weight-[700] font-bold text-[32px] sm:text-[38px] lg:text-[42px] leading-[49px] text-[#132F2C] mb-4 who-heading">
+            <h2 className="text-[32px] sm:text-[38px] lg:text-[42px] leading-[49px] text-[#132F2C] mb-4 who-heading font-black" style={{fontFamily: 'Urania', fontWeight: '700 !important', fontStyle: 'Bold', fontSize: '32px', WebkitTextStroke: '0.5px #132F2C', textStroke: '0.5px #132F2C'}}>
               Who are We?
             </h2>
 
@@ -92,14 +92,14 @@ const WhoweAreNew = () => {
               backgroundSize: "100% 180%",
             }}
           >
-            <p className="text-left who-quote-text text-[24px] lg:text-[32px] mt-0 lg:mt-8 ml-0 lg:ml-8" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'italic', lineHeight: '100%', letterSpacing: '0%', color: '#3D5654'}}>
+            <p className="text-left who-quote-text text-[24px] lg:text-[32px] mt-0 lg:mt-8 ml-0 lg:ml-8" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'italic', lineHeight: '100%', letterSpacing: '0%', color: '#737c7bff'}}>
               “Families deserve peace, clarity, and security when passing on what they have built.”
             </p>
           </div>
         </div>
 
         {/* Cards */}
-        <div className="grid gap-x-10 gap-y-12 md:grid-cols-2 xl:grid-cols-3 justify-items-start md:justify-items-center xl:justify-items-center mt-12 md:mt-16 who-cards-grid">
+        <div className="grid gap-x-10 gap-y-12 md:grid-cols-2 xl:grid-cols-3 justify-items-center justify-center md:justify-items-center xl:justify-items-center mt-12 md:mt-16 who-cards-grid">
           {cards.map((card) => (
             <div
               key={card.title}

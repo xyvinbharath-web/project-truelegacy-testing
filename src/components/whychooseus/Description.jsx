@@ -84,11 +84,11 @@ const Description = () => {
               aria-hidden
               loading="lazy"
               decoding="async"
-              className="hidden lg:block absolute -right-16 -bottom-16 w-[420px] opacity-70 pointer-events-none"
+              className="absolute right-0 -bottom-16 w-[420px] opacity-70 pointer-events-none lg:translate-x-16"
             />
 
             {/* Main image */}
-            <div className="relative z-10 w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] lg:w-[444px] lg:h-[442px] rounded-[8px] ml-auto lg:ml-0">
+            <div className="relative z-10 w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] lg:w-[444px] lg:h-[442px] rounded-[8px] mr-0 lg:translate-x-16">
               <img
                 src={Framedescription}
                 alt="Client consultation"

@@ -65,25 +65,56 @@ const WhyChoose = () => {
   ];
 
   return (
-    <section
-      id="whychooseus-section"
-      className="bg-white text-black px-4 md:px-16 py-10 md:py-16"
-    >
+    <>
+      <style jsx>{`
+        @media (min-width: 1024px) {
+          .why-choose-card {
+            width: 414px !important;
+            height: 451px !important;
+            min-height: 451px !important;
+            border-radius: 6px !important;
+            opacity: 1 !important;
+            transform: rotate(0deg) !important;
+          }
+          .why-choose-card img {
+            width: 359px !important;
+            height: 186px !important;
+            border-radius: 6px !important;
+            opacity: 1 !important;
+            transform: rotate(0deg) !important;
+            position: absolute !important;
+            top: 30px !important;
+            left: 30px !important;
+          }
+          .why-choose-card h3 {
+            position: relative !important;
+            z-index: 10 !important;
+            margin-top: 226px !important;
+            margin-bottom: 12px !important;
+            max-width: 240px !important;
+          }
+          .why-choose-card p {
+            position: relative !important;
+            z-index: 10 !important;
+            margin-top: 0 !important;
+          }
+        }
+      `}</style>
+      <section
+        id="whychooseus-section"
+        className="bg-white text-black px-4 md:px-16 py-10 md:py-16"
+      >
       <div className="max-w-[1440px] mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr">
           {cards.map((card, i) => (
             <div
               key={i}
-              className={`relative bg-[#132F2C] border border-gray-200 shadow-md hover:shadow-xl transition-all duration-300 p-4 sm:p-6 group flex flex-col h-full cursor-pointer ${
+              className={`why-choose-card relative bg-[#132F2C] border border-gray-200 shadow-md hover:shadow-xl transition-all duration-300 p-4 sm:p-6 lg:p-6 group flex flex-col h-full cursor-pointer rounded-[6px] w-full h-auto min-h-[320px] sm:min-h-[400px] ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{
                 width: '100%',
                 maxWidth: '414px',
-                height: 'auto',
-                minHeight: '320px',
-                sm: { minHeight: '400px' },
-                lg: { height: '431px' },
                 borderRadius: '6px',
                 transform: 'rotate(0deg)',
                 transitionDelay: isVisible ? `${i * 150}ms` : '0ms'
@@ -107,6 +138,7 @@ const WhyChoose = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

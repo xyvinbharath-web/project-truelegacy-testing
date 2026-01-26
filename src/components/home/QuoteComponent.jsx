@@ -39,7 +39,7 @@ const QuoteComponent = () => {
 
         {/* LEFT CONTENT — unchanged */}
         <div className="text-left relative z-20 quote-left text-left mx-auto md:text-center md:mx-auto lg:text-left lg:mx-0 md:ml-0 ml-2">
-          <h1 className="font-[Urania] font-bold text-[32px] md:text-[42px] leading-[36px] md:leading-[49px] text-[#132F2C] quote-heading">
+          <h1 className="font-[Urania] font-bold text-[32px] md:text-[42px] leading-[36px] md:leading-[49px] text-[#132F2C] quote-heading" style={{fontFamily: 'Urania', fontWeight: '600 !important', fontStyle: 'Bold', WebkitTextStroke: '0.5px #132F2C', textStroke: '0.5px #132F2C'}}>
             Want to Secure
             <br />
             your Legacy?

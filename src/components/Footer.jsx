@@ -58,7 +58,7 @@ const Footer = ({ hideCta = false }) => {
   return (
     <footer
       ref={footerRef}
-      className={`mt-12 bg-[#0F2724] text-white footer-section ${
+      className={`mt-0 md:mt-12 bg-[#0F2724] text-white footer-section ${
         isVisible ? "footer-section-visible" : ""
       }`}
     >
@@ -70,19 +70,21 @@ const Footer = ({ hideCta = false }) => {
               className="relative -top-10 sm:-top-12 bg-[#F4D57E] rounded-b-[16px] overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.3)] min-h-[390px] animate-fade-in footer-cta-card"
               style={{
                 backgroundImage: `url(${MobileFooterFrame})`,
-                backgroundSize: "67% auto",
+                backgroundSize: "49% auto",
                 backgroundRepeat: "no-repeat",
-                backgroundPosition: "right 28%",
+                backgroundPosition: "right 55%",
               }}
             >
               <div className="px-6 py-8 flex flex-col justify-center h-full">
-                <div className="max-w-[62%]">
-                  <h2 className="text-[22px] leading-snug font-semibold text-[#132F2C] footer-cta-heading animate-fade-in-up" style={{ animationDelay: "200ms" }}>
-                    Still wondering how to
-                    <br />
+                <div className="max-w-[80%]">
+                  <h2 className="text-[32px] leading-snug font-semibold text-[#132F2C] footer-cta-heading animate-fade-in-up" style={{ animationDelay: "200ms", fontWeight: '700'}}>
+                    Still wondering how to{" "}
+                    <span className="hidden md:inline">
+                      <br />
+                    </span>
                     pass down your legacy?
                   </h2>
-                  <p className="mt-4 text-[13px] text-[#132F2C] footer-cta-body animate-fade-in-up" style={{ animationDelay: "400ms" }}>
+                  <p className="mt-4 text-[16px] text-[#132F2C] footer-cta-body animate-fade-in-up" style={{ animationDelay: "400ms" }}>
                     Let our Experts Make it Simple for You. Succession
                     planning is not just about documents — it's about
                     securing your family's peace!
@@ -90,14 +92,14 @@ const Footer = ({ hideCta = false }) => {
                 </div>
                 <div className="mt-9 flex flex-col items-center gap-4 w-full footer-cta-buttons">
                   <button
-                    className="inline-flex w-[88%] max-w-[360px] items-center justify-center rounded-full bg-[#132F2C] px-6 py-3 text-[13px] font-[Urania] font-medium text-white whitespace-nowrap footer-cta-button animate-fade-in-up hover:scale-105 hover:bg-[#0F2724] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+                    className="inline-flex w-[100%] max-w-[360px] items-center justify-center rounded-full bg-[#132F2C] px-6 py-3 text-[16px] font-[Urania] font-medium text-white whitespace-nowrap footer-cta-button animate-fade-in-up hover:scale-105 hover:bg-[#0F2724] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
                     style={{ animationDelay: "600ms" }}
                     onClick={() => setIsScheduleOpen(true)}
                   >
                     Schedule your expert session today
                   </button>
                   <button
-                    className="inline-flex w-[88%] max-w-[360px] items-center justify-center rounded-full bg-[#132F2C] px-6 py-3 text-[13px] font-[Urania] font-medium text-white whitespace-nowrap footer-cta-button animate-fade-in-up hover:scale-105 hover:bg-[#0F2724] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+                    className="inline-flex w-[100%] max-w-[360px] items-center justify-center rounded-full bg-[#132F2C] px-6 py-3 text-[16px] font-[Urania] font-medium text-white whitespace-nowrap footer-cta-button animate-fade-in-up hover:scale-105 hover:bg-[#0F2724] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
                     style={{ animationDelay: "800ms" }}
                     onClick={() => setIsCallbackOpen(true)}
                   >
@@ -112,7 +114,7 @@ const Footer = ({ hideCta = false }) => {
           {/* Overlapping yellow CTA block - desktop */}
           <div className="relative max-w-[1920px] mx-auto px-4 sm:px-8 hidden md:block footer-cta-desktop">
             <div
-              className="relative -top-10 sm:-top-12 md:-top-30 lg:-top-38 xl:-top-52 md:h-[380px] lg:h-[413px] bg-[#F4D57E] rounded?[16px] overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.3)] animate-fade-in footer-cta-card"
+              className="relative -top-10 sm:-top-12 md:-top-30 lg:-top-38 xl:-top-52 md:h-[380px] lg:h-[413px] bg-[#F4D57E] rounded-[6px] overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.3)] animate-fade-in footer-cta-card"
               style={{
                 backgroundImage: `url(${FooterFrame})`,
                 backgroundRepeat: "no-repeat",
@@ -123,9 +125,11 @@ const Footer = ({ hideCta = false }) => {
               <div className="grid h-full grid-cols-1 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1.6fr)] gap-6 md:gap-0 items-center">
                 {/* Left: text + buttons */}
                 <div className="px-10 lg:px-16 xl:px-24 py-4 lg:py-4 flex flex-col justify-center">
-                  <h2 className="text-[22px] sm:text-[26px] lg:text-[30px] leading-snug font-semibold text-[#132F2C] footer-cta-heading">
-                    Still wondering how to
-                    <br />
+                  <h2 className="text-[22px] sm:text-[26px] lg:text-[30px] leading-snug font-semibold text-[#132F2C] footer-cta-heading" style={{fontWeight: '700'}}>
+                    Still wondering how to{" "}
+                    <span className="hidden md:inline">
+                      <br />
+                    </span>
                     pass down your legacy?
                   </h2>
                   <p className="mt-4 text-[13px] sm:text-[14px] text-[#132F2C] max-w-md footer-cta-body">
@@ -156,7 +160,7 @@ const Footer = ({ hideCta = false }) => {
       )}
 
       {/* Main footer content */}
-      <div className="pt-3 pb-2 mt-[-20px] md:mt-[-60px] lg:mt-[-72px] footer-main">
+      <div className="pt-3 pb-2 mt-0 footer-main">
         <div className="max-w-[1550px] mx-auto px-4 sm:px-8 lg:px-6 xl:px-8 footer-main-inner">
           {/* Mobile layout */}
           <div className="md:hidden text-[13px] footer-mobile-block">
