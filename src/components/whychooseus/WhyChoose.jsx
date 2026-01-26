@@ -67,6 +67,51 @@ const WhyChoose = () => {
   return (
     <>
       <style jsx>{`
+        @media (max-width: 1023px) {
+          .why-choose-card {
+            width: 343px !important;
+            height: 428px !important;
+            min-height: 428px !important;
+            border-radius: 6px !important;
+            opacity: 1 !important;
+            transform: rotate(0deg) !important;
+          }
+          .why-choose-card img {
+            width: 303px !important;
+            height: 186px !important;
+            border-radius: 6px !important;
+            opacity: 1 !important;
+            transform: rotate(0deg) !important;
+            position: absolute !important;
+            top: 20px !important;
+            left: 20px !important;
+          }
+          .why-choose-card h3 {
+            position: relative !important;
+            z-index: 10 !important;
+            margin-top: 216px !important;
+            margin-bottom: 12px !important;
+            margin-left: 7px !important;
+            font-family: Urania !important;
+            font-weight: 700 !important;
+            font-style: Bold !important;
+            font-size: 24px !important;
+            max-width: 240px !important;
+          }
+          .why-choose-card p {
+            position: relative !important;
+            z-index: 10 !important;
+            margin-top: 0 !important;
+            margin-left: 7px !important;
+            font-family: Urania !important;
+            font-weight: 400 !important;
+            font-style: Regular !important;
+            font-size: 16px !important;
+            line-height: 22px !important;
+            letter-spacing: 0% !important;
+            max-width: 280px !important;
+          }
+        }
         @media (min-width: 1024px) {
           .why-choose-card {
             width: 414px !important;
@@ -91,12 +136,14 @@ const WhyChoose = () => {
             z-index: 10 !important;
             margin-top: 226px !important;
             margin-bottom: 12px !important;
+            margin-left: 10px !important;
             max-width: 240px !important;
           }
           .why-choose-card p {
             position: relative !important;
             z-index: 10 !important;
             margin-top: 0 !important;
+            margin-left: 10px !important;
           }
         }
       `}</style>

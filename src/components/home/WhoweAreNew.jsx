@@ -151,7 +151,7 @@ const WhoweAreNew = () => {
 
               {/* Content */}
               <div className="mt-5 px-6 pb-8 text-center flex flex-col items-center who-card-body">
-                <h3 className="font-[Urania] font-bold text-[22px] lg:text-[30px] text-[#132F2C] mb-2 who-card-title" style={{fontFamily: 'Urania', fontWeight: '700', fontStyle: 'normal', fontSize: '30px', lineHeight: '100%', letterSpacing: '0%'}}>
+                <h3 className="font-[Urania] font-bold text-[22px] lg:text-[30px] text-[#132F2C] mb-2 who-card-title" style={{fontFamily: 'Urania', fontWeight: '600', fontStyle: 'normal', fontSize: '30px', lineHeight: '100%', letterSpacing: '0%'}}>
                   {card.title}
                 </h3>
 

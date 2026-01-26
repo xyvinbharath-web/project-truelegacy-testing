@@ -64,7 +64,7 @@ const QuoteComponent = () => {
         </div>
 
         {/* RIGHT IMAGE BLOCK */}
-        <div className="relative mt-8 md:mt-0 flex justify-center md:justify-center ml-0 md:ml-20 lg:ml-22 quote-right">
+        <div className="relative mt-8 md:mt-0 flex justify-center md:justify-center ml-0 md:ml-20 lg:ml-22 quote-right overflow-visible">
           {/* 🔸 DESKTOP decorative background — unchanged */}
           <img
             src={legacyBackground}
@@ -94,7 +94,7 @@ const QuoteComponent = () => {
           />
 
           {/* 🔹 Image */}
-          <div className="relative z-20 w-[285px] h-[284px] md:w-[499px] md:h-[496px] overflow-hidden md:ml-1 ml-23">
+          <div className="relative z-20 w-[285px] h-[284px] md:w-[499px] md:h-[496px] overflow-visible md:ml-1 ml-23 md:relative md:right-auto absolute right-[-30px] sm:right-[-25px] max-[380px]:right-[-35px] sm:w-[250px] sm:h-[250px] max-[380px]:w-[220px] max-[380px]:h-[220px]">
             <img
               src={secureYourLegacyImage}
               alt="Secure your legacy"
