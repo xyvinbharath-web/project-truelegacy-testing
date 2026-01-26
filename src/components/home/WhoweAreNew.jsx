@@ -64,12 +64,12 @@ const WhoweAreNew = () => {
       }`}
     >
       {/* Container */}
-      <div className="max-w-[1450px] mx-auto px-6 lg:px-8">
+      <div className="max-w-[1450px] mx-auto px-4 lg:px-8">
         {/* Top section */}
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 lg:gap-8 items-start">
           {/* Left content */}
           <div className="who-heading-block">
-            <h2 className="font-[Urania] font-bold text-[32px] sm:text-[38px] lg:text-[42px] leading-[49px] text-[#132F2C] mb-4 who-heading">
+            <h2 className="font-[Urania] font-weight-[700] font-bold text-[32px] sm:text-[38px] lg:text-[42px] leading-[49px] text-[#132F2C] mb-4 who-heading">
               Who are We?
             </h2>
 
@@ -99,11 +99,11 @@ const WhoweAreNew = () => {
         </div>
 
         {/* Cards */}
-        <div className="grid gap-x-10 gap-y-12 md:grid-cols-2 xl:grid-cols-3 justify-items-center mt-12 md:mt-16 who-cards-grid">
+        <div className="grid gap-x-10 gap-y-12 md:grid-cols-2 xl:grid-cols-3 justify-items-start md:justify-items-center xl:justify-items-center mt-12 md:mt-16 who-cards-grid">
           {cards.map((card) => (
             <div
               key={card.title}
-              className="who-card bg-white shadow-[0_10px_30px_rgba(5,41,26,0.08)] overflow-hidden h-[394px] lg:h-[475px] w-full lg:w-[457px]"
+              className="who-card bg-white shadow-[0_10px_30px_rgba(5,41,26,0.08)] overflow-hidden h-[394px] lg:h-[475px] w-[359px] lg:w-[457px]"
               style={{
                 maxWidth: "467px",
                 borderRadius: "6px",

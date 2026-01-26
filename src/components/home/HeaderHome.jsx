@@ -201,7 +201,7 @@ const HeaderHome = () => {
           src={legacyBackground}
           alt="Succession Planning"
           className="absolute inset-0 w-full h-full object-cover block md:hidden lg:hidden"
-          style={{ top: '0', objectPosition: 'center center', width: '100%', height: '100%' }}
+          style={{ top: '0', objectPosition: '100% center', width: '100%', height: '100%' }}
         />
         {/* Tablet background image (cropped Banner) */}
         <img

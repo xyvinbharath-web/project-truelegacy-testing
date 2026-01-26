@@ -9,6 +9,7 @@ import trustframe2 from "../../assets/img/service/trustframe2.webp";
 import trustframe3 from "../../assets/img/service/trustframe3.webp";
 import trustframe4 from "../../assets/img/service/trustframe4.webp";
 import trustframe5 from "../../assets/img/service/trustframe5.webp";
+import CardBackground from "../../assets/img/service/Card.webp";
 const ServiceModal = lazy(() => import("./ServiceModal"));
 
 const willServices = [
@@ -172,16 +173,14 @@ const OurServices = ({ initialTab = "will" }) => {
         isVisible ? "services-section-visible" : ""
       }`}
     >
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-[32px] sm:text-[36px] lg:text-[40px] font-[Urania] font-semibold text-[#132F2C] text-center mb-8 services-heading">
-          Our Services
-        </h2>
+      <div className="max-w-7xl mx-auto">
+        
 
         {/* Tabs */}
-        <div className="flex justify-center mb-10 services-tabs-wrap">
-          <div className="inline-flex rounded-full bg-white p-1 shadow-[0_8px_24px_rgba(10,47,36,0.08)] border border-[#132F2C]/50 services-tabs">
+        <div className="flex justify-center mb-15 services-tabs-wrap">
+          <div className="inline-flex rounded-full bg-white px-5 py-2 shadow-[0_8px_24px_rgba(10,47,36,0.08)] border border-[#132F2C]/500 services-tabs min-w-[400px] sm:min-w-[500px] lg:min-w-[600px]">
             <button
-              className={`px-6 py-2 rounded-full font-[Urania] services-tab transition-all duration-500 ease-out ${
+              className={`flex-1 px-2 py-3 rounded-full text-[18px] font-[Urania] services-tab transition-all duration-500 ease-out ${
                 activeTab === "will"
                   ? "bg-[#132F2C] text-white services-tab-active"
                   : "text-[#4C6B63]"
@@ -191,7 +190,7 @@ const OurServices = ({ initialTab = "will" }) => {
               Will and Inheritance
             </button>
             <button
-              className={`px-6 py-2 rounded-full font-[Urania] services-tab transition-all duration-500 ease-out ${
+              className={`flex-2 px-1 py-4 rounded-full font-[Urania] text-[#132F2C] services-tab transition-all duration-500 ease-out ${
                 activeTab === "trust"
                   ? "bg-[#132F2C] text-white services-tab-active"
                   : "text-[#4C6B63]"
@@ -206,28 +205,32 @@ const OurServices = ({ initialTab = "will" }) => {
         {/* Cards */}
         <div
           key={tabKey}
-          className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 justify-items-center services-cards-grid services-tab-enter"
+          className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3 justify-items-center services-cards-grid services-tab-enter"
         >
           {services.map((service) => (
             <div
               key={service.key}
-              className="relative w-full max-w-[344px] h-[429px] sm:max-w-[380px] sm:h-[460px] lg:max-w-[414px] lg:h-[528px] rounded-[6px] overflow-hidden shadow-[0_14px_40px_rgba(10,47,36,0.55)] service-card"
+              className="relative w-full max-w-[344px] h-[429px] sm:max-w-[380px] sm:h-[460px] lg:max-w-[414px] lg:h-[528px] rounded-[6px] overflow-hidden service-card"
               style={{
                 backgroundImage: `url(${service.image})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
             >
-              {/* Dark image overlay */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#132F2C]/40 to-[#132F2C]/85" />
-
-              {/* Transparent inner card (outer mobile frame ~344x429, inner ~317x339) */}
-              <div className="relative flex items-end h-full px-4 pb-4">
+              
+              {/* Transparent inner card */}
+              <div className="relative flex items-end h-full px-4 pb-4 lg:px-0 lg:pb-0">
                 <div
                   className="w-full max-w-[317px] min-h-[339px] mx-auto rounded-[6px]
-                  bg-white/10 backdrop-blur-md
                   border border-white/20
-                  px-5 pt-5 pb-5 text-white flex flex-col justify-between service-card-inner"
+                  px-5 pt-5 pb-5 text-white flex flex-col justify-between service-card-inner
+                  lg:absolute lg:max-w-[374px] lg:min-h-[327px] lg:top-[181px] lg:left-[20px]"
+                  style={{
+                    backgroundImage: `url(${CardBackground})`,
+                    backgroundSize: "120% 130%",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat"
+                  }}
                 >
 
                   <div>

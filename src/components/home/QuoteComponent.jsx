@@ -35,10 +35,10 @@ const QuoteComponent = () => {
         isVisible ? "quote-section-visible" : ""
       }`}
     >
-      <div className="relative max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 grid gap-1 lg:gap-6 lg:grid-cols-2 md:grid-cols-1 text-center items-center">
+      <div className="relative max-w-[1450px] mx-auto px-4 sm:px-6 lg:px-8 grid gap-1 lg:gap-6 lg:grid-cols-2 md:grid-cols-1 text-center lg:text-left items-center">
 
         {/* LEFT CONTENT — unchanged */}
-        <div className="text-left relative z-20 quote-left text-center mx-auto md:text-center md:mx-auto">
+        <div className="text-left relative z-20 quote-left text-left mx-auto md:text-center md:mx-auto lg:text-left lg:mx-0 md:ml-0 ml-2">
           <h1 className="font-[Urania] font-bold text-[32px] md:text-[42px] leading-[36px] md:leading-[49px] text-[#132F2C] quote-heading">
             Want to Secure
             <br />
@@ -72,7 +72,7 @@ const QuoteComponent = () => {
             aria-hidden="true"
             loading="lazy"
             decoding="async"
-            className="hidden md:block absolute z-10 left-[-350px] bottom-[-1px] w-[420px] pointer-events-none"
+            className="hidden md:block absolute z-10 left-[-300px] bottom-[-1px] w-[420px] pointer-events-none "
           />
 
           {/* 🔸 MOBILE decorative background */}
@@ -86,21 +86,21 @@ const QuoteComponent = () => {
               md:hidden
               absolute
               z-10
-              left-[-40px]
-              bottom-[-30px]
+              left-[-50px]
+              bottom-[-1px]
               w-[220px]
               pointer-events-none
             "
           />
 
           {/* 🔹 Image */}
-          <div className="relative z-20 w-[285px] h-[284px] md:w-[499px] md:h-[496px] overflow-hidden">
+          <div className="relative z-20 w-[285px] h-[284px] md:w-[499px] md:h-[496px] overflow-hidden md:ml-1 ml-23">
             <img
               src={secureYourLegacyImage}
               alt="Secure your legacy"
               loading="lazy"
               decoding="async"
-              className="w-full h-full object-cover transition-transform duration-300 hover:scale-105 cursor-pointer"
+              className="w-full h-full object-cover transition-transform duration-300 hover:scale-105 cursor-pointer "
             />
           </div>
         </div>

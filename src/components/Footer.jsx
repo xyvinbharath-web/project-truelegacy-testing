@@ -90,14 +90,14 @@ const Footer = ({ hideCta = false }) => {
                 </div>
                 <div className="mt-9 flex flex-col items-center gap-4 w-full footer-cta-buttons">
                   <button
-                    className="inline-flex w-[88%] max-w-[360px] items-center justify-center rounded-full bg-[#132F2C] px-6 py-3 text-[13px] font-[Urania] font-medium text-white whitespace-nowrap footer-cta-button animate-fade-in-up hover:scale-105 transition-transform"
+                    className="inline-flex w-[88%] max-w-[360px] items-center justify-center rounded-full bg-[#132F2C] px-6 py-3 text-[13px] font-[Urania] font-medium text-white whitespace-nowrap footer-cta-button animate-fade-in-up hover:scale-105 hover:bg-[#0F2724] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
                     style={{ animationDelay: "600ms" }}
                     onClick={() => setIsScheduleOpen(true)}
                   >
                     Schedule your expert session today
                   </button>
                   <button
-                    className="inline-flex w-[88%] max-w-[360px] items-center justify-center rounded-full bg-[#132F2C] px-6 py-3 text-[13px] font-[Urania] font-medium text-white whitespace-nowrap footer-cta-button animate-fade-in-up hover:scale-105 transition-transform"
+                    className="inline-flex w-[88%] max-w-[360px] items-center justify-center rounded-full bg-[#132F2C] px-6 py-3 text-[13px] font-[Urania] font-medium text-white whitespace-nowrap footer-cta-button animate-fade-in-up hover:scale-105 hover:bg-[#0F2724] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
                     style={{ animationDelay: "800ms" }}
                     onClick={() => setIsCallbackOpen(true)}
                   >
@@ -135,13 +135,13 @@ const Footer = ({ hideCta = false }) => {
                   </p>
                   <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4 footer-cta-buttons">
                     <button
-                      className="inline-flex w-full sm:w-auto sm:min-w-[270px] items-center justify-center rounded-full bg-[#132F2C] px-6 sm:px-10 py-3 text-[13px] sm:text-[14px] font-[Urania] text-white whitespace-nowrap footer-cta-button"
+                      className="inline-flex w-full sm:w-auto sm:min-w-[270px] items-center justify-center rounded-full bg-[#132F2C] px-6 sm:px-10 py-3 text-[13px] sm:text-[14px] font-[Urania] text-white whitespace-nowrap footer-cta-button hover:scale-105 hover:bg-[#0F2724] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
                       onClick={() => setIsScheduleOpen(true)}
                     >
                       Schedule your expert session today
                     </button>
                     <button
-                      className="inline-flex w-full sm:w-auto sm:min-w-[220px] items-center justify-center rounded-full bg-[#132F2C] px-6 sm:px-10 py-3 text-[13px] sm:text-[14px] font-[Urania] text-white whitespace-nowrap footer-cta-button"
+                      className="inline-flex w-full sm:w-auto sm:min-w-[220px] items-center justify-center rounded-full bg-[#132F2C] px-6 sm:px-10 py-3 text-[13px] sm:text-[14px] font-[Urania] text-white whitespace-nowrap footer-cta-button hover:scale-105 hover:bg-[#0F2724] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
                       onClick={() => setIsCallbackOpen(true)}
                     >
                       Request a Call Back
@@ -157,26 +157,26 @@ const Footer = ({ hideCta = false }) => {
 
       {/* Main footer content */}
       <div className="pt-3 pb-2 mt-[-20px] md:mt-[-60px] lg:mt-[-72px] footer-main">
-        <div className="max-w-[1920px] mx-auto px-4 sm:px-10 lg:px-10 footer-main-inner">
+        <div className="max-w-[1550px] mx-auto px-4 sm:px-8 lg:px-6 xl:px-8 footer-main-inner">
           {/* Mobile layout */}
           <div className="md:hidden text-[13px] footer-mobile-block">
             {/* Top row: Phone/Email/Follow Us + Quick Links */}
             <div className="flex gap-8 pb-5 border-b border-[#193C38]">
               <div className="flex-1">
-                <div className="text-[12px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "100ms" }}>
+                <div className="text-[18px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "100ms" }}>
                   Phone
                 </div>
-                <div className="space-y-1 mb-4 text-[#F4D57E] footer-text-group animate-fade-in-up" style={{ animationDelay: "200ms" }}>
+                <div className="space-y-1 mb-4 text-[#F4D57E] text-[16px] footer-text-group animate-fade-in-up" style={{ animationDelay: "200ms" }}>
                   <div className="font-medium footer-text">+91 7592 912 300 (IN)</div>
                   <div className="font-medium footer-text">+971 58 929 148 (UAE)</div>
                 </div>
-                <div className="text-[12px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "300ms" }}>
+                <div className="text-[18px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "300ms" }}>
                   Email
                 </div>
-                <div className="text-[#F4D57E] text-[13px] mb-4 footer-text animate-fade-in-up" style={{ animationDelay: "400ms" }}>
+                <div className="text-[#F4D57E] text-[16px] mb-4 footer-text animate-fade-in-up" style={{ animationDelay: "400ms" }}>
                   info@truelegacy.in
                 </div>
-                <div className="text-[12px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "500ms" }}>
+                <div className="text-[18px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "500ms" }}>
                   Follow Us
                 </div>
                 <div className="flex items-center gap-3 footer-social animate-fade-in-up" style={{ animationDelay: "600ms" }}>
@@ -187,17 +187,17 @@ const Footer = ({ hideCta = false }) => {
                       target="_blank"
                       rel="noreferrer"
                       aria-label={social.name}
-                      className="inline-flex hover:scale-110 transition-transform"
+                      className="inline-flex hover:scale-125 hover:rotate-6 transition-all duration-300 cursor-pointer"
                       style={{ animationDelay: `${600 + index * 100}ms` }}
                     >
-                      <img src={social.icon} alt={social.name} className="h-5 w-5" />
+                      <img src={social.icon} alt={social.name} className="h-6 w-6" />
                     </a>
                   ))}
                 </div>
               </div>
 
               <div className="flex-1">
-                <div className="text-[12px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "700ms" }}>
+                <div className="text-[18px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "700ms" }}>
                   Quick Links
                 </div>
                 <div className="space-y-1 text-[#A1A1A1] footer-links">
@@ -211,7 +211,7 @@ const Footer = ({ hideCta = false }) => {
                     <NavLink
                       key={link.to}
                       to={link.to}
-                      className="block text-[16px] hover:text-[#F4D57E] transition-colors animate-fade-in-up"
+                      className="block text-[16px] hover:text-[#F4D57E] hover:translate-x-1 transition-all duration-300 cursor-pointer animate-fade-in-up"
                       style={{ animationDelay: `${800 + index * 100}ms` }}
                     >
                       {link.text}
@@ -226,7 +226,7 @@ const Footer = ({ hideCta = false }) => {
               <div className="text-[18px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "1300ms" }}>
                 Address
               </div>
-              <p className="text-[13px] leading-relaxed text-[#A1A1A1] footer-text animate-fade-in-up" style={{ animationDelay: "1400ms" }}>
+              <p className="text-[16px] leading-relaxed text-[#A1A1A1] footer-text animate-fade-in-up" style={{ animationDelay: "1400ms" }}>
                 Wazeal Fintech Private Limited,
                 <br />
                 2nd Floor, Imperial Annex, NH Bypass,
@@ -237,71 +237,71 @@ const Footer = ({ hideCta = false }) => {
           </div>
 
           {/* Desktop layout */}
-          <div className="hidden md:grid md:grid-cols-5 gap-0 text-[13px] sm:text-[14px] footer-desktop-grid">
+          <div className="hidden md:grid md:grid-cols-5 gap-8 text-[13px] sm:text-[14px] footer-desktop-grid">
             {/* Phone & Email */}
             <div className="pb-4 md:pb-6 border-b border-[#193C38] footer-col">
-              <div className="text-[12px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
+              <div className="text-[20px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
                 Phone
               </div>
-              <div className="space-y-1 mb-4 text-[#F4D57E] footer-text-group animate-fade-in">
+              <div className="space-y-1 mb-4 text-[16px] text-[#F4D57E] footer-text-group animate-fade-in">
                 <div className="font-medium footer-text">+91 7592 912 300 (IN)</div>
                 <div className="font-medium footer-text">+971 58 929 148 (UAE)</div>
               </div>
-              <div className="text-[12px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
+              <div className="text-[20px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
                 Email
               </div>
-              <div className="text-[#F4D57E] text-[13px] footer-text animate-fade-in">
+              <div className="text-[#F4D57E] text-[16px] footer-text animate-fade-in">
                 info@truelegacy.in
               </div>
             </div>
 
             {/* Address */}
             <div className="md:border-l md:border-[#1D3C36] md:pl-8 pb-4 md:pb-6 border-b border-[#193C38] footer-col">
-              <div className="text-[12px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
+              <div className="text-[20px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
                 Address
               </div>
-              <p className="text-[13px] leading-relaxed text-[#A1A1A1] footer-text animate-fade-in">
+              <p className="text-[16px] leading-relaxed text-[#A1A1A1] footer-text animate-fade-in">
                 Wazeal Fintech Private Limited,
-                <br />
+                
                 2nd Floor, Imperial Annex, NH Bypass,
-                <br />
+               
                 Vyttila, Kochi, Kerala 682019, India
               </p>
             </div>
 
             {/* Quick Links */}
             <div className="md:border-l md:border-[#1D3C36] md:pl-8 pb-4 md:pb-6 border-b border-[#193C38] footer-col">
-              <div className="text-[12px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
+              <div className="text-[20px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
                 Quick Links
               </div>
               <div className="space-y-1 text-[#A1A1A1] footer-links animate-fade-in">
                 <NavLink
                   to="/"
-                  className="block hover:text-[#F4D57E] transition-colors"
+                  className="block text-[16px] hover:text-[#F4D57E] transition-colors"
                 >
                   Home
                 </NavLink>
                 <NavLink
                   to="/why-choose-us"
-                  className="block hover:text-[#F4D57E] transition-colors"
+                  className="block text-[16px] hover:text-[#F4D57E] transition-colors"
                 >
                   Why Choose Us
                 </NavLink>
                 <NavLink
                   to="/services"
-                  className="block hover:text-[#F4D57E] transition-colors"
+                  className="block text-[16px] hover:text-[#F4D57E] transition-colors"
                 >
                   Services
                 </NavLink>
                 <NavLink
                   to="/resources"
-                  className="block hover:text-[#F4D57E] transition-colors"
+                  className="block text-[16px] hover:text-[#F4D57E] transition-colors"
                 >
                   Resources
                 </NavLink>
                 <NavLink
                   to="/contact"
-                  className="block hover:text-[#F4D57E] transition-colors"
+                  className="block text-[16px] hover:text-[#F4D57E] transition-colors"
                 >
                   Contact
                 </NavLink>
@@ -310,10 +310,10 @@ const Footer = ({ hideCta = false }) => {
 
             {/* Follow Us */}
             <div className="md:border-l md:border-[#1D3C36] md:pl-8 pb-4 md:pb-6 border-b border-[#193C38] footer-col">
-              <div className="text-[12px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
+              <div className="text-[20px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
                 Follow Us
               </div>
-              <div className="flex items-center gap-3 footer-social animate-fade-in">
+              <div className="flex items-center gap-5 footer-social animate-fade-in">
                 {socials.map((social) => (
                   <a
                     key={social.name}
@@ -323,15 +323,15 @@ const Footer = ({ hideCta = false }) => {
                     aria-label={social.name}
                     className="inline-flex"
                   >
-                    <img src={social.icon} alt={social.name} className="h-5 w-5" />
+                    <img src={social.icon} alt={social.name} className="h-7 w-7" />
                   </a>
                 ))}
               </div>
             </div>
 
             {/* Blurb (desktop only) */}
-            <div className="md:border-l md:border-[#1D3C36] md:pl-8 pb-4 md:pb-6 border-b border-[#193C38] footer-col">
-              <p className="text-[13px] leading-relaxed text-[#A1A1A1] footer-blurb animate-fade-in">
+            <div className="md:border-0.5 md:border-[#1D3C36] md:pl-1 pb-4 md:pb-6 border-b border-[#193C38] footer-col">
+              <p className="text-[16px] leading-relaxed text-[#A1A1A1] footer-blurb animate-fade-in">
                 Helping families plan, protect, and
                 pass on their legacy with clarity and
                 confidence.
@@ -340,18 +340,33 @@ const Footer = ({ hideCta = false }) => {
           </div>
 
           {/* Bottom row */}
-          <div className="mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[12px] text-[#A3B4B0] footer-bottom">
+          <div className="mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[14px] text-[#A3B4B0] footer-bottom">
             <div className="flex flex-wrap items-center gap-3">
-              <NavLink to="/privacy-policy" className="hover:text-[#F4D57E] transition-colors">
+              <NavLink to="/privacy-policy" className="hover:text-[#F4D57E] hover:underline hover:underline-offset-2 transition-all duration-300 cursor-pointer">
                 Privacy Policy
               </NavLink>
-              <span className="w-1 h-1 rounded-full bg-[#A3B4B0]" />
-              <NavLink to="/terms-of-service" className="hover:text-[#F4D57E] transition-colors">
+              <span className="w-1 h-1 rounded-full bg-[#F4D57E]" />
+              <NavLink to="/terms-of-service" className="hover:text-[#F4D57E] hover:underline hover:underline-offset-2 transition-all duration-300 cursor-pointer">
                 Terms of Service
               </NavLink>
             </div>
-            <div className="text-[11px] sm:text-[12px]">
+            
+           
+            <div className="w-full h-px bg-[#193C38] sm:hidden"></div>
+            
+            <div className="text-[14px] sm:text-[12px]">
               ©2025 TRUE LEGACY. ALL RIGHTS RESERVED
+            </div>
+            <div className="w-full h-px bg-[#193C38] sm:hidden"></div>
+            <div className="flex flex-col items-start gap-1">
+              <a
+                href="https://www.xyvin.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-secondary text-sm hover:underline hover:text-yellow active:text-yellow cursor-pointer transition-colors"
+              >
+                MADE BY XYVIN TECHNOLOGIES
+              </a>
             </div>
           </div>
         </div>

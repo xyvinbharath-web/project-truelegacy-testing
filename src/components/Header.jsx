@@ -1,21 +1,23 @@
-import Frameservice from "../assets/img/service/Frameservice.webp";
+import FrameMobile from "../assets/img/service/Frame 2147224829.webp";
+import FrameDesktop from "../assets/img/service/Frame 1.webp";
 import ServicesAccent from "../assets/icon/Vectorlogo6904.webp";
 
 const Header = ({ title, subtitle }) => {
   return (
     <header className="relative w-full">
-      <div
-        className="relative w-full h-[260px] sm:h-[320px] lg:h-[360px] xl:h-[400px] overflow-hidden"
-        style={{
-          backgroundImage: `url(${Frameservice})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        {/* subtle dark tint so text stays readable but image is clearly visible */}
-        <div className="absolute inset-0 bg-[#132F2C]/45 animate-fade-in" />
-
-        <div className="relative h-full max-w-[1300px] mx-auto px-4 md:px-10 flex flex-col justify-end pb-10 md:pb-14 lg:pb-16 animate-fade-up">
+      <div className="relative w-full h-[260px] sm:h-[320px] lg:h-[360px] xl:h-[400px] overflow-hidden">
+        {/* Mobile background image */}
+        <div 
+          className="absolute inset-0 sm:hidden bg-cover bg-center"
+          style={{ backgroundImage: `url(${FrameMobile})` }}
+        />
+        
+        {/* Desktop background image */}
+        <div 
+          className="absolute inset-0 hidden sm:block bg-cover bg-center"
+          style={{ backgroundImage: `url(${FrameDesktop})` }}
+        />
+        <div className="relative h-full max-w-[1450px] mx-auto px-4 md:px-10 flex flex-col justify-end pb-10 md:pb-14 lg:pb-16 animate-fade-up">
           {/* Title + yellow accent icon */}
           <div className="inline-flex items-center gap-3 mb-2">
             <h1
