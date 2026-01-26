@@ -214,6 +214,8 @@ const OurServices = ({ initialTab = "will" }) => {
               key={service.key}
               className="relative w-full max-w-[367px] h-[429px] sm:max-w-[380px] sm:h-[460px] lg:max-w-[414px] lg:h-[528px] rounded-[6px] overflow-hidden service-card"
               style={{
+                width: 'calc(100vw - 32px)',
+                maxWidth: 'calc(100vw - 32px)',
                 backgroundImage: `url(${service.image})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
@@ -228,6 +230,8 @@ const OurServices = ({ initialTab = "will" }) => {
                   px-5 pt-5 pb-5 text-white flex flex-col justify-between service-card-inner
                   lg:absolute lg:max-w-[374px] lg:min-h-[327px] lg:top-[181px] lg:left-1/2 lg:-translate-x-1/2"
                   style={{
+                    width: 'calc(100% - 32px)',
+                    maxWidth: 'calc(100% - 32px)',
                     backgroundImage: `url(${CardBackground})`,
                     backgroundSize: "120% 130%",
                     backgroundPosition: "center",

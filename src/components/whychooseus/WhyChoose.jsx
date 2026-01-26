@@ -69,7 +69,7 @@ const WhyChoose = () => {
       <style jsx>{`
         @media (max-width: 1023px) {
           .why-choose-card {
-            width: 343px !important;
+            width: calc(100vw - 32px) !important;
             height: 428px !important;
             min-height: 428px !important;
             border-radius: 6px !important;
@@ -77,7 +77,7 @@ const WhyChoose = () => {
             transform: rotate(0deg) !important;
           }
           .why-choose-card img {
-            width: 303px !important;
+            width: calc(100% - 40px) !important;
             height: 186px !important;
             border-radius: 6px !important;
             opacity: 1 !important;
@@ -151,8 +151,8 @@ const WhyChoose = () => {
         id="whychooseus-section"
         className="bg-white text-black px-4 md:px-16 py-10 md:py-16"
       >
-      <div className="max-w-[1440px] mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr">
+      <div className="max-w-[1440px] mx-auto md:px-0 sm:px-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr -mx-4 sm:mx-0 md:mx-0 justify-items-center">
           {cards.map((card, i) => (
             <div
               key={i}

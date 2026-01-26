@@ -64,7 +64,7 @@ const WhoweAreNew = () => {
       }`}
     >
       {/* Container */}
-      <div className="max-w-[1450px] mx-auto px-4 lg:px-8">
+      <div className="max-w-[1450px] mx-auto px-4 lg:px-8 md:px-4">
         {/* Top section */}
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 lg:gap-8 items-start">
           {/* Left content */}
@@ -99,13 +99,12 @@ const WhoweAreNew = () => {
         </div>
 
         {/* Cards */}
-        <div className="grid gap-x-10 gap-y-12 md:grid-cols-2 xl:grid-cols-3 justify-items-center justify-center md:justify-items-center xl:justify-items-center mt-12 md:mt-16 who-cards-grid">
+        <div className="grid gap-x-10 gap-y-12 md:grid-cols-2 xl:grid-cols-3 justify-items-center justify-center md:justify-items-center xl:justify-items-center mt-12 md:mt-16 who-cards-grid -mx-4 md:mx-0 px-4 md:px-0">
           {cards.map((card) => (
             <div
               key={card.title}
-              className="who-card bg-white shadow-[0_10px_30px_rgba(5,41,26,0.08)] overflow-hidden h-[394px] lg:h-[475px] w-[359px] lg:w-[457px]"
+              className="who-card bg-white shadow-[0_10px_30px_rgba(5,41,26,0.08)] overflow-hidden h-[394px] lg:h-[475px] w-[calc(100vw-32px)] md:w-[359px] lg:w-[457px] md:max-w-[467px]"
               style={{
-                maxWidth: "467px",
                 borderRadius: "6px",
               }}
             >
@@ -114,7 +113,7 @@ const WhoweAreNew = () => {
                 <div
                   className="overflow-hidden bg-[#05281F] who-card-image"
                   style={{
-                    width: "319px",
+                    width: "calc(100% - 40px)",
                     height: "180px",
                     borderRadius: "6px",
                   }}

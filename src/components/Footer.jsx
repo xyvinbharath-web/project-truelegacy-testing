@@ -58,7 +58,7 @@ const Footer = ({ hideCta = false }) => {
   return (
     <footer
       ref={footerRef}
-      className={`mt-0 md:mt-12 bg-[#0F2724] text-white footer-section ${
+      className={`mt-0 md:mt-4 bg-[#0F2724] text-white footer-section ${
         isVisible ? "footer-section-visible" : ""
       }`}
     >

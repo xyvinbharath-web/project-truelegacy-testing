@@ -27,26 +27,26 @@ const OurPromise = () => {
   return (
     <section
       id="our-promise-section"
-      className="bg-[#F6FFFF] text-black px-4 md:px-16 py-10 md:py-16"
+      className="bg-[#F6FFFF] text-black px-6 md:px-4 lg:px-16 py-10 md:py-4 lg:py-16"
     >
-      <div className="max-w-[1440px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+      <div className="max-w-[1440px] mx-auto md:px-0 sm:px-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start -mx-4 sm:mx-0 md:mx-0">
           {/* LEFT TEXT CONTENT */}
           <div
             className={`order-1 lg:order-1 transition-all duration-700 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-  <h2 className="font-[Urania] font-semibold text-[32px] md:text-[36px] lg:text-[42px] text-[#132F2C] mb-5">
+  <h2 className="font-[Urania] font-semibold text-[32px] md:text-[36px] lg:text-[42px] text-[#132F2C] mb-5" style={{fontFamily: 'Urania', fontWeight: '700', fontStyle: 'Bold', fontSize: '32px', lineHeight: '49px', letterSpacing: '0%'}}>
     Our Promise
   </h2>
 
-  <p className="font-[Urania] font-medium text-[18px] md:text-[20px] lg:text-[22px] leading-snug text-[#132F2C] mb-6 max-w-[520px]">
+  <p className="font-[Urania] font-medium text-[24px] md:text-[20px] lg:text-[22px] leading-snug text-[#132F2C] mb-6 max-w-[520px]" style={{fontFamily: 'Urania', fontWeight: '500', fontStyle: 'Medium', fontSize: '24px', lineHeight: '100%', letterSpacing: '0%'}}>
     No matter your situation, you are not alone.
     We're here to guide you every step of the way.
   </p>
 
-  <p className="font-[Urania] text-[14px] md:text-[15px] lg:text-[16px] leading-[22px] md:leading-[24px] lg:leading-[26px] text-[#2F4F4A] mb-8 max-w-[520px]">
+  <p className="font-[Urania] text-[16px] md:text-[15px] lg:text-[16px] leading-[22px] md:leading-[24px] lg:leading-[26px] text-[#2F4F4A] mb-8 max-w-[720px]" style={{fontFamily: 'Urania', fontWeight: '400', fontStyle: 'Regular', fontSize: '16px', lineHeight: '28px', letterSpacing: '0%'}}>
     We help families, NRIs, and individuals plan their inheritance the right
     way. Many of you have worked hard your entire lives and leave behind your
     wealth in confusion because there is no clear Will or plan. We're a team of
@@ -58,8 +58,8 @@ const OurPromise = () => {
   {/* CTA */}
   <div className="mb-10">
     <button
-      className="flex items-center justify-center text-[14px] md:text-[16px] lg:text-[18px] font-[Urania] text-white bg-[#132F2C] border border-[#132F2C] rounded-[66px] h-[44px] md:h-[48px] lg:h-[51px] px-6 md:px-8"
-      style={{ width: "clamp(250px, 70vw, 310px)" }}
+      className="flex items-center justify-center text-[18px] md:text-[16px] lg:text-[18px] font-[Urania] text-white bg-[#132F2C] border border-[#132F2C] rounded-[66px] h-[56px] md:h-[48px] lg:h-[51px] px-6 md:px-8 w-full md:w-auto"
+      style={{ fontFamily: 'Urania', fontWeight: '500', fontStyle: 'Medium', fontSize: '18px', lineHeight: '100%', letterSpacing: '0%' }}
       onClick={() => navigate('/succession')}
     >
       Start Estate Planning Today
@@ -67,14 +67,14 @@ const OurPromise = () => {
   </div>
 
   {/* Divider: thin grey line with thicker yellow segment */}
-  <div className="relative w-full max-w-[520px] mb-6 h-[6px]">
+  <div className="relative w-full max-w-[720px] mb-6 h-[6px]">
     {/* Grey base line (thin, centered) */}
     <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2px] bg-[#D6E0DE]" />
     {/* Yellow segment (thicker) */}
     <div className="absolute left-0 top-0 bottom-0 w-1/3 bg-[#F4D57E] rounded-full" />
   </div>
 
-  <p className="font-[Urania] text-[32px] md:text-[18px] lg:text-[22px] leading-snug text-[#132F2C] max-w-[520px]">
+  <p className="font-[Urania] text-[24px] md:text-[18px] lg:text-[22px] leading-snug text-[#132F2C] max-w-[720px]" style={{fontFamily: 'Urania', fontWeight: '400', fontStyle: 'Regular', fontSize: '24px', lineHeight: '100%', letterSpacing: '0%'}}>
     Succession Solutions for all. Tailored for Families, NRIs & Businesses.
   </p>
   
@@ -83,7 +83,7 @@ const OurPromise = () => {
 
           {/* RIGHT IMAGE */}
           <div
-            className={`order-2 lg:order-2 transition-all duration-700 delay-200 flex justify-center lg:justify-end relative ${
+            className={`order-2 lg:order-2 transition-all duration-700 delay-200 flex justify-end lg:justify-end relative ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
@@ -95,12 +95,13 @@ const OurPromise = () => {
               decoding="async"
               className="lg:hidden rounded-lg object-contain"
               style={{
-                width: 'clamp(200px, 60vw, 280px)',
+                width: 'clamp(250px, 70vw, 320px)',
                 height: 'auto',
-                maxHeight: '280px',
+                maxHeight: '320px',
                 transform: 'rotate(0deg)',
                 opacity: 1,
                 zIndex: 10,
+                marginRight: '6px'
               }}
             />
             
