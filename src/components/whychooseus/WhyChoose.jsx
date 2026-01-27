@@ -20,6 +20,7 @@ const WhyChoose = () => {
         setIsVisible(true);
       }
     };
+
     window.addEventListener("scroll", handleScroll);
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
@@ -69,122 +70,104 @@ const WhyChoose = () => {
       <style jsx>{`
         @media (max-width: 1023px) {
           .why-choose-card {
-            width: calc(100vw - 32px) !important;
+            width: 100% !important;
+            max-width: calc(100vw - 32px) !important;
             height: 428px !important;
             min-height: 428px !important;
-            border-radius: 6px !important;
-            opacity: 1 !important;
-            transform: rotate(0deg) !important;
           }
           .why-choose-card img {
             width: calc(100% - 40px) !important;
             height: 186px !important;
-            border-radius: 6px !important;
-            opacity: 1 !important;
-            transform: rotate(0deg) !important;
             position: absolute !important;
             top: 20px !important;
             left: 20px !important;
           }
           .why-choose-card h3 {
-            position: relative !important;
-            z-index: 10 !important;
             margin-top: 216px !important;
-            margin-bottom: 12px !important;
             margin-left: 7px !important;
-            font-family: Urania !important;
-            font-weight: 700 !important;
-            font-style: Bold !important;
             font-size: 24px !important;
             max-width: 240px !important;
           }
           .why-choose-card p {
-            position: relative !important;
-            z-index: 10 !important;
-            margin-top: 0 !important;
             margin-left: 7px !important;
-            font-family: Urania !important;
-            font-weight: 400 !important;
-            font-style: Regular !important;
             font-size: 16px !important;
             line-height: 22px !important;
-            letter-spacing: 0% !important;
             max-width: 280px !important;
           }
         }
+
         @media (min-width: 1024px) {
           .why-choose-card {
             width: 414px !important;
             height: 451px !important;
             min-height: 451px !important;
-            border-radius: 6px !important;
-            opacity: 1 !important;
-            transform: rotate(0deg) !important;
           }
           .why-choose-card img {
             width: 359px !important;
             height: 186px !important;
-            border-radius: 6px !important;
-            opacity: 1 !important;
-            transform: rotate(0deg) !important;
             position: absolute !important;
             top: 30px !important;
             left: 30px !important;
           }
           .why-choose-card h3 {
-            position: relative !important;
-            z-index: 10 !important;
             margin-top: 226px !important;
-            margin-bottom: 12px !important;
             margin-left: 10px !important;
-            max-width: 240px !important;
           }
           .why-choose-card p {
-            position: relative !important;
-            z-index: 10 !important;
-            margin-top: 0 !important;
             margin-left: 10px !important;
           }
         }
       `}</style>
+
       <section
         id="whychooseus-section"
         className="bg-white text-black px-4 md:px-16 py-10 md:py-16"
       >
-      <div className="max-w-[1440px] mx-auto md:px-0 sm:px-0">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr -mx-4 sm:mx-0 md:mx-0 justify-items-center">
-          {cards.map((card, i) => (
-            <div
-              key={i}
-              className={`why-choose-card relative bg-[#132F2C] border border-gray-200 shadow-md hover:shadow-xl transition-all duration-300 p-4 sm:p-6 lg:p-6 group flex flex-col h-full cursor-pointer rounded-[6px] w-full h-auto min-h-[320px] sm:min-h-[400px] ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-              style={{
-                width: '100%',
-                maxWidth: '414px',
-                borderRadius: '6px',
-                transform: 'rotate(0deg)',
-                transitionDelay: isVisible ? `${i * 150}ms` : '0ms'
-              }}
-            >
-              <img
-                src={card.image}
-                alt={card.title}
-                loading="lazy"
-                decoding="async"
-                className="w-full h-32 sm:h-48 object-cover rounded-lg mb-4 sm:mb-6"
-              />
-              <h3 className="text-[24px] mb-4 sm:mb-6 text-[#F4D57E] font-bold font-[Urania] leading-[24px] max-w-[200px] sm:max-w-[280px]">
-                {card.title}
-              </h3>
-              <p className="text-gray-300 text-[16px] leading-[22px] flex-grow font-[Urania] font-normal max-w-[260px] sm:max-w-[330px]">
-                {card.desc}
-              </p>
-            </div>
-          ))}
+        <div className="max-w-[1440px] mx-auto">
+          <div
+            className="
+              grid
+              grid-cols-1
+              sm:grid-cols-2
+              lg:grid-cols-3
+
+              gap-y-6
+              gap-x-8
+              sm:gap-x-7
+              lg:gap-x-6
+
+              justify-items-center
+            "
+          >
+            {cards.map((card, i) => (
+              <div
+                key={i}
+                className={`why-choose-card relative bg-[#132F2C] border border-gray-200 shadow-md hover:shadow-xl transition-all duration-300 p-4 sm:p-6 group flex flex-col cursor-pointer rounded-[6px]
+                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+                style={{
+                  transitionDelay: isVisible ? `${i * 150}ms` : "0ms",
+                }}
+              >
+                <img
+                  src={card.image}
+                  alt={card.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="object-cover rounded-lg"
+                />
+
+                <h3 className="text-[24px] mb-4 text-[#F4D57E] font-bold font-[Urania] leading-[24px] max-w-[280px]">
+                  {card.title}
+                </h3>
+
+                <p className="text-gray-300 text-[16px] leading-[22px] font-[Urania] font-normal max-w-[330px]">
+                  {card.desc}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
     </>
   );
 };

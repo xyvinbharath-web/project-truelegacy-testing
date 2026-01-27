@@ -207,15 +207,31 @@ const OurServices = ({ initialTab = "will" }) => {
         {/* Cards */}
         <div
           key={tabKey}
-          className="grid gap-4 mt-1 mb-9 sm:gap-7 sm:grid-cols-2 lg:grid-cols-3 justify-items-center services-cards-grid services-tab-enter -mx-4 sm:mx-0 sm:mt-5 relative z-10"
+          className="grid gap-4 sm:gap-6 lg:gap-4 mt-1 mb-9 sm:grid-cols-2 lg:grid-cols-3 justify-items-center services-cards-grid services-tab-enter -mx-4 sm:mx-0 sm:mt-5 relative z-10"
         >
           {services.map((service) => (
             <div
               key={service.key}
-              className="relative w-full max-w-[367px] h-[429px] sm:max-w-[380px] sm:h-[460px] lg:max-w-[414px] lg:h-[528px] rounded-[6px] overflow-hidden service-card"
+              className="
+                relative
+                w-full
+                max-w-[367px]
+                h-[429px]
+                sm:max-w-[360px]
+                sm:h-[440px]
+                lg:max-w-[414px]
+                lg:h-[528px]
+                rounded-[6px]
+                overflow-hidden
+                service-card
+
+                /* ✅ DESKTOP FIX */
+                lg:!w-[414px]
+                lg:!max-w-[414px]
+              "
               style={{
-                width: 'calc(100vw - 32px)',
-                maxWidth: 'calc(100vw - 32px)',
+                width: 'calc(100vw - 16px)',
+                maxWidth: 'calc(100vw - 16px)',
                 backgroundImage: `url(${service.image})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
@@ -225,10 +241,10 @@ const OurServices = ({ initialTab = "will" }) => {
               {/* Transparent inner card */}
               <div className="relative flex items-end h-full px-4 pb-4 lg:px-0 lg:pb-0">
                 <div
-                  className="w-full max-w-[347px] min-h-[339px] mx-auto rounded-[6px]
+                  className="w-full max-w-[374px] min-h-[327px] mx-auto rounded-[6px]
                   border border-white/20
                   px-5 pt-5 pb-5 text-white flex flex-col justify-between service-card-inner
-                  lg:absolute lg:max-w-[374px] lg:min-h-[327px] lg:top-[181px] lg:left-1/2 lg:-translate-x-1/2"
+                  lg:absolute lg:max-w-[374px] lg:min-h-[327px] lg:top-[181px] lg:left-[20px]"
                   style={{
                     width: 'calc(100% - 32px)',
                     maxWidth: 'calc(100% - 32px)',

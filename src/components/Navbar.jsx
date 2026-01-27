@@ -51,10 +51,14 @@ const Navbar = () => {
               <span className="relative inline-flex items-center justify-center">
                 <span
                   className={`
-                    text-[14px] md:text-[15px] lg:text-[16px] font-semibold
-                    ${isActive ? "text-slate-900" : "text-slate-400"}
+                    hidden lg:block
+                    ${isActive ? "text-slate-900" : "text-[#B5B5B5]"}
                   `}
+                  style={{fontFamily: 'Urania', fontWeight: isActive ? '500' : '400', fontStyle: isActive ? 'Regular' : 'Medium', fontSize: '16px', lineHeight: '100%', letterSpacing: '0%'}}
                 >
+                  Home
+                </span>
+                <span className={`block lg:hidden text-[14px] md:text-[15px] lg:text-[16px] font-semibold ${isActive ? "text-slate-900" : "text-slate-400"}`}>
                   Home
                 </span>
                 {isActive && (
@@ -74,12 +78,20 @@ const Navbar = () => {
               onClick={() => setIsServicesOpen((prev) => !prev)}
             >
               <span
-                className={`text-[14px] md:text-[15px] lg:text-[16px] ${
+                className={`hidden lg:block ${
+                  isServicesOpen || isServicesRoute
+                    ? "text-slate-900"
+                    : "text-[#B5B5B5]"
+                }`}
+                style={{fontFamily: 'Urania', fontWeight: (isServicesOpen || isServicesRoute) ? '500' : '400', fontStyle: (isServicesOpen || isServicesRoute) ? 'Medium' : 'Regular', fontSize: '16px', lineHeight: '100%', letterSpacing: '0%'}}
+              >
+                Services
+              </span>
+              <span className={`block lg:hidden text-[14px] md:text-[15px] lg:text-[16px] ${
                   isServicesOpen || isServicesRoute
                     ? "text-slate-900"
                     : "text-slate-400"
-                }`}
-              >
+                }`}>
                 Services
               </span>
               <span className="inline-flex items-center justify-center ml-1">
@@ -140,10 +152,15 @@ const Navbar = () => {
             {({ isActive }) => (
               <span className="relative inline-flex items-center justify-center">
                 <span
-                  className={`text-[14px] md:text-[15px] lg:text-[16px] ${
-                    isActive ? "text-slate-900" : "text-slate-400"
-                  }`}
+                  className={`
+                    hidden lg:block
+                    ${isActive ? "text-slate-900" : "text-[#B5B5B5]"}
+                  `}
+                  style={{fontFamily: 'Urania', fontWeight: isActive ? '500' : '400', fontStyle: isActive ? 'Regular' : 'Medium', fontSize: '16px', lineHeight: '100%', letterSpacing: '0%'}}
                 >
+                  Why Choose Us
+                </span>
+                <span className={`block lg:hidden text-[14px] md:text-[15px] lg:text-[16px] ${isActive ? "text-slate-900" : "text-slate-400"}`}>
                   Why Choose Us
                 </span>
                 {isActive && (
@@ -157,10 +174,15 @@ const Navbar = () => {
             {({ isActive }) => (
               <span className="relative inline-flex items-center justify-center">
                 <span
-                  className={`text-[14px] md:text-[15px] lg:text-[16px] ${
-                    isActive ? "text-slate-900" : "text-slate-400"
-                  }`}
+                  className={`
+                    hidden lg:block
+                    ${isActive ? "text-slate-900" : "text-[#B5B5B5]"}
+                  `}
+                  style={{fontFamily: 'Urania', fontWeight: isActive ? '500' : '400', fontStyle: isActive ? 'Regular' : 'Medium', fontSize: '16px', lineHeight: '100%', letterSpacing: '0%'}}
                 >
+                  Resources
+                </span>
+                <span className={`block lg:hidden text-[14px] md:text-[15px] lg:text-[16px] ${isActive ? "text-slate-900" : "text-slate-400"}`}>
                   Resources
                 </span>
                 {isActive && (
@@ -174,10 +196,15 @@ const Navbar = () => {
             {({ isActive }) => (
               <span className="relative inline-flex items-center justify-center">
                 <span
-                  className={`text-[14px] md:text-[15px] lg:text-[16px] ${
-                    isActive ? "text-slate-900" : "text-slate-400"
-                  }`}
+                  className={`
+                    hidden lg:block
+                    ${isActive ? "text-slate-900" : "text-[#B5B5B5]"}
+                  `}
+                  style={{fontFamily: 'Urania', fontWeight: isActive ? '500' : '400', fontStyle: isActive ? 'Regular' : 'Medium', fontSize: '16px', lineHeight: '100%', letterSpacing: '0%'}}
                 >
+                  Contact Us
+                </span>
+                <span className={`block lg:hidden text-[14px] md:text-[15px] lg:text-[16px] ${isActive ? "text-slate-900" : "text-slate-400"}`}>
                   Contact Us
                 </span>
                 {isActive && (

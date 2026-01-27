@@ -5,6 +5,7 @@ import cardImageTrust from "../../assets/img/home/Framewhoarewe2.webp";
 import cardImageFamily from "../../assets/img/home/Framewhoarewe3.webp";
 import questionIcon from "../../assets/icon/Vectorlogo6904.webp";
 import quoteDotsBg from "../../assets/img/home/Group 3.webp";
+import group2Bg from "../../assets/img/home/Group 2.png";
 import StyledButton from "../../ui/StyledButton";
 
 const cards = [
@@ -69,7 +70,7 @@ const WhoweAreNew = () => {
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 lg:gap-8 items-start">
           {/* Left content */}
           <div className="who-heading-block">
-            <h2 className="text-[32px] sm:text-[38px] lg:text-[42px] leading-[49px] text-[#132F2C] mb-4 who-heading font-black" style={{fontFamily: 'Urania', fontWeight: '700 !important', fontStyle: 'Bold', fontSize: '32px', WebkitTextStroke: '0.5px #132F2C', textStroke: '0.5px #132F2C'}}>
+            <h2 className="text-[32px] sm:text-[38px] lg:text-[42px] leading-[49px] text-[#132F2C] mb-4 who-heading font-black" style={{fontFamily: 'Urania', fontWeight: '700 !important', fontStyle: 'Bold', fontSize: '32px', }}>
               Who are We?
             </h2>
 
@@ -83,27 +84,42 @@ const WhoweAreNew = () => {
 
           {/* Right quote with dots background */}
           <div
-            className="relative max-w-[480px] lg:max-w-[900px] lg:ml-auto mt-4 lg:mt-10 pb-16 who-quote-block"
+            className="relative max-w-[480px] lg:max-w-[900px] lg:ml-auto mt-4 lg:mt-10 pb-10 who-quote-block"
             style={{
               backgroundImage: `url(${quoteDotsBg})`,
               backgroundRepeat: "no-repeat",
-              // Position dots + triangle around the quote text
-              backgroundPosition: "60% 15%",
-              backgroundSize: "100% 180%",
+              backgroundPosition: "center 40%",
+              backgroundSize: "120% 200%",
             }}
           >
-            <p className="text-left who-quote-text text-[24px] lg:text-[32px] mt-0 lg:mt-8 ml-0 lg:ml-8" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'italic', lineHeight: '100%', letterSpacing: '0%', color: '#737c7bff'}}>
+            {/* Desktop background with new image - overrides mobile background */}
+            <div
+              className="hidden lg:block absolute"
+              style={{
+                backgroundImage: `url(${group2Bg})`,
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center 1%",
+                backgroundSize: "100% 150%",
+                backgroundColor: '#F6FFFF',
+                top: '0px',
+                left: '0px',
+                right: '0px',
+                height: '200px'
+              }}
+            />
+            
+            <p className="text-left who-quote-text text-[24px] lg:text-[32px] mt-0 lg:mt-8 ml-0 lg:ml-8 relative z-10" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'ExtraLight Italic', lineHeight: '100%', letterSpacing: '0%', color: '#737c7bff'}}>
               “Families deserve peace, clarity, and security when passing on what they have built.”
             </p>
           </div>
         </div>
 
         {/* Cards */}
-        <div className="grid gap-x-10 gap-y-12 md:grid-cols-2 xl:grid-cols-3 justify-items-center justify-center md:justify-items-center xl:justify-items-center mt-12 md:mt-16 who-cards-grid -mx-4 md:mx-0 px-4 md:px-0">
+        <div className="grid gap-x-10 gap-y-5 md:grid-cols-2 xl:grid-cols-3 justify-items-center justify-center md:justify-items-center xl:justify-items-center mt-8 md:mt-9 who-cards-grid -mx-4 md:mx-0 px-4 md:px-0">
           {cards.map((card) => (
             <div
               key={card.title}
-              className="who-card bg-white shadow-[0_10px_30px_rgba(5,41,26,0.08)] overflow-hidden h-[394px] lg:h-[475px] w-[calc(100vw-32px)] md:w-[359px] lg:w-[457px] md:max-w-[467px]"
+              className="who-card bg-white shadow-[0_10px_30px_rgba(5,41,26,0.08)] overflow-hidden h-[394px] lg:h-[475px] w-full md:w-[359px] lg:w-[457px] md:max-w-[467px]"
               style={{
                 borderRadius: "6px",
               }}
@@ -113,7 +129,7 @@ const WhoweAreNew = () => {
                 <div
                   className="overflow-hidden bg-[#05281F] who-card-image"
                   style={{
-                    width: "calc(100% - 40px)",
+                    width: "calc(100% - 1px)",
                     height: "180px",
                     borderRadius: "6px",
                   }}

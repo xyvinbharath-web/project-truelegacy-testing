@@ -58,10 +58,12 @@ const Footer = ({ hideCta = false }) => {
   return (
     <footer
       ref={footerRef}
-      className={`mt-0 md:mt-4 bg-[#0F2724] text-white footer-section ${
+      className={`mt-0 text-white footer-section relative ${
         isVisible ? "footer-section-visible" : ""
       }`}
     >
+      {/* Green background section */}
+      <div className="absolute inset-x-0 bottom-0 bg-[#0F2724] h-[550px]"></div>
       {!hideCta && (
         <>
           {/* Overlapping yellow CTA block - mobile */}
@@ -114,7 +116,7 @@ const Footer = ({ hideCta = false }) => {
           {/* Overlapping yellow CTA block - desktop */}
           <div className="relative max-w-[1920px] mx-auto px-4 sm:px-8 hidden md:block footer-cta-desktop">
             <div
-              className="relative -top-10 sm:-top-12 md:-top-30 lg:-top-38 xl:-top-52 md:h-[380px] lg:h-[413px] bg-[#F4D57E] rounded-[6px] overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.3)] animate-fade-in footer-cta-card"
+              className="relative -top-5 sm:-top-6 md:-top-15 lg:-top-20 xl:-top-25 md:h-[413px] lg:h-[413px] bg-[#F4D57E] rounded-[6px] overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.3)] animate-fade-in footer-cta-card"
               style={{
                 backgroundImage: `url(${FooterFrame})`,
                 backgroundRepeat: "no-repeat",
@@ -124,28 +126,28 @@ const Footer = ({ hideCta = false }) => {
             >
               <div className="grid h-full grid-cols-1 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1.6fr)] gap-6 md:gap-0 items-center">
                 {/* Left: text + buttons */}
-                <div className="px-10 lg:px-16 xl:px-24 py-4 lg:py-4 flex flex-col justify-center">
-                  <h2 className="text-[22px] sm:text-[26px] lg:text-[30px] leading-snug font-semibold text-[#132F2C] footer-cta-heading" style={{fontWeight: '700'}}>
+                <div className="px-4 lg:px-8 xl:px-11 pt-0 pb-0 flex flex-col justify-start">
+                  <h2 className="text-[22px] sm:text-[26px] lg:text-[42px] leading-snug font-semibold text-[#132F2C] footer-cta-heading" style={{fontWeight: '700'}}>
                     Still wondering how to{" "}
                     <span className="hidden md:inline">
                       <br />
                     </span>
                     pass down your legacy?
                   </h2>
-                  <p className="mt-4 text-[13px] sm:text-[14px] text-[#132F2C] max-w-md footer-cta-body">
+                  <p className="mt-4 text-[13px] sm:text-[18px] lg:text-[20px] text-[#132F2C] max-w-md footer-cta-body">
                     Let our Experts Make it Simple for You. Succession
                     planning is not just about documents — it's about
                     securing your family's peace!
                   </p>
                   <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4 footer-cta-buttons">
                     <button
-                      className="inline-flex w-full sm:w-auto sm:min-w-[270px] items-center justify-center rounded-full bg-[#132F2C] px-6 sm:px-10 py-3 text-[13px] sm:text-[14px] font-[Urania] text-white whitespace-nowrap footer-cta-button hover:scale-105 hover:bg-[#0F2724] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+                      className="inline-flex w-full sm:w-auto sm:min-w-[270px] items-center justify-center rounded-full bg-[#132F2C] px-6 sm:px-10 py-3 text-[13px] sm:text-[18px] font-[Urania] text-white whitespace-nowrap footer-cta-button hover:scale-105 hover:bg-[#0F2724] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
                       onClick={() => setIsScheduleOpen(true)}
                     >
                       Schedule your expert session today
                     </button>
                     <button
-                      className="inline-flex w-full sm:w-auto sm:min-w-[220px] items-center justify-center rounded-full bg-[#132F2C] px-6 sm:px-10 py-3 text-[13px] sm:text-[14px] font-[Urania] text-white whitespace-nowrap footer-cta-button hover:scale-105 hover:bg-[#0F2724] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+                      className="inline-flex w-full sm:w-auto sm:min-w-[220px] items-center justify-center rounded-full bg-[#132F2C] px-6 sm:px-10 py-3 text-[13px] sm:text-[18px] font-[Urania] text-white whitespace-nowrap footer-cta-button hover:scale-105 hover:bg-[#0F2724] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
                       onClick={() => setIsCallbackOpen(true)}
                     >
                       Request a Call Back
@@ -160,27 +162,28 @@ const Footer = ({ hideCta = false }) => {
       )}
 
       {/* Main footer content */}
-      <div className="pt-3 pb-2 mt-0 footer-main">
-        <div className="max-w-[1550px] mx-auto px-4 sm:px-8 lg:px-6 xl:px-8 footer-main-inner">
+      <div className="relative z-20 pt-0 pb-0 mt-0 footer-main">
+        <div className="max-w-[1550px] lg:max-w-full mx-auto px-4 sm:px-8 lg:px-6 xl:px-8 2xl:px-4 footer-main-inner">
           {/* Mobile layout */}
           <div className="md:hidden text-[13px] footer-mobile-block">
             {/* Top row: Phone/Email/Follow Us + Quick Links */}
-            <div className="flex gap-8 pb-5 border-b border-[#193C38]">
+            <div className="flex gap-8 pb-1">
+              <div className="absolute bottom-0 left-[-10px] right-[-10px] h-px bg-[#193C38]"></div>
               <div className="flex-1">
-                <div className="text-[18px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "100ms" }}>
+                <div className="text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "100ms", fontFamily: 'Urania', fontWeight: '500', fontStyle: 'Medium', fontSize: '18px', lineHeight: '100%' }}>
                   Phone
                 </div>
                 <div className="space-y-1 mb-4 text-[#F4D57E] text-[16px] footer-text-group animate-fade-in-up" style={{ animationDelay: "200ms" }}>
                   <div className="font-medium footer-text">+91 7592 912 300 (IN)</div>
                   <div className="font-medium footer-text">+971 58 929 148 (UAE)</div>
                 </div>
-                <div className="text-[18px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "300ms" }}>
+                <div className="text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "300ms", fontFamily: 'Urania', fontWeight: '500', fontStyle: 'Medium', fontSize: '18px', lineHeight: '100%' }}>
                   Email
                 </div>
                 <div className="text-[#F4D57E] text-[16px] mb-4 footer-text animate-fade-in-up" style={{ animationDelay: "400ms" }}>
                   info@truelegacy.in
                 </div>
-                <div className="text-[18px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "500ms" }}>
+                <div className="text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "500ms", fontFamily: 'Urania', fontWeight: '500', fontStyle: 'Medium', fontSize: '18px', lineHeight: '100%' }}>
                   Follow Us
                 </div>
                 <div className="flex items-center gap-3 footer-social animate-fade-in-up" style={{ animationDelay: "600ms" }}>
@@ -201,7 +204,7 @@ const Footer = ({ hideCta = false }) => {
               </div>
 
               <div className="flex-1">
-                <div className="text-[18px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "700ms" }}>
+                <div className="text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "700ms", fontFamily: 'Urania', fontWeight: '500', fontStyle: 'Medium', fontSize: '18px', lineHeight: '100%' }}>
                   Quick Links
                 </div>
                 <div className="space-y-1 text-[#A1A1A1] footer-links">
@@ -226,8 +229,9 @@ const Footer = ({ hideCta = false }) => {
             </div>
 
             {/* Address full width */}
-            <div className="pt-5 pb-5 border-b border-[#193C38]">
-              <div className="text-[18px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "1300ms" }}>
+            <div className="pt-5 pb-1 relative">
+              <div className="absolute bottom-0 left-[-10px] right-[-10px] h-px bg-[#193C38]"></div>
+              <div className="text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "1300ms", fontFamily: 'Urania', fontWeight: '500', fontStyle: 'Medium', fontSize: '18px', lineHeight: '100%' }}>
                 Address
               </div>
               <p className="text-[16px] leading-relaxed text-[#A1A1A1] footer-text animate-fade-in-up" style={{ animationDelay: "1400ms" }}>
@@ -241,27 +245,29 @@ const Footer = ({ hideCta = false }) => {
           </div>
 
           {/* Desktop layout */}
-          <div className="hidden md:grid md:grid-cols-5 gap-8 text-[13px] sm:text-[14px] footer-desktop-grid">
+          <div className="hidden md:grid md:grid-cols-5 gap-8 text-[13px] sm:text-[14px] footer-desktop-grid mt-4">
             {/* Phone & Email */}
-            <div className="pb-4 md:pb-6 border-b border-[#193C38] footer-col">
-              <div className="text-[20px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
+            <div className="pb-2 relative footer-col">
+              <div className="absolute bottom-0 left-[-20px] right-[-20px] h-px bg-[#193C38]"></div>
+              <div className="text-[20px] tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
                 Phone
               </div>
               <div className="space-y-1 mb-4 text-[16px] text-[#F4D57E] footer-text-group animate-fade-in">
                 <div className="font-medium footer-text">+91 7592 912 300 (IN)</div>
                 <div className="font-medium footer-text">+971 58 929 148 (UAE)</div>
               </div>
-              <div className="text-[20px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
+              <div className="text-[20px] tracking-[0.12em] text-white mb-2 mt-11 footer-label animate-fade-in">
                 Email
               </div>
-              <div className="text-[#F4D57E] text-[16px] footer-text animate-fade-in">
+              <div className="text-[#F4D57E] text-[16px] mb-1 footer-text animate-fade-in">
                 info@truelegacy.in
               </div>
             </div>
 
             {/* Address */}
-            <div className="md:border-l md:border-[#1D3C36] md:pl-8 pb-4 md:pb-6 border-b border-[#193C38] footer-col">
-              <div className="text-[20px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
+            <div className="md:border-l md:border-[#1D3C36] md:pl-8 pb-2 relative footer-col">
+              <div className="absolute bottom-0 left-[-20px] right-[-20px] h-px bg-[#193C38]"></div>
+              <div className="text-[20px] tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
                 Address
               </div>
               <p className="text-[16px] leading-relaxed text-[#A1A1A1] footer-text animate-fade-in">
@@ -274,11 +280,12 @@ const Footer = ({ hideCta = false }) => {
             </div>
 
             {/* Quick Links */}
-            <div className="md:border-l md:border-[#1D3C36] md:pl-8 pb-4 md:pb-6 border-b border-[#193C38] footer-col">
-              <div className="text-[20px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
+            <div className="md:border-l md:border-[#1D3C36] md:pl-8 pb-2 relative footer-col">
+              <div className="absolute bottom-0 left-[-20px] right-[-20px] h-px bg-[#193C38]"></div>
+              <div className="text-[20px] tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
                 Quick Links
               </div>
-              <div className="space-y-1 text-[#A1A1A1] footer-links animate-fade-in">
+              <div className="space-y-2 text-[#A1A1A1] footer-links animate-fade-in">
                 <NavLink
                   to="/"
                   className="block text-[16px] hover:text-[#F4D57E] transition-colors"
@@ -313,8 +320,9 @@ const Footer = ({ hideCta = false }) => {
             </div>
 
             {/* Follow Us */}
-            <div className="md:border-l md:border-[#1D3C36] md:pl-8 pb-4 md:pb-6 border-b border-[#193C38] footer-col">
-              <div className="text-[20px] uppercase tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
+            <div className="md:border-l md:border-[#1D3C36] md:pl-8 pb-2 relative footer-col">
+              <div className="absolute bottom-0 left-[-20px] right-[-20px] h-px bg-[#193C38]"></div>
+              <div className="text-[20px] tracking-[0.12em] text-white mb-2 footer-label animate-fade-in">
                 Follow Us
               </div>
               <div className="flex items-center gap-5 footer-social animate-fade-in">
@@ -334,7 +342,8 @@ const Footer = ({ hideCta = false }) => {
             </div>
 
             {/* Blurb (desktop only) */}
-            <div className="md:border-0.5 md:border-[#1D3C36] md:pl-1 pb-4 md:pb-6 border-b border-[#193C38] footer-col">
+            <div className="md:border-0.5 md:border-[#1D3C36] md:pl-1 pb-2 relative footer-col">
+              <div className="absolute bottom-0 left-[-20px] right-[-20px] h-px bg-[#193C38]"></div>
               <p className="text-[16px] leading-relaxed text-[#A1A1A1] footer-blurb animate-fade-in">
                 Helping families plan, protect, and
                 pass on their legacy with clarity and

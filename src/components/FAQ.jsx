@@ -102,7 +102,7 @@ const FAQ = () => {
   return (
     <section
       ref={sectionRef}
-      className={`w-full bg-[#F6FFFF] pt-0 pb-0 mb-[-80px] md:pt-16 md:pb-20 lg:pt-24 lg:pb-24 overflow-x-hidden faq-section ${
+      className={`w-full bg-[#F6FFFF] pt-0 pb-0 mb-0 md:pt-16 md:pb-20 lg:pt-24 lg:pb-24 overflow-x-hidden faq-section ${
         isVisible ? "faq-section-visible" : ""
       }`}
     >
@@ -136,7 +136,7 @@ const FAQ = () => {
           {/* RIGHT BLOCK */}
           <div className="flex-1 w-full lg:max-w-[700px] mt-6 lg:mt-0">
             {/* MOBILE HEADING */}
-            <h1 className="lg:hidden font-[Urania] font-bold text-[32px] leading-[36px] text-[#132F2C] mb-4 faq-heading" style={{fontFamily: 'Urania', fontWeight: '600 !important', fontStyle: 'Bold', WebkitTextStroke: '0.5px #132F2C', textStroke: '0.5px #132F2C'}}>
+            <h1 className="lg:hidden font-[Urania] font-bold text-[32px] leading-[36px] text-[#132F2C] mb-4 faq-heading" style={{fontFamily: 'Urania', fontWeight: '600 !important', fontStyle: 'Bold'}}>
               FAQ'S
             </h1>
 

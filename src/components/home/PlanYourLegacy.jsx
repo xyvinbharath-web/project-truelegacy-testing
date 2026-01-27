@@ -13,6 +13,7 @@ const PlanYourLegacy = () => {
   const navigate = useNavigate();
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+  const rightSectionRef = useRef(null);
 
   const handleStartPlan = () => {
     if (token) {
@@ -43,10 +44,30 @@ const PlanYourLegacy = () => {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (rightSectionRef.current) {
+        if (window.innerWidth >= 1600) {
+          rightSectionRef.current.style.marginLeft = 'auto';
+          rightSectionRef.current.style.marginRight = 'auto';
+          rightSectionRef.current.style.maxWidth = '440px';
+        } else {
+          rightSectionRef.current.style.marginLeft = '100px';
+          rightSectionRef.current.style.marginRight = 'auto';
+          rightSectionRef.current.style.maxWidth = 'none';
+        }
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <section
       ref={sectionRef}
-      className={`w-full bg-white pb-16 md:pb-20 lg:pb-24 pt-8 md:pt-12 plan-section ${
+      className={`w-full bg-white pb-16 md:pb-20 lg:pb-24 pt-8 md:pt-8 lg:pt-8 plan-section ${
         isVisible ? "plan-section-visible" : ""
       }`}
     >
@@ -58,12 +79,12 @@ const PlanYourLegacy = () => {
           className="hidden md:block absolute top-0 right-0 w-[240px] pointer-events-none select-none"
         />
 
-        <div className="relative z-10 max-w-[1600px] mx-auto px-2 sm:px-4 lg:px-6 grid gap-8 lg:grid-cols-[690px_1fr] items-center">
+        <div className="relative z-10 max-w-[1800px] mx-auto px-2 sm:px-4 lg:px-6 grid gap-8 lg:grid-cols-[690px_1fr] items-center">
         {/* Left: Family tree image */}
         <div className="flex flex-col items-center lg:items-start justify-center plan-left">
           {/* Mobile image */}
           <div className="w-full max-w-[343px] md:hidden plan-image">
-            <div className="w-full bg-white rounded-[6px] overflow-hidden">
+            <div className="w-full">
               <img
                 src={planYourLegacyMobile}
                 alt="Family tree preview mobile"
@@ -101,7 +122,7 @@ const PlanYourLegacy = () => {
         </div>
 
         {/* Right: Text + bullets + CTA (desktop/tablet only) */}
-        <div className="hidden md:block text-left plan-right relative ml-13">
+        <div ref={rightSectionRef} className="hidden md:block text-left plan-right relative" style={{ marginLeft: '100px' }}>
             <h1 className="font-[Urania] font-bold text-[42px] leading-[49px] text-[#132F2C] plan-heading max-w-[440px]">
               No Succession Plan? Discover your legal heirs in seconds.
             </h1>

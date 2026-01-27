@@ -8,23 +8,23 @@ import rightArrowIcon from "../../assets/icon/circle-arrow-right-sharp.webp";
 const slides = [
   {
     image: slideImageInstruction,
-    text: "What will happen to your assets? Will your family inherit them easily, or will there be legal hiccups?",
+    text: "What will happen to your assets? Will your family inherit them easily, or will there be legal hiccups ?",
   },
   {
     image: slideImageInstruction,
-    text: "Can they locate your bank information, insurance policies, and property documents without you?",
+    text: "Can they locate your bank information, insurance policies, and property documents without you ?",
   },
   {
     image: slideImageInstruction,
-    text: "Would your family know how your wealth is meant to be distributed, or would they face disputes and confusion?",
+    text: "Would your family know how your wealth is meant to be distributed ?",
   },
   {
     image: slideImageInstruction,
-    text: "Would your family know where to begin?",
+    text: "Would your family know where to begin ?",
   },
   {
     image: slideImageInstruction,
-    text: "Will they remember you for your life or for the paperwork they were left to untangle?",
+    text: "Will they remember you for your life or for the paperwork they were left to untangle ?",
   },
 ];
 
@@ -101,7 +101,7 @@ const TrueLegacyInstructions = () => {
   return (
     <section
       ref={sectionRef}
-      className={`instruction-section mt-8 ${isVisible ? "instruction-section-visible" : ""}`}
+      className={`instruction-section mt-12 md:mt-0 ${isVisible ? "instruction-section-visible" : ""}`}
     >
       {/* Mobile layout */}
       <section
@@ -109,7 +109,7 @@ const TrueLegacyInstructions = () => {
         style={{
           backgroundImage: `url(${mobileInstructionBg})`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "bottom left",
           perspective: "1200px", // Enable 3D perspective for flip animations
         }}
       >
@@ -177,18 +177,18 @@ const TrueLegacyInstructions = () => {
         className="relative w-full min-h-[520px] hidden md:flex items-center justify-center"
         style={{
           backgroundImage: `url(${currentSlide.image})`,
-          backgroundSize: "100% auto", // Decreased from cover to 60% width
-          backgroundPosition: "center",
+          backgroundSize: "100% 100%",
+          backgroundPosition: "left center",
           backgroundRepeat: "no-repeat",
           perspective: "1200px", // Enable 3D perspective for flip animations
         }}
       >
-        <div className="relative max-w-[1300px] mx-auto w-full px-4 sm:px-6 lg:px-10 pt-10">
+        {/* TOP LEFT HEADING - positioned relative to section */}
+        <h2 className="font-[Urania] font-bold text-[28px] sm:text-[32px] lg:text-[40px] leading-[1.2] text-white max-w-[350px] absolute top-10 left-15 text-left instruction-heading">
+          If you weren't here tomorrow...
+        </h2>
 
-          {/* TOP LEFT HEADING */}
-          <h2 className="font-[Urania] font-bold text-[28px] sm:text-[32px] lg:text-[40px] leading-[1.2] text-white max-w-[350px] md:absolute md:top-0 md:left-0 instruction-heading">
-            If you weren't here tomorrow...
-          </h2>
+        <div className="relative max-w-[1300px] mx-auto w-full md:px-0 sm:px-6 lg:px-0 pt-10">
 
           {/* RIGHT CARD AREA */}
           <div className="relative flex justify-center md:justify-end mt-10 md:mt-24 instruction-stack-desktop">

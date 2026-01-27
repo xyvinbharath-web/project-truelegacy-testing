@@ -31,21 +31,21 @@ const QuoteComponent = () => {
   return (
     <section
       ref={sectionRef}
-      className={`w-full bg-[#FFFFFF] py-16 md:py-20 lg:py-24 relative overflow-x-hidden quote-section ${
+      className={`w-full bg-[#FFFFFF] py-16 md:py-16 lg:py-20 relative overflow-x-hidden quote-section ${
         isVisible ? "quote-section-visible" : ""
       }`}
     >
-      <div className="relative max-w-[1450px] mx-auto px-4 sm:px-6 lg:px-8 grid gap-1 lg:gap-6 lg:grid-cols-2 md:grid-cols-1 text-center lg:text-left items-center">
+      <div className="relative max-w-[1850px] mx-auto px-4 sm:px-5 md:px-12 grid gap-6 lg:grid-cols-2 md:grid-cols-1 text-center lg:text-left items-center">
 
         {/* LEFT CONTENT — unchanged */}
-        <div className="text-left relative z-20 quote-left text-left mx-auto md:text-center md:mx-auto lg:text-left lg:mx-0 md:ml-0 ml-2">
-          <h1 className="font-[Urania] font-bold text-[32px] md:text-[42px] leading-[36px] md:leading-[49px] text-[#132F2C] quote-heading" style={{fontFamily: 'Urania', fontWeight: '600 !important', fontStyle: 'Bold', WebkitTextStroke: '0.5px #132F2C', textStroke: '0.5px #132F2C'}}>
+        <div className="text-left relative z-20 quote-left text-left mx-auto md:text-center md:mx-auto lg:text-left lg:mx-0 md:ml-0 ml-2 md:-mt-8">
+          <h1 className="font-[Urania] font-bold text-[32px] md:text-[42px] leading-[36px] md:leading-[49px] text-[#132F2C] quote-heading" style={{fontFamily: 'Urania', fontWeight: '700', fontStyle: 'Bold', letterSpacing: '0%'}}>
             Want to Secure
             <br />
             your Legacy?
           </h1>
 
-          <p className="mt-6 max-w-[350px] md:max-w-xl font-[Urania] text-[16px] md:text-[18px] leading-[26px] text-[#132F2C] quote-body">
+          <p className="mt-6 max-w-[450px] md:max-w-xl font-[Urania] text-[16px] md:text-[18px] leading-[26px] text-[#132F2C] quote-body" style={{fontFamily: 'Urania', fontWeight: '400', fontStyle: 'Regular', letterSpacing: '0%'}}>
             "Tomorrow is promised to none. Planning is a gift you can give today. With True Legacy,
             estate and wealth planning becomes more than a financial act; it becomes an act of
             love. The greatest inheritance you can give is peace of mind."
@@ -58,13 +58,13 @@ const QuoteComponent = () => {
               onClick={() => setIsCallbackOpen(true)}
               variant="primary"
               minWidth="auto"
-              className="inline-flex items-center justify-center rounded-full !bg-[#132F2C] px-8 py-3 font-[Urania] text-[18px] font-bold !text-white shadow-[0_10px_25px_rgba(10,47,36,0.35)] hover:!bg-[#0D241E]"
+              className="inline-flex items-center justify-center rounded-full !bg-[#132F2C] px-8 py-3 font-[Urania] text-[18px] font-bold !text-white"
             />
           </div>
         </div>
 
         {/* RIGHT IMAGE BLOCK */}
-        <div className="relative mt-8 md:mt-0 flex justify-center md:justify-center ml-0 md:ml-20 lg:ml-22 quote-right overflow-visible">
+        <div className="relative mt-4 md:mt-0 flex justify-center md:justify-center ml-0 md:ml-20 lg:ml-22 quote-right overflow-visible">
           {/* 🔸 DESKTOP decorative background — unchanged */}
           <img
             src={legacyBackground}
@@ -94,7 +94,7 @@ const QuoteComponent = () => {
           />
 
           {/* 🔹 Image */}
-          <div className="relative z-20 w-[285px] h-[284px] md:w-[499px] md:h-[496px] overflow-visible md:ml-1 ml-23 md:relative md:right-auto absolute right-[-30px] sm:right-[-25px] max-[380px]:right-[-35px] sm:w-[250px] sm:h-[250px] max-[380px]:w-[220px] max-[380px]:h-[220px]">
+          <div className="relative z-20 w-[320px] h-[320px] md:w-[499px] md:h-[496px] overflow-visible md:ml-1 ml-23 md:relative md:right-auto absolute right-0 sm:right-0 max-[380px]:right-0 sm:w-[320px] sm:h-[320px] max-[380px]:w-[320px] max-[380px]:h-[320px]">
             <img
               src={secureYourLegacyImage}
               alt="Secure your legacy"
@@ -106,13 +106,13 @@ const QuoteComponent = () => {
         </div>
 
         {/* MOBILE BUTTON — unchanged */}
-        <div className="mt-8 md:hidden flex justify-start w-full relative z-20">
+        <div className="mt-2 md:hidden flex justify-start w-full relative z-20">
           <StyledButton
             name="Request a Call Back"
             onClick={() => setIsCallbackOpen(true)}
             variant="primary"
             minWidth="auto"
-            className="inline-flex items-center justify-center rounded-full !bg-[#132F2C] px-8 py-3 font-[Urania] text-[18px] font-bold !text-white shadow-[0_10px_25px_rgba(10,47,36,0.35)] hover:!bg-[#0D241E]"
+            className="inline-flex items-center justify-center rounded-full !bg-[#132F2C] px-8 py-3 font-[Urania] text-[18px] font-bold !text-white"
           />
         </div>
 

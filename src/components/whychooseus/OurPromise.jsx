@@ -27,7 +27,7 @@ const OurPromise = () => {
   return (
     <section
       id="our-promise-section"
-      className="bg-[#F6FFFF] text-black px-6 md:px-4 lg:px-16 py-10 md:py-4 lg:py-16"
+      className="bg-[#F6FFFF] text-black px-6 md:px-4 lg:px-16 py-10 md:py-8 lg:py-16"
     >
       <div className="max-w-[1440px] mx-auto md:px-0 sm:px-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start -mx-4 sm:mx-0 md:mx-0">

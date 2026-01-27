@@ -7,6 +7,7 @@ import legacyBackground from "../../assets/img/home/Frame 2147224800 (2).webp";
 import questionIcon from "../../assets/icon/Vectorlogo6904.webp";
 import arrowLeft from "../../assets/icon/circle-arrow-left-02-sharp.webp";
 import arrowRight from "../../assets/icon/circle-arrow-right-sharp.webp";
+import frameHeader from "../../assets/img/home/Frameheaderpng.webp";
 
 const slides = [
   {
@@ -190,7 +191,7 @@ const HeaderHome = () => {
 
   return (
     <section
-      className="relative w-full h-[640px] lg:h-screen overflow-hidden md:h-screen mt-[-50px] sm:mt-[-50px] md:mt-0 lg:mt-0"
+      className="relative w-full h-[640px] lg:h-[580px] overflow-hidden md:h-screen mt-[-50px] sm:mt-[-50px] md:mt-0 lg:mt-0 pt-[316px] sm:pt-0"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -212,24 +213,15 @@ const HeaderHome = () => {
         />
         {/* Desktop background image  */}
         <img
-          src={currentSlide.background}
+          src={frameHeader}
           alt="Succession Planning"
-          className="absolute left-0 right-0 w-full h-[561px] object-cover hidden lg:block"
-          style={{ top: '79px' }}
-        />
-        <img
-          src={prevSlide.background}
-          alt=""
-          aria-hidden="true"
-          className={`absolute left-0 right-0 w-full h-[561px] object-cover transition-opacity duration-700 ease-in-out hidden lg:block ${
-            transitioning ? "opacity-100" : "opacity-0"
-          }`}
-          style={{ top: '79px' }}
+          className="absolute left-0 right-0 w-full h-[580px] object-cover hidden lg:block"
+          style={{ top: '0px', objectPosition: 'right bottom' }}
         />
       </div>
       
       {/* Content */}
-      <div className="relative z-10 max-w-[1900px] mx-auto px-4 sm:px-8 lg:px-16 h-[561px] flex items-start pb-21 md:pb-14 lg:pb-16" style={{ paddingTop: '300px' }}>
+      <div className="relative z-10 max-w-[1900px] mx-auto pl-4 pr-4 sm:pl-8 sm:pr-8 lg:pl-11 lg:pr-16 h-[561px] sm:h-[661px] lg:h-[580px] flex items-start pb-21 md:pb-14 lg:pb-16 pt-[16px] sm:pt-[220px] lg:pt-[220px]">
         <div className="flex items-stretch gap-3 sm:gap-8">
           {/* Left accent line */}
           <div className="self-stretch border-l-[4px] border-[#F4D57E]" />
@@ -237,13 +229,13 @@ const HeaderHome = () => {
           {/* Text */}
           <div className="text-left text-white w-full">
             <h1 key={currentSlide.id} className="font-[Urania] animate-fade-up break-words w-1/2">
-              <span className="block sm:hidden" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'normal', fontSize: '28px', lineHeight: '35px', letterSpacing: '0%'}}>
+              <span className="block sm:hidden" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'light', fontSize: '28px', lineHeight: '35px', letterSpacing: '0%'}}>
                 {renderStackedLines(currentSlide.questionPrefixMobile)}
               </span>
-              <span className="hidden sm:block lg:hidden" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'normal', fontSize: '48px', lineHeight: '56px', letterSpacing: '0%'}}>
+              <span className="hidden sm:block lg:hidden" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'light', fontSize: '48px', lineHeight: '56px', letterSpacing: '0%'}}>
                 {renderStackedLines(currentSlide.questionPrefix)}
               </span>
-              <span className="hidden lg:block" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'normal', fontSize: '66px', lineHeight: '74px', letterSpacing: '0%'}}>
+              <span className="hidden lg:block" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'light', fontSize: '66px', lineHeight: '74px', letterSpacing: '0%'}}>
                 {renderStackedLines(currentSlide.questionPrefix)}
               </span>
               <span className="block font-bold text-[#F4D57E] max-w-[180px] md:max-w-none" style={{fontFamily: 'Urania', fontWeight: '700', fontStyle: 'normal', fontSize: '36px', lineHeight: '42px', letterSpacing: '0%'}}>
@@ -286,15 +278,23 @@ const HeaderHome = () => {
               </span>
             </h1>
 
-            <p key={`desc-${currentSlide.id}`} className="mt-4 max-w-[250px] sm:max-w-[350px] md:max-w-[660px] lg:max-w-[800px] animate-fade-in" style={{ animationDelay: "180ms", fontFamily: 'Urania', fontWeight: '400', fontStyle: 'normal', fontSize: '18px', lineHeight: '100%', letterSpacing: '0%' }}>
-              {currentSlide.description}
+            <p key={`desc-${currentSlide.id}`} className="mt-4 max-w-[250px] sm:max-w-[350px] md:max-w-[660px] lg:max-w-[800px] animate-fade-in">
+              <span className="block sm:hidden lg:hidden" style={{ animationDelay: "180ms", fontFamily: 'Urania', fontWeight: '200', fontStyle: 'Regular', fontSize: '16px', lineHeight: '100%', letterSpacing: '0%' }}>
+                {currentSlide.description}
+              </span>
+              <span className="hidden sm:block lg:hidden" style={{ animationDelay: "180ms", fontFamily: 'Urania', fontWeight: '400', fontStyle: 'Regular', fontSize: '16px', lineHeight: '100%', letterSpacing: '0%' }}>
+                {currentSlide.description}
+              </span>
+              <span className="hidden lg:block" style={{ animationDelay: "180ms", fontFamily: 'Urania', fontWeight: '300', fontStyle: 'Regular', fontSize: '18px', lineHeight: '100%', letterSpacing: '0%' }}>
+                {currentSlide.description}
+              </span>
             </p>
           </div>
         </div>
       </div>
 
       {/* Carousel controls */}
-      <div className="absolute z-20 left-4 sm:left-24 lg:left-26 top-[585px] flex items-center gap-3 md:left-14">
+      <div className="absolute z-20 left-4 sm:left-24 lg:left-20 top-[585px] sm:top-[510px] lg:top-[510px] flex items-center gap-3 md:left-14">
         <button
           className="h-6 w-6 hover:scale-105 transition-transform"
           onClick={goPrev}

@@ -51,7 +51,7 @@ const RootLayout = () => {
     <div className="min-h-screen flex flex-col bg-white">
       {/* SmoothCursor and Toaster will be wired later during design phase */}
       {!isServicesPage && !isSuccessionFlow && <Navbar />}
-      <main className={isSuccessionFlow ? "flex-1" : "flex-1 pb-32 md:pb-44 lg:pb-56"}>
+      <main className={isSuccessionFlow ? "flex-1" : "flex-1 pb-8"}>
         <Outlet />
       </main>
       {!isSuccessionFlow && <Footer />}
