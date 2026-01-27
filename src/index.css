@@ -880,8 +880,12 @@
 }
 
 .faq-item:hover .faq-question-text {
-  color: #f4d57e;
+  color: #132f2c;
   transform: translateX(2px);
+}
+
+.faq-item:focus-within .faq-question-text {
+  color: #132f2c;
 }
 
 .faq-answer {
