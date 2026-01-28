@@ -67,12 +67,13 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 4967
           script: |
-            echo "Deploying NEW True Legacy app..."
+            echo "DEPLOY STEP REACHED"
 
             sudo -n mkdir -p /var/www/html/truelegacy-frontend-new
+            sudo -n touch /var/www/html/truelegacy-frontend-new/CI_RAN_HERE
+
             sudo -n rm -rf /var/www/html/truelegacy-frontend-new/*
 
-            # IMPORTANT: copy from deploy-temp/dist
             sudo -n cp -R ~/deploy-temp/dist/* /var/www/html/truelegacy-frontend-new/
 
             sudo -n chown -R www-data:www-data /var/www/html/truelegacy-frontend-new
