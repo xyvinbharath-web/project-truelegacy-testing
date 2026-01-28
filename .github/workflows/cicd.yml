@@ -72,6 +72,5 @@ jobs:
             sudo -n cp -R ~/deploy-temp/dist/* /var/www/html/truelegacy-dev-new/
             echo "Reloading Nginx..."
             sudo -n systemctl reload nginx
-            rm -rf ~/deploy-temp
 
             echo "DEPLOY SUCCESS"
