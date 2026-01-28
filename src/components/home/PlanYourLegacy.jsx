@@ -109,15 +109,13 @@ const PlanYourLegacy = () => {
 
           {/* Desktop / tablet image */}
           <div className="hidden md:block w-full max-w-[690px] lg:w-[690px] plan-image">
-            <div className="w-full bg-white rounded-[6px] overflow-hidden shadow-[0_18px_40px_rgba(5,41,26,0.10)]">
-              <img
-                src={planYourLegacyImage}
-                alt="Family tree preview"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-[568px] object-cover"
-              />
-            </div>
+            <img
+              src={planYourLegacyImage}
+              alt="Family tree preview"
+              loading="lazy"
+              decoding="async"
+              className="w-full h-[568px] object-cover"
+            />
           </div>
         </div>
 

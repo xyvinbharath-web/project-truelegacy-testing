@@ -4,7 +4,7 @@ import cardImageWill from "../../assets/img/home/Framewhoarewe1.webp";
 import cardImageTrust from "../../assets/img/home/Framewhoarewe2.webp";
 import cardImageFamily from "../../assets/img/home/Framewhoarewe3.webp";
 import questionIcon from "../../assets/icon/Vectorlogo6904.webp";
-import quoteDotsBg from "../../assets/img/home/Group 3.webp";
+import quoteDotsBg from "../../assets/img/home/Group55.png";
 import group2Bg from "../../assets/img/home/Group 2.png";
 import StyledButton from "../../ui/StyledButton";
 
@@ -67,10 +67,10 @@ const WhoweAreNew = () => {
       {/* Container */}
       <div className="max-w-[1450px] mx-auto px-4 lg:px-8 md:px-4">
         {/* Top section */}
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 lg:gap-8 items-start">
+        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-4 lg:gap-3 items-start">
           {/* Left content */}
           <div className="who-heading-block">
-            <h2 className="text-[32px] sm:text-[38px] lg:text-[42px] leading-[49px] text-[#132F2C] mb-4 who-heading font-black" style={{fontFamily: 'Urania', fontWeight: '700 !important', fontStyle: 'Bold', fontSize: '32px', }}>
+            <h2 className="text-[32px] sm:text-[38px] lg:text-[42px] leading-[49px] text-[#132F2C] mb-0 lg:mb-4 who-heading font-black" style={{fontFamily: 'Urania', fontWeight: '700 !important', fontStyle: 'Bold', fontSize: '32px', }}>
               Who are We?
             </h2>
 
@@ -84,52 +84,66 @@ const WhoweAreNew = () => {
 
           {/* Right quote with dots background */}
           <div
-            className="relative max-w-[480px] lg:max-w-[900px] lg:ml-auto mt-4 lg:mt-10 pb-10 who-quote-block"
-            style={{
-              backgroundImage: `url(${quoteDotsBg})`,
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center 40%",
-              backgroundSize: "120% 200%",
-            }}
+            className="relative max-w-[480px] lg:max-w-[900px] lg:ml-auto -mt-6 lg:mt-6 pb-30 pt-0 who-quote-block z-10"
           >
+            {/* Mobile dots background - separate section */}
+            <div
+              className="lg:hidden absolute inset-0"
+              style={{
+                backgroundImage: `url(${quoteDotsBg})`,
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "left 80% 0%",
+                backgroundSize: "110% 110%",
+              }}
+            />
+            
             {/* Desktop background with new image - overrides mobile background */}
             <div
-              className="hidden lg:block absolute"
+              className="hidden lg:block absolute inset-0"
               style={{
                 backgroundImage: `url(${group2Bg})`,
                 backgroundRepeat: "no-repeat",
-                backgroundPosition: "center 1%",
+                backgroundPosition: "center 22%",
                 backgroundSize: "100% 150%",
                 backgroundColor: '#F6FFFF',
                 top: '0px',
                 left: '0px',
-                right: '0px',
                 height: '200px'
               }}
             />
             
-            <p className="text-left who-quote-text text-[24px] lg:text-[32px] mt-0 lg:mt-8 ml-0 lg:ml-8 relative z-10" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'ExtraLight Italic', lineHeight: '100%', letterSpacing: '0%', color: '#737c7bff'}}>
-              “Families deserve peace, clarity, and security when passing on what they have built.”
+            <p className="text-left who-quote-text text-[24px] lg:text-[32px] mt-12 lg:mt-12 ml-0 lg:ml-0 relative z-10" style={{fontFamily: 'Urania', fontWeight: '200', fontStyle: 'italic', lineHeight: '100%', letterSpacing: '0.5%', color: '#737c7bff'}} ref={(el) => {
+              if (el && window.innerWidth >= 1024) {
+                el.style.marginLeft = '-60px';
+              }
+            }}>
+              "Families deserve peace, clarity, and security 
+              <span className="hidden lg:block">
+                when passing on what they have built."
+              </span>
+              <span className="lg:hidden">
+                when passing on what they have built."
+              </span>
             </p>
           </div>
         </div>
 
         {/* Cards */}
-        <div className="grid gap-x-10 gap-y-5 md:grid-cols-2 xl:grid-cols-3 justify-items-center justify-center md:justify-items-center xl:justify-items-center mt-8 md:mt-9 who-cards-grid -mx-4 md:mx-0 px-4 md:px-0">
+        <div className="grid gap-x-10 gap-y-5 md:grid-cols-2 xl:grid-cols-3 justify-items-center justify-center md:justify-items-center xl:justify-items-center -mt-19 md:-mt-14 who-cards-grid -mx-4 md:mx-0 px-4 md:px-0 relative z-20">
           {cards.map((card) => (
             <div
               key={card.title}
-              className="who-card bg-white shadow-[0_10px_30px_rgba(5,41,26,0.08)] overflow-hidden h-[394px] lg:h-[475px] w-full md:w-[359px] lg:w-[457px] md:max-w-[467px]"
+              className="who-card bg-white shadow-[0_10px_30px_rgba(5,41,26,0.08)] overflow-hidden h-[394px] lg:h-[475px] w-[353px] md:w-[359px] lg:w-[457px] md:max-w-[467px]"
               style={{
                 borderRadius: "6px",
               }}
             >
               {/* Mobile Image */}
-              <div className="pt-[20px] px-[20px] flex justify-center lg:hidden">
+              <div className="pt-[20px] px-[10px] flex justify-center lg:hidden">
                 <div
                   className="overflow-hidden bg-[#05281F] who-card-image"
                   style={{
-                    width: "calc(100% - 1px)",
+                    width: "98%",
                     height: "180px",
                     borderRadius: "6px",
                   }}

@@ -62,8 +62,29 @@ const Footer = ({ hideCta = false }) => {
         isVisible ? "footer-section-visible" : ""
       }`}
     >
-      {/* Green background section */}
-      <div className="absolute inset-x-0 bottom-0 bg-[#0F2724] h-[550px]"></div>
+      
+        {/* Green background – MOBILE */}
+<div
+  className="
+    absolute inset-x-0 bottom-0 
+    bg-[#0C201E]
+    h-[640px]
+    md:hidden
+    z-0
+  "
+/>
+
+{/* Green background – DESKTOP */}
+<div
+  className="
+    absolute inset-x-0 bottom-0 
+    bg-[#0C201E]
+    h-[450px]
+    hidden md:block
+    z-0
+  "
+/>
+
       {!hideCta && (
         <>
           {/* Overlapping yellow CTA block - mobile */}
@@ -162,31 +183,33 @@ const Footer = ({ hideCta = false }) => {
       )}
 
       {/* Main footer content */}
-      <div className="relative z-20 pt-0 pb-0 mt-0 footer-main">
+      <div className="relative z-20 pt-3 pb-0 mt-0 footer-main">
         <div className="max-w-[1550px] lg:max-w-full mx-auto px-4 sm:px-8 lg:px-6 xl:px-8 2xl:px-4 footer-main-inner">
           {/* Mobile layout */}
           <div className="md:hidden text-[13px] footer-mobile-block">
             {/* Top row: Phone/Email/Follow Us + Quick Links */}
-            <div className="flex gap-8 pb-1">
+            <div className="flex gap-6 sm:gap-8 pb-1">
               <div className="absolute bottom-0 left-[-10px] right-[-10px] h-px bg-[#193C38]"></div>
-              <div className="flex-1">
+              <div className="flex-[1.2]">
                 <div className="text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "100ms", fontFamily: 'Urania', fontWeight: '500', fontStyle: 'Medium', fontSize: '18px', lineHeight: '100%' }}>
                   Phone
                 </div>
                 <div className="space-y-1 mb-4 text-[#F4D57E] text-[16px] footer-text-group animate-fade-in-up" style={{ animationDelay: "200ms" }}>
-                  <div className="font-medium footer-text">+91 7592 912 300 (IN)</div>
-                  <div className="font-medium footer-text">+971 58 929 148 (UAE)</div>
+                  <div className="font-medium footer-text">
+                    <span className="block whitespace-nowrap">+91 7592 912 300 (IN)</span>
+                    <span className="block whitespace-nowrap">+971 58 929 148 (UAE)</span>
+                  </div>
                 </div>
-                <div className="text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "300ms", fontFamily: 'Urania', fontWeight: '500', fontStyle: 'Medium', fontSize: '18px', lineHeight: '100%' }}>
+                <div className="text-white mb-2 mt-5 footer-label animate-fade-in-up" style={{ animationDelay: "300ms", fontFamily: 'Urania', fontWeight: '500', fontStyle: 'Medium', fontSize: '18px', lineHeight: '100%' }}>
                   Email
                 </div>
                 <div className="text-[#F4D57E] text-[16px] mb-4 footer-text animate-fade-in-up" style={{ animationDelay: "400ms" }}>
                   info@truelegacy.in
                 </div>
-                <div className="text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "500ms", fontFamily: 'Urania', fontWeight: '500', fontStyle: 'Medium', fontSize: '18px', lineHeight: '100%' }}>
+                <div className="text-white mb-2 mt-5 footer-label animate-fade-in-up" style={{ animationDelay: "500ms", fontFamily: 'Urania', fontWeight: '500', fontStyle: 'Medium', fontSize: '18px', lineHeight: '100%' }}>
                   Follow Us
                 </div>
-                <div className="flex items-center gap-3 footer-social animate-fade-in-up" style={{ animationDelay: "600ms" }}>
+                <div className="flex items-center gap-3 mb-1 footer-social animate-fade-in-up" style={{ animationDelay: "600ms" }}>
                   {socials.map((social, index) => (
                     <a
                       key={social.name}
@@ -203,33 +226,36 @@ const Footer = ({ hideCta = false }) => {
                 </div>
               </div>
 
-              <div className="flex-1">
-                <div className="text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "700ms", fontFamily: 'Urania', fontWeight: '500', fontStyle: 'Medium', fontSize: '18px', lineHeight: '100%' }}>
-                  Quick Links
-                </div>
-                <div className="space-y-1 text-[#A1A1A1] footer-links">
-                  {[
-                    { to: "/", text: "Home" },
-                    { to: "/why-choose-us", text: "Why Choose Us" },
-                    { to: "/services", text: "Services" },
-                    { to: "/resources", text: "Resources" },
-                    { to: "/contact", text: "Contact" }
-                  ].map((link, index) => (
-                    <NavLink
-                      key={link.to}
-                      to={link.to}
-                      className="block text-[16px] hover:text-[#F4D57E] hover:translate-x-1 transition-all duration-300 cursor-pointer animate-fade-in-up"
-                      style={{ animationDelay: `${800 + index * 100}ms` }}
-                    >
-                      {link.text}
-                    </NavLink>
-                  ))}
+              <div className="flex-[0.8] flex justify-start sm:justify-center">
+                <div className="w-fit text-left">
+                  <div className="text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "700ms", fontFamily: 'Urania', fontWeight: '500', fontStyle: 'Medium', fontSize: '18px', lineHeight: '100%' }}>
+                    Quick Links
+                  </div>
+                  <div className="space-y-2 text-[#A1A1A1] footer-links">
+                    {[
+                      { to: "/", text: "Home" },
+                      { to: "/why-choose-us", text: "Why Choose Us" },
+                      { to: "/services", text: "Services" },
+                      { to: "/resources", text: "Resources" },
+                      { to: "/contact", text: "Contact" }
+                    ].map((link, index) => (
+                      <NavLink
+                        key={link.to}
+                        to={link.to}
+                        className="block text-[16px] hover:text-[#F4D57E] hover:translate-x-1 transition-all duration-300 cursor-pointer animate-fade-in-up"
+                        style={{ animationDelay: `${800 + index * 100}ms` }}
+                      >
+                        {link.text}
+                      </NavLink>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Address full width */}
-            <div className="pt-5 pb-1 relative">
+            <div className="mt-1 pt-5 pb-1 relative">
+              <div className="h-px bg-[#193C38] w-full mb-6 mt-0"></div>
               <div className="absolute bottom-0 left-[-10px] right-[-10px] h-px bg-[#193C38]"></div>
               <div className="text-white mb-2 footer-label animate-fade-in-up" style={{ animationDelay: "1300ms", fontFamily: 'Urania', fontWeight: '500', fontStyle: 'Medium', fontSize: '18px', lineHeight: '100%' }}>
                 Address
@@ -245,7 +271,7 @@ const Footer = ({ hideCta = false }) => {
           </div>
 
           {/* Desktop layout */}
-          <div className="hidden md:grid md:grid-cols-5 gap-8 text-[13px] sm:text-[14px] footer-desktop-grid mt-4">
+          <div className="hidden md:grid md:grid-cols-5 gap-8 text-[13px] sm:text-[14px] footer-desktop-grid -mt-4">
             {/* Phone & Email */}
             <div className="pb-2 relative footer-col">
               <div className="absolute bottom-0 left-[-20px] right-[-20px] h-px bg-[#193C38]"></div>
@@ -353,7 +379,7 @@ const Footer = ({ hideCta = false }) => {
           </div>
 
           {/* Bottom row */}
-          <div className="mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[14px] text-[#A3B4B0] footer-bottom">
+          <div className="mt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[14px] text-[#A3B4B0] footer-bottom">
             <div className="flex flex-wrap items-center gap-3">
               <NavLink to="/privacy-policy" className="hover:text-[#F4D57E] hover:underline hover:underline-offset-2 transition-all duration-300 cursor-pointer">
                 Privacy Policy
@@ -367,11 +393,11 @@ const Footer = ({ hideCta = false }) => {
            
             <div className="w-full h-px bg-[#193C38] sm:hidden"></div>
             
-            <div className="text-[14px] sm:text-[12px]">
+            <div className="text-[14px] sm:text-[12px] leading-none">
               ©2025 TRUE LEGACY. ALL RIGHTS RESERVED
             </div>
             <div className="w-full h-px bg-[#193C38] sm:hidden"></div>
-            <div className="flex flex-col items-start gap-1">
+            <div className="flex flex-col items-start sm:items-center justify-center gap-1">
               <a
                 href="https://www.xyvin.com/"
                 target="_blank"

@@ -215,10 +215,10 @@ const OurServices = ({ initialTab = "will" }) => {
               className="
                 relative
                 w-full
-                max-w-[367px]
+                max-w-[360px]
                 h-[429px]
                 sm:max-w-[360px]
-                sm:h-[440px]
+                sm:h-[429px]
                 lg:max-w-[414px]
                 lg:h-[528px]
                 rounded-[6px]
@@ -230,8 +230,8 @@ const OurServices = ({ initialTab = "will" }) => {
                 lg:!max-w-[414px]
               "
               style={{
-                width: 'calc(100vw - 16px)',
-                maxWidth: 'calc(100vw - 16px)',
+                width: 'calc(100vw - 32px)',
+                maxWidth: 'calc(100vw - 32px)',
                 backgroundImage: `url(${service.image})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
@@ -241,13 +241,13 @@ const OurServices = ({ initialTab = "will" }) => {
               {/* Transparent inner card */}
               <div className="relative flex items-end h-full px-4 pb-4 lg:px-0 lg:pb-0">
                 <div
-                  className="w-full max-w-[374px] min-h-[327px] mx-auto rounded-[6px]
+                  className="min-h-[340px] ml-auto mr-1 rounded-[6px]
                   border border-white/20
                   px-5 pt-5 pb-5 text-white flex flex-col justify-between service-card-inner
-                  lg:absolute lg:max-w-[374px] lg:min-h-[327px] lg:top-[181px] lg:left-[20px]"
+                  lg:absolute lg:min-h-[327px] lg:top-[181px] lg:left-[20px]"
                   style={{
-                    width: 'calc(100% - 32px)',
-                    maxWidth: 'calc(100% - 32px)',
+                    width: '200%',
+                    maxWidth: 'calc(100% - 10px)',
                     backgroundImage: `url(${CardBackground})`,
                     backgroundSize: "120% 130%",
                     backgroundPosition: "center",
@@ -258,15 +258,19 @@ const OurServices = ({ initialTab = "will" }) => {
                 >
 
                   <div>
-                    <h3 className="font-[Urania] text-[24px] leading-[24px] font-bold mb-2 service-card-title">
+                    <h3
+                      className="font-[Urania] service-card-title mb-4"
+                    >
                       {service.title}
                     </h3>
 
-                    <p className="font-[Urania] text-[16px] leading-[20px] font-medium mb-3 service-card-subtitle">
+                    <p 
+                      className="font-[Urania] service-card-subtitle mb-3"
+                    >
                       {service.subtitle}
                     </p>
 
-                    <p className="font-[Urania] text-[16px] leading-[22px] font-regular service-card-body">
+                    <p className="font-[Urania] service-card-body">
                       {service.description}
                     </p>
                   </div>

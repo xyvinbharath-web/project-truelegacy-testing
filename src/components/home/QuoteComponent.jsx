@@ -38,7 +38,7 @@ const QuoteComponent = () => {
       <div className="relative max-w-[1850px] mx-auto px-4 sm:px-5 md:px-12 grid gap-6 lg:grid-cols-2 md:grid-cols-1 text-center lg:text-left items-center">
 
         {/* LEFT CONTENT — unchanged */}
-        <div className="text-left relative z-20 quote-left text-left mx-auto md:text-center md:mx-auto lg:text-left lg:mx-0 md:ml-0 ml-2 md:-mt-8">
+        <div className="text-left relative z-20 quote-left text-left mx-auto md:text-center md:mx-auto lg:text-left lg:mx-0 md:ml-0 ml-2 pr-4 md:pr-0 md:-mt-8">
           <h1 className="font-[Urania] font-bold text-[32px] md:text-[42px] leading-[36px] md:leading-[49px] text-[#132F2C] quote-heading" style={{fontFamily: 'Urania', fontWeight: '700', fontStyle: 'Bold', letterSpacing: '0%'}}>
             Want to Secure
             <br />
@@ -94,7 +94,7 @@ const QuoteComponent = () => {
           />
 
           {/* 🔹 Image */}
-          <div className="relative z-20 w-[320px] h-[320px] md:w-[499px] md:h-[496px] overflow-visible md:ml-1 ml-23 md:relative md:right-auto absolute right-0 sm:right-0 max-[380px]:right-0 sm:w-[320px] sm:h-[320px] max-[380px]:w-[320px] max-[380px]:h-[320px]">
+          <div className="relative z-20 w-[320px] h-[320px] md:w-[499px] md:h-[496px] overflow-visible md:ml-1 ml-23 max-[420px]:ml-16 max-[380px]:ml-10 max-[340px]:ml-6 md:relative md:right-auto absolute right-0 sm:right-0 max-[380px]:right-0 sm:w-[320px] sm:h-[320px] max-[380px]:w-[320px] max-[380px]:h-[320px]">
             <img
               src={secureYourLegacyImage}
               alt="Secure your legacy"

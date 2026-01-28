@@ -413,7 +413,7 @@ const Navbar = () => {
 
               {/* Login button */}
               <button
-                className="mt-6 inline-flex items-center justify-center rounded-full bg-[#F4D57E] text-[#132F2C]"
+                className="mt-2 inline-flex items-center justify-center rounded-full bg-[#F4D57E] text-[#132F2C]"
                 style={{
                   width: '171px',
                   height: '52px',
@@ -438,13 +438,14 @@ const Navbar = () => {
                 Login Account
               </button>
 
-              <div className="mt-8 pt-4 border-t border-white/10 text-[#FFFFFF]">
+              <div className="mt-4 pt-8 border-t border-white/10 text-[#FFFFFF]">
                 <div className="mb-1" style={{fontFamily: 'Urania', fontWeight: '400', fontStyle: 'normal', fontSize: '14px', lineHeight: '100%', letterSpacing: '0%', color: '#899795'}}>General Inquiries</div>
                 <div className="flex items-center justify-between" style={{fontFamily: 'Urania', fontWeight: '400', fontStyle: 'normal', fontSize: '18px', lineHeight: '100%', letterSpacing: '0%'}}>
                   <span>info@truelegacy.in</span>
                   <img src={FaviconIcon} alt="Email" className="w-8 h-8" />
                 </div>
               </div>
+
             </div>
           </div>
         </div>

@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+ html,
+ body {
+   overflow-x: hidden;
+ }
+ 
+ #root {
+   overflow-x: hidden;
+ }
+ 
 
 @font-face {
   font-family: "Editors Note";
@@ -687,21 +696,20 @@
 }
 
 .plan-image {
-  opacity: 0;
-  transform: translateY(10px) scale(0.98);
-  transition: opacity 520ms ease-out, transform 520ms ease-out,
-    box-shadow 520ms ease-out;
+  opacity: 1;
+  transform: none;
+  transition: none;
 }
 
 .plan-section-visible .plan-image {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: none;
 }
 
 @media (min-width: 768px) {
   .plan-section-visible .plan-image:hover {
-    transform: translateY(-4px) scale(1.005);
-    box-shadow: 0 22px 48px rgba(5, 41, 26, 0.18);
+    transform: none;
+    box-shadow: none;
   }
 }
 
@@ -1327,6 +1335,14 @@
     border-color 600ms ease-out;
 }
 
+/* Service Card Inner - Desktop Override */
+@media (min-width: 1024px) {
+  .service-card-inner {
+    width: 374px !important;
+    max-width: 374px !important;
+  }
+}
+
 .service-card:hover .service-card-inner {
   transform: translateY(-4px);
   background-color: rgba(19, 47, 44, 0.9);
@@ -1338,6 +1354,36 @@
 .service-card-body {
   transition: transform 600ms cubic-bezier(0.2, 0.6, 0.2, 1),
     opacity 600ms ease-out;
+}
+
+/* Service Card Title - Higher Specificity */
+.service-card .service-card-inner .service-card-title {
+  font-family: Urania !important;
+  font-weight: 700 !important;
+  font-style: Bold !important;
+  font-size: 24px !important;
+  line-height: 100% !important;
+  letter-spacing: 0% !important;
+}
+
+/* Service Card Subtitle - Higher Specificity */
+.service-card .service-card-inner .service-card-subtitle {
+  font-family: Urania !important;
+  font-weight: 500 !important;
+  font-style: Medium !important;
+  font-size: 16px !important;
+  line-height: 100% !important;
+  letter-spacing: 0% !important;
+}
+
+/* Service Card Body - Higher Specificity */
+.service-card .service-card-inner .service-card-body {
+  font-family: Urania !important;
+  font-weight: 400 !important;
+  font-style: Regular !important;
+  font-size: 16px !important;
+  line-height: 22px !important;
+  letter-spacing: 0% !important;
 }
 
 .service-card:hover .service-card-title,

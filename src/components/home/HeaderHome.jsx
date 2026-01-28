@@ -191,7 +191,7 @@ const HeaderHome = () => {
 
   return (
     <section
-      className="relative w-full h-[640px] lg:h-[580px] overflow-hidden md:h-screen mt-[-50px] sm:mt-[-50px] md:mt-0 lg:mt-0 pt-[316px] sm:pt-0"
+      className="relative w-full h-[640px] lg:h-[580px] overflow-hidden md:h-screen mt-[-50px] sm:mt-[-50px] md:mt-0 lg:mt-0 pt-[260px] sm:pt-0"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -202,7 +202,7 @@ const HeaderHome = () => {
           src={legacyBackground}
           alt="Succession Planning"
           className="absolute inset-0 w-full h-full object-cover block md:hidden lg:hidden"
-          style={{ top: '0', objectPosition: '100% center', width: '100%', height: '100%' }}
+          style={{ top: 'auto', bottom: '0', objectPosition: 'right bottom', width: '100%', height: '110%' }}
         />
         {/* Tablet background image (cropped Banner) */}
         <img
@@ -238,7 +238,7 @@ const HeaderHome = () => {
               <span className="hidden lg:block" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'light', fontSize: '66px', lineHeight: '74px', letterSpacing: '0%'}}>
                 {renderStackedLines(currentSlide.questionPrefix)}
               </span>
-              <span className="block font-bold text-[#F4D57E] max-w-[180px] md:max-w-none" style={{fontFamily: 'Urania', fontWeight: '700', fontStyle: 'normal', fontSize: '36px', lineHeight: '42px', letterSpacing: '0%'}}>
+              <span className="block mt-2 sm:mt-0 font-bold text-[#F4D57E] max-w-[180px] md:max-w-none" style={{fontFamily: 'Urania', fontWeight: '700', fontStyle: 'normal', fontSize: '36px', lineHeight: '42px', letterSpacing: '0%'}}>
                 {/* left-to-right stagger for highlight lines */}
                 <span className="block carousel-text">
                   <span className="block sm:hidden">
@@ -294,7 +294,7 @@ const HeaderHome = () => {
       </div>
 
       {/* Carousel controls */}
-      <div className="absolute z-20 left-4 sm:left-24 lg:left-20 top-[585px] sm:top-[510px] lg:top-[510px] flex items-center gap-3 md:left-14">
+      <div className="absolute z-20 left-4 sm:left-24 lg:left-20 top-[545px] sm:top-[510px] lg:top-[510px] flex items-center gap-3 md:left-14">
         <button
           className="h-6 w-6 hover:scale-105 transition-transform"
           onClick={goPrev}

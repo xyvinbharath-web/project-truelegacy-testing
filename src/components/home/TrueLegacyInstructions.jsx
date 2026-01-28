@@ -161,7 +161,7 @@ const TrueLegacyInstructions = () => {
           </div>
 
           {/* arrows */}
-          <div className="mt-[-150px] flex justify-center gap-3 relative z-10">
+          <div className="mt-[-130px] md:mt-[-150px] flex justify-center gap-3 relative z-10">
             <button onClick={goPrev} aria-label="Previous">
               <img src={leftArrowIcon} alt="Previous" className="w-7 h-7" />
             </button>
