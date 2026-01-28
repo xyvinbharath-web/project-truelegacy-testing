@@ -69,7 +69,7 @@ jobs:
             echo "Deploying to truelegacy-dev-new"
 
             sudo -n rm -rf /var/www/html/truelegacy-dev-new/*
-            sudo -n cp -R ~/deploy-temp/dist/* /var/www/html/truelegacy-dev-new/
+            sudo -n mv -R ~/deploy-temp/dist/* /var/www/html/truelegacy-dev-new/
             echo "Reloading Nginx..."
             sudo -n systemctl reload nginx
 
