@@ -68,7 +68,7 @@ jobs:
           script: |
             echo "Deploying to truelegacy-dev-new"
 
-            rm -rf /var/www/html/truelegacy-dev-new/*
-            cp -R ~/deploy-temp/dist/* /var/www/html/truelegacy-dev-new/
+            sudo rm -rf /var/www/html/truelegacy-dev-new/*
+            sudo cp -R ~/deploy-temp/dist/* /var/www/html/truelegacy-dev-new/
 
             echo "DEPLOY SUCCESS"
