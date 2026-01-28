@@ -10,17 +10,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout
+      # 1️⃣ Checkout code
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      # 2️⃣ Node setup
+      # 2️⃣ Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "18"
 
-      # 3️⃣ Install & build
+      # 3️⃣ Install dependencies & build
       - name: Install dependencies and build
         env:
           VITE_APP_API_URL: ${{ secrets.VITE_APP_API_URL }}
@@ -29,7 +29,7 @@ jobs:
           npm ci
           npm run build
 
-      # 4️⃣ Verify build output (important)
+      # 4️⃣ Verify build output
       - name: Verify dist folder
         run: |
           ls -la dist
@@ -47,7 +47,7 @@ jobs:
             mkdir -p ~/deploy-temp
             chmod 775 ~/deploy-temp
 
-      # 6️⃣ Copy BUILD FILES (not folder) to server
+      # 6️⃣ Copy build files to server (dist folder)
       - name: Upload build files to server
         uses: appleboy/scp-action@v0.1.3
         with:
@@ -55,10 +55,10 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 4967
-          source: dist/*
+          source: dist/
           target: ~/deploy-temp/
 
-      # 7️⃣ Deploy NEW app only
+      # 7️⃣ Deploy NEW app (ONLY this folder)
       - name: Deploy new app on server
         uses: appleboy/ssh-action@v0.1.6
         with:
@@ -66,15 +66,19 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 4967
-        
           script: |
-               echo "=== CI PROOF ==="
-               whoami
-               hostname
-               pwd
-               sudo -n whoami
-               sudo -n touch /var/www/html/CI_WAS_HERE
-               sudo -n date >> /var/www/html/CI_WAS_HERE
-               ls -la /var/www/html
-               echo "==============="
- 
+            echo "Deploying NEW True Legacy app..."
+
+            sudo -n mkdir -p /var/www/html/truelegacy-frontend-new
+            sudo -n rm -rf /var/www/html/truelegacy-frontend-new/*
+
+            # IMPORTANT: copy from deploy-temp/dist
+            sudo -n cp -R ~/deploy-temp/dist/* /var/www/html/truelegacy-frontend-new/
+
+            sudo -n chown -R www-data:www-data /var/www/html/truelegacy-frontend-new
+            sudo -n chmod -R 755 /var/www/html/truelegacy-frontend-new
+
+            sudo -n rm -rf ~/deploy-temp
+            sudo -n systemctl reload nginx
+
+            echo "Deployment completed!"
