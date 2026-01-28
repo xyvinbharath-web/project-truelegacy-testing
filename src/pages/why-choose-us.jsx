@@ -1,6 +1,8 @@
 import Header from "../components/Header";
 import Navbar from "../components/Navbar";
 import { lazy, Suspense, useEffect } from "react";
+import WhyChooseImage from "../assets/img/whychooseus/Frame whychoosepng.webp";
+import WhyChooseMobileImage from "../assets/img/Frame whychoseusmobile.webp";
 const Description = lazy(() => import("../components/whychooseus/Description"));
 const WhyChoose = lazy(() => import("../components/whychooseus/WhyChoose"));
 const OurPromise = lazy(() => import("../components/whychooseus/OurPromise"));
@@ -38,6 +40,8 @@ const WhyChooseUs = () => {
       <Header
         title="Why Choose Us"
         subtitle="Discover why families trust True Legacy for their succession planning needs."
+        mobileImage={WhyChooseMobileImage}
+        desktopImage={WhyChooseImage}
       />
       
       <main className="flex-grow bg-white text-black">

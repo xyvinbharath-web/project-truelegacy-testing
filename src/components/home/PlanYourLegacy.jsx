@@ -67,7 +67,7 @@ const PlanYourLegacy = () => {
   return (
     <section
       ref={sectionRef}
-      className={`w-full bg-white pb-16 md:pb-20 lg:pb-24 pt-8 md:pt-8 lg:pt-8 plan-section ${
+      className={`w-full bg-white pb-16 md:pb-20 lg:pb-24 pt-1 md:pt-8 lg:pt-8 plan-section ${
         isVisible ? "plan-section-visible" : ""
       }`}
     >

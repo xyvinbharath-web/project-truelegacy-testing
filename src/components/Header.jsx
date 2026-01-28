@@ -2,22 +2,26 @@ import FrameMobile from "../assets/img/service/Frame 2147224829.webp";
 import FrameDesktop from "../assets/img/service/Frame 1.webp";
 import ServicesAccent from "../assets/icon/Vectorlogo6904.webp";
 
-const Header = ({ title, subtitle }) => {
+const Header = ({ title, subtitle, mobileImage = FrameMobile, desktopImage = FrameDesktop, imageWidth = "150vw", imagePosition = "-1vw" }) => {
   return (
     <header className="relative w-full">
-      <div className="relative w-full h-[260px] sm:h-[320px] lg:h-[360px] xl:h-[400px] overflow-hidden">
+      <div className="relative w-full h-[250px] sm:h-[240px] lg:h-[280px] xl:h-[350px] overflow-hidden">
         {/* Mobile background image */}
-        <div 
-          className="absolute inset-0 sm:hidden bg-cover bg-center"
-          style={{ backgroundImage: `url(${FrameMobile})` }}
+        <img
+          src={mobileImage}
+          alt="Header background"
+          className="absolute inset-0 w-full h-full object-cover  sm:block"
+          style={{ objectPosition: 'center bottom' }}
         />
         
-        {/* Desktop background image */}
-        <div 
-          className="absolute inset-0 hidden sm:block bg-cover bg-center"
-          style={{ backgroundImage: `url(${FrameDesktop})` }}
+        {/* Desktop background image - full width */}
+        <img
+          src={desktopImage}
+          alt="Header background"
+          className="absolute inset-0 w-full h-full object-cover hidden sm:block"
+          style={{ objectPosition: 'center' }}
         />
-        <div className="relative h-full max-w-[1450px] mx-auto px-4 md:px-10 flex flex-col justify-end pb-10 md:pb-14 lg:pb-16 animate-fade-up">
+        <div className="relative h-full w-full mx-auto pl-4 pr-4 md:pl-20 md:pr-4 lg:pl-24 lg:pr-4 xl:pl-24 xl:pr-4 flex flex-col justify-end pb-10 md:pb-14 lg:pb-16 animate-fade-up">
           {/* Title + yellow accent icon */}
           <div className="inline-flex items-center gap-3 mb-2">
             <h1
@@ -34,8 +38,8 @@ const Header = ({ title, subtitle }) => {
             />
           </div>
 
-          <p className="font-[Urania] text-white/90 max-w-[540px]
-                         text-[14px] sm:text-[16px] lg:text-[18px] xl:text-[20px]
+          <p className="font-[Urania] font-normal text-white/90 max-w-[540px]
+                         text-[16px] sm:text-[20px] lg:text-[18px] xl:text-[20px]
                          leading-[20px] sm:leading-[24px] lg:leading-[26px] xl:leading-[29px] animate-fade-in" style={{ animationDelay: '120ms' }}>
             {subtitle}
           </p>

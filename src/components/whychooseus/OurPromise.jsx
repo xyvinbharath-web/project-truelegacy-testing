@@ -27,7 +27,7 @@ const OurPromise = () => {
   return (
     <section
       id="our-promise-section"
-      className="bg-[#F6FFFF] text-black px-6 md:px-4 lg:px-16 py-10 md:py-8 lg:py-16"
+      className="bg-[#F6FFFF] text-black px-6 md:px-4 lg:px-16 py-10 md:py-8 lg:py-16 pb-10 md:pb-16 lg:pb-32"
     >
       <div className="max-w-[1440px] mx-auto md:px-0 sm:px-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start -mx-4 sm:mx-0 md:mx-0">
@@ -41,7 +41,7 @@ const OurPromise = () => {
     Our Promise
   </h2>
 
-  <p className="font-[Urania] font-medium text-[24px] md:text-[20px] lg:text-[22px] leading-snug text-[#132F2C] mb-6 max-w-[520px]" style={{fontFamily: 'Urania', fontWeight: '500', fontStyle: 'Medium', fontSize: '24px', lineHeight: '100%', letterSpacing: '0%'}}>
+  <p className="font-[Urania] font-medium text-[24px] md:text-[20px] lg:text-[22px] leading-snug text-[#132F2C] mb-6 max-w-[520px]" style={{fontFamily: 'Urania', fontWeight: '700', fontStyle: 'Medium', fontSize: '24px', lineHeight: '100%', letterSpacing: '0%'}}>
     No matter your situation, you are not alone.
     We're here to guide you every step of the way.
   </p>

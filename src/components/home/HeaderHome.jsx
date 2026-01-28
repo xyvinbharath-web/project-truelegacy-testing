@@ -1,58 +1,50 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import BannerImage from "../../assets/img/home/Banner 1.webp";
+import BannerImage from "../../assets/img/home/Frameheaderpng.webp";
 import heroBg from "../../assets/img/Group 1.webp";
 import heroBgAlt from "../../assets/img/Frame 2147224797.webp";
 import legacyBackground from "../../assets/img/home/Frame 2147224800 (2).webp";
+import mobileframe1 from "../../assets/img/home/mobileframe1.webp";
+import mobileframe2 from "../../assets/img/home/mobile frame2.webp";
+import frame12 from "../../assets/img/home/Frame 12.webp";
+import frameHeader3 from "../../assets/img/home/Frameheader3.webp";
 import questionIcon from "../../assets/icon/Vectorlogo6904.webp";
 import arrowLeft from "../../assets/icon/circle-arrow-left-02-sharp.webp";
 import arrowRight from "../../assets/icon/circle-arrow-right-sharp.webp";
-import frameHeader from "../../assets/img/home/Frameheaderpng.webp";
 
 const slides = [
   {
-    id: 1,
-    background: BannerImage,
+    mobileBackground: legacyBackground,
+    desktopBackground: BannerImage,
     eyebrow: "Succession Planning",
-    questionPrefix: "Are you comfortable \nwith the law deciding ",
-    questionPrefixMobile: "Are you comfortable\nwith the law deciding ",
-    questionHighlight: "your family's future for you?",
-    questionHighlightMobile: "your family's\nfuture for you?",
-    description:
-      "If you leave it to the law, your family's future may unfold differently than you expect.",
-  },
-  {
-    id: 2,
-    background: BannerImage,
-    eyebrow: "Succession Planning",
-    questionPrefix: "What would happen \nto your family's wealth ",
-    questionPrefixMobile: "What would happen \nto your family's wealth ",
-    questionHighlight: "if you weren't here tomorrow?",
-    questionHighlightMobile: "if you weren't \nhere tomorrow?",
-    description:
-      "Without a clear plan, important decisions about your assets may be made by default legal rules.",
-  },
-  {
-    id: 3,
-    background: BannerImage,
-    eyebrow: "Succession Planning",
-    questionPrefix: "Do your loved ones know \nexactly how you want your ",
-    questionPrefixMobile: "Do your loved ones know \nexactly how you want your ",
-    questionHighlight: "legacy to be shared?",
-    questionHighlightMobile: "legacy to \nbe shared?",
-    description:
-      "Clear instructions today can help your family avoid confusion, conflict, and delays in the future.",
-  },
-  {
-    id: 4,
-    background: BannerImage,
-    eyebrow: "Succession Planning",
-    questionPrefix: "Are you ready to turn \nyour intentions into a ",
+    questionPrefix:  "Are you ready to turn \nyour intentions into a ",
     questionPrefixMobile: "Are you ready to turn\nyour intentions into a ",
     questionHighlight: "clear, written plan for your family?",
     questionHighlightMobile: "clear, written plan \nfor your family?",
     description:
-      "With the right guidance, you can protect what you've built and give your family lasting peace of mind.",
+       "With the right guidance, you can protect what you've built and give your family lasting peace of mind.",
+  },
+  {
+    mobileBackground: mobileframe1,
+    desktopBackground: frame12,
+    eyebrow: "Succession Planning",
+    questionPrefix: "How do you ensure your \nwealth remains with your  ",
+    questionPrefixMobile: "How do you ensure your \nwealth remains with your ",
+    questionHighlight: "children in your absence?",
+    questionHighlightMobile: "children in your \nabsence?",
+    description:
+       "Proper planning protects your wealth and guarantees it reaches your children without complications.",
+  },
+  {
+    mobileBackground: mobileframe2,
+    desktopBackground: frameHeader3,
+    eyebrow: "Succession Planning",
+    questionPrefix: "Do you know who will \nget your wealth if  ",
+    questionPrefixMobile: "Do you know who will \nget your wealth if ",
+    questionHighlight: "something happens to you?",
+    questionHighlightMobile: "something \nhappens to you?",
+    description:
+      "If your wishes aren’t documented, your wealth may go to someone you didn’t intend.",
   },
 ];
 
@@ -94,6 +86,7 @@ const HeaderHome = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [paused, setPaused] = useState(false);
+  const [fadePhase, setFadePhase] = useState(false);
 
   const currentSlide = slides[activeIndex];
   const prevSlide = slides[prevIndex];
@@ -101,11 +94,14 @@ const HeaderHome = () => {
   const goNext = () => {
     if (isAnimating) return;
     setIsAnimating(true);
+    setFadePhase(false);
     setPrevIndex((p) => activeIndex);
     setTransitioning(true);
     setActiveIndex((prev) => (prev + 1) % slides.length);
+    setTimeout(() => setFadePhase(true), 20);
     setTimeout(() => {
       setTransitioning(false);
+      setFadePhase(false);
       setIsAnimating(false);
     }, 700);
   };
@@ -113,11 +109,14 @@ const HeaderHome = () => {
   const goPrev = () => {
     if (isAnimating) return;
     setIsAnimating(true);
+    setFadePhase(false);
     setPrevIndex((p) => activeIndex);
     setTransitioning(true);
     setActiveIndex((prev) => (prev - 1 + slides.length) % slides.length);
+    setTimeout(() => setFadePhase(true), 20);
     setTimeout(() => {
       setTransitioning(false);
+      setFadePhase(false);
       setIsAnimating(false);
     }, 700);
   };
@@ -197,25 +196,48 @@ const HeaderHome = () => {
     >
       {/* Background image */}
       <div className="absolute inset-0">
-        {/* Mobile background image  */}
+        {/* Mobile background image with crossfade */}
         <img
-          src={legacyBackground}
+          src={currentSlide.mobileBackground}
           alt="Succession Planning"
-          className="absolute inset-0 w-full h-full object-cover block md:hidden lg:hidden"
-          style={{ top: 'auto', bottom: '0', objectPosition: 'right bottom', width: '100%', height: '110%' }}
+          className={`absolute inset-0 w-full h-full object-cover block md:hidden lg:hidden transition-opacity duration-700 ${
+            transitioning ? (fadePhase ? "opacity-100" : "opacity-0") : "opacity-100"
+          }`}
+          style={{ top: '10px', bottom: 'auto', objectPosition: 'right bottom', width: '100%', height: '90%', paddingTop: '120px' }}
         />
+        
         {/* Tablet background image (cropped Banner) */}
         <img
-          src={BannerImage}
+          src={currentSlide.desktopBackground}
           alt="Succession Planning"
-          className="absolute inset-0 w-full h-full object-cover hidden md:block lg:hidden"
+          className={`absolute inset-0 w-full h-full object-cover hidden md:block lg:hidden transition-opacity duration-700 ${
+            transitioning ? (fadePhase ? "opacity-100" : "opacity-0") : "opacity-100"
+          }`}
+          style={{ top: '0', objectPosition: 'center center', width: '100%', height: '80%' }}
+        />
+        <img
+          src={prevSlide.desktopBackground}
+          alt="Succession Planning"
+          className={`absolute inset-0 w-full h-full object-cover hidden md:block lg:hidden transition-opacity duration-700 ${
+            transitioning ? (fadePhase ? "opacity-0" : "opacity-100") : "opacity-0"
+          }`}
           style={{ top: '0', objectPosition: 'center center', width: '100%', height: '80%' }}
         />
         {/* Desktop background image  */}
         <img
-          src={frameHeader}
+          src={currentSlide.desktopBackground}
           alt="Succession Planning"
-          className="absolute left-0 right-0 w-full h-[580px] object-cover hidden lg:block"
+          className={`absolute left-0 right-0 w-full h-[580px] object-cover hidden lg:block transition-opacity duration-700 ${
+            transitioning ? (fadePhase ? "opacity-100" : "opacity-0") : "opacity-100"
+          }`}
+          style={{ top: '0px', objectPosition: 'right bottom' }}
+        />
+        <img
+          src={prevSlide.desktopBackground}
+          alt="Succession Planning"
+          className={`absolute left-0 right-0 w-full h-[580px] object-cover hidden lg:block transition-opacity duration-700 ${
+            transitioning ? (fadePhase ? "opacity-0" : "opacity-100") : "opacity-0"
+          }`}
           style={{ top: '0px', objectPosition: 'right bottom' }}
         />
       </div>
@@ -228,7 +250,7 @@ const HeaderHome = () => {
 
           {/* Text */}
           <div className="text-left text-white w-full">
-            <h1 key={currentSlide.id} className="font-[Urania] animate-fade-up break-words w-1/2">
+            <h1 key={activeIndex} className="font-[Urania] animate-fade-up break-words w-1/2">
               <span className="block sm:hidden" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'light', fontSize: '28px', lineHeight: '35px', letterSpacing: '0%'}}>
                 {renderStackedLines(currentSlide.questionPrefixMobile)}
               </span>
@@ -278,7 +300,7 @@ const HeaderHome = () => {
               </span>
             </h1>
 
-            <p key={`desc-${currentSlide.id}`} className="mt-4 max-w-[250px] sm:max-w-[350px] md:max-w-[660px] lg:max-w-[800px] animate-fade-in">
+            <p key={`desc-${activeIndex}`} className="mt-4 max-w-[250px] sm:max-w-[350px] md:max-w-[660px] lg:max-w-[800px] animate-fade-in">
               <span className="block sm:hidden lg:hidden" style={{ animationDelay: "180ms", fontFamily: 'Urania', fontWeight: '200', fontStyle: 'Regular', fontSize: '16px', lineHeight: '100%', letterSpacing: '0%' }}>
                 {currentSlide.description}
               </span>

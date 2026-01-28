@@ -1,6 +1,8 @@
-import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
+import Header from "../../components/Header";
 import { lazy, Suspense, useEffect } from "react";
+import ResourcesImage from "../../assets/img/resource/Frame resource.webp";
+import ResourcesMobileImage from "../../assets/img/resource/Frame resourcemobile.webp";
 const AllResources = lazy(() => import("../../components/resources/AllResources"));
 
 const Resources = () => {
@@ -34,6 +36,8 @@ const Resources = () => {
       <Header
         title="Resources"
         subtitle="Explore guides, articles, and tools to understand succession laws and estate planning."
+        mobileImage={ResourcesMobileImage}
+        desktopImage={ResourcesImage}
       />
 
       <main className="flex-grow bg-white text-black">

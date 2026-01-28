@@ -66,7 +66,7 @@ const ContactSection = () => {
   return (
     <section
       ref={sectionRef}
-      className={`pt-16 md:pt-20 pb-0 md:pb-20 bg-white contact-section ${
+      className={`pt-0 md:pt-20 pb-34 md:pb-35 bg-white contact-section ${
         isVisible ? "contact-section-visible" : ""
       }`}
     >
