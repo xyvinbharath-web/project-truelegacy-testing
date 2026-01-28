@@ -78,7 +78,6 @@ jobs:
             sudo -n chown -R www-data:www-data /var/www/html/truelegacy-frontend-new
             sudo -n chmod -R 755 /var/www/html/truelegacy-frontend-new
 
-            sudo -n rm -rf ~/deploy-temp
             sudo -n systemctl reload nginx
 
             echo "Deployment completed!"
