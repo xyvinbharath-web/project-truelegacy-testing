@@ -66,21 +66,15 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 4967
+        
           script: |
-            echo "Deploying NEW True Legacy app..."
-
-            sudo -n mkdir -p /var/www/html/truelegacy-frontend-new
-            sudo -n rm -rf /var/www/html/truelegacy-frontend-new/*
-
-            sudo -n cp -R ~/deploy-temp/* /var/www/html/truelegacy-frontend-new/
-
-            # Marker file (proof of deployment)
-            sudo -n touch /var/www/html/truelegacy-frontend-new/DEPLOYED_OK
-
-            sudo -n chown -R www-data:www-data /var/www/html/truelegacy-frontend-new
-            sudo -n chmod -R 755 /var/www/html/truelegacy-frontend-new
-
-            sudo -n rm -rf ~/deploy-temp
-            sudo -n systemctl reload nginx
-
-            echo "Deployment completed!"
+               echo "=== CI PROOF ==="
+               whoami
+               hostname
+               pwd
+               sudo -n whoami
+               sudo -n touch /var/www/html/CI_WAS_HERE
+               sudo -n date >> /var/www/html/CI_WAS_HERE
+               ls -la /var/www/html
+               echo "==============="
+ 
