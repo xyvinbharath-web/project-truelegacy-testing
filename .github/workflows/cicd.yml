@@ -69,7 +69,9 @@ jobs:
             echo "Deploying to truelegacy-dev-new"
 
             sudo -n rm -rf /var/www/html/truelegacy-dev-new/*
-            sudo cp -R /home/truelegacyadmin/deploy-temp/dist/. /var/www/html/truelegacy-dev-new/
+            sudo rsync -av --delete \
+              /home/truelegacyadmin/deploy-temp/dist/ \
+              /var/www/html/truelegacy-dev-new/
             echo "Reloading Nginx..."
             sudo -n systemctl reload nginx
 
