@@ -112,7 +112,7 @@ const WhoweAreNew = () => {
               }}
             />
             
-            <p className="text-left who-quote-text text-[24px] lg:text-[32px] mt-12 lg:mt-12 ml-0 lg:ml-0 relative z-10" style={{fontFamily: 'Urania', fontWeight: '200', fontStyle: 'italic', lineHeight: '100%', letterSpacing: '0.5%', color: '#737c7bff'}} ref={(el) => {
+            <p className="text-left who-quote-text text-[24px] lg:text-[32px] mt-12 lg:mt-12 ml-0 lg:ml-0 relative z-10" style={{fontFamily: 'Urania', fontWeight: '200', fontStyle: 'italic', lineHeight: '125%', letterSpacing: '0.5%', color: '#737c7bff'}} ref={(el) => {
               if (el && window.innerWidth >= 1024) {
                 el.style.marginLeft = '-60px';
               }
@@ -139,7 +139,7 @@ const WhoweAreNew = () => {
               }}
             >
               {/* Mobile Image */}
-              <div className="pt-[20px] px-[10px] flex justify-center lg:hidden">
+              <div className="pt-[10px] px-[10px] flex justify-center lg:hidden">
                 <div
                   className="overflow-hidden bg-[#05281F] who-card-image"
                   style={{

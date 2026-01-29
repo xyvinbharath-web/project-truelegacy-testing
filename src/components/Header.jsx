@@ -1,11 +1,36 @@
+import { useEffect } from "react";
 import FrameMobile from "../assets/img/service/Frame 2147224829.webp";
 import FrameDesktop from "../assets/img/service/Frame 1.webp";
 import ServicesAccent from "../assets/icon/Vectorlogo6904.webp";
 
 const Header = ({ title, subtitle, mobileImage = FrameMobile, desktopImage = FrameDesktop, imageWidth = "150vw", imagePosition = "-1vw" }) => {
+  useEffect(() => {
+    // Add custom CSS for large screens
+    const style = document.createElement('style');
+    style.textContent = `
+      @media (min-width: 1700px) {
+        .header-bg-large {
+          height: 450px !important;
+          object-position: center center !important;
+          object-fit: cover !important;
+        }
+        .header-section-large {
+          height: 450px !important;
+        }
+        .header-content-large {
+          padding-bottom: 80px !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
   return (
     <header className="relative w-full">
-      <div className="relative w-full h-[250px] sm:h-[240px] lg:h-[280px] xl:h-[350px] overflow-hidden">
+      <div className="relative w-full h-[250px] sm:h-[240px] lg:h-[280px] xl:h-[350px] overflow-hidden header-section-large">
         {/* Mobile background image */}
         <img
           src={mobileImage}
@@ -18,10 +43,10 @@ const Header = ({ title, subtitle, mobileImage = FrameMobile, desktopImage = Fra
         <img
           src={desktopImage}
           alt="Header background"
-          className="absolute inset-0 w-full h-full object-cover hidden sm:block"
+          className="absolute inset-0 w-full h-full object-cover hidden sm:block header-bg-large"
           style={{ objectPosition: 'center' }}
         />
-        <div className="relative h-full w-full mx-auto pl-4 pr-4 md:pl-20 md:pr-4 lg:pl-24 lg:pr-4 xl:pl-24 xl:pr-4 flex flex-col justify-end pb-10 md:pb-14 lg:pb-16 animate-fade-up">
+        <div className="relative h-full w-full mx-auto pl-4 pr-4 md:pl-20 md:pr-4 lg:pl-24 lg:pr-4 xl:pl-24 xl:pr-4 flex flex-col justify-end pb-10 md:pb-14 lg:pb-16 animate-fade-up header-content-large">
           {/* Title + yellow accent icon */}
           <div className="inline-flex items-center gap-3 mb-2">
             <h1

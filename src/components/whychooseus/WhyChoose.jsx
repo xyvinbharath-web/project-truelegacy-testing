@@ -123,13 +123,13 @@ const WhyChoose = () => {
         id="whychooseus-section"
         className="bg-white text-black px-4 md:px-16 py-10 md:py-16"
       >
-        <div className="max-w-[1440px] mx-auto">
+        <div className="max-w-[1600px] mx-auto">
           <div
             className="
               grid
               grid-cols-1
               sm:grid-cols-2
-              lg:grid-cols-3
+              lg:grid-cols-[repeat(3,414px)]
 
               gap-y-6
               gap-x-8
@@ -137,12 +137,13 @@ const WhyChoose = () => {
               lg:gap-x-6
 
               justify-items-center
+              lg:justify-center
             "
           >
             {cards.map((card, i) => (
               <div
                 key={i}
-                className={`why-choose-card relative bg-[#132F2C] border border-gray-200 shadow-md hover:shadow-xl transition-all duration-300 p-4 sm:p-6 group flex flex-col cursor-pointer rounded-[6px]
+                className={`why-choose-card relative bg-[#132F2C] border border-gray-200 shadow-md hover:shadow-xl transition-all duration-300 p-4 sm:p-6 group flex flex-col cursor-pointer rounded-[6px] w-full
                 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
                 style={{
                   transitionDelay: isVisible ? `${i * 150}ms` : "0ms",
@@ -156,11 +157,11 @@ const WhyChoose = () => {
                   className="object-cover rounded-lg"
                 />
 
-                <h3 className="text-[24px] mb-4 text-[#F4D57E] font-bold font-[Urania] leading-[24px] max-w-[280px]">
+                <h3 className="text-[24px] mb-4 text-[#F4D57E] font-bold font-[Urania] leading-[24px] max-w-[240px]">
                   {card.title}
                 </h3>
 
-                <p className="text-gray-300 text-[16px] leading-[22px] font-[Urania] font-normal max-w-[330px]">
+                <p className="text-gray-300 text-[16px] leading-[22px] font-[Urania] font-normal max-w-[280px]">
                   {card.desc}
                 </p>
               </div>

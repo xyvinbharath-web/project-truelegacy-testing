@@ -80,6 +80,36 @@ const renderQuestionWithIcon = (text) => {
 
 const HeaderHome = () => {
   const location = useLocation();
+  useEffect(() => {
+    // Add custom CSS for large screens
+    const style = document.createElement('style');
+    style.textContent = `
+      @media (min-width: 1700px) {
+        .desktop-bg-large {
+          height: 780px !important;
+        }
+        section.header-section-large {
+          height: 950px !important;
+        }
+        .content-large {
+          padding-top: 440px !important;
+        }
+        .carousel-large {
+          top: 750px !important;
+          left: 60px !important;
+        }
+        section.header-section-large {
+          margin-bottom: -30px !important;
+          padding-bottom: 0px !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
   const [activeIndex, setActiveIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
@@ -190,7 +220,12 @@ const HeaderHome = () => {
 
   return (
     <section
-      className="relative w-full h-[640px] lg:h-[580px] overflow-hidden md:h-screen mt-[-50px] sm:mt-[-50px] md:mt-0 lg:mt-0 pt-[260px] sm:pt-0"
+      className="relative w-full h-[640px] lg:h-[650px] xl:h-[700px] overflow-hidden md:h-screen mt-[-50px] sm:mt-[-50px] md:mt-0 lg:mt-0 xl:mt-0 pt-[260px] sm:pt-0 mb-0 lg:mb-16 xl:mb-20 header-section-large"
+      style={{
+        '@media (min-width: 1700px)': {
+          height: '950px'
+        }
+      }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -227,23 +262,23 @@ const HeaderHome = () => {
         <img
           src={currentSlide.desktopBackground}
           alt="Succession Planning"
-          className={`absolute left-0 right-0 w-full h-[580px] object-cover hidden lg:block transition-opacity duration-700 ${
+          className={`absolute left-0 right-0 w-full h-[580px] xl:h-[630px] object-cover hidden lg:block transition-opacity duration-700 desktop-bg-large ${
             transitioning ? (fadePhase ? "opacity-100" : "opacity-0") : "opacity-100"
           }`}
-          style={{ top: '0px', objectPosition: 'right bottom' }}
+          style={{ top: '60px', objectPosition: 'right bottom' }}
         />
         <img
           src={prevSlide.desktopBackground}
           alt="Succession Planning"
-          className={`absolute left-0 right-0 w-full h-[580px] object-cover hidden lg:block transition-opacity duration-700 ${
+          className={`absolute left-0 right-0 w-full h-[580px] xl:h-[630px] object-cover hidden lg:block transition-opacity duration-700 desktop-bg-large ${
             transitioning ? (fadePhase ? "opacity-0" : "opacity-100") : "opacity-0"
           }`}
-          style={{ top: '0px', objectPosition: 'right bottom' }}
+          style={{ top: '20px', objectPosition: 'right bottom' }}
         />
       </div>
       
       {/* Content */}
-      <div className="relative z-10 max-w-[1900px] mx-auto pl-4 pr-4 sm:pl-8 sm:pr-8 lg:pl-11 lg:pr-16 h-[561px] sm:h-[661px] lg:h-[580px] flex items-start pb-21 md:pb-14 lg:pb-16 pt-[16px] sm:pt-[220px] lg:pt-[220px]">
+      <div className="relative z-10 max-w-[1900px] xl:max-w-[2200px] mx-auto pl-4 pr-4 sm:pl-8 sm:pr-8 lg:pl-5 lg:pr-16 xl:pl-7 xl:pr-24 h-[561px] sm:h-[661px] lg:h-[580px] xl:h-[630px] flex items-start pb-21 md:pb-14 lg:pb-16 xl:pb-20 pt-[16px] sm:pt-[220px] lg:pt-[270px] xl:pt-[300px] content-large">
         <div className="flex items-stretch gap-3 sm:gap-8">
           {/* Left accent line */}
           <div className="self-stretch border-l-[4px] border-[#F4D57E]" />
@@ -300,7 +335,7 @@ const HeaderHome = () => {
               </span>
             </h1>
 
-            <p key={`desc-${activeIndex}`} className="mt-4 max-w-[250px] sm:max-w-[350px] md:max-w-[660px] lg:max-w-[800px] animate-fade-in">
+            <p key={`desc-${activeIndex}`} className="mt-4 lg:mt-8 max-w-[250px] sm:max-w-[350px] md:max-w-[660px] lg:max-w-[800px] animate-fade-in">
               <span className="block sm:hidden lg:hidden" style={{ animationDelay: "180ms", fontFamily: 'Urania', fontWeight: '200', fontStyle: 'Regular', fontSize: '16px', lineHeight: '100%', letterSpacing: '0%' }}>
                 {currentSlide.description}
               </span>
@@ -316,7 +351,7 @@ const HeaderHome = () => {
       </div>
 
       {/* Carousel controls */}
-      <div className="absolute z-20 left-4 sm:left-24 lg:left-20 top-[545px] sm:top-[510px] lg:top-[510px] flex items-center gap-3 md:left-14">
+      <div className="absolute z-20 left-4 sm:left-24 lg:left-10 xl:left-16 top-[545px] sm:top-[510px] lg:top-[560px] xl:top-[600px] flex items-center gap-3 md:left-14 carousel-large">
         <button
           className="h-6 w-6 hover:scale-105 transition-transform"
           onClick={goPrev}

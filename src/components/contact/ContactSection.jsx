@@ -66,11 +66,17 @@ const ContactSection = () => {
   return (
     <section
       ref={sectionRef}
-      className={`pt-0 md:pt-20 pb-34 md:pb-35 bg-white contact-section ${
+      className={`relative pt-0 md:pt-12 pb-34 md:pb-35 bg-[#ffffff] contact-section ${
         isVisible ? "contact-section-visible" : ""
       }`}
     >
-      <div className="max-w-[1200px] mx-auto">
+      <div
+        className="absolute top-0 bottom-0 left-1/2 w-screen -translate-x-1/2 hidden md:block"
+        style={{
+          background: "linear-gradient(to bottom, #ffffff 0%, #ffffff 75%, #EAF6F5 75%, #EAF6F5 100%)",
+        }}
+      />
+      <div className="relative z-10 max-w-[1200px] mx-auto">
         {/* Top heading */}
         <div className="text-center mb-10 md:mb-14 contact-heading">
           <h2 className="font-[Urania] text-[#132F2C] font-bold

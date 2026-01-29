@@ -116,7 +116,7 @@ const Navbar = () => {
               <div className="absolute top-full left-0 bg-white shadow-md p-4 w-48 space-y-2 text-[14px] text-slate-800 services-dropdown-smooth">
                 <button
                   type="button"
-                  className="block w-full text-left hover:text-emerald-800"
+                  className="block w-full text-left hover:text-emerald-800 cursor-pointer"
                   onClick={() => {
                     setIsServicesOpen(false);
                     navigate("/services", { state: { activeTab: "will" } });
@@ -126,7 +126,7 @@ const Navbar = () => {
                 </button>
                 <button
                   type="button"
-                  className="block w-full text-left hover:text-emerald-800"
+                  className="block w-full text-left hover:text-emerald-800 cursor-pointer"
                   onClick={() => {
                     setIsServicesOpen(false);
                     navigate("/services", { state: { activeTab: "trust" } });
@@ -136,7 +136,7 @@ const Navbar = () => {
                 </button>
                 <button
                   type="button"
-                  className="block w-full text-left hover:text-emerald-800"
+                  className="block w-full text-left hover:text-emerald-800 cursor-pointer"
                   onClick={() => {
                     setIsServicesOpen(false);
                     navigate("/services");
@@ -439,7 +439,7 @@ const Navbar = () => {
               </button>
 
               <div className="mt-4 pt-8 border-t border-white/10 text-[#FFFFFF]">
-                <div className="mb-1" style={{fontFamily: 'Urania', fontWeight: '400', fontStyle: 'normal', fontSize: '14px', lineHeight: '100%', letterSpacing: '0%', color: '#899795'}}>General Inquiries</div>
+                <div className="mb-0" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'normal', fontSize: '14px', lineHeight: '100%', letterSpacing: '0%', color: '#899795'}}>General Inquiries</div>
                 <div className="flex items-center justify-between" style={{fontFamily: 'Urania', fontWeight: '400', fontStyle: 'normal', fontSize: '18px', lineHeight: '100%', letterSpacing: '0%'}}>
                   <span>info@truelegacy.in</span>
                   <img src={FaviconIcon} alt="Email" className="w-8 h-8" />
