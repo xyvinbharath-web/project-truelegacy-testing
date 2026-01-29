@@ -224,7 +224,7 @@ const AllResources = () => {
                       {item.title}
                     </h4>
 
-                    <p className="font-[Urania] text-[#2F4F4A] text-[16px] leading-[20px] line-clamp-3" style={{ fontWeight: 400 }}>
+                    <p className="font-[Urania] text-[#868989] text-[16px] leading-[20px] line-clamp-3" style={{ fontWeight: 400 }}>
                       {item.desc}
                     </p>
                   </div>
@@ -258,11 +258,11 @@ const AllResources = () => {
                   <span className="mx-2">•</span>
                   <span>{item.meta}</span>
                 </div>
-                <h3 className="font-[Urania] text-[#132F2C] text-[20px] leading-[20px] md:text-[24px] md:leading-[24px] font-medium mb-3">
+                <h3 className="font-[Urania] text-[#132F2C] text-[20px] leading-[20px] md:text-[24px] md:leading-[24px] font-medium mb-3 max-w-[95%]">
                   {item.title}
                 </h3>
                 {item.desc && (
-                  <p className="font-[Urania] text-[#132F2C] text-[14px] leading-[20px] md:text-[14px] md:leading-[24px] font-normal">
+                  <p className="font-[Urania] text-[#868989] text-[14px] leading-[20px] md:text-[14px] md:leading-[24px] font-normal">
                     {item.desc}
                   </p>
                 )}

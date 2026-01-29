@@ -316,7 +316,7 @@ const IsJointWillRightForYou = () => {
                     {item.title}
                   </h3>
                   {item.desc && (
-                    <p className="font-[Urania] text-[#132F2C] text-[14px] leading-[20px] md:text-[14px] md:leading-[24px] font-normal">
+                    <p className="font-[Urania] text-[#868989] text-[14px] leading-[20px] md:text-[14px] md:leading-[24px] font-normal">
                       {item.desc}
                     </p>
                   )}
