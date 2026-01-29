@@ -7,7 +7,8 @@ import LegacyAccent from "../../assets/img/home/Frame legacybackground.webp";
 import ShareIcon from "../../assets/icon/share-08.webp";
 import NomineesImg from "../../assets/img/resource/Nominees.webp";
 import JointWillImg from "../../assets/img/resource/Is-a-Joint-Will Right-for-You.webp";
-import Blog4 from "../../assets/img/resource/blog4.webp";
+import KeralaCourtImg from "../../assets/img/resource/What-the-Kerala-High-Court’s-Mutation.webp";
+import LegalHeirshipImg from "../../assets/img/resource/Understanding-Legal-Heirship-Certificate.webp";
 
 const WhyTrustMatters = () => {
   const navigate = useNavigate();
@@ -15,24 +16,80 @@ const WhyTrustMatters = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
-  // Related articles data
-  const relatedArticles = [
+  const articles = [
     {
       id: 1,
-      image: NomineesImg,
+      type: "Blog",
+      meta: "Published: 16 Jan 2026",
       title: "Nominees are NOT Your Legal Heirs!",
+      desc: "Understanding the critical difference between a nominee and a legal heir to ensure your assets are distributed according to your wishes.",
+      image: NomineesImg,
     },
     {
       id: 2,
-      image: JointWillImg,
+      type: "Blog",
+      meta: "Published: 16 Jan 2026",
       title: "Is a Joint Will Right for You?",
+      desc: "Explore the pros and cons of creating a joint will with your spouse and whether it's the right choice for your estate planning needs.",
+      image: JointWillImg,
+    },
+    {
+      id: 3,
+      type: "Blog",
+      meta: "Published: 16 Jan 2026",
+      title: "Why “Trust” Matters When Creating a Private Trust for Succession Planning",
+      desc: "Learn why the concept of trust is foundational when setting up a private trust for succession and asset protection.",
+      image: TrustMattersImg,
     },
     {
       id: 4,
-      image: Blog4,
-      title: "What the Kerala High Court's Mutation Guidelines Mean for Succession Planning",
+      type: "Blog",
+      meta: "Published: 15 Jan 2026",
+      title: "What the Kerala High Court’s Mutation Guidelines Mean for Succession Planning",
+      desc: "An overview of the Kerala High Court’s latest mutation guidelines and their impact on succession planning and property transfer.",
+      image: KeralaCourtImg,
     },
-  ];
+    {
+      id: 5,
+      type: "Blog",
+      meta: "Published: 15 Jan 2026",
+      title: "Understanding Legal Heirship Certificate and Succession Certificate",
+      desc: "A clear guide to the differences between a Legal Heirship Certificate and a Succession Certificate, and when each is required.",
+      image: LegalHeirshipImg,
+    },
+  ].filter((a) => a.id !== 3);
+
+  const handleArticleClick = (article) => {
+    if (article.id === 1) {
+      navigate("/resources/nominees-are-not-legal-heirs");
+      return;
+    }
+    if (article.id === 2) {
+      navigate("/resources/is-joint-will-right-for-you");
+      return;
+    }
+    if (article.id === 3) {
+      navigate("/resources/why-trust-matters");
+      return;
+    }
+    if (article.id === 4) {
+      navigate("/resources/kerala-court-mutation-guidelines");
+      return;
+    }
+    if (article.id === 5) {
+      navigate("/resources/understanding-legal-heirship-certificate");
+      return;
+    }
+    navigate(`/resources/${article.id}`, {
+      state: {
+        id: article.id,
+        title: article.title,
+        image: article.image,
+        meta: article.meta,
+        type: article.type,
+      },
+    });
+  };
 
   // Simple on-load entrance animation
   useEffect(() => {
@@ -64,7 +121,7 @@ const WhyTrustMatters = () => {
         <div className="max-w-[1200px] mx-auto px-4 md:px-10">
 
           {/* ================= HERO SECTION (RESPONSIVE OVERLAP) ================= */}
-          <div className="relative mb-20 md:mb-24">
+          <div className="relative mb-10 md:mb-1">
 
             {/* Image wrapper - mobile right-aligned, tablet wider */}
             <div className={`relative w-full max-w-[324px] h-[300px] sm:h-[380px] md:h-[380px]
@@ -127,20 +184,20 @@ const WhyTrustMatters = () => {
       </section>
 
       {/* Back button */}
-      <div className="bg-white px-4 md:px-16 pt-6">
+     <div className="bg-[#F6FFFF] px-4 md:px-16 pt-0">
         <button
           onClick={() => navigate(-1)}
-          className="mb-6 text-[#132F2C]/80 hover:text-[#132F2C] transition-colors font-[Urania] text-sm underline"
+          className="mb-3 text-[#132F2C]/80 hover:text-[#132F2C] transition-colors font-[Urania] text-sm underline"
         >
           ← Back to Resources
         </button>
       </div>
 
       {/* Content */}
-      <main className="flex-grow bg-white text-black">
+      <main className="flex-grow bg-[#F6FFFF] text-black">
         <div
           ref={sectionRef}
-          className={`px-4 md:px-16 py-12 md:py-16 max-w-4xl mx-auto transition-all duration-700 ${
+          className={`px-4 md:px-16 pt-6 pb-12 md:pt-8 md:pb-16 max-w-4xl mx-auto transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
@@ -226,38 +283,49 @@ const WhyTrustMatters = () => {
 
       {/* ================= RELATED ARTICLES SECTION ================= */}
       <section className="bg-white">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-16 py-16">
-          <h3 className="font-[Urania] text-[#132F2C] text-[28px] md:text-[32px] font-semibold mb-8">
-            Related articles
-          </h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {relatedArticles.map((article) => (
-              <article
-                key={article.id}
-                className="bg-white rounded-md overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
-                onClick={() => navigate(`/resources/${article.id}`)}
-              >
-                <div className="w-full h-[200px] overflow-hidden">
-                  <img
-                    src={article.image}
-                    alt={article.title}
-                    className="w-full h-full object-cover"
-                  />
+        <div className="max-w-[1200px] mx-auto px-4 md:px-16">
+          <div className="pt-16 md:pt-20 hidden md:block resources-section-visible">
+            <h2 className="font-[Urania] font-bold text-[#132F2C] text-[32px] leading-[32px] md:text-[42px] md:leading-[49px] mb-6 md:mb-8">
+              Related articles
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {articles.slice(0, 3).map((item) => (
+                <div
+                  key={item.id}
+                  className="cursor-pointer hover:opacity-90 transition-opacity resources-article"
+                  onClick={() => handleArticleClick(item)}
+                >
+                  <div className="w-full overflow-hidden rounded-md mb-5">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-[220px] sm:h-[260px] md:h-[280px] object-cover"
+                    />
+                  </div>
+                  <div className="font-[Urania] text-[14px] leading-[14px] text-[#868989] font-normal mb-3">
+                    <span>{item.type}</span>
+                    <span className="mx-2">•</span>
+                    <span>{item.meta}</span>
+                  </div>
+                  <h3 className="font-[Urania] text-[#132F2C] text-[20px] leading-[20px] md:text-[24px] md:leading-[24px] font-medium mb-3">
+                    {item.title}
+                  </h3>
+                  {item.desc && (
+                    <p className="font-[Urania] text-[#132F2C] text-[14px] leading-[20px] md:text-[14px] md:leading-[24px] font-normal">
+                      {item.desc}
+                    </p>
+                  )}
                 </div>
-                <div className="p-4">
-                  <h4 className="font-[Urania] text-[#132F2C] text-[16px] leading-[22px] font-medium">
-                    {article.title}
-                  </h4>
-                </div>
-              </article>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Gap before footer */}
-      <div className="h-16 md:h-24 bg-white" />
+      <div className="h-24 md:h-32 bg-white" />
 
       <Footer />
     </div>

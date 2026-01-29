@@ -63,11 +63,11 @@ const Description = () => {
       />
       
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-20">
 
           {/* LEFT TEXT */}
           <div className="lg:col-span-7 max-w-[750px] -mt-8 lg:-mt-58 description-text">
-            <p className="font-[Urania] font-bold text-[24px] sm:text-[28px] lg:text-[42px] leading-[30px] sm:leading-[35px] lg:leading-[48px] text-[#132F2C]">
+            <p className="font-[Urania]  text-[26px] sm:text-[28px] lg:text-[42px] leading-[30px] sm:leading-[35px] lg:leading-[48px] leading-[33px] text-[#132F2C] "  style={{ fontWeight: 500 }} >
               We're not here to hand you a document and send you on your way.
               We're here to understand your story, your struggles, and your
               wishes—then make sure they're honoured exactly as you intended.

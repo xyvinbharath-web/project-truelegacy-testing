@@ -20,7 +20,7 @@ const ContactPage = () => {
     }
   }, []);
   return (
-    <div className="min-h-screen bg-[#F6FFFF]">
+    <div className="min-h-screen bg-[#FfFFFF]">
       {/* Fixed navbar */}  {/* Fixed navbar for Resources page */}
       <div className="fixed top-0 left-0 right-0 z-[60] bg-[#132F2C]">
         <Navbar />

@@ -119,37 +119,37 @@ const AllResources = () => {
   return (
     <section
       ref={sectionRef}
-      className={`bg-white px-4 md:px-16 py-12 md:py-16 resources-section ${
+      className={`bg-white px-4 md:px-16 py-12 md:py-16 lg:pb-32 resources-section ${
         isVisible ? "resources-section-visible" : ""
       }`}
     >
-      <div className="max-w-[1300px] mx-auto">
+      <div className="max-w-[1400px] mx-auto">
         {/* Section heading */}
         <h2 className="font-[Urania] font-bold text-[#132F2C] text-[32px] leading-[32px] md:text-[42px] md:leading-[49px] mb-6 md:mb-8 resources-heading">
           Insights
         </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 items-start">
-          {/* Featured article - spans two columns on desktop */}
+        <div className="grid grid-cols-1 lg:grid-cols-[614px_650px] gap-8 lg:gap-8 items-start">
+          {/* Featured article - desktop column 1 */}
           <article
-            className="lg:col-span-2 cursor-pointer resources-featured"
+            className="cursor-pointer resources-featured lg:w-[614px]"
             onClick={() => handleArticleClick(featured)}
           >
-            <div className="w-full overflow-hidden rounded-md mb-5">
+            <div className="w-full overflow-hidden rounded-md mb-8">
               <img
                 src={featured.image}
                 alt={featured.title}
-                className="w-full h-[220px] sm:h-[260px] md:h-[300px] lg:h-[320px] object-cover"
+                className="w-full h-[220px] sm:h-[260px] md:h-[300px] lg:w-[614px] lg:h-[382px] object-cover"
               />
             </div>
 
-            <div className="font-[Urania] text-[14px] leading-[14px] text-[#868989] font-normal mb-3">
+            <div className="font-[Urania] text-[14px] leading-[14px] text-[#868989] font-normal not-italic mb-4">
               <span>{featured.type}</span>
               <span className="mx-2">•</span>
               <span>{featured.meta}</span>
             </div>
 
-            <h3 className="font-[Urania] text-[#132F2C] text-[24px] leading-[24px] md:text-[32px] md:leading-[32px] font-medium mb-3 max-w-[660px]">
+            <h3 className="font-[Urania] text-[#132F2C] text-[24px] leading-[24px] md:text-[32px] md:leading-[32px] mb-3 max-w-[660px]" style={{ fontWeight: 500 }}>
               {featured.title}
             </h3>
 
@@ -196,14 +196,14 @@ const AllResources = () => {
             </div>
 
             {/* Desktop: compact side list */}
-            <div className="hidden lg:block space-y-6">
+            <div className="hidden lg:block space-y-5">
               {others.map((item) => (
                 <article
                   key={item.id}
                   className="flex gap-4 border-b border-[#E3E7E6] pb-4 last:border-b-0 last:pb-0 cursor-pointer resources-article"
                   onClick={() => handleArticleClick(item)}
                 >
-                  <div className="w-[130px] h-[90px] overflow-hidden rounded-md flex-shrink-0">
+                  <div className="w-[240px] h-[180px] overflow-hidden rounded-md flex-shrink-0">
                     <img
                       src={item.image}
                       alt={item.title}
@@ -214,17 +214,17 @@ const AllResources = () => {
                   </div>
 
                   <div className="flex-1">
-                    <div className="font-[Urania] text-[12px] leading-[14px] text-[#868989] mb-1.5">
+                    <div className="font-[Urania] text-[14px] leading-[14px] text-[#868989] font-normal not-italic mb-3" style={{ fontWeight: 400 }}>
                       <span>{item.type}</span>
                       <span className="mx-2">•</span>
                       <span>{item.meta}</span>
                     </div>
 
-                    <h4 className="font-[Urania] text-[#132F2C] text-[16px] leading-snug font-medium mb-1">
+                    <h4 className="font-[Urania] text-[#132F2C] text-[24px] leading-snug font-medium mb-2" >
                       {item.title}
                     </h4>
 
-                    <p className="font-[Urania] text-[#2F4F4A] text-[13px] leading-[18px] line-clamp-2">
+                    <p className="font-[Urania] text-[#2F4F4A] text-[16px] leading-[20px] line-clamp-3" style={{ fontWeight: 400 }}>
                       {item.desc}
                     </p>
                   </div>
@@ -262,7 +262,7 @@ const AllResources = () => {
                   {item.title}
                 </h3>
                 {item.desc && (
-                  <p className="font-[Urania] text-[#132F2C] text-[14px] leading-[20px] md:text-[16px] md:leading-[24px] font-normal">
+                  <p className="font-[Urania] text-[#132F2C] text-[14px] leading-[20px] md:text-[14px] md:leading-[24px] font-normal">
                     {item.desc}
                   </p>
                 )}

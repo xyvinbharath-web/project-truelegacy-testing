@@ -66,19 +66,19 @@ const ContactSection = () => {
   return (
     <section
       ref={sectionRef}
-      className={`relative pt-0 md:pt-12 pb-34 md:pb-35 bg-[#ffffff] contact-section ${
+      className={`relative pt-6 md:pt-10 pb-34 md:pb-35 bg-[#ffffff] contact-section ${
         isVisible ? "contact-section-visible" : ""
       }`}
     >
       <div
-        className="absolute top-0 bottom-0 left-1/2 w-screen -translate-x-1/2 hidden md:block"
+        className="absolute top-122 left-1/2 w-screen h-[870px] -translate-x-1/2 hidden md:block"
         style={{
-          background: "linear-gradient(to bottom, #ffffff 0%, #ffffff 75%, #EAF6F5 75%, #EAF6F5 100%)",
+          background: "#F6FFFF",
         }}
       />
-      <div className="relative z-10 max-w-[1200px] mx-auto">
+      <div className="relative z-10 max-w-[1400px] mx-auto">
         {/* Top heading */}
-        <div className="text-center mb-10 md:mb-14 contact-heading">
+        <div className="text-center mb-10 md:mb-12 contact-heading max-w-[1600px] mx-auto">
           <h2 className="font-[Urania] text-[#132F2C] font-bold
                          text-[32px] md:text-[36px] leading-[32px] md:leading-[40px] mb-3">
             Let's Connect
@@ -92,14 +92,14 @@ const ContactSection = () => {
         </div>
 
         {/* Contact info row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16 mb-12 md:mb-16 contact-info">
+        <div className="grid grid-cols-1 md:grid-cols-[0.8fr_0.8fr_1.1fr] gap-4 md:gap-0 mb-8 md:mb-12 contact-info md:px-0">
           {/* Email */}
-          <div className="flex flex-col items-center md:flex-row md:items-center gap-3 md:gap-4 contact-item">
-            <div className="w-[56px] h-[56px] rounded-full bg-[#F4D57E] flex-none flex items-center justify-center">
-              <img src={MailIcon} alt="Email" className="w-[24px] h-[24px]" />
+          <div className="flex flex-col items-center md:flex-row md:items-center gap-3 md:gap-3 contact-item">
+            <div className="w-[67px] h-[67px] md:w-[79px] md:h-[79px] rounded-full bg-[#F4D57E] flex-none flex items-center justify-center">
+              <img src={MailIcon} alt="Email" className="w-[24px] h-[24px] md:w-[28px] md:h-[28px]" />
             </div>
             <div className="text-center md:text-left mt-1 md:mt-0">
-              <p className="font-[Urania] text-[14px] leading-[18px] text-[#868989] mb-1">
+              <p className="font-[Urania] text-[14px] leading-[16px] text-[#868989] mb-1">
                 Email
               </p>
               <p className="font-[Urania] text-[16px] md:text-[16px] leading-[28px] text-[#132F2C]">
@@ -110,14 +110,14 @@ const ContactSection = () => {
 
           {/* Phone */}
           <div className="flex flex-col items-center md:flex-row md:items-center gap-3 md:gap-4 contact-item">
-            <div className="w-[56px] h-[56px] rounded-full bg-[#F4D57E] flex-none flex items-center justify-center">
-              <img src={PhoneIcon} alt="Phone" className="w-[24px] h-[24px]" />
+            <div className="w-[67px] h-[67px] md:w-[79px] md:h-[79px] rounded-full bg-[#F4D57E] flex-none flex items-center justify-center">
+              <img src={PhoneIcon} alt="Phone" className="w-[24px] h-[24px] md:w-[28px] md:h-[28px]" />
             </div>
             <div className="text-center md:text-left mt-1 md:mt-0">
-              <p className="font-[Urania] text-[14px] leading-[18px] text-[#868989] mb-1">
+              <p className="font-[Urania] text-[14px] leading-[16px] text-[#868989] mb-1">
                 Phone
               </p>
-              <p className="font-[Urania] text-[16px] md:text-[16px] leading-[28px] text-[#132F2C]">
+              <p className="font-[Urania] text-[16px] md:text-[18px] leading-[28px] text-[#132F2C]">
                 +91 7592 912 300 (IN)
               </p>
             </div>
@@ -125,14 +125,14 @@ const ContactSection = () => {
 
           {/* Address */}
           <div className="flex flex-col items-center md:flex-row md:items-center gap-3 md:gap-4 contact-item">
-            <div className="w-[56px] h-[56px] rounded-full bg-[#F4D57E] flex-none flex items-center justify-center">
-              <img src={LocationIcon} alt="Location" className="w-[24px] h-[24px]" />
+            <div className="w-[67px] h-[67px] md:w-[79px] md:h-[79px] rounded-full bg-[#F4D57E] flex-none flex items-center justify-center">
+              <img src={LocationIcon} alt="Location" className="w-[24px] h-[24px] md:w-[28px] md:h-[28px]" />
             </div>
             <div className="text-center md:text-left mt-1 md:mt-0">
-              <p className="font-[Urania] text-[14px] leading-[18px] text-[#868989] mb-1">
+              <p className="font-[Urania] text-[14px] leading-[16px] text-[#868989] mb-2 mdmb-3">
                 Address
               </p>
-              <p className="font-[Urania] text-[16px] md:text-[14px] leading-[24px] md:leading-[18px] text-[#132F2C] max-w-[260px] ">
+              <p className="font-[Urania] text-[14px] md:text-[18px] leading-[24px] md:leading-[18px] text-[#132F2C] max-w-[220px] md:max-w-none">
                 Wavxseal Fintech Private Limited, 2nd Floor, Imperial Amity, NH Bypass,
                 Vyttila, Kochi, Kerala – 682019, India
               </p>
@@ -141,7 +141,7 @@ const ContactSection = () => {
         </div>
 
         {/* Main contact card */}
-        <div className="bg-white rounded-xl overflow-hidden shadow-sm contact-form">
+        <div className="bg-white rounded-xl overflow-hidden shadow-sm contact-form max-w-[1600px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-[minmax(0,_1.1fr)_minmax(0,_0.9fr)]">
             {/* Form side */}
             <div className="bg-[#132F2C] text-white px-6 md:px-10 py-8 md:py-10">

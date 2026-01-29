@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { createEnquiry } from "../../api/enquiryApi";
-import StyledButton from "../../ui/StyledButton";
 
 const ServiceModal = ({ isOpen, onClose, serviceTitle, fields = [] }) => {
   const [loading, setLoading] = useState(false);
@@ -39,16 +38,12 @@ const ServiceModal = ({ isOpen, onClose, serviceTitle, fields = [] }) => {
 
   return (
     <div className="fixed inset-0 z-[70] flex items-center justify-center px-4 service-modal-root">
-      {/* Backdrop */}
       <div
         className="absolute inset-0 bg-black/50 backdrop-blur-sm service-modal-backdrop"
         onClick={onClose}
       />
 
-      {/* Modal */}
       <div className="relative w-full max-w-[513px] bg-white rounded-[6px] shadow-[0_30px_80px_rgba(0,0,0,0.35)] overflow-hidden service-modal">
-        
-        {/* Header */}
         <div className="px-8 pt-8 pb-4">
           <h2 className="font-[Urania] font-bold text-[26px] text-[#132F2C]">
             Request : {serviceTitle}
@@ -58,7 +53,6 @@ const ServiceModal = ({ isOpen, onClose, serviceTitle, fields = [] }) => {
           </p>
         </div>
 
-        {/* Form */}
         <form onSubmit={handleSubmit} className="px-8 pb-8 space-y-5">
           {fields.map((field) => (
             <div key={field.name}>
@@ -87,7 +81,6 @@ const ServiceModal = ({ isOpen, onClose, serviceTitle, fields = [] }) => {
             </div>
           ))}
 
-          {/* Buttons */}
           <div className="flex gap-3 pt-6 justify-end">
             <button
               type="button"
@@ -108,7 +101,6 @@ const ServiceModal = ({ isOpen, onClose, serviceTitle, fields = [] }) => {
           </div>
         </form>
 
-        {/* Close Icon */}
         <button
           onClick={onClose}
           className="absolute top-6 right-6 text-[#6B6B6B] hover:text-[#132F2C]"

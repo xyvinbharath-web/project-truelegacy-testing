@@ -30,7 +30,7 @@ const WhyChoose = () => {
     {
       id: "01",
       title: "Custom Trust Creation",
-      desc: "We help you establish private, public, family, charitable, or religious trusts tailored to your goals and advise on best structure, whether revocable, irrevocable, discretionary, or fixed.",
+      desc: "We help you establish private, public, family, charitable, or religious trusts tailored to your goals and advise on the best structure, whether revocable, irrevocable, discretionary, or fixed.",
       image: Framewhychoose1
     },
     {
@@ -59,7 +59,7 @@ const WhyChoose = () => {
     },
     {
       id: "06",
-      title: "Trustee Guidance",
+      title: "Trustee\nGuidance",
       desc: "We train and advise trustees to fulfil their roles with confidence, responsibility, and best practices.",
       image: Framewhychoose6
     },
@@ -72,7 +72,7 @@ const WhyChoose = () => {
           .why-choose-card {
             width: 100% !important;
             max-width: calc(100vw - 32px) !important;
-            height: 428px !important;
+            height: 433px !important;
             min-height: 428px !important;
           }
           .why-choose-card img {
@@ -87,12 +87,14 @@ const WhyChoose = () => {
             margin-left: 7px !important;
             font-size: 24px !important;
             max-width: 240px !important;
+            line-height: 1.2;
+            white-space: pre-wrap; 
           }
           .why-choose-card p {
             margin-left: 7px !important;
             font-size: 16px !important;
             line-height: 22px !important;
-            max-width: 280px !important;
+            max-width: 301px !important;
           }
         }
 
@@ -112,9 +114,13 @@ const WhyChoose = () => {
           .why-choose-card h3 {
             margin-top: 226px !important;
             margin-left: 10px !important;
+            line-height: 1.2 !important;
+            white-space: pre-wrap;
           }
           .why-choose-card p {
             margin-left: 10px !important;
+            max-width: 351px !important;
+            line-height: 24px !important;
           }
         }
       `}</style>
@@ -157,7 +163,7 @@ const WhyChoose = () => {
                   className="object-cover rounded-lg"
                 />
 
-                <h3 className="text-[24px] mb-4 text-[#F4D57E] font-bold font-[Urania] leading-[24px] max-w-[240px]">
+                <h3 className="text-[24px] mb-4 text-[#F4D57E] font-bold font-[Urania] leading-[2] max-w-[240px]">
                   {card.title}
                 </h3>
 
@@ -174,3 +180,4 @@ const WhyChoose = () => {
 };
 
 export default WhyChoose;
+

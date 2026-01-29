@@ -37,16 +37,16 @@ const OurPromise = () => {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-  <h2 className="font-[Urania] font-semibold text-[32px] md:text-[36px] lg:text-[42px] text-[#132F2C] mb-5" style={{fontFamily: 'Urania', fontWeight: '700', fontStyle: 'Bold', fontSize: '32px', lineHeight: '49px', letterSpacing: '0%'}}>
+  <h2 className="font-[Urania] font-semibold text-[32px] md:text-[36px] lg:text-[42px] leading-[49px] text-[#132F2C] mb-8 lg:mb-12">
     Our Promise
   </h2>
 
-  <p className="font-[Urania] font-medium text-[24px] md:text-[20px] lg:text-[22px] leading-snug text-[#132F2C] mb-6 max-w-[520px]" style={{fontFamily: 'Urania', fontWeight: '700', fontStyle: 'Medium', fontSize: '24px', lineHeight: '100%', letterSpacing: '0%'}}>
+  <p className="font-[Urania] font-bold md:font-medium text-[24px] md:text-[20px] lg:text-[32px] leading-[30px] text-[#132F2C] mb-6 max-w-[525px] lg:tracking-[0.02em]">
     No matter your situation, you are not alone.
     We're here to guide you every step of the way.
   </p>
 
-  <p className="font-[Urania] text-[16px] md:text-[15px] lg:text-[16px] leading-[22px] md:leading-[24px] lg:leading-[26px] text-[#2F4F4A] mb-8 max-w-[720px]" style={{fontFamily: 'Urania', fontWeight: '400', fontStyle: 'Regular', fontSize: '16px', lineHeight: '28px', letterSpacing: '0%'}}>
+  <p className="font-[Urania] text-[16px] md:text-[15px] lg:text-[16px] leading-[28px] text-[#2F4F4A] mb-8 max-w-[651px]">
     We help families, NRIs, and individuals plan their inheritance the right
     way. Many of you have worked hard your entire lives and leave behind your
     wealth in confusion because there is no clear Will or plan. We're a team of
@@ -71,10 +71,10 @@ const OurPromise = () => {
     {/* Grey base line (thin, centered) */}
     <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2px] bg-[#D6E0DE]" />
     {/* Yellow segment (thicker) */}
-    <div className="absolute left-0 top-0 bottom-0 w-1/3 bg-[#F4D57E] rounded-full" />
+    <div className="absolute left-0 top-0 bottom-0 w-1/2 bg-[#F4D57E] rounded-full" />
   </div>
 
-  <p className="font-[Urania] text-[24px] md:text-[18px] lg:text-[22px] leading-snug text-[#132F2C] max-w-[720px]" style={{fontFamily: 'Urania', fontWeight: '400', fontStyle: 'Regular', fontSize: '24px', lineHeight: '100%', letterSpacing: '0%'}}>
+  <p className="font-[Urania] font-normal text-[24px] md:text-[18px] lg:text-[32px] leading-[24px] md:leading-[18px] lg:leading-[32px] text-[#132F2C] max-w-[575px] mt-10 md:mt-0">
     Succession Solutions for all. Tailored for Families, NRIs & Businesses.
   </p>
   
@@ -113,9 +113,9 @@ const OurPromise = () => {
               decoding="async"
               className="hidden lg:block rounded-lg object-contain"
               style={{
-                width: 'clamp(350px, 50vw, 550px)',
+                width: 'clamp(450px, 55vw, 620px)',
                 height: 'auto',
-                maxHeight: '500px',
+                maxHeight: '620px',
                 transform: 'rotate(0deg)',
                 opacity: 1,
               }}
