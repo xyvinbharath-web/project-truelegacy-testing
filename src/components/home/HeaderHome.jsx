@@ -85,16 +85,16 @@ const HeaderHome = () => {
     style.textContent = `
       @media (min-width: 1700px) {
         .desktop-bg-large {
-          height: 480px !important;
+          height: 780px !important;
         }
         section.header-section-large {
-          height: 580px !important;
+          height: 950px !important;
         }
         .content-large {
-          padding-top: 220px !important;
+          padding-top: 440px !important;
         }
         .carousel-large {
-          top: 460px !important;
+          top: 750px !important;
           left: 60px !important;
         }
         section.header-section-large {
@@ -219,10 +219,10 @@ const HeaderHome = () => {
 
   return (
     <section
-      className="relative w-full h-[640px] lg:h-[650px] xl:h-[700px] overflow-hidden sm:h-[700px] md:h-[700px] mt-[-50px] sm:mt-[-80px] md:mt-[-80px] lg:mt-0 xl:mt-0 pt-[260px] sm:pt-0 mb-0 lg:mb-8 xl:mb-10 header-section-large"
+      className="relative w-full h-[640px] lg:h-[561px] xl:h-[600px] overflow-hidden sm:h-[700px] md:h-[700px] mt-[-50px] sm:mt-[-80px] md:mt-[-80px] lg:mt-0 xl:mt-0 pt-[260px] sm:pt-0 mb-0 lg:mb-8 xl:mb-10 header-section-large"
       style={{
         '@media (min-width: 1700px)': {
-          height: '950px'
+          height: '480px'
         }
       }}
       onMouseEnter={() => setPaused(true)}
@@ -234,9 +234,16 @@ const HeaderHome = () => {
         <img
           src={currentSlide.mobileBackground}
           alt="Succession Planning"
-          className={`absolute inset-0 w-full h-full object-cover block lg:hidden sm:!h-full sm:!top-0 sm:!p-0 md:!h-full md:!top-0 md:!p-0 transition-opacity duration-700 ${transitioning ? (fadePhase ? "opacity-100" : "opacity-0") : "opacity-100"
-            }`}
-          style={{ top: '10px', bottom: 'auto', objectPosition: 'right bottom', width: '100%', height: '90%', paddingTop: '120px' }}
+          className={`absolute inset-0 w-full h-full object-cover block lg:hidden transition-opacity duration-700 mobile-bg ${transitioning ? (fadePhase ? "opacity-100" : "opacity-0") : "opacity-100"
+            } min-[1700px]:h-[480px]`}
+          style={{ top: '0', objectPosition: 'right bottom' }}
+        />
+        <img
+          src={prevSlide.mobileBackground}
+          alt="Succession Planning"
+          className={`absolute inset-0 w-full h-full object-cover block lg:hidden transition-opacity duration-700 mobile-bg ${transitioning ? (fadePhase ? "opacity-0" : "opacity-100") : "opacity-0"
+            } min-[1700px]:h-[480px]`}
+          style={{ top: '0', objectPosition: 'right bottom' }}
         />
 
         {/* Tablet background image (cropped Banner) */}
@@ -244,28 +251,28 @@ const HeaderHome = () => {
           src={currentSlide.desktopBackground}
           alt="Succession Planning"
           className={`absolute inset-0 w-full h-full object-cover hidden lg:block lg:hidden transition-opacity duration-700 ${transitioning ? (fadePhase ? "opacity-100" : "opacity-0") : "opacity-100"
-            }`}
+            } min-[1700px]:h-[480px]`}
           style={{ top: '0', objectPosition: 'right bottom', width: '100%', height: '100%' }}
         />
         <img
           src={prevSlide.desktopBackground}
           alt="Succession Planning"
           className={`absolute inset-0 w-full h-full object-cover hidden lg:block lg:hidden transition-opacity duration-700 ${transitioning ? (fadePhase ? "opacity-0" : "opacity-100") : "opacity-0"
-            }`}
+            } min-[1700px]:h-[480px]`}
           style={{ top: '0', objectPosition: 'right bottom', width: '100%', height: '100%' }}
         />
         {/* Desktop background image  */}
         <img
           src={currentSlide.desktopBackground}
           alt="Succession Planning"
-          className={`absolute left-0 right-0 w-full h-[561px] xl:h-[540px] min-[1700px]:h-[480px] object-cover hidden lg:block xl:hidden transition-opacity duration-700 desktop-bg-large ${transitioning ? (fadePhase ? "opacity-100" : "opacity-0") : "opacity-100"
+          className={`absolute left-0 right-0 w-full h-[561px] xl:h-[630px] min-[1700px]:h-[480px] object-cover hidden lg:block xl:hidden transition-opacity duration-700 desktop-bg-large ${transitioning ? (fadePhase ? "opacity-100" : "opacity-0") : "opacity-100"
             }`}
           style={{ top: '60px', objectPosition: 'right bottom' }}
         />
         <img
           src={prevSlide.desktopBackground}
           alt="Succession Planning"
-          className={`absolute left-0 right-0 w-full h-[561px] xl:h-[540px] min-[1700px]:h-[480px] object-cover hidden lg:block xl:hidden transition-opacity duration-700 desktop-bg-large ${transitioning ? (fadePhase ? "opacity-0" : "opacity-100") : "opacity-0"
+          className={`absolute left-0 right-0 w-full h-[561px] xl:h-[630px] min-[1700px]:h-[480px] object-cover hidden lg:block xl:hidden transition-opacity duration-700 desktop-bg-large ${transitioning ? (fadePhase ? "opacity-0" : "opacity-100") : "opacity-0"
             }`}
           style={{ top: '20px', objectPosition: 'right bottom' }}
         />
@@ -288,7 +295,7 @@ const HeaderHome = () => {
 
       {/* Content */}
       <div 
-        className="relative z-10 max-w-[1900px] xl:max-w-[2200px] mx-auto pl-4 pr-4 sm:pl-8 sm:pr-8 lg:pl-5 lg:pr-16 xl:pl-7 xl:pr-24 h-[561px] sm:h-[661px] lg:h-[561px] xl:h-[540px] min-[1700px]:h-[480px] flex items-start pb-21 md:pb-14 lg:pb-16 xl:pb-20 pt-[16px] sm:pt-[375px] md:pt-[375px] lg:pt-[280px] xl:pt-[220px] min-[1700px]:pt-[220px] content-large"
+        className="relative z-10 max-w-[1900px] xl:max-w-[2200px] mx-auto pl-4 pr-4 sm:pl-8 sm:pr-8 lg:pl-5 lg:pr-16 xl:pl-7 xl:pr-24 h-[561px] sm:h-[661px] lg:h-[561px] xl:h-[540px] min-[1700px]:h-[480px] flex items-start pb-21 md:pb-14 lg:pb-16 xl:pb-20 pt-[46px] sm:pt-[375px] md:pt-[375px] lg:pt-[200px] xl:pt-[220px] min-[1700px]:pt-[240px] content-large"
       >
         <div className="flex items-stretch gap-3 sm:gap-8">
           {/* Left accent line */}
@@ -345,7 +352,7 @@ const HeaderHome = () => {
       </div>
 
       {/* Carousel controls */}
-      <div className="absolute z-20 left-4 sm:left-24 md:left-4 lg:left-10 xl:left-16 top-[545px] sm:top-[650px] md:top-[650px] lg:top-[540px] xl:top-[520px] min-[1700px]:top-[460px] flex items-center gap-3 carousel-large">
+      <div className="absolute z-20 left-4 sm:left-24 md:left-4 lg:left-10 xl:left-16 top-[595px] sm:top-[650px] md:top-[650px] lg:top-[460px] xl:top-[530px] flex items-center gap-3 carousel-large">
         <button
           className="h-6 w-6 hover:scale-105 transition-transform"
           onClick={goPrev}
