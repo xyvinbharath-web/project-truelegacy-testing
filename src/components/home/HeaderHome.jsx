@@ -17,10 +17,10 @@ const slides = [
     mobileBackground: legacyBackground,
     desktopBackground: BannerImage,
     eyebrow: "Succession Planning",
-    questionPrefix:  "Are you ready to turn \nyour intentions into a ",
-    questionPrefixMobile: "Are you ready to turn\nyour intentions into a ",
-    questionHighlight: "clear, written plan for your family?",
-    questionHighlightMobile: "clear, written plan \nfor your family?",
+    questionPrefix:  "Are you comfortable \nwith the law deciding ",
+    questionPrefixMobile: "Are you comfortable \nwith the law deciding ",
+    questionHighlight: "your family’s future for you?",
+    questionHighlightMobile: "your family’s \nfuture for you?",
     description:
        "With the right guidance, you can protect what you've built and give your family lasting peace of mind.",
   },
@@ -248,7 +248,7 @@ const HeaderHome = () => {
           className={`absolute inset-0 w-full h-full object-cover hidden md:block lg:hidden transition-opacity duration-700 ${
             transitioning ? (fadePhase ? "opacity-100" : "opacity-0") : "opacity-100"
           }`}
-          style={{ top: '0', objectPosition: 'center center', width: '100%', height: '80%' }}
+          style={{ top: '0', objectPosition: 'right bottom', width: '100%', height: '100%' }}
         />
         <img
           src={prevSlide.desktopBackground}
@@ -256,7 +256,7 @@ const HeaderHome = () => {
           className={`absolute inset-0 w-full h-full object-cover hidden md:block lg:hidden transition-opacity duration-700 ${
             transitioning ? (fadePhase ? "opacity-0" : "opacity-100") : "opacity-0"
           }`}
-          style={{ top: '0', objectPosition: 'center center', width: '100%', height: '80%' }}
+          style={{ top: '0', objectPosition: 'right bottom', width: '100%', height: '100%' }}
         />
         {/* Desktop background image  */}
         <img
@@ -289,8 +289,8 @@ const HeaderHome = () => {
               <span className="block sm:hidden" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'light', fontSize: '28px', lineHeight: '35px', letterSpacing: '0%'}}>
                 {renderStackedLines(currentSlide.questionPrefixMobile)}
               </span>
-              <span className="hidden sm:block lg:hidden" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'light', fontSize: '48px', lineHeight: '56px', letterSpacing: '0%'}}>
-                {renderStackedLines(currentSlide.questionPrefix)}
+              <span className="hidden sm:block lg:hidden" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'light', fontSize: '28px', lineHeight: '35px', letterSpacing: '0%'}}>
+                {renderStackedLines(currentSlide.questionPrefixMobile)}
               </span>
               <span className="hidden lg:block" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'light', fontSize: '66px', lineHeight: '74px', letterSpacing: '0%'}}>
                 {renderStackedLines(currentSlide.questionPrefix)}
@@ -309,8 +309,8 @@ const HeaderHome = () => {
                       </span>
                     ))}
                   </span>
-                  <span className="hidden sm:block lg:hidden" style={{fontFamily: 'Urania', fontWeight: '700', fontStyle: 'normal', fontSize: '48px', lineHeight: '56px', letterSpacing: '0%'}}>
-                    {String(currentSlide.questionHighlight).split("\n").map((line, idx, arr) => (
+                  <span className="hidden sm:block lg:hidden" style={{fontFamily: 'Urania', fontWeight: '700', fontStyle: 'normal', fontSize: '36px', lineHeight: '42px', letterSpacing: '0%'}}>
+                    {String(currentSlide.questionHighlightMobile).split("\n").map((line, idx, arr) => (
                       <span
                         key={idx}
                         className="block whitespace-pre break-words reveal-left-line"
@@ -351,7 +351,7 @@ const HeaderHome = () => {
       </div>
 
       {/* Carousel controls */}
-      <div className="absolute z-20 left-4 sm:left-24 lg:left-10 xl:left-16 top-[545px] sm:top-[510px] lg:top-[560px] xl:top-[600px] flex items-center gap-3 md:left-14 carousel-large">
+      <div className="absolute z-20 left-4 sm:left-24 md:left-14 lg:left-10 xl:left-16 top-[545px] sm:top-[410px] lg:top-[560px] xl:top-[600px] flex items-center gap-3 carousel-large">
         <button
           className="h-6 w-6 hover:scale-105 transition-transform"
           onClick={goPrev}
