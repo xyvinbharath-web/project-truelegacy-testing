@@ -60,21 +60,20 @@ const WhoweAreNew = () => {
   return (
     <section
       ref={sectionRef}
-      className={`w-full bg-[#F6FFFF] pt-7 md:pt-11 lg:pt-15 pb-10 md:pb-32 lg:pb-20 who-section ${
-        isVisible ? "who-section-visible" : ""
-      }`}
+      className={`w-full bg-[#F6FFFF] pt-7 md:pt-11 lg:pt-15 pb-10 md:pb-32 lg:pb-20 who-section ${isVisible ? "who-section-visible" : ""
+        }`}
     >
       {/* Container */}
       <div className="max-w-[1450px] mx-auto px-4 lg:px-8 md:px-4">
         {/* Top section */}
         <div className="grid lg:grid-cols-[1fr_1.2fr] gap-4 lg:gap-3 items-start">
           {/* Left content */}
-          <div className="who-heading-block">
-            <h2 className="text-[32px] sm:text-[38px] lg:text-[42px] leading-[49px] text-[#132F2C] mb-0 lg:mb-4 who-heading font-black" style={{fontFamily: 'Urania', fontWeight: '700 !important', fontStyle: 'Bold', fontSize: '32px', }}>
+          <div className="who-heading-block md:mx-auto md:max-w-[600px] lg:mx-0 lg:max-w-none">
+            <h2 className="text-[32px] sm:text-[38px] lg:text-[42px] leading-[49px] text-[#132F2C] mb-0 lg:mb-4 who-heading font-black" style={{ fontFamily: 'Urania', fontWeight: '700 !important', fontStyle: 'Bold', fontSize: '32px', }}>
               Who are We?
             </h2>
 
-            <p className="font-[Urania] font-normal text-[16px] leading-[24px] text-[#132F2C] max-w-[520px] md:max-w-[600px] lg:max-w-[600px] who-text" style={{fontFamily: 'Urania', fontWeight: '400', fontStyle: 'normal', fontSize: '16px', lineHeight: '24px', letterSpacing: '0%', textAlign: 'justify'}}>
+            <p className="font-[Urania] font-normal text-[16px] leading-[24px] text-[#132F2C] max-w-[520px] md:max-w-[600px] lg:max-w-[600px] who-text text-justify md:text-center lg:text-justify" style={{ fontFamily: 'Urania', fontWeight: '400', fontStyle: 'normal', fontSize: '16px', lineHeight: '24px', letterSpacing: '0%' }}>
               We are a specialized estate planning and cross-border succession advisory firm.
               Our work focuses on enabling Indian and NRI families to achieve a clear,
               enforceable, and tax-efficient transfer of wealth through Wills, private trusts,
@@ -84,7 +83,7 @@ const WhoweAreNew = () => {
 
           {/* Right quote with dots background */}
           <div
-            className="relative max-w-[480px] lg:max-w-[900px] lg:ml-auto -mt-6 lg:mt-6 pb-30 pt-0 who-quote-block z-10"
+            className="relative max-w-[480px] lg:max-w-[900px] lg:ml-auto -mt-6 lg:mt-6 pb-30 pt-0 who-quote-block z-10 md:mx-auto"
           >
             {/* Mobile dots background - separate section */}
             <div
@@ -96,7 +95,7 @@ const WhoweAreNew = () => {
                 backgroundSize: "110% 110%",
               }}
             />
-            
+
             {/* Desktop background with new image - overrides mobile background */}
             <div
               className="hidden lg:block absolute inset-0"
@@ -111,13 +110,13 @@ const WhoweAreNew = () => {
                 height: '200px'
               }}
             />
-            
-            <p className="text-left who-quote-text text-[24px] lg:text-[32px] mt-12 lg:mt-12 ml-0 lg:ml-0 relative z-10" style={{fontFamily: 'Urania', fontWeight: '200', fontStyle: 'italic', lineHeight: '125%', letterSpacing: '0.5%', color: '#737c7bff'}} ref={(el) => {
+
+            <p className="text-center md:text-center lg:text-left who-quote-text text-[24px] lg:text-[32px] mt-12 lg:mt-12 ml-0 lg:ml-0 relative z-10" style={{ fontFamily: 'Urania', fontWeight: '200', fontStyle: 'italic', lineHeight: '125%', letterSpacing: '0.5%', color: '#737c7bff' }} ref={(el) => {
               if (el && window.innerWidth >= 1024) {
                 el.style.marginLeft = '-60px';
               }
             }}>
-              "Families deserve peace, clarity, and security 
+              "Families deserve peace, clarity, and security
               <span className="hidden lg:block">
                 when passing on what they have built."
               </span>
@@ -129,7 +128,7 @@ const WhoweAreNew = () => {
         </div>
 
         {/* Cards */}
-        <div className="grid gap-x-10 gap-y-5 md:grid-cols-2 xl:grid-cols-3 justify-items-center justify-center md:justify-items-center xl:justify-items-center -mt-19 md:-mt-14 who-cards-grid -mx-4 md:mx-0 px-4 md:px-0 relative z-20">
+        <div className="grid gap-x-10 gap-y-5 lg:grid-cols-2 xl:grid-cols-3 justify-items-center justify-center md:justify-items-center xl:justify-items-center -mt-19 md:-mt-14 who-cards-grid -mx-4 md:mx-0 px-4 md:px-0 relative z-20">
           {cards.map((card) => (
             <div
               key={card.title}
@@ -180,11 +179,11 @@ const WhoweAreNew = () => {
 
               {/* Content */}
               <div className="mt-5 px-6 pb-8 text-center flex flex-col items-center who-card-body">
-                <h3 className="font-[Urania] font-bold text-[22px] lg:text-[30px] text-[#132F2C] mb-2 who-card-title" style={{fontFamily: 'Urania', fontWeight: '600', fontStyle: 'normal', fontSize: '30px', lineHeight: '100%', letterSpacing: '0%'}}>
+                <h3 className="font-[Urania] font-bold text-[22px] lg:text-[30px] text-[#132F2C] mb-2 who-card-title" style={{ fontFamily: 'Urania', fontWeight: '600', fontStyle: 'normal', fontSize: '30px', lineHeight: '100%', letterSpacing: '0%' }}>
                   {card.title}
                 </h3>
 
-                <p className="font-[Urania] text-[16px] leading-[22px] sm:leading-[20px] text-[#132F2C]/80 max-w-[200px] mb-5 who-card-desc" style={{fontFamily: 'Urania', fontWeight: '400', fontStyle: 'normal', fontSize: '16px', lineHeight: '22px', letterSpacing: '0%'}}>
+                <p className="font-[Urania] text-[16px] leading-[22px] sm:leading-[20px] text-[#132F2C]/80 max-w-[200px] mb-5 who-card-desc" style={{ fontFamily: 'Urania', fontWeight: '400', fontStyle: 'normal', fontSize: '16px', lineHeight: '22px', letterSpacing: '0%' }}>
                   {card.description}
                 </p>
 
@@ -197,7 +196,7 @@ const WhoweAreNew = () => {
                   className={`rounded-[66px] px-8 py-3.5 font-[Urania] text-[14px] lg:text-[18px] font-medium whitespace-nowrap !bg-[#132F2C] !text-white !opacity-100 transition
                     ${card.tab ? "hover:!bg-[#0D241E]" : "cursor-not-allowed"}
                     w-[375px] h-[52px] md:w-auto md:h-auto`}
-                  style={{fontFamily: 'Urania', fontWeight: '500', fontStyle: 'normal', fontSize: '18px', lineHeight: '100%', letterSpacing: '0%'}}
+                  style={{ fontFamily: 'Urania', fontWeight: '500', fontStyle: 'normal', fontSize: '18px', lineHeight: '100%', letterSpacing: '0%' }}
                 />
               </div>
             </div>

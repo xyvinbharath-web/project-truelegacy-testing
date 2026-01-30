@@ -105,7 +105,7 @@ const TrueLegacyInstructions = () => {
     >
       {/* Mobile layout */}
       <section
-        className="relative w-full h-[386px] flex items-center md:hidden"
+        className="relative w-full h-[386px] flex items-center lg:hidden"
         style={{
           backgroundImage: `url(${mobileInstructionBg})`,
           backgroundSize: "cover",
@@ -128,11 +128,9 @@ const TrueLegacyInstructions = () => {
               return (
                 <div
                   key={slide.text}
-                  className={`instruction-layer-mobile instruction-card-${position} ${
-                    isFront ? "instruction-card" : ""
-                  } ${
-                    isFront && isAnimating ? (direction === "next" ? "flip-in-next" : "flip-in-prev") : ""
-                  }`}
+                  className={`instruction-layer-mobile instruction-card-${position} ${isFront ? "instruction-card" : ""
+                    } ${isFront && isAnimating ? (direction === "next" ? "flip-in-next" : "flip-in-prev") : ""
+                    }`}
                   style={{
                     transformStyle: "preserve-3d",
                     backfaceVisibility: "hidden",
@@ -174,7 +172,7 @@ const TrueLegacyInstructions = () => {
 
       {/* Desktop / tablet layout */}
       <section
-        className="relative w-full min-h-[520px] hidden md:flex items-center justify-center"
+        className="relative w-full min-h-[520px] hidden lg:flex items-center justify-center"
         style={{
           backgroundImage: `url(${currentSlide.image})`,
           backgroundSize: "100% 100%",
@@ -191,7 +189,7 @@ const TrueLegacyInstructions = () => {
         <div className="relative max-w-[1300px] mx-auto w-full md:px-0 sm:px-6 lg:px-0 pt-10">
 
           {/* RIGHT CARD AREA */}
-          <div className="relative flex justify-center md:justify-end mt-10 md:mt-24 instruction-stack-desktop">
+          <div className="relative flex justify-center lg:justify-center xl:justify-end mt-10 md:mt-24 instruction-stack-desktop">
             {slides.map((slide, index) => {
               const position = getPosition(index);
               const isFront = position === "front";
@@ -199,11 +197,9 @@ const TrueLegacyInstructions = () => {
               return (
                 <div
                   key={slide.text}
-                  className={`instruction-layer-desktop instruction-card-${position} ${
-                    isFront ? "instruction-card" : ""
-                  } ${
-                    isFront && isAnimating ? (direction === "next" ? "flip-in-next" : "flip-in-prev") : ""
-                  }`}
+                  className={`instruction-layer-desktop instruction-card-${position} ${isFront ? "instruction-card" : ""
+                    } ${isFront && isAnimating ? (direction === "next" ? "flip-in-next" : "flip-in-prev") : ""
+                    }`}
                   style={{
                     transformStyle: "preserve-3d",
                     backfaceVisibility: "hidden",
@@ -233,7 +229,7 @@ const TrueLegacyInstructions = () => {
           </div>
 
           {/* ARROWS UNDER CARD */}
-          <div className="flex justify-center md:justify-end mt-[-50px] md:pr-[370px] gap-1 relative z-10">
+          <div className="flex justify-center lg:justify-center xl:justify-end mt-[-50px] lg:pr-0 xl:pr-[370px] gap-1 relative z-10">
             <button onClick={goPrev} aria-label="Previous">
               <img src={leftArrowIcon} alt="Previous" className="w-7 h-7" />
             </button>

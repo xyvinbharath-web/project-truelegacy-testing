@@ -33,9 +33,9 @@ const Navbar = () => {
           w-full
           h-[80px]
           flex items-center
-          justify-between md:justify-start
+          justify-between lg:justify-start
           px-4 sm:px-6 lg:px-10
-          ${isMenuOpen ? "hidden md:flex" : ""}
+          ${isMenuOpen ? "hidden lg:flex" : ""}
         `}
       >
         {/* Left: logo */}
@@ -44,7 +44,7 @@ const Navbar = () => {
         </div>
 
         {/* Center: nav links */}
-        <nav className="hidden md:flex flex-1 items-center justify-center gap-4 lg:gap-8 xl:gap-10 text-[14px] md:text-[15px] lg:text-[16px] font-[Urania] tl-nav">
+        <nav className="hidden lg:flex flex-1 items-center justify-center gap-4 lg:gap-8 xl:gap-10 text-[14px] md:text-[15px] lg:text-[16px] font-[Urania] tl-nav">
 
           <NavLink to="/" className="relative">
             {({ isActive }) => (
@@ -54,7 +54,7 @@ const Navbar = () => {
                     hidden lg:block
                     ${isActive ? "text-slate-900" : "text-[#B5B5B5]"}
                   `}
-                  style={{fontFamily: 'Urania', fontWeight: isActive ? '500' : '400', fontStyle: isActive ? 'Regular' : 'Medium', fontSize: '16px', lineHeight: '100%', letterSpacing: '0%'}}
+                  style={{ fontFamily: 'Urania', fontWeight: isActive ? '500' : '400', fontStyle: isActive ? 'Regular' : 'Medium', fontSize: '16px', lineHeight: '100%', letterSpacing: '0%' }}
                 >
                   Home
                 </span>
@@ -78,19 +78,17 @@ const Navbar = () => {
               onClick={() => setIsServicesOpen((prev) => !prev)}
             >
               <span
-                className={`hidden lg:block ${
-                  isServicesOpen || isServicesRoute
+                className={`hidden lg:block ${isServicesOpen || isServicesRoute
                     ? "text-slate-900"
                     : "text-[#B5B5B5]"
-                }`}
-                style={{fontFamily: 'Urania', fontWeight: (isServicesOpen || isServicesRoute) ? '500' : '400', fontStyle: (isServicesOpen || isServicesRoute) ? 'Medium' : 'Regular', fontSize: '16px', lineHeight: '100%', letterSpacing: '0%'}}
+                  }`}
+                style={{ fontFamily: 'Urania', fontWeight: (isServicesOpen || isServicesRoute) ? '500' : '400', fontStyle: (isServicesOpen || isServicesRoute) ? 'Medium' : 'Regular', fontSize: '16px', lineHeight: '100%', letterSpacing: '0%' }}
               >
                 Services
               </span>
-              <span className={`block lg:hidden text-[14px] md:text-[15px] lg:text-[16px] ${
-                  isServicesOpen || isServicesRoute
-                    ? "text-slate-900"
-                    : "text-slate-400"
+              <span className={`block lg:hidden text-[14px] md:text-[15px] lg:text-[16px] ${isServicesOpen || isServicesRoute
+                  ? "text-slate-900"
+                  : "text-slate-400"
                 }`}>
                 Services
               </span>
@@ -98,13 +96,11 @@ const Navbar = () => {
                 <img
                   src={ArrowDownIcon}
                   alt="Toggle services menu"
-                  className={`h-3 w-3 transition-transform duration-200 ${
-                    isServicesOpen ? "rotate-180" : "rotate-0"
-                  } ${
-                    isServicesOpen || isServicesRoute
+                  className={`h-3 w-3 transition-transform duration-200 ${isServicesOpen ? "rotate-180" : "rotate-0"
+                    } ${isServicesOpen || isServicesRoute
                       ? "filter-none"
                       : "opacity-60"
-                  }`}
+                    }`}
                 />
               </span>
               {(isServicesOpen || isServicesRoute) && (
@@ -156,7 +152,7 @@ const Navbar = () => {
                     hidden lg:block
                     ${isActive ? "text-slate-900" : "text-[#B5B5B5]"}
                   `}
-                  style={{fontFamily: 'Urania', fontWeight: isActive ? '500' : '400', fontStyle: isActive ? 'Regular' : 'Medium', fontSize: '16px', lineHeight: '100%', letterSpacing: '0%'}}
+                  style={{ fontFamily: 'Urania', fontWeight: isActive ? '500' : '400', fontStyle: isActive ? 'Regular' : 'Medium', fontSize: '16px', lineHeight: '100%', letterSpacing: '0%' }}
                 >
                   Why Choose Us
                 </span>
@@ -178,7 +174,7 @@ const Navbar = () => {
                     hidden lg:block
                     ${isActive ? "text-slate-900" : "text-[#B5B5B5]"}
                   `}
-                  style={{fontFamily: 'Urania', fontWeight: isActive ? '500' : '400', fontStyle: isActive ? 'Regular' : 'Medium', fontSize: '16px', lineHeight: '100%', letterSpacing: '0%'}}
+                  style={{ fontFamily: 'Urania', fontWeight: isActive ? '500' : '400', fontStyle: isActive ? 'Regular' : 'Medium', fontSize: '16px', lineHeight: '100%', letterSpacing: '0%' }}
                 >
                   Resources
                 </span>
@@ -200,7 +196,7 @@ const Navbar = () => {
                     hidden lg:block
                     ${isActive ? "text-slate-900" : "text-[#B5B5B5]"}
                   `}
-                  style={{fontFamily: 'Urania', fontWeight: isActive ? '500' : '400', fontStyle: isActive ? 'Regular' : 'Medium', fontSize: '16px', lineHeight: '100%', letterSpacing: '0%'}}
+                  style={{ fontFamily: 'Urania', fontWeight: isActive ? '500' : '400', fontStyle: isActive ? 'Regular' : 'Medium', fontSize: '16px', lineHeight: '100%', letterSpacing: '0%' }}
                 >
                   Contact Us
                 </span>
@@ -218,7 +214,7 @@ const Navbar = () => {
         {/* Right: actions (desktop login pill, mobile menu icon) */}
         <div className="flex-none flex items-center justify-end gap-3">
           {/* Desktop / tablet: login pill */}
-          <div className="hidden md:inline-flex lg:hidden">
+          <div className="hidden">
             <StyledButton
               name="Login"
               onClick={() => navigate("/signin")}
@@ -257,7 +253,7 @@ const Navbar = () => {
 
           {/* Mobile: menu icon image toggling overlay */}
           <button
-            className="inline-flex md:hidden items-center justify-center ml-auto"
+            className="inline-flex lg:hidden items-center justify-center ml-auto"
             onClick={() => setIsMenuOpen((prev) => !prev)}
           >
             <img
@@ -271,7 +267,7 @@ const Navbar = () => {
 
       {/* Mobile full-screen menu overlay */}
       {isMenuOpen && (
-        <div className="relative inset-0 z-50 bg-[#132F2C] text-white md:hidden animate-fade-in-fast min-h-screen">
+        <div className="relative inset-0 z-50 bg-[#132F2C] text-white lg:hidden animate-fade-in-fast min-h-screen">
           <div
             className="relative flex h-full w-full flex-col"
             style={{
@@ -329,9 +325,8 @@ const Navbar = () => {
                     <img
                       src={ArrowDownIcon}
                       alt="Toggle services menu"
-                      className={`h-4 w-4 transition-transform duration-200 ${
-                        isMobileServicesOpen ? "rotate-180" : "rotate-0"
-                      }`}
+                      className={`h-4 w-4 transition-transform duration-200 ${isMobileServicesOpen ? "rotate-180" : "rotate-0"
+                        }`}
                       style={{ filter: 'brightness(0) invert(1)' }}
                     />
                   </span>
@@ -439,8 +434,8 @@ const Navbar = () => {
               </button>
 
               <div className="mt-4 pt-8 border-t border-white/10 text-[#FFFFFF]">
-                <div className="mb-0" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'normal', fontSize: '14px', lineHeight: '100%', letterSpacing: '0%', color: '#899795'}}>General Inquiries</div>
-                <div className="flex items-center justify-between" style={{fontFamily: 'Urania', fontWeight: '400', fontStyle: 'normal', fontSize: '18px', lineHeight: '100%', letterSpacing: '0%'}}>
+                <div className="mb-0" style={{ fontFamily: 'Urania', fontWeight: '300', fontStyle: 'normal', fontSize: '14px', lineHeight: '100%', letterSpacing: '0%', color: '#899795' }}>General Inquiries</div>
+                <div className="flex items-center justify-between" style={{ fontFamily: 'Urania', fontWeight: '400', fontStyle: 'normal', fontSize: '18px', lineHeight: '100%', letterSpacing: '0%' }}>
                   <span>info@truelegacy.in</span>
                   <img src={FaviconIcon} alt="Email" className="w-8 h-8" />
                 </div>

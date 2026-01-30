@@ -125,8 +125,8 @@ const SurveyForm = () => {
       divorced: data.maritalStatus === "Divorced",
       spouse_alive:
         data.maritalStatus === "Married" ||
-        data.maritalStatus === "Widow" ||
-        data.maritalStatus === "Widower"
+          data.maritalStatus === "Widow" ||
+          data.maritalStatus === "Widower"
           ? data.maritalStatus === "Married"
           : false,
       inter_caste: data.interCaste === "Yes",
@@ -139,10 +139,10 @@ const SurveyForm = () => {
         data.parentsAlive === "Both alive"
           ? "both"
           : data.parentsAlive === "Father only"
-          ? "father"
-          : data.parentsAlive === "Mother only"
-          ? "mother"
-          : "none",
+            ? "father"
+            : data.parentsAlive === "Mother only"
+              ? "mother"
+              : "none",
 
       siblings: {
         brothers: Number(data.brothers) || 0,
@@ -276,7 +276,7 @@ const SurveyForm = () => {
           </div>
         </div>
 
-        <div className="w-full md:w-1/2 flex flex-col justify-between md:p-20 pt-20  p-5 pb-30 relative">
+        <div className="w-full md:w-1/2 flex flex-col justify-between md:p-20 pt-20 p-5 pb-30 relative overflow-y-auto h-full">
           {" "}
           <div>
             <div className="flex justify-end text-xl md:text-[26px] font-medium mb-6 text-primary ">
@@ -300,18 +300,18 @@ const SurveyForm = () => {
               >
                 <h2 className="lg:text-3xl text-xl font-medium mb-2 text-primary">
                   {current.type === "parentsAlive" &&
-                  getValues("religion") === "Hindu" &&
-                  getValues("gender") === "Female" &&
-                  getValues("maritalStatus") === "Married" &&
-                  getValues("interCaste") === "No"
+                    getValues("religion") === "Hindu" &&
+                    getValues("gender") === "Female" &&
+                    getValues("maritalStatus") === "Married" &&
+                    getValues("interCaste") === "No"
                     ? "Are your husband's parents alive?"
                     : current.type === "siblingsCount" &&
                       getValues("religion") === "Hindu" &&
                       getValues("gender") === "Female" &&
                       getValues("maritalStatus") === "Married" &&
                       getValues("interCaste") === "No"
-                    ? "How many siblings does your husband have?"
-                    : current.question}
+                      ? "How many siblings does your husband have?"
+                      : current.question}
                 </h2>
                 <p className="text-secondary lg:text-base text-sm mb-8">
                   {current.description}
@@ -327,18 +327,16 @@ const SurveyForm = () => {
                         render={({ field }) => (
                           <div
                             onClick={() => field.onChange(option.label)}
-                            className={`relative cursor-pointer border rounded-xl p-6 w-40 flex flex-col items-center transition-all ${
-                              field.value === option.label
+                            className={`relative cursor-pointer border rounded-xl p-6 w-40 flex flex-col items-center transition-all ${field.value === option.label
                                 ? "border-none bg-yellow shadow-md"
                                 : "border-black/20 border-[0.77px] hover:border-yellow"
-                            }`}
+                              }`}
                           >
                             <div
-                              className={`absolute top-3 right-3 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
-                                field.value === option.label
+                              className={`absolute top-3 right-3 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${field.value === option.label
                                   ? "bg-green border-green text-white"
                                   : "border-black/20 border-[0.77px] bg-white text-transparent"
-                              }`}
+                                }`}
                             >
                               <CheckIcon className="w-4 h-4" />
                             </div>
@@ -359,39 +357,39 @@ const SurveyForm = () => {
                 )}
                 {(current.type === "childrenCount" ||
                   current.type === "siblingsCount") && (
-                  <div className="space-y-6 max-w-md mx-auto">
-                    {current.fields.map((fieldItem) => (
-                      <div key={fieldItem.name}>
-                        <label className="block text-left mb-2 lg:text-xl text-base">
-                          {fieldItem.label}
-                        </label>
-                        <Controller
-                          name={fieldItem.name}
-                          control={control}
-                          render={({ field }) => (
-                            <input
-                              {...field}
-                              type="number"
-                              placeholder={`Enter ${fieldItem.label.toLowerCase()}`}
-                              className="border border-black/20 rounded-[6px] w-full py-3 pl-6 pr-2"
-                            />
-                          )}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                )}
+                    <div className="space-y-6 max-w-md mx-auto">
+                      {current.fields.map((fieldItem) => (
+                        <div key={fieldItem.name}>
+                          <label className="block text-left mb-2 lg:text-xl text-base">
+                            {fieldItem.label}
+                          </label>
+                          <Controller
+                            name={fieldItem.name}
+                            control={control}
+                            render={({ field }) => (
+                              <input
+                                {...field}
+                                type="number"
+                                placeholder={`Enter ${fieldItem.label.toLowerCase()}`}
+                                className="border border-black/20 rounded-[6px] w-full py-3 pl-6 pr-2"
+                              />
+                            )}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  )}
 
                 {current.options && current.type !== "gender" && (
                   <div className="flex flex-col items-center gap-4 w-full max-w-md mx-auto">
                     {(current.type === "maritalStatus"
                       ? current.options.filter((opt) => {
-                          if (opt === "Widow" && gender === "Male")
-                            return false;
-                          if (opt === "Widower" && gender === "Female")
-                            return false;
-                          return true;
-                        })
+                        if (opt === "Widow" && gender === "Male")
+                          return false;
+                        if (opt === "Widower" && gender === "Female")
+                          return false;
+                        return true;
+                      })
                       : current.options
                     ).map((opt) => (
                       <Controller
@@ -402,21 +400,19 @@ const SurveyForm = () => {
                           <button
                             type="button"
                             onClick={() => field.onChange(opt.label || opt)}
-                            className={`w-full border rounded-xl lg:py-5 py-2  px-6 flex items-center justify-between transition-all duration-300 ${
-                              field.value === (opt.label || opt)
+                            className={`w-full border rounded-xl lg:py-5 py-2  px-6 flex items-center justify-between transition-all duration-300 ${field.value === (opt.label || opt)
                                 ? "bg-yellow border-yellow text-primary shadow-sm"
                                 : "bg-white border-black/20 hover:border-yellow"
-                            }`}
+                              }`}
                           >
                             <span className="lg:text-xl text-base font-medium">
                               {opt.label || opt}
                             </span>
                             <div
-                              className={`lg:w-6 lg:h-6 w-4 h-4 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${
-                                field.value === (opt.label || opt)
+                              className={`lg:w-6 lg:h-6 w-4 h-4 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${field.value === (opt.label || opt)
                                   ? "bg-green border-green text-white"
                                   : "border-black/20 bg-white text-transparent"
-                              }`}
+                                }`}
                             >
                               <CheckIcon className="lg:w-4 lg:h-4 w-3 h-3" />
                             </div>

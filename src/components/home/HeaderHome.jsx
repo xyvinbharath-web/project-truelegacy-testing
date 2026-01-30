@@ -17,12 +17,12 @@ const slides = [
     mobileBackground: legacyBackground,
     desktopBackground: BannerImage,
     eyebrow: "Succession Planning",
-    questionPrefix:  "Are you comfortable \nwith the law deciding ",
+    questionPrefix: "Are you comfortable \nwith the law deciding ",
     questionPrefixMobile: "Are you comfortable \nwith the law deciding ",
     questionHighlight: "your family’s future for you?",
     questionHighlightMobile: "your family’s \nfuture for you?",
     description:
-       "With the right guidance, you can protect what you've built and give your family lasting peace of mind.",
+      "With the right guidance, you can protect what you've built and give your family lasting peace of mind.",
   },
   {
     mobileBackground: mobileframe1,
@@ -33,7 +33,7 @@ const slides = [
     questionHighlight: "children in your absence?",
     questionHighlightMobile: "children in your \nabsence?",
     description:
-       "Proper planning protects your wealth and guarantees it reaches your children without complications.",
+      "Proper planning protects your wealth and guarantees it reaches your children without complications.",
   },
   {
     mobileBackground: mobileframe2,
@@ -57,7 +57,7 @@ const renderQuestionWithIcon = (text) => {
 
   // Check if text has newlines (multi-line)
   const isMultiLine = text.includes("\n");
-  
+
   return (
     <>
       {parts[0]}
@@ -65,11 +65,10 @@ const renderQuestionWithIcon = (text) => {
         <img
           src={questionIcon}
           alt="Question Icon"
-          className={`absolute ${
-            isMultiLine 
-              ? "top-6 sm:top-6 md:top-12 -right-5 sm:-right-6 md:-right-7" 
-              : "top-3 sm:top-3 md:top-9 -right-5 sm:-right-5 md:-right-6"
-          } w-[18px] sm:w-[20px] md:w-[22px] h-[18px] sm:h-[20px] md:h-[22px]`}
+          className={`absolute ${isMultiLine
+            ? "top-6 sm:top-6 lg:top-12 -right-5 sm:-right-6 lg:-right-7"
+            : "top-3 sm:top-3 lg:top-9 -right-5 sm:-right-5 lg:-right-6"
+            } w-[18px] sm:w-[20px] lg:w-[22px] h-[18px] sm:h-[20px] lg:h-[22px]`}
         />
         ?
       </span>
@@ -105,7 +104,7 @@ const HeaderHome = () => {
       }
     `;
     document.head.appendChild(style);
-    
+
     return () => {
       document.head.removeChild(style);
     };
@@ -220,7 +219,7 @@ const HeaderHome = () => {
 
   return (
     <section
-      className="relative w-full h-[640px] lg:h-[650px] xl:h-[700px] overflow-hidden md:h-screen mt-[-50px] sm:mt-[-50px] md:mt-0 lg:mt-0 xl:mt-0 pt-[260px] sm:pt-0 mb-0 lg:mb-16 xl:mb-20 header-section-large"
+      className="relative w-full h-[640px] lg:h-[650px] xl:h-[700px] overflow-hidden sm:h-[700px] md:h-[700px] mt-[-50px] sm:mt-[-80px] md:mt-[-80px] lg:mt-0 xl:mt-0 pt-[260px] sm:pt-0 mb-0 lg:mb-8 xl:mb-10 header-section-large"
       style={{
         '@media (min-width: 1700px)': {
           height: '950px'
@@ -235,50 +234,45 @@ const HeaderHome = () => {
         <img
           src={currentSlide.mobileBackground}
           alt="Succession Planning"
-          className={`absolute inset-0 w-full h-full object-cover block md:hidden lg:hidden transition-opacity duration-700 ${
-            transitioning ? (fadePhase ? "opacity-100" : "opacity-0") : "opacity-100"
-          }`}
+          className={`absolute inset-0 w-full h-full object-cover block lg:hidden sm:!h-full sm:!top-0 sm:!p-0 md:!h-full md:!top-0 md:!p-0 transition-opacity duration-700 ${transitioning ? (fadePhase ? "opacity-100" : "opacity-0") : "opacity-100"
+            }`}
           style={{ top: '10px', bottom: 'auto', objectPosition: 'right bottom', width: '100%', height: '90%', paddingTop: '120px' }}
         />
-        
+
         {/* Tablet background image (cropped Banner) */}
         <img
           src={currentSlide.desktopBackground}
           alt="Succession Planning"
-          className={`absolute inset-0 w-full h-full object-cover hidden md:block lg:hidden transition-opacity duration-700 ${
-            transitioning ? (fadePhase ? "opacity-100" : "opacity-0") : "opacity-100"
-          }`}
+          className={`absolute inset-0 w-full h-full object-cover hidden lg:block lg:hidden transition-opacity duration-700 ${transitioning ? (fadePhase ? "opacity-100" : "opacity-0") : "opacity-100"
+            }`}
           style={{ top: '0', objectPosition: 'right bottom', width: '100%', height: '100%' }}
         />
         <img
           src={prevSlide.desktopBackground}
           alt="Succession Planning"
-          className={`absolute inset-0 w-full h-full object-cover hidden md:block lg:hidden transition-opacity duration-700 ${
-            transitioning ? (fadePhase ? "opacity-0" : "opacity-100") : "opacity-0"
-          }`}
+          className={`absolute inset-0 w-full h-full object-cover hidden lg:block lg:hidden transition-opacity duration-700 ${transitioning ? (fadePhase ? "opacity-0" : "opacity-100") : "opacity-0"
+            }`}
           style={{ top: '0', objectPosition: 'right bottom', width: '100%', height: '100%' }}
         />
         {/* Desktop background image  */}
         <img
           src={currentSlide.desktopBackground}
           alt="Succession Planning"
-          className={`absolute left-0 right-0 w-full h-[580px] xl:h-[630px] object-cover hidden lg:block transition-opacity duration-700 desktop-bg-large ${
-            transitioning ? (fadePhase ? "opacity-100" : "opacity-0") : "opacity-100"
-          }`}
+          className={`absolute left-0 right-0 w-full h-[580px] xl:h-[630px] object-cover hidden lg:block transition-opacity duration-700 desktop-bg-large ${transitioning ? (fadePhase ? "opacity-100" : "opacity-0") : "opacity-100"
+            }`}
           style={{ top: '60px', objectPosition: 'right bottom' }}
         />
         <img
           src={prevSlide.desktopBackground}
           alt="Succession Planning"
-          className={`absolute left-0 right-0 w-full h-[580px] xl:h-[630px] object-cover hidden lg:block transition-opacity duration-700 desktop-bg-large ${
-            transitioning ? (fadePhase ? "opacity-0" : "opacity-100") : "opacity-0"
-          }`}
+          className={`absolute left-0 right-0 w-full h-[580px] xl:h-[630px] object-cover hidden lg:block transition-opacity duration-700 desktop-bg-large ${transitioning ? (fadePhase ? "opacity-0" : "opacity-100") : "opacity-0"
+            }`}
           style={{ top: '20px', objectPosition: 'right bottom' }}
         />
       </div>
-      
+
       {/* Content */}
-      <div className="relative z-10 max-w-[1900px] xl:max-w-[2200px] mx-auto pl-4 pr-4 sm:pl-8 sm:pr-8 lg:pl-5 lg:pr-16 xl:pl-7 xl:pr-24 h-[561px] sm:h-[661px] lg:h-[580px] xl:h-[630px] flex items-start pb-21 md:pb-14 lg:pb-16 xl:pb-20 pt-[16px] sm:pt-[220px] lg:pt-[270px] xl:pt-[300px] content-large">
+      <div className="relative z-10 max-w-[1900px] xl:max-w-[2200px] mx-auto pl-4 pr-4 sm:pl-8 sm:pr-8 lg:pl-5 lg:pr-16 xl:pl-7 xl:pr-24 h-[561px] sm:h-[661px] lg:h-[580px] xl:h-[630px] flex items-start pb-21 md:pb-14 lg:pb-16 xl:pb-20 pt-[16px] sm:pt-[375px] md:pt-[375px] lg:pt-[270px] xl:pt-[300px] content-large">
         <div className="flex items-stretch gap-3 sm:gap-8">
           {/* Left accent line */}
           <div className="self-stretch border-l-[4px] border-[#F4D57E]" />
@@ -286,19 +280,16 @@ const HeaderHome = () => {
           {/* Text */}
           <div className="text-left text-white w-full">
             <h1 key={activeIndex} className="font-[Urania] animate-fade-up break-words w-1/2">
-              <span className="block sm:hidden" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'light', fontSize: '28px', lineHeight: '35px', letterSpacing: '0%'}}>
+              <span className="block lg:hidden" style={{ fontFamily: 'Urania', fontWeight: '300', fontStyle: 'light', fontSize: '28px', lineHeight: '35px', letterSpacing: '0%' }}>
                 {renderStackedLines(currentSlide.questionPrefixMobile)}
               </span>
-              <span className="hidden sm:block lg:hidden" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'light', fontSize: '28px', lineHeight: '35px', letterSpacing: '0%'}}>
-                {renderStackedLines(currentSlide.questionPrefixMobile)}
-              </span>
-              <span className="hidden lg:block" style={{fontFamily: 'Urania', fontWeight: '300', fontStyle: 'light', fontSize: '66px', lineHeight: '74px', letterSpacing: '0%'}}>
+              <span className="hidden lg:block" style={{ fontFamily: 'Urania', fontWeight: '300', fontStyle: 'light', fontSize: '66px', lineHeight: '74px', letterSpacing: '0%' }}>
                 {renderStackedLines(currentSlide.questionPrefix)}
               </span>
-              <span className="block mt-2 sm:mt-0 font-bold text-[#F4D57E] max-w-[180px] md:max-w-none" style={{fontFamily: 'Urania', fontWeight: '700', fontStyle: 'normal', fontSize: '36px', lineHeight: '42px', letterSpacing: '0%'}}>
+              <span className="block mt-2 sm:mt-0 font-bold text-[#F4D57E] max-w-[180px] md:max-w-none" style={{ fontFamily: 'Urania', fontWeight: '700', fontStyle: 'normal', fontSize: '36px', lineHeight: '42px', letterSpacing: '0%' }}>
                 {/* left-to-right stagger for highlight lines */}
                 <span className="block carousel-text">
-                  <span className="block sm:hidden">
+                  <span className="block lg:hidden">
                     {String(currentSlide.questionHighlightMobile).split("\n").map((line, idx, arr) => (
                       <span
                         key={idx}
@@ -309,18 +300,7 @@ const HeaderHome = () => {
                       </span>
                     ))}
                   </span>
-                  <span className="hidden sm:block lg:hidden" style={{fontFamily: 'Urania', fontWeight: '700', fontStyle: 'normal', fontSize: '36px', lineHeight: '42px', letterSpacing: '0%'}}>
-                    {String(currentSlide.questionHighlightMobile).split("\n").map((line, idx, arr) => (
-                      <span
-                        key={idx}
-                        className="block whitespace-pre break-words reveal-left-line"
-                        style={{ animationDelay: `${120 + idx * 110}ms` }}
-                      >
-                        {idx === arr.length - 1 ? renderQuestionWithIcon(line) : line}
-                      </span>
-                    ))}
-                  </span>
-                  <span className="hidden lg:block" style={{fontFamily: 'Urania', fontWeight: '700', fontStyle: 'normal', fontSize: '66px', lineHeight: '74px', letterSpacing: '0%'}}>
+                  <span className="hidden lg:block" style={{ fontFamily: 'Urania', fontWeight: '700', fontStyle: 'normal', fontSize: '66px', lineHeight: '74px', letterSpacing: '0%' }}>
                     {String(currentSlide.questionHighlight).split("\n").map((line, idx, arr) => (
                       <span
                         key={idx}
@@ -336,10 +316,7 @@ const HeaderHome = () => {
             </h1>
 
             <p key={`desc-${activeIndex}`} className="mt-4 lg:mt-8 max-w-[250px] sm:max-w-[350px] md:max-w-[660px] lg:max-w-[800px] animate-fade-in">
-              <span className="block sm:hidden lg:hidden" style={{ animationDelay: "180ms", fontFamily: 'Urania', fontWeight: '200', fontStyle: 'Regular', fontSize: '16px', lineHeight: '100%', letterSpacing: '0%' }}>
-                {currentSlide.description}
-              </span>
-              <span className="hidden sm:block lg:hidden" style={{ animationDelay: "180ms", fontFamily: 'Urania', fontWeight: '400', fontStyle: 'Regular', fontSize: '16px', lineHeight: '100%', letterSpacing: '0%' }}>
+              <span className="block lg:hidden" style={{ animationDelay: "180ms", fontFamily: 'Urania', fontWeight: '200', fontStyle: 'Regular', fontSize: '16px', lineHeight: '100%', letterSpacing: '0%' }}>
                 {currentSlide.description}
               </span>
               <span className="hidden lg:block" style={{ animationDelay: "180ms", fontFamily: 'Urania', fontWeight: '300', fontStyle: 'Regular', fontSize: '18px', lineHeight: '100%', letterSpacing: '0%' }}>
@@ -351,7 +328,7 @@ const HeaderHome = () => {
       </div>
 
       {/* Carousel controls */}
-      <div className="absolute z-20 left-4 sm:left-24 md:left-14 lg:left-10 xl:left-16 top-[545px] sm:top-[410px] lg:top-[560px] xl:top-[600px] flex items-center gap-3 carousel-large">
+      <div className="absolute z-20 left-4 sm:left-24 md:left-4 lg:left-10 xl:left-16 top-[545px] sm:top-[650px] md:top-[650px] lg:top-[560px] xl:top-[600px] flex items-center gap-3 carousel-large">
         <button
           className="h-6 w-6 hover:scale-105 transition-transform"
           onClick={goPrev}

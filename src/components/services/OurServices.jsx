@@ -169,45 +169,41 @@ const OurServices = ({ initialTab = "will" }) => {
   return (
     <section
       ref={sectionRef}
-      className={`py-16 pb-8 px-4 sm:px-6 lg:px-10 bg-[#E5F3EF] services-section ${
-        isVisible ? "services-section-visible" : ""
-      }`}
+      className={`py-16 pb-8 px-4 sm:px-6 lg:px-10 bg-[#E5F3EF] services-section ${isVisible ? "services-section-visible" : ""
+        }`}
     >
       <div className="max-w-7xl mx-auto -mt-4 md:mt-0">
-        
+
 
         {/* Tabs */}
         <div className="flex justify-center mb-8 md:mb-15 services-tabs-wrap">
-          <div className="inline-flex rounded-full bg-white px-3 py-1.5 shadow-[0_8px_24px_rgba(10,47,36,0.08)] border border-[#132F2C]/500 services-tabs min-w-[350px] md:min-w-[500px] lg:min-w-[600px]">
+          <div className="inline-flex rounded-full bg-white px-3 py-1.5 shadow-[0_8px_24px_rgba(10,47,36,0.08)] border border-[#132F2C]/500 services-tabs min-w-[350px] lg:min-w-[600px]">
             <button
-              className={`flex-1 px-4 py-1.5 rounded-full text-[14px] md:text-[18px] font-[Urania] services-tab transition-all duration-500 ease-out md:flex-1 md:py-3 ${
-                activeTab === "will"
-                  ? "bg-[#132F2C] text-white services-tab-active"
-                  : "text-[#4C6B63]"
-              }`}
+              className={`flex-1 px-4 py-1.5 rounded-full text-[14px] lg:text-[18px] font-[Urania] services-tab transition-all duration-500 ease-out lg:flex-1 lg:py-3 ${activeTab === "will"
+                ? "bg-[#132F2C] text-white services-tab-active"
+                : "text-[#4C6B63]"
+                }`}
               onClick={() => setActiveTab("will")}
             >
-              <span className="md:inline block text-center">Will and</span>
-              <span className="md:inline block text-center"> Inheritance</span>
+              <span className="lg:inline block text-center">Will and</span>
+              <span className="lg:inline block text-center"> Inheritance</span>
             </button>
             <button
-              className={`flex-1 px-1 py-1.5 rounded-full font-[Urania] text-[14px] md:text-[18px] text-[#132F2C] services-tab transition-all duration-500 ease-out md:flex-2 md:py-4 ${
-                activeTab === "trust"
-                  ? "bg-[#132F2C] text-white services-tab-active"
-                  : "text-[#4C6B63]"
-              }`}
+              className={`flex-1 px-1 py-1.5 rounded-full font-[Urania] text-[14px] lg:text-[18px] text-[#132F2C] services-tab transition-all duration-500 ease-out lg:flex-2 lg:py-4 ${activeTab === "trust"
+                ? "bg-[#132F2C] text-white services-tab-active"
+                : "text-[#4C6B63]"
+                }`}
               onClick={() => setActiveTab("trust")}
             >
-              <span className="md:inline block text-center">Trust Formation</span>
-              <span className="md:inline block text-center"> & Management</span>
+              <span className="lg:inline block text-center">Trust Formation</span>
+              <span className="lg:inline block text-center"> & Management</span>
             </button>
           </div>
         </div>
 
-        {/* Cards */}
         <div
           key={tabKey}
-          className="grid gap-4 sm:gap-6 lg:gap-4 mt-1 mb-9 sm:grid-cols-2 lg:grid-cols-3 justify-items-center services-cards-grid services-tab-enter -mx-4 sm:mx-0 sm:mt-5 relative z-10"
+          className="grid gap-4 sm:gap-6 lg:gap-8 xl:gap-4 mt-1 mb-9 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 justify-items-center services-cards-grid services-tab-enter -mx-4 sm:mx-0 sm:mt-5 relative z-10"
         >
           {services.map((service) => (
             <div
@@ -225,9 +221,15 @@ const OurServices = ({ initialTab = "will" }) => {
                 overflow-hidden
                 service-card
 
-                /* ✅ DESKTOP FIX */
-                lg:!w-[414px]
-                lg:!max-w-[414px]
+                /* ✅ TABLET FIX (md & lg) */
+                md:!w-full
+                md:!max-w-[360px]
+                lg:!w-full
+                lg:!max-w-[360px]
+
+                /* ✅ DESKTOP FIX (xl only) */
+                xl:!w-[414px]
+                xl:!max-w-[414px]
               "
               style={{
                 width: 'calc(100vw - 32px)',
@@ -237,7 +239,7 @@ const OurServices = ({ initialTab = "will" }) => {
                 backgroundPosition: "center",
               }}
             >
-              
+
               {/* Transparent inner card */}
               <div className="relative flex items-end h-full px-4 pb-4 lg:px-0 lg:pb-0">
                 <div
@@ -264,7 +266,7 @@ const OurServices = ({ initialTab = "will" }) => {
                       {service.title}
                     </h3>
 
-                    <p 
+                    <p
                       className="font-[Urania] service-card-subtitle mb-3"
                     >
                       {service.subtitle}
@@ -276,7 +278,7 @@ const OurServices = ({ initialTab = "will" }) => {
                   </div>
 
                   <div className="mt-5 flex justify-center">
-                    <button 
+                    <button
                       onClick={() => openModal(service)}
                       className="rounded-[66px] bg-[#F4D57E] w-[280px] h-[52px] font-[Urania] text-[18px] font-bold text-[#132F2C] hover:bg-[#F7E18F] transition"
                     >
@@ -290,7 +292,7 @@ const OurServices = ({ initialTab = "will" }) => {
           ))}
         </div>
       </div>
-      
+
       {/* Service Modal (lazy, only when open) */}
       <Suspense fallback={null}>
         {modalOpen && (

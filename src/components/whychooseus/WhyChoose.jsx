@@ -68,7 +68,8 @@ const WhyChoose = () => {
   return (
     <>
       <style jsx>{`
-        @media (max-width: 1023px) {
+        /* MOBILE STYLES (Keep exactly as before) */
+        @media (max-width: 767px) {
           .why-choose-card {
             width: 100% !important;
             max-width: calc(100vw - 32px) !important;
@@ -95,6 +96,39 @@ const WhyChoose = () => {
             font-size: 16px !important;
             line-height: 22px !important;
             max-width: 301px !important;
+          }
+        }
+
+        /* TABLET STYLES (New 2-column adjustment) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .why-choose-card {
+            width: 100% !important; 
+            max-width: 100% !important;
+            height: 451px !important; /* increased height closer to desktop for better text fit */
+            min-height: 451px !important;
+          }
+          .why-choose-card img {
+             /* Adjust image width to fit the 2-col card minus padding */
+            width: calc(100% - 40px) !important;
+            height: 186px !important;
+            position: absolute !important;
+            top: 25px !important;
+            left: 20px !important;
+            object-fit: cover !important;
+          }
+          .why-choose-card h3 {
+            margin-top: 225px !important; /* Adjusted for image */
+            margin-left: 7px !important;
+            font-size: 22px !important; /* Slightly smaller than mobile/desktop to fit 2 cols if tight */
+            max-width: 280px !important;
+            line-height: 1.2;
+            white-space: pre-wrap;
+          }
+          .why-choose-card p {
+            margin-left: 7px !important;
+            font-size: 15px !important; /* Slightly smaller font for better fit */
+            line-height: 22px !important;
+            max-width: 351px !important;
           }
         }
 
@@ -134,7 +168,7 @@ const WhyChoose = () => {
             className="
               grid
               grid-cols-1
-              sm:grid-cols-2
+              md:grid-cols-2
               lg:grid-cols-[repeat(3,414px)]
 
               gap-y-6

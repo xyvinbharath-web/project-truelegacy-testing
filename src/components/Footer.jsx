@@ -58,37 +58,36 @@ const Footer = ({ hideCta = false }) => {
   return (
     <footer
       ref={footerRef}
-      className={`mt-0 text-white footer-section relative ${
-        isVisible ? "footer-section-visible" : ""
-      }`}
+      className={`mt-0 text-white footer-section relative ${isVisible ? "footer-section-visible" : ""
+        }`}
     >
-      
-        {/* Green background – MOBILE */}
-<div
-  className="
+
+      {/* Green background – MOBILE */}
+      <div
+        className="
     absolute inset-x-0 bottom-0 
     bg-[#0C201E]
     h-[640px]
-    md:hidden
+    lg:hidden
     z-0
   "
-/>
+      />
 
-{/* Green background – DESKTOP */}
-<div
-  className="
+      {/* Green background – DESKTOP */}
+      <div
+        className="
     absolute inset-x-0 bottom-0 
     bg-[#0C201E]
     h-[450px]
-    hidden md:block
+    hidden lg:block
     z-0
   "
-/>
+      />
 
       {!hideCta && (
         <>
           {/* Overlapping yellow CTA block - mobile */}
-          <div className="relative w-full mx-auto px-0 sm:px-8 md:hidden footer-cta-mobile">
+          <div className="relative w-full mx-auto px-0 sm:px-8 lg:hidden footer-cta-mobile">
             <div
               className="relative -top-10 sm:-top-12 bg-[#F4D57E] rounded-b-[16px] overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.3)] min-h-[390px] animate-fade-in footer-cta-card"
               style={{
@@ -100,9 +99,9 @@ const Footer = ({ hideCta = false }) => {
             >
               <div className="px-6 py-8 flex flex-col justify-center h-full">
                 <div className="max-w-[80%]">
-                  <h2 className="text-[32px] leading-snug font-semibold text-[#132F2C] footer-cta-heading animate-fade-in-up" style={{ animationDelay: "200ms", fontWeight: '700'}}>
+                  <h2 className="text-[32px] leading-snug font-semibold text-[#132F2C] footer-cta-heading animate-fade-in-up" style={{ animationDelay: "200ms", fontWeight: '700' }}>
                     Still wondering how to{" "}
-                    <span className="hidden md:inline">
+                    <span className="hidden lg:inline">
                       <br />
                     </span>
                     pass down your legacy?
@@ -135,7 +134,7 @@ const Footer = ({ hideCta = false }) => {
           </div>
 
           {/* Overlapping yellow CTA block - desktop */}
-          <div className="relative max-w-[1920px] mx-auto px-4 sm:px-8 hidden md:block footer-cta-desktop">
+          <div className="relative max-w-[1920px] mx-auto px-4 sm:px-8 hidden lg:block footer-cta-desktop">
             <div
               className="relative -top-5 sm:-top-6 md:-top-15 lg:-top-20 xl:-top-25 md:h-[413px] lg:h-[413px] bg-[#F4D57E] rounded-[6px] overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.3)] animate-fade-in footer-cta-card"
               style={{
@@ -148,7 +147,7 @@ const Footer = ({ hideCta = false }) => {
               <div className="grid h-full grid-cols-1 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1.6fr)] gap-6 md:gap-0 items-center">
                 {/* Left: text + buttons */}
                 <div className="px-4 lg:px-8 xl:px-11 pt-0 pb-0 flex flex-col justify-start">
-                  <h2 className="text-[22px] sm:text-[26px] lg:text-[42px] leading-snug font-semibold text-[#132F2C] footer-cta-heading" style={{fontWeight: '700'}}>
+                  <h2 className="text-[22px] sm:text-[26px] lg:text-[42px] leading-snug font-semibold text-[#132F2C] footer-cta-heading" style={{ fontWeight: '700' }}>
                     Still wondering how to{" "}
                     <span className="hidden md:inline">
                       <br />
@@ -186,7 +185,7 @@ const Footer = ({ hideCta = false }) => {
       <div className="relative z-20 pt-3 pb-0 mt-0 footer-main">
         <div className="max-w-[1550px] lg:max-w-full mx-auto px-4 sm:px-8 lg:px-6 xl:px-8 2xl:px-4 footer-main-inner">
           {/* Mobile layout */}
-          <div className="md:hidden text-[13px] footer-mobile-block">
+          <div className="lg:hidden text-[13px] footer-mobile-block">
             {/* Top row: Phone/Email/Follow Us + Quick Links */}
             <div className="flex gap-6 sm:gap-8 pb-1">
               <div className="absolute bottom-0 left-[-10px] right-[-10px] h-px bg-[#193C38]"></div>
@@ -271,7 +270,7 @@ const Footer = ({ hideCta = false }) => {
           </div>
 
           {/* Desktop layout */}
-          <div className="hidden md:grid md:grid-cols-5 gap-8 text-[13px] sm:text-[14px] footer-desktop-grid -mt-4">
+          <div className="hidden lg:grid lg:grid-cols-5 gap-8 text-[13px] sm:text-[14px] footer-desktop-grid -mt-4">
             {/* Phone & Email */}
             <div className="pb-2 relative footer-col">
               <div className="absolute bottom-0 left-[-20px] right-[-20px] h-px bg-[#193C38]"></div>
@@ -298,9 +297,9 @@ const Footer = ({ hideCta = false }) => {
               </div>
               <p className="text-[16px] leading-relaxed text-[#A1A1A1] footer-text animate-fade-in">
                 Wazeal Fintech Private Limited,
-                
+
                 2nd Floor, Imperial Annex, NH Bypass,
-               
+
                 Vyttila, Kochi, Kerala 682019, India
               </p>
             </div>
@@ -389,10 +388,10 @@ const Footer = ({ hideCta = false }) => {
                 Terms of Service
               </NavLink>
             </div>
-            
-           
+
+
             <div className="w-full h-px bg-[#193C38] sm:hidden"></div>
-            
+
             <div className="text-[14px] sm:text-[12px] leading-none">
               ©2025 TRUE LEGACY. ALL RIGHTS RESERVED
             </div>

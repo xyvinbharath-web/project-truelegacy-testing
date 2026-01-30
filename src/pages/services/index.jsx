@@ -20,7 +20,7 @@ function Services() {
       </div>
 
       {/* Spacer to avoid content overlap */}
-      <div className="h-[64px] md:h-[72px]" />
+      <div className="h-[64px] md:h-[80px]" />
 
       <Header
         title="Services"

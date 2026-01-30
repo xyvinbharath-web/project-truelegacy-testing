@@ -6,6 +6,7 @@ import planYourLegacyMobile from "../../assets/img/home/Framemobileplanyourlagac
 import group4Bg from "../../assets/img/home/Group 4.webp";
 import tickIcon from "../../assets/icon/tickelements.webp";
 import StyledButton from "../../ui/StyledButton";
+import video from "../../assets/img/home/Succession_Plan.mp4";
 
 const PlanYourLegacy = () => {
   const { successionData } = useSuccession();
@@ -51,10 +52,15 @@ const PlanYourLegacy = () => {
           rightSectionRef.current.style.marginLeft = 'auto';
           rightSectionRef.current.style.marginRight = 'auto';
           rightSectionRef.current.style.maxWidth = '440px';
-        } else {
+        } else if (window.innerWidth >= 1280) {
           rightSectionRef.current.style.marginLeft = '100px';
           rightSectionRef.current.style.marginRight = 'auto';
           rightSectionRef.current.style.maxWidth = 'none';
+        } else {
+          // Tablet/Mobile stacked: Center the container horizontally, keep text left
+          rightSectionRef.current.style.marginLeft = 'auto';
+          rightSectionRef.current.style.marginRight = 'auto';
+          rightSectionRef.current.style.maxWidth = '500px';
         }
       }
     };
@@ -67,9 +73,8 @@ const PlanYourLegacy = () => {
   return (
     <section
       ref={sectionRef}
-      className={`w-full bg-white pb-16 md:pb-20 lg:pb-24 pt-1 md:pt-8 lg:pt-8 plan-section ${
-        isVisible ? "plan-section-visible" : ""
-      }`}
+      className={`w-full bg-white pb-16 md:pb-20 lg:pb-24 pt-1 md:pt-8 lg:pt-4 plan-section ${isVisible ? "plan-section-visible" : ""
+        }`}
     >
       <div className="relative">
         <img
@@ -79,48 +84,70 @@ const PlanYourLegacy = () => {
           className="hidden md:block absolute top-0 right-0 w-[240px] pointer-events-none select-none"
         />
 
-        <div className="relative z-10 max-w-[1800px] mx-auto px-2 sm:px-4 lg:px-6 grid gap-8 lg:grid-cols-[690px_1fr] items-center">
-        {/* Left: Family tree image */}
-        <div className="flex flex-col items-center lg:items-start justify-center plan-left">
-          {/* Mobile image */}
-          <div className="w-full max-w-[343px] md:hidden plan-image">
-            <div className="w-full">
-              <img
-                src={planYourLegacyMobile}
-                alt="Family tree preview mobile"
-                loading="lazy"
-                decoding="async"
-                className="w-[343px] h-[430px] object-cover"
+        <div className="relative z-10 max-w-[1800px] mx-auto px-2 sm:px-4 lg:px-6 grid gap-8 xl:grid-cols-[690px_1fr] items-center">
+          {/* Left: Family tree image */}
+          <div className="flex flex-col items-center xl:items-start justify-center plan-left">
+            {/* Mobile image */}
+            <div className="w-full max-w-[343px] md:hidden plan-image">
+              <div
+                className="w-full relative flex items-center justify-center"
+                style={{
+                  backgroundColor: '#FFFEF5'
+                }}
+              >
+                <video
+                  className="w-[310px] h-[360px] object-contain"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  style={{ background: 'transparent' }}
+                >
+                  <source src={video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+
+            {/* Mobile CTA button under image */}
+            <div className="mt-6 md:hidden flex justify-center w-full plan-cta">
+              <StyledButton
+                name="Find Your Legal Heirs"
+                onClick={handleStartPlan}
+                variant="primary"
+                minWidth="auto"
+                className="!w-[343px] h-[50px] rounded-[66px] font-[Urania] text-[18px] font-bold !bg-[#132F2C] !text-white shadow-[0_10px_25px_rgba(10,47,36,0.35)] hover:!bg-[#05281F] transition-colors duration-200"
+                style={{ fontFamily: 'Urania', fontWeight: '700', fontStyle: 'normal', fontSize: '18px', lineHeight: '100%', letterSpacing: '0%', padding: '15px 32px', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               />
+            </div>
+
+            {/* Desktop / tablet image */}
+            <div className="hidden md:block w-full max-w-[690px] lg:w-[690px] plan-image">
+              <div
+                className="w-full relative flex items-center justify-center"
+                style={{
+                  backgroundColor: '#FFFEF5'
+                }}
+              >
+                <video
+                  className="w-[588px] h-[588px] object-contain"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  style={{ background: 'transparent' }}
+                >
+                  <source src={video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
             </div>
           </div>
 
-          {/* Mobile CTA button under image */}
-          <div className="mt-6 md:hidden flex justify-center w-full plan-cta">
-            <StyledButton
-              name="Find Your Legal Heirs"
-              onClick={handleStartPlan}
-              variant="primary"
-              minWidth="auto"
-              className="!w-[343px] h-[50px] rounded-[66px] font-[Urania] text-[18px] font-bold !bg-[#132F2C] !text-white shadow-[0_10px_25px_rgba(10,47,36,0.35)] hover:!bg-[#05281F] transition-colors duration-200"
-              style={{fontFamily: 'Urania', fontWeight: '700', fontStyle: 'normal', fontSize: '18px', lineHeight: '100%', letterSpacing: '0%', padding: '15px 32px', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center'}}
-            />
-          </div>
-
-          {/* Desktop / tablet image */}
-          <div className="hidden md:block w-full max-w-[690px] lg:w-[690px] plan-image">
-            <img
-              src={planYourLegacyImage}
-              alt="Family tree preview"
-              loading="lazy"
-              decoding="async"
-              className="w-full h-[568px] object-cover"
-            />
-          </div>
-        </div>
-
-        {/* Right: Text + bullets + CTA (desktop/tablet only) */}
-        <div ref={rightSectionRef} className="hidden md:block text-left plan-right relative" style={{ marginLeft: '100px' }}>
+          {/* Right: Text + bullets + CTA (desktop/tablet only) */}
+          <div ref={rightSectionRef} className="hidden md:block text-left plan-right relative" style={{ marginLeft: '0' }}>
             <h1 className="font-[Urania] font-bold text-[42px] leading-[49px] text-[#132F2C] plan-heading max-w-[440px]">
               No Succession Plan? Discover your legal heirs in seconds.
             </h1>
@@ -151,7 +178,7 @@ const PlanYourLegacy = () => {
                 className="inline-flex items-center justify-center rounded-full !bg-[#132F2C] px-8 py-3 font-[Urania] text-[18px] font-bold !text-white shadow-[0_10px_25px_rgba(10,47,36,0.35)] hover:!bg-[#0D241E] transition-colors duration-200"
               />
             </div>
-        </div>
+          </div>
         </div>
       </div>
     </section>

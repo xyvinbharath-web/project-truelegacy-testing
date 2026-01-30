@@ -10,11 +10,6 @@ const WhyChooseUs = lazy(() => import("../pages/why-choose-us"));
 const Contact = lazy(() => import("../pages/contact"));
 const Resources = lazy(() => import("../pages/resources"));
 const BlogsView = lazy(() => import("../pages/resources/BlogsView"));
-const NomineesAreNotLegalHeirs = lazy(() => import("../pages/resources/NomineesAreNotLegalHeirs"));
-const IsJointWillRightForYou = lazy(() => import("../pages/resources/IsJointWillRightForYou"));
-const WhyTrustMatters = lazy(() => import("../pages/resources/WhyTrustMatters"));
-const KeralaCourtMutation = lazy(() => import("../pages/resources/KeralaCourtMutation"));
-const UnderstandingLegalHeirship = lazy(() => import("../pages/resources/UnderstandingLegalHeirship"));
 const SurveyForm = lazy(() => import("../pages/succession"));
 import SuccessionLayout from "../layout/SuccessionLayout";
 const SuccessionTree = lazy(() => import("../pages/succession/SuccessionTree"));
@@ -66,47 +61,7 @@ const Router = createBrowserRouter([
             ),
           },
           {
-            path: "resources/nominees-are-not-legal-heirs",
-            element: (
-              <Suspense fallback={null}>
-                <NomineesAreNotLegalHeirs />
-              </Suspense>
-            ),
-          },
-          {
-            path: "resources/is-joint-will-right-for-you",
-            element: (
-              <Suspense fallback={null}>
-                <IsJointWillRightForYou />
-              </Suspense>
-            ),
-          },
-          {
-            path: "resources/why-trust-matters",
-            element: (
-              <Suspense fallback={null}>
-                <WhyTrustMatters />
-              </Suspense>
-            ),
-          },
-          {
-            path: "resources/kerala-court-mutation-guidelines",
-            element: (
-              <Suspense fallback={null}>
-                <KeralaCourtMutation />
-              </Suspense>
-            ),
-          },
-          {
-            path: "resources/understanding-legal-heirship-certificate",
-            element: (
-              <Suspense fallback={null}>
-                <UnderstandingLegalHeirship />
-              </Suspense>
-            ),
-          },
-          {
-            path: "resources/:id",
+            path: "resources/:slug",
             element: (
               <Suspense fallback={null}>
                 <BlogsView />
