@@ -246,7 +246,7 @@ const SurveyForm = () => {
 
   return (
     <>
-      <div className="flex h-screen overflow-hidden bg-white relative">
+      <div className="flex min-h-screen bg-white relative">
         <div
           className="w-1/2 relative hidden md:block 
   bg-[linear-gradient(240deg,#FFFFFF_40%,#FFEFC2_100%)]"
@@ -256,12 +256,12 @@ const SurveyForm = () => {
               src={logo}
               alt="Logo"
               onClick={() => navigate("/")}
-              className="w-[161px] h-[63px] object-contain cursor-pointer"
+              className="w-[161px] h-[63px] object-cover cursor-pointer"
             />{" "}
             <img
               src={surveyImg}
               alt="Survey"
-              className="w-[312px] h-[332px] object-contain"
+              className="w-[312px] h-[332px] object-cover"
             />
             <h2 className="text-4xl text-[#966610] font-medium mb-3 mt-5">
               Know your legal heirs
@@ -276,7 +276,7 @@ const SurveyForm = () => {
           </div>
         </div>
 
-        <div className="w-full md:w-1/2 flex flex-col justify-between md:p-20 pt-20 p-5 pb-30 relative overflow-y-auto h-full">
+        <div className="w-full md:w-1/2 flex flex-col justify-between md:p-20 pt-20  p-5 pb-30 relative">
           {" "}
           <div>
             <div className="flex justify-end text-xl md:text-[26px] font-medium mb-6 text-primary ">
@@ -328,13 +328,13 @@ const SurveyForm = () => {
                           <div
                             onClick={() => field.onChange(option.label)}
                             className={`relative cursor-pointer border rounded-xl p-6 w-40 flex flex-col items-center transition-all ${field.value === option.label
-                                ? "border-none bg-yellow shadow-md"
-                                : "border-black/20 border-[0.77px] hover:border-yellow"
+                              ? "border-none bg-[#F4D57E] shadow-md"
+                              : "border-black/20 border-[0.77px] hover:border-[#F4D57E]"
                               }`}
                           >
                             <div
                               className={`absolute top-3 right-3 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${field.value === option.label
-                                  ? "bg-green border-green text-white"
+                                  ? "bg-[#001412] border-[#001412] text-white"
                                   : "border-black/20 border-[0.77px] bg-white text-transparent"
                                 }`}
                             >
@@ -401,8 +401,8 @@ const SurveyForm = () => {
                             type="button"
                             onClick={() => field.onChange(opt.label || opt)}
                             className={`w-full border rounded-xl lg:py-5 py-2  px-6 flex items-center justify-between transition-all duration-300 ${field.value === (opt.label || opt)
-                                ? "bg-yellow border-yellow text-primary shadow-sm"
-                                : "bg-white border-black/20 hover:border-yellow"
+                              ? "bg-[#F4D57E] border-[#F4D57E] text-primary shadow-sm"
+                              : "bg-white border-black/20 hover:border-[#F4D57E]"
                               }`}
                           >
                             <span className="lg:text-xl text-base font-medium">
@@ -410,8 +410,8 @@ const SurveyForm = () => {
                             </span>
                             <div
                               className={`lg:w-6 lg:h-6 w-4 h-4 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${field.value === (opt.label || opt)
-                                  ? "bg-green border-green text-white"
-                                  : "border-black/20 bg-white text-transparent"
+                                ? "bg-[#001412] border-[#001412] text-white"
+                                : "border-black/20 bg-white text-transparent"
                                 }`}
                             >
                               <CheckIcon className="lg:w-4 lg:h-4 w-3 h-3" />
@@ -482,13 +482,13 @@ const SurveyForm = () => {
             </div>
           </div>
         )}
-      </div>{" "}
-      <button
+      </div > {" "}
+      < button
         className="absolute top-8 left-8 text-primary text-lg font-medium hover:underline"
         onClick={handleCloseClick}
       >
         ✕ Close
-      </button>
+      </button >
     </>
   );
 };

@@ -41,7 +41,7 @@ const OurPromise = () => {
     Our Promise
   </h2>
 
-  <p className="font-[Urania] font-bold md:font-medium text-[24px] md:text-[20px] lg:text-[32px] leading-[30px] text-[#132F2C] mb-6 max-w-[525px] lg:tracking-[0.02em]">
+  <p className="font-[Urania] font-bold md:font-medium text-[24px] md:text-[20px] lg:text-[32px] leading-[35px] text-[#132F2C] mb-6 max-w-[525px] lg:tracking-[0.02em]">
     No matter your situation, you are not alone.
     We're here to guide you every step of the way.
   </p>

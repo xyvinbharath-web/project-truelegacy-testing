@@ -85,16 +85,16 @@ const HeaderHome = () => {
     style.textContent = `
       @media (min-width: 1700px) {
         .desktop-bg-large {
-          height: 780px !important;
+          height: 480px !important;
         }
         section.header-section-large {
-          height: 950px !important;
+          height: 580px !important;
         }
         .content-large {
-          padding-top: 440px !important;
+          padding-top: 220px !important;
         }
         .carousel-large {
-          top: 750px !important;
+          top: 460px !important;
           left: 60px !important;
         }
         section.header-section-large {
@@ -258,21 +258,38 @@ const HeaderHome = () => {
         <img
           src={currentSlide.desktopBackground}
           alt="Succession Planning"
-          className={`absolute left-0 right-0 w-full h-[580px] xl:h-[630px] object-cover hidden lg:block transition-opacity duration-700 desktop-bg-large ${transitioning ? (fadePhase ? "opacity-100" : "opacity-0") : "opacity-100"
+          className={`absolute left-0 right-0 w-full h-[561px] xl:h-[540px] min-[1700px]:h-[480px] object-cover hidden lg:block xl:hidden transition-opacity duration-700 desktop-bg-large ${transitioning ? (fadePhase ? "opacity-100" : "opacity-0") : "opacity-100"
             }`}
           style={{ top: '60px', objectPosition: 'right bottom' }}
         />
         <img
           src={prevSlide.desktopBackground}
           alt="Succession Planning"
-          className={`absolute left-0 right-0 w-full h-[580px] xl:h-[630px] object-cover hidden lg:block transition-opacity duration-700 desktop-bg-large ${transitioning ? (fadePhase ? "opacity-0" : "opacity-100") : "opacity-0"
+          className={`absolute left-0 right-0 w-full h-[561px] xl:h-[540px] min-[1700px]:h-[480px] object-cover hidden lg:block xl:hidden transition-opacity duration-700 desktop-bg-large ${transitioning ? (fadePhase ? "opacity-0" : "opacity-100") : "opacity-0"
+            }`}
+          style={{ top: '20px', objectPosition: 'right bottom' }}
+        />
+        {/* XL Desktop background image  */}
+        <img
+          src={currentSlide.desktopBackground}
+          alt="Succession Planning"
+          className={`absolute left-0 right-0 w-full h-[561px] xl:h-[540px] min-[1700px]:h-[480px] object-cover hidden xl:block transition-opacity duration-700 desktop-bg-large ${transitioning ? (fadePhase ? "opacity-100" : "opacity-0") : "opacity-100"
+            }`}
+          style={{ top: '60px', objectPosition: 'right bottom' }}
+        />
+        <img
+          src={prevSlide.desktopBackground}
+          alt="Succession Planning"
+          className={`absolute left-0 right-0 w-full h-[561px] xl:h-[540px] min-[1700px]:h-[480px] object-cover hidden xl:block transition-opacity duration-700 desktop-bg-large ${transitioning ? (fadePhase ? "opacity-0" : "opacity-100") : "opacity-0"
             }`}
           style={{ top: '20px', objectPosition: 'right bottom' }}
         />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-[1900px] xl:max-w-[2200px] mx-auto pl-4 pr-4 sm:pl-8 sm:pr-8 lg:pl-5 lg:pr-16 xl:pl-7 xl:pr-24 h-[561px] sm:h-[661px] lg:h-[580px] xl:h-[630px] flex items-start pb-21 md:pb-14 lg:pb-16 xl:pb-20 pt-[16px] sm:pt-[375px] md:pt-[375px] lg:pt-[270px] xl:pt-[300px] content-large">
+      <div 
+        className="relative z-10 max-w-[1900px] xl:max-w-[2200px] mx-auto pl-4 pr-4 sm:pl-8 sm:pr-8 lg:pl-5 lg:pr-16 xl:pl-7 xl:pr-24 h-[561px] sm:h-[661px] lg:h-[561px] xl:h-[540px] min-[1700px]:h-[480px] flex items-start pb-21 md:pb-14 lg:pb-16 xl:pb-20 pt-[16px] sm:pt-[375px] md:pt-[375px] lg:pt-[280px] xl:pt-[220px] min-[1700px]:pt-[220px] content-large"
+      >
         <div className="flex items-stretch gap-3 sm:gap-8">
           {/* Left accent line */}
           <div className="self-stretch border-l-[4px] border-[#F4D57E]" />
@@ -328,7 +345,7 @@ const HeaderHome = () => {
       </div>
 
       {/* Carousel controls */}
-      <div className="absolute z-20 left-4 sm:left-24 md:left-4 lg:left-10 xl:left-16 top-[545px] sm:top-[650px] md:top-[650px] lg:top-[560px] xl:top-[600px] flex items-center gap-3 carousel-large">
+      <div className="absolute z-20 left-4 sm:left-24 md:left-4 lg:left-10 xl:left-16 top-[545px] sm:top-[650px] md:top-[650px] lg:top-[540px] xl:top-[520px] min-[1700px]:top-[460px] flex items-center gap-3 carousel-large">
         <button
           className="h-6 w-6 hover:scale-105 transition-transform"
           onClick={goPrev}

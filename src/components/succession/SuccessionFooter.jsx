@@ -16,12 +16,12 @@ const SuccessionFooter = () => {
     // Check if any drawers are open and close them first
     const checkEvent = { detail: { hasOpenDrawers: false } };
     window.dispatchEvent(new CustomEvent('checkDrawersOpen', checkEvent));
-    
+
     if (checkEvent.detail.hasOpenDrawers) {
       window.dispatchEvent(new CustomEvent('closeDrawers'));
       return; // Don't proceed with navigation
     }
-    
+
     if (location.pathname === "/succession/family") {
       navigate("/succession/view");
       return;

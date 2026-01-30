@@ -3,6 +3,10 @@ import axios from "axios";
 const baseURL = import.meta.env.VITE_APP_API_URL;
 const apiKey = import.meta.env.VITE_APP_API_KEY;
 
+// Debug: Log environment variables
+console.log("API URL:", baseURL);
+console.log("API Key:", apiKey ? "SET" : "NOT SET");
+
 const axiosInstance = axios.create({
   baseURL,
 });

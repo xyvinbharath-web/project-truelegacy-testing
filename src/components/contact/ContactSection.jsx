@@ -131,7 +131,7 @@ const ContactSection = () => {
               <p className="font-[Urania] text-[14px] leading-[16px] text-[#868989] mb-2 lg:mb-3">
                 Address
               </p>
-              <p className="font-[Urania] text-[14px] lg:text-[18px] leading-[24px] lg:leading-[18px] text-[#132F2C] max-w-[220px] lg:max-w-none">
+              <p className="font-[Urania] text-[12px] lg:text-[18px] leading-[18px] lg:leading-[24px] text-[#132F2C] max-w-[220px] lg:max-w-none">
                 Wavxseal Fintech Private Limited, 2nd Floor, Imperial Amity, NH Bypass,
                 Vyttila, Kochi, Kerala – 682019, India
               </p>
